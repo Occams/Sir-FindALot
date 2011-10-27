@@ -1,3 +1,7 @@
-Branching is fun ;)
-Hmm...
-Huber Bastians branch
+Application Definition Statement
+
+FindALot zeigt dem Nutzer freie Stellplätze auf Parkplätzen an.
+
+Mithilfe von Geolocation und kollaborativen Live Daten wird eine intuitive Bedienung gewährleistet.
+Der Benutzer wählt aus einer nach Geolocation und Stellplatzsituation geordneten Liste von Parkplätzen den gewünschten aus.
+Eine visuelle Darstellung, basierend auf kollaborativen Live Daten von Parkplätzen wird im nächsten Schritt angezeigt.
