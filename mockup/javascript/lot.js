@@ -42,10 +42,10 @@ var Lot = {
 	},
 
 	resized: function() {
-		$('#lot td').css('height', $(document).width()/Lot.data.width);
+		$('#lot td').css('height', $("#lot").width()/Lot.data.width);
 	}
 };
 
 $(function() {
-	Lot.init("#lotdisplay", {width: 10, height: 10,lots: [[1,1],[1,2],[1,3],[1,4],[1,5],[1,6],[3,1],[3,2],[3,3],[3,4],[3,5],[3,6]]});
+	Lot.init("#lotdisplay", {width: 20, height: 30,lots: [[1,1],[1,2],[1,3],[1,4],[1,5],[1,6],[3,1],[3,2],[3,3],[3,4],[3,5],[3,6]]});
 });
