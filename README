@@ -1,7 +1,10 @@
 Application Definition Statement
 
-FindALot zeigt dem Nutzer freie Stellpl‰tze auf Parkpl‰tzen an.
+Sir FindALot hilft "casual" Nutzern von mobilen Endger√§ten freie Parkpl√§tze zu finden. 
+Insbesondere werden auch konkret die jeweiligen freien Stellpl√§tze auf einem ausgew√§hlten 
+Parkplatz - basierend auf (kollaborativen) Live-Daten - visuell dargestellt.
 
-Mithilfe von Geolocation und kollaborativen Live Daten wird eine intuitive Bedienung gew‰hrleistet.
-Der Benutzer w‰hlt aus einer nach Geolocation und Stellplatzsituation geordneten Liste von Parkpl‰tzen den gew¸nschten aus.
-Eine visuelle Darstellung, basierend auf kollaborativen Live Daten von Parkpl‰tzen wird im n‰chsten Schritt angezeigt.
+Mithilfe von Geolocation und kollaborativen Live-Daten wird eine intuitive Bedienung 
+gew√§hrleistet. Der Benutzer kann aus einer nach Geolocation und Stellplatzsituation gerankten 
+Liste von vorhandenen Parkpl√§tzen ausw√§hlen. Informationen zur aktuellen Belegung eines 
+bestimmten Parkplatzes werden je nach Situation textuel und/oder visuell angezeigt. 
