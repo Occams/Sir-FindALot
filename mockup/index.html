@@ -22,7 +22,7 @@
 		<!-- <a href="index.html" data-icon="gear" class="ui-btn-right">Options</a> -->
 	</div><!-- /header --> 
  
-	<div data-role="content" id="one">
+	<div data-role="content" id="home">
 		<div align="center">
 			<p>Sir FindALot is eager to help you find a free lot! He is currently computing results based on your location.<p>
 		</div>
@@ -45,13 +45,29 @@
 	<div data-role="footer"> 
 		<div data-role="navbar" data-iconpos="top">
 			<ul>
-				<li><a href="#" data-icon="home">Home</a></li>
+				<li><a href="#home" data-transition="fade" data-icon="home">Home</a></li>
 				<li><a href="#" data-icon="info">Info</a></li>
-				<li><a href="#" data-icon="grid">Three</a></li>
+				<li><a href="#options" data-transition="slidedown" data-rel="dialog" data-icon="grid">Options</a></li>
 			</ul>
 		</div><!-- /navbar -->
 	</div> <!-- /footer -->
 </div><!-- /page one --> 
+
+<!-- Start of second page: #options --> 
+<div data-role="page" id="options"> 
+ 
+	
+ 
+	<div data-role="content">
+		<h3>Options</h3>
+		<a href="#" data-role="button" data-theme="b">Email</a>     
+		<a href="#" data-role="button" data-theme="b">Upload to flickr</a>       
+		<a href="#" data-role="button" data-theme="b">Share on Facebook</a>      
+		<a href="#" data-role="button" data-theme="b">Tweet photo</a>       
+		 		  
+		<a href="index.html" data-role="button" data-rel="back" data-theme="a">Cancel</a>    
+	</div><!-- /content --> 
+</div><!-- /page two --> 
  
  
 <!-- Start of second page: #two --> 
