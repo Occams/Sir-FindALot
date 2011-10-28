@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Help</title>
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	<!-- Dane: Latest jquery mobile sources -->
+	<link href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" rel="stylesheet" type="text/css" />
+	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
+	<script src="javascript/app.js"></script>
+	
+</head>
+<body>
+
+<!-- Start of page: help --> 
+<!-- data-dom-cache="true": persistent AJAX prefetch --> 
+<div data-role="page" id="options" data-dom-cache="true"> 
+ 	<div data-role="header"> 
+		<h1>Help</h1> 
+	</div><!-- /header --> 
+	
+	<div data-role="content">
+		<p>Sir FindALot has compiled an immense set of FAQs to walk you along the path of enlightenment.</p>
+		<div data-role="collapsible-set" data-theme="b">
+
+			<div data-role="collapsible" data-collapsed="false">
+				<h3>First Steps</h3>
+				<p>Explain common usage flow here.</p>
+			</div>
+	
+			<div data-role="collapsible">
+				<h3>Quick Guide</h3>
+				<p>For quick users to consider.</p>
+			</div>
+			
+			<div data-role="collapsible">
+				<h3>Error Messages</h3>
+				<ul>
+					<li>GPS not working: Turn it on</li>
+					<li>Lost connection to server: Try again later</li>
+					<li>Lost my brain: Hopeless</li>
+				</ul>
+			</div>
+			
+			<div data-role="collapsible">
+				<h3>Uninstall</h3>
+				<p>Everytime someone tries to get rid of his mobile app, Sir FindALot murders an innocent kitten.</p>
+			</div>
+		</div><!-- /collapsible-set -->
+	</div><!-- /content --> 
+	
+	<!-- Fixed, persistent footer. Use data-id="footer" on every page that needs it -->
+	<div data-role="footer" data-id="footer" data-position="fixed"> 
+		<div data-role="navbar" data-iconpos="top">
+			<ul>
+				<li><a href="index.html" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
+				<li><a href="help.html" data-prefetch data-transition="slidedown" data-icon="info">Help</a></li>
+				<li><a href="options.html" data-prefetch data-transition="slidedown" data-rel="dialog" data-icon="gear">Options</a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div> <!-- /footer -->
+</div><!-- /page options --> 
+ 
+</body>
