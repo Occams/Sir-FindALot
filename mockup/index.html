@@ -18,7 +18,7 @@
 </head>
 <body>
 
-<!-- Start of first page: #one --> 
+<!-- Start of first page: #home --> 
 <div data-role="page" id="foo" data-content-theme="b"> 
  
 	<div data-role="header"> 
@@ -26,21 +26,21 @@
 		<!-- <a href="index.html" data-icon="gear" class="ui-btn-right">Options</a> -->
 	</div><!-- /header --> 
 	<div data-role="content" id="home">
-		<div align="center">
+		<div class="center">
 			<p class="speech-a">"<b>Sir Findalot</b> is eager to help you find a free lot! I'm currently computing results based on your location."</p>
-		<table>
+		<table class="center">
 			<tr>
 				<td align="center">
-					<a href="index.html" data-role="button" data-icon="search" data-iconpos="right" id="geolocate" data-inline="true">Geolocation</a>
+					<a href="#home" data-role="button" data-icon="search" data-iconpos="right" id="geolocate" data-inline="true">Geolocation</a>
 				</td>
-				<td align="center">
-					<img src="logo/Sir_FindALot_final_uncompressed.png" width="80px" />
+				<td>
+					<img src="logo/Sir_FindALot_final.png" alt= "Sir FindALot" width="80" />
 				</td>
 			</tr>
 		</table>
 		</div>
-		<div style="clear:both;padding-bottom:30px;"></div>
 		
+		<div style="clear:both;padding-bottom:30px;"></div>
 		
 		<ol data-role="listview" id="fastresults"></ol>
 		
@@ -48,7 +48,7 @@
 		
 		<div data-role="collapsible">
 			<h3>Custom Search</h3>
-			<div align="center">
+			<div class="center">
 				<p>Search for a specific lot if you are unsatisified with the results from above.</p>
 			</div>
 	
@@ -59,16 +59,100 @@
 	</div><!-- /content -->
 	
 	<!-- Fixed, persistent footer. Use data-id="footer" on every page that needs it -->
-	<div data-role="footer" data-id="footer" data-position="fixed"> 
+	<div data-role="footer" data-position="fixed"> 
 		<div data-role="navbar" data-iconpos="top">
 			<ul>
-				<li><a href="index.html" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
-				<li><a href="help.html" data-prefetch data-transition="slidedown" data-icon="info">Help</a></li>
-				<li><a href="options.html" data-prefetch data-transition="slidedown" data-rel="dialog" data-icon="gear">Options</a></li>
+				<li><a href="#home" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
+				<li><a href="#help" data-prefetch data-transition="slidedown" data-icon="info">Help</a></li>
+				<li><a href="#options" data-prefetch data-transition="slidedown" data-rel="dialog" data-icon="gear">Options</a></li>
 			</ul>
 		</div><!-- /navbar -->
 	</div> <!-- /footer -->
 </div><!-- /page one --> 
+
+<!-- Start of page: options --> 
+<!-- data-dom-cache="true": persistent AJAX prefetch --> 
+<div data-role="page" id="options" data-dom-cache="true"> 
+ 
+	<div data-role="content">
+		<h3>Options</h3>
+		<a href="#" data-role="button" data-theme="b">Turn on GPS</a>          
+		<a href="#" data-role="button" data-theme="b">Share on Facebook</a>      
+		<a href="#" data-role="button" data-theme="b">Share on Google+</a>
+		<a href="#" data-role="button" data-theme="b">Self Destroy</a>      
+		 		  
+		<a href="#home" data-role="button" data-rel="back" data-theme="a">Back</a>
+		
+		<div class="center">
+			<img src="images/Carl.png" width=100%/>
+		</div>
+	</div><!-- /content --> 
+</div><!-- /page options --> 
+
+<!-- Start of page: help --> 
+<!-- data-dom-cache="true": persistent AJAX prefetch --> 
+<div data-role="page" id="help" data-dom-cache="true"> 
+ 	<div data-role="header"> 
+		<h1>Help</h1> 
+	</div><!-- /header --> 
+	
+	<div data-role="content">
+		<div class="center">
+			<table class="center">
+			<tr>
+				<td>
+					<p class="speech-b">"I have compiled an immense set of <b>FAQs</b> to walk you along the path of enlightenment."</p>
+				</td>
+				<td><img src="images/Sir_FindALot_lightbulb.png" alt ="Sir FindALot Lightbulb" width="120"/></td>
+			</tr>
+			</table>
+		</div>
+		
+		<div data-role="collapsible-set" data-theme="b">
+
+			<div data-role="collapsible" data-collapsed="false">
+				<h3>First Steps</h3>
+				<p>Explain common usage flow here.</p>
+			</div>
+	
+			<div data-role="collapsible">
+				<h3>Quick Guide</h3>
+				<p>For quick users to consider.</p>
+			</div>
+			
+			<div data-role="collapsible">
+				<h3>Error Messages</h3>
+				<ul>
+					<li>GPS not working: Turn it on</li>
+					<li>Lost connection to server: Try again later</li>
+					<li>Lost my brain: Hopeless</li>
+				</ul>
+			</div>
+			
+			<div data-role="collapsible">
+				<h3>Uninstall</h3>
+				<p>Everytime someone tries to get rid of his mobile app, Sir Findalot murders an innocent kitten.</p>
+			</div>
+		</div><!-- /collapsible-set -->
+		
+		<div class="center">
+			<p class="speech">"In the meanwhile, ferocious <b>Sir DragOnLot</b> went out to practice his unmatched beast slaying skills."</p>
+		</div>
+		
+		<img src="images/Beast_slayer.png" width="100%"/>
+	</div><!-- /content --> 
+	
+	<!-- Fixed, persistent footer. Use data-id="footer" on every page that needs it -->
+	<div data-role="footer" data-position="fixed"> 
+		<div data-role="navbar" data-iconpos="top">
+			<ul>
+				<li><a href="#home" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
+				<li><a href="#help" data-prefetch data-transition="slidedown" data-icon="info">Help</a></li>
+				<li><a href="#options" data-prefetch data-transition="slidedown" data-rel="dialog" data-icon="gear">Options</a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div> <!-- /footer -->
+</div><!-- /page help --> 
  
  
 <!-- Start of second page: #two --> 
@@ -99,7 +183,7 @@
 	<div data-role="footer" data-position="fixed"> 
 		<div data-role="navbar" data-iconpos="top">
 			<ul>
-				<li><a href="index.html" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
+				<li><a href="#home" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
 				<li><a href="#lot_info" data-prefetch data-transition="slidedown" data-icon="info">Details</a></li>
 			</ul>
 		</div><!-- /navbar -->
@@ -121,6 +205,7 @@
 				<ul>
 					<li>Mo-Fr: 7.00-23.00</li>
 					<li>Sa-So: 10.00-22.00</li>
+				</ul>
 			</div>
 			
 			<div data-role="collapsible">
@@ -150,10 +235,10 @@
 		</div><!-- /collapsible-set -->
 	</div><!-- /content -->
 	
-	<div data-role="footer" data-position="fixed"> 
+	<div data-role="footer"> 
 		<div data-role="navbar" data-iconpos="top">
 			<ul>
-				<li><a href="index.html" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
+				<li><a href="#home" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
 				<li><a href="#three" data-prefetch data-transition="slideup" data-icon="grid">Map</a></li>
 			</ul>
 		</div><!-- /navbar -->
