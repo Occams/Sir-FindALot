@@ -42,7 +42,8 @@ var Geolocate = {
   },
   success: function(position) {
     Geolocate.setLoading(false);
-    $("#geolocate .ui-btn-text").html("Found you");
+    $("#geolocate .ui-btn-text").html("Relocate");
+    $(".speech-a").empty().html('I found some parking lots near you! If you are not satisfied with the results try again by tapping the <b>Relocate</b> button or issue a <b>custom search</b> further down.');
     Search.showResults('<li><a href="#three">Uni Passau Tiefgarage</a></li><li><a href="#three">Uni Passau Tiefgarage</a></li><li><a href="#three">Uni Passau Tiefgarage</a></li>');
   },
   error: function(msg) {
