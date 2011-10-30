@@ -78,5 +78,4 @@ var Search = {
 $(function() {
   Geolocate.init();
   Search.init();
-  $.mobile.defaultPageTransition = 'none';
 });
