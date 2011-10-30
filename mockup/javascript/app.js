@@ -21,6 +21,8 @@ var Geolocate = {
       Geolocate.setLoading(true);
       setTimeout(Geolocate.success, 3000);
     }).trigger("pageshow");
+    
+    $("#geolocate").bind('click', function() {$("#foo").trigger("pageshow");});
   },
   setLoading: function(enable) {
     Geolocate.loadingStatus = 1;
@@ -76,4 +78,5 @@ var Search = {
 $(function() {
   Geolocate.init();
   Search.init();
+  $.mobile.defaultPageTransition = 'none';
 });
