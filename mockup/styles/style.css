@@ -5,6 +5,16 @@
 }
 
 
+h1 {
+		font-size: large!important;
+}
+
+/* Schrift in navbar größer
+div[data-role="navbar"] a {
+	font-size: medium!important;
+}
+/*
+
 /* Speech bubble */
 .speech-a {
 	position:relative;

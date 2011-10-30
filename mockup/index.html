@@ -83,6 +83,8 @@
 	</div><!-- /content --> 
 </div><!-- /page two --> 
 
+
+
 <!-- Start of second page: #three --> 
 <div data-role="page" id="three" data-add-back-btn="true"> 
  
@@ -92,6 +94,69 @@
 
 	<div data-role="content" id="lotdisplay">
 	</div><!-- /content --> 
+	
+	<div data-role="footer" data-position="fixed"> 
+		<div data-role="navbar" data-iconpos="top">
+			<ul>
+				<li><a href="index.html" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
+				<li><a href="#lot_info" data-prefetch data-transition="slidedown" data-icon="info">Details</a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div> <!-- /footer -->
 </div><!-- /page three --> 
+
+<!-- Start of second page: #two --> 
+<div data-role="page" id="lot_info" data-add-back-btn="true"> 
+ 
+	<div data-role="header"> 
+		<h1>Uni Passau Tiefgarage Details</h1> 
+	</div><!-- /header --> 
+ 
+	<div data-role="content">
+		<div data-role="collapsible-set" data-theme="a" data-content-theme="a">
+
+			<div data-role="collapsible" data-collapsed="false">
+				<h3>Opening Hours</h3>
+				<ul>
+					<li>Mo-Fr: 7.00-23.00</li>
+					<li>Sa-So: 10.00-22.00</li>
+			</div>
+			
+			<div data-role="collapsible">
+				<h3>Type</h3>
+				<p>Underground</p>
+			</div>
+			
+			<div data-role="collapsible">
+				<h3>Number of Spaces</h3>
+				<p>225</p>
+			</div>
+			
+			<div data-role="collapsible">
+				<h3>Address</h3>
+				<p>Gebäude Mensa/Zentralbibliothek, Innstraße 29</p>
+			</div>
+			
+			<div data-role="collapsible">
+				<h3>Pricing</h3>
+				<p>None</p>
+			</div>
+			
+			<div data-role="collapsible">
+				<h3>Comments</h3>
+				<p>Overcrowded!</p>
+			</div>
+		</div><!-- /collapsible-set -->
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-position="fixed"> 
+		<div data-role="navbar" data-iconpos="top">
+			<ul>
+				<li><a href="index.html" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
+				<li><a href="#three" data-prefetch data-transition="slideup" data-icon="grid">Map</a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div> <!-- /footer -->	
+</div><!-- /page two --> 
  
 </body>
