@@ -1,248 +1,243 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sir Findalot</title>
-	<meta charset="utf-8"> 
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>Sir Findalot</title>
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
 
-	<!-- Dane: Latest jquery mobile sources, google fonts "Yanone Kaffesatz" -->
-	<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
-	<link href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" rel="stylesheet" type="text/css" />
-	<link href="styles/style.css" rel="stylesheet" type="text/css" />
-	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-	<script src="javascript/settings.jmobile.js"></script>
-	<script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
-	<script src="javascript/app.js"></script>
-	<script src="javascript/lot.js"></script>
-	
+  <!-- Dane: Latest jquery mobile sources, google fonts "Yanone Kaffesatz" -->
+  <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+  <link href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" rel="stylesheet" type="text/css" />
+  <link href="styles/style.css" rel="stylesheet" type="text/css" />
+  <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+  <script src="javascript/settings.jmobile.js"></script>
+  <script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
+  <script src="javascript/app.js"></script>
+  <script src="javascript/lot.js"></script>
+  
 </head>
 <body>
 
 <!-- Start of first page: #home --> 
 <div data-role="page" id="foo" data-content-theme="b"> 
  
-	<div data-role="header"> 
-		<h1>Sir FindALot</h1> 
-		<!-- <a href="index.html" data-icon="gear" class="ui-btn-right">Options</a> -->
-	</div><!-- /header --> 
-	<div data-role="content" id="home">
-		<div class="center">
-			<p class="speech-a">"<b>Sir Findalot</b> is eager to help you find a free lot! I'm currently computing results based on your location."</p>
-		<table class="center">
-			<tr>
-				<td align="center">
-					<a href="#home" data-role="button" data-icon="search" data-iconpos="right" id="geolocate" data-inline="true">Geolocation</a>
-				</td>
-				<td>
-					<img src="logo/Sir_FindALot_final.png" alt= "Sir FindALot" width="80" />
-				</td>
-			</tr>
-		</table>
-		</div>
-		
-		<div style="clear:both;padding-bottom:30px;"></div>
-		
-		<ol data-role="listview" id="fastresults"></ol>
-		
-		<div style="clear:both;padding-bottom:30px;"></div>
-		
-		<div data-role="collapsible">
-			<h3>Custom Search</h3>
-			<div class="center">
-				<p>Search for a specific lot if you are unsatisified with the results from above.</p>
-			</div>
-	
-			<div data-role="fieldcontain">
-				<input type="search" name="password" id="search" value="" />
-			</div>
-		</div><!-- /collapsible -->
-	</div><!-- /content -->
-	
-	<!-- Fixed, persistent footer. Use data-id="footer" on every page that needs it -->
-	<div data-role="footer" data-position="fixed"> 
-		<div data-role="navbar" data-iconpos="top">
-			<ul>
-				<li><a href="#home" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
-				<li><a href="#help" data-prefetch data-transition="slidedown" data-icon="info">Help</a></li>
-				<li><a href="#options" data-prefetch data-transition="slidedown" data-rel="dialog" data-icon="gear">Options</a></li>
-			</ul>
-		</div><!-- /navbar -->
-	</div> <!-- /footer -->
+  <div data-role="header"> 
+    <h1>Sir FindALot</h1> 
+    <!-- <a href="index.html" data-icon="gear" class="ui-btn-right">Options</a> -->
+  </div><!-- /header --> 
+  <div data-role="content" id="home">
+    <div class="center">
+      <p class="speech-a">"<b>Sir Findalot</b> is eager to help you find a free lot! I'm currently computing results based on your location."</p>
+    <table class="center">
+      <tr>
+        <td align="center">
+          <a data-role="button" data-icon="search" data-iconpos="right" id="geolocate" data-inline="true">Geolocation</a>
+          <a data-role="button" data-icon="delete" data-iconpos="right" id="abort_geolocate" data-inline="true">Abort Geolocation</a>
+        </td>
+        <td>
+          <img src="logo/Sir_FindALot_final.png" alt= "Sir FindALot" width="80" />
+        </td>
+      </tr>
+    </table>
+    </div>
+    
+    <div id="progressbar"></div>
+    
+    <div style="clear:both;padding-bottom:30px;"></div>
+    
+    <hr/>
+    <input type="search" name="password" id="search" value="" />
+  </div><!-- /content -->
+  
+  <!-- Fixed, persistent footer. Use data-id="footer" on every page that needs it -->
+  <div data-role="footer" data-position="fixed"> 
+    <div data-role="navbar" data-iconpos="top">
+      <ul>
+        <li><a href="#home" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
+        <li><a href="#help" data-prefetch data-transition="slidedown" data-icon="info">Help</a></li>
+        <li><a href="#options" data-prefetch data-transition="slidedown" data-rel="dialog" data-icon="gear">Options</a></li>
+      </ul>
+    </div><!-- /navbar -->
+  </div> <!-- /footer -->
 </div><!-- /page one --> 
 
 <!-- Start of page: options --> 
 <!-- data-dom-cache="true": persistent AJAX prefetch --> 
 <div data-role="page" id="options" data-dom-cache="true"> 
  
-	<div data-role="content">
-		<h3>Options</h3>
-		<a href="#" data-role="button" data-theme="b">Turn on GPS</a>          
-		<a href="#" data-role="button" data-theme="b">Share on Facebook</a>      
-		<a href="#" data-role="button" data-theme="b">Share on Google+</a>
-		<a href="#" data-role="button" data-theme="b">Self Destroy</a>      
-		 		  
-		<a href="#home" data-role="button" data-rel="back" data-theme="a">Back</a>
-		
-		<div class="center">
-			<img src="images/Carl.png" width=100%/>
-		</div>
-	</div><!-- /content --> 
+  <div data-role="content">
+    <h3>Options</h3>
+    <a href="#" data-role="button" data-theme="b">Turn on GPS</a>          
+    <a href="#" data-role="button" data-theme="b">Share on Facebook</a>      
+    <a href="#" data-role="button" data-theme="b">Share on Google+</a>
+    <a href="#" data-role="button" data-theme="b">Self Destroy</a>      
+           
+    <a href="#home" data-role="button" data-rel="back" data-theme="a">Back</a>
+    
+    <div class="center">
+      <img src="images/Carl.png" width=100%/>
+    </div>
+  </div><!-- /content --> 
 </div><!-- /page options --> 
 
 <!-- Start of page: help --> 
 <!-- data-dom-cache="true": persistent AJAX prefetch --> 
 <div data-role="page" id="help" data-dom-cache="true"> 
- 	<div data-role="header"> 
-		<h1>Help</h1> 
-	</div><!-- /header --> 
-	
-	<div data-role="content">
-		<div class="center">
-			<table class="center">
-			<tr>
-				<td>
-					<p class="speech-b">"I have compiled an immense set of <b>FAQs</b> to walk you along the path of enlightenment."</p>
-				</td>
-				<td><img src="images/Sir_FindALot_lightbulb.png" alt ="Sir FindALot Lightbulb" width="120"/></td>
-			</tr>
-			</table>
-		</div>
-		
-		<div data-role="collapsible-set" data-theme="b">
+   <div data-role="header"> 
+    <h1>Help</h1> 
+  </div><!-- /header --> 
+  
+  <div data-role="content">
+    <div class="center">
+      <table class="center">
+      <tr>
+        <td>
+          <p class="speech-b">"I have compiled an immense set of <b>FAQs</b> to walk you along the path of enlightenment."</p>
+        </td>
+        <td><img src="images/Sir_FindALot_lightbulb.png" alt ="Sir FindALot Lightbulb" width="120"/></td>
+      </tr>
+      </table>
+    </div>
+    
+    <div data-role="collapsible-set" data-theme="b">
 
-			<div data-role="collapsible" data-collapsed="false">
-				<h3>First Steps</h3>
-				<p>Explain common usage flow here.</p>
-			</div>
-	
-			<div data-role="collapsible">
-				<h3>Quick Guide</h3>
-				<p>For quick users to consider.</p>
-			</div>
-			
-			<div data-role="collapsible">
-				<h3>Error Messages</h3>
-				<ul>
-					<li>GPS not working: Turn it on</li>
-					<li>Lost connection to server: Try again later</li>
-					<li>Lost my brain: Hopeless</li>
-				</ul>
-			</div>
-			
-			<div data-role="collapsible">
-				<h3>Uninstall</h3>
-				<p>Everytime someone tries to get rid of his mobile app, Sir Findalot murders an innocent kitten.</p>
-			</div>
-		</div><!-- /collapsible-set -->
-		
-		<div class="center">
-			<p class="speech">"In the meanwhile, ferocious <b>Sir DragOnLot</b> went out to practice his unmatched beast slaying skills."</p>
-		</div>
-		
-		<img src="images/Beast_slayer.png" width="100%"/>
-	</div><!-- /content --> 
-	
-	<!-- Fixed, persistent footer. Use data-id="footer" on every page that needs it -->
-	<div data-role="footer" data-position="fixed"> 
-		<div data-role="navbar" data-iconpos="top">
-			<ul>
-				<li><a href="#home" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
-				<li><a href="#help" data-prefetch data-transition="slidedown" data-icon="info">Help</a></li>
-				<li><a href="#options" data-prefetch data-transition="slidedown" data-rel="dialog" data-icon="gear">Options</a></li>
-			</ul>
-		</div><!-- /navbar -->
-	</div> <!-- /footer -->
+      <div data-role="collapsible" data-collapsed="false">
+        <h3>First Steps</h3>
+        <p>Explain common usage flow here.</p>
+      </div>
+  
+      <div data-role="collapsible">
+        <h3>Quick Guide</h3>
+        <p>For quick users to consider.</p>
+      </div>
+      
+      <div data-role="collapsible">
+        <h3>Error Messages</h3>
+        <ul>
+          <li>GPS not working: Turn it on</li>
+          <li>Lost connection to server: Try again later</li>
+          <li>Lost my brain: Hopeless</li>
+        </ul>
+      </div>
+      
+      <div data-role="collapsible">
+        <h3>Uninstall</h3>
+        <p>Everytime someone tries to get rid of his mobile app, Sir Findalot murders an innocent kitten.</p>
+      </div>
+    </div><!-- /collapsible-set -->
+    
+    <div class="center">
+      <p class="speech">"In the meanwhile, ferocious <b>Sir DragOnLot</b> went out to practice his unmatched beast slaying skills."</p>
+    </div>
+    
+    <img src="images/Beast_slayer.png" width="100%"/>
+  </div><!-- /content --> 
+  
+  <!-- Fixed, persistent footer. Use data-id="footer" on every page that needs it -->
+  <div data-role="footer" data-position="fixed"> 
+    <div data-role="navbar" data-iconpos="top">
+      <ul>
+        <li><a href="#home" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
+        <li><a href="#help" data-prefetch data-transition="slidedown" data-icon="info">Help</a></li>
+        <li><a href="#options" data-prefetch data-transition="slidedown" data-rel="dialog" data-icon="gear">Options</a></li>
+      </ul>
+    </div><!-- /navbar -->
+  </div> <!-- /footer -->
 </div><!-- /page help --> 
  
  
 <!-- Start of second page: #two --> 
-<div data-role="page" id="two" data-add-back-btn="true"> 
+<div data-role="page" id="two"> 
  
-	<div data-role="header"> 
-		<h1>Parkplätze</h1> 
-	</div><!-- /header --> 
+  <div data-role="header"> 
+    <a href="index.html#foo" data-icon="back">Back</a>
+    <h1>Parkplätze</h1> 
+  </div><!-- /header --> 
  
-	<div data-role="content">
-		<ul data-role="listview"> 
-		</ul>
-	</div><!-- /content --> 
+  <div data-role="content">
+    <ul data-role="listview"> 
+    </ul>
+  </div><!-- /content --> 
 </div><!-- /page two --> 
 
 
 
 <!-- Start of second page: #three --> 
-<div data-role="page" id="three" data-add-back-btn="true"> 
+<div data-role="page" id="three"> 
  
-	<div data-role="header"> 
-		<h1>Uni Passau Tiefgarage</h1> 
-	</div><!-- /header --> 
+  <div data-role="header"> 
+    <a href="index.html#two" data-icon="back">Back</a>
+    <h1>Uni Passau Tiefgarage</h1> 
+    <a href="index.html#lot_info" data-icon="info">Info</a>
+  </div><!-- /header --> 
 
-	<div data-role="content" id="lotdisplay">
-	</div><!-- /content --> 
-	
-	<div data-role="footer" data-position="fixed"> 
-		<div data-role="navbar" data-iconpos="top">
-			<ul>
-				<li><a href="#home" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
-				<li><a href="#lot_info" data-prefetch data-transition="slidedown" data-icon="info">Details</a></li>
-			</ul>
-		</div><!-- /navbar -->
-	</div> <!-- /footer -->
+  <div data-role="content" id="lotdisplay">
+  </div><!-- /content --> 
+  
+  <div data-role="footer" data-position="fixed"> 
+    <div data-role="navbar" data-iconpos="top">
+      <ul>
+        <li><a href="#home" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
+        <li><a href="#lot_info" data-prefetch data-transition="slidedown" data-icon="info">Details</a></li>
+      </ul>
+    </div><!-- /navbar -->
+  </div> <!-- /footer -->
 </div><!-- /page three --> 
 
 <!-- Start of second page: #two --> 
-<div data-role="page" id="lot_info" data-add-back-btn="true"> 
+<div data-role="page" id="lot_info"> 
  
-	<div data-role="header"> 
-		<h1>Uni Passau Tiefgarage Details</h1> 
-	</div><!-- /header --> 
+  <div data-role="header"> 
+    <a href="index.html#three" data-icon="back">Back</a>
+    <h1>Uni Passau Tiefgarage Details</h1> 
+  </div><!-- /header --> 
  
-	<div data-role="content">
-		<div data-role="collapsible-set" data-theme="a" data-content-theme="a">
+  <div data-role="content">
+    <div data-role="collapsible-set" data-theme="a" data-content-theme="a">
 
-			<div data-role="collapsible" data-collapsed="false">
-				<h3>Opening Hours</h3>
-				<ul>
-					<li>Mo-Fr: 7.00-23.00</li>
-					<li>Sa-So: 10.00-22.00</li>
-				</ul>
-			</div>
-			
-			<div data-role="collapsible">
-				<h3>Type</h3>
-				<p>Underground</p>
-			</div>
-			
-			<div data-role="collapsible">
-				<h3>Number of Spaces</h3>
-				<p>225</p>
-			</div>
-			
-			<div data-role="collapsible">
-				<h3>Address</h3>
-				<p>Gebäude Mensa/Zentralbibliothek, Innstraße 29</p>
-			</div>
-			
-			<div data-role="collapsible">
-				<h3>Pricing</h3>
-				<p>None</p>
-			</div>
-			
-			<div data-role="collapsible">
-				<h3>Comments</h3>
-				<p>Overcrowded!</p>
-			</div>
-		</div><!-- /collapsible-set -->
-	</div><!-- /content -->
-	
-	<div data-role="footer"> 
-		<div data-role="navbar" data-iconpos="top">
-			<ul>
-				<li><a href="#home" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
-				<li><a href="#three" data-prefetch data-transition="slideup" data-icon="grid">Map</a></li>
-			</ul>
-		</div><!-- /navbar -->
-	</div> <!-- /footer -->	
+      <div data-role="collapsible" data-collapsed="false">
+        <h3>Opening Hours</h3>
+        <ul>
+          <li>Mo-Fr: 7.00-23.00</li>
+          <li>Sa-So: 10.00-22.00</li>
+        </ul>
+      </div>
+      
+      <div data-role="collapsible">
+        <h3>Type</h3>
+        <p>Underground</p>
+      </div>
+      
+      <div data-role="collapsible">
+        <h3>Number of Spaces</h3>
+        <p>225</p>
+      </div>
+      
+      <div data-role="collapsible">
+        <h3>Address</h3>
+        <p>Gebäude Mensa/Zentralbibliothek, Innstraße 29</p>
+      </div>
+      
+      <div data-role="collapsible">
+        <h3>Pricing</h3>
+        <p>None</p>
+      </div>
+      
+      <div data-role="collapsible">
+        <h3>Comments</h3>
+        <p>Overcrowded!</p>
+      </div>
+    </div><!-- /collapsible-set -->
+  </div><!-- /content -->
+  
+  <div data-role="footer"> 
+    <div data-role="navbar" data-iconpos="top">
+      <ul>
+        <li><a href="#home" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
+        <li><a href="#three" data-prefetch data-transition="slideup" data-icon="grid">Map</a></li>
+      </ul>
+    </div><!-- /navbar -->
+  </div> <!-- /footer -->  
 </div><!-- /page two --> 
  
 </body>

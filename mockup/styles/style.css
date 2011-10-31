@@ -1,3 +1,7 @@
+/* Progress Bar */
+.ui-progressbar { margin:0 auto; height:2em; text-align: left; position:relative; width: 80%; border:1px inset #999; background-color:#CCC; overflow:hidden;}
+.ui-progressbar-value { position:absolute; left:0%; height:100%; background:transparent url(images/slider.png) no-repeat center center;width:20%; }
+
 /* Google font */
 
 * {
@@ -121,4 +125,12 @@ div[data-role="navbar"] a {
 
 #lot td {
 	border:1px solid #CCC;
+}
+
+#lot td.free {
+  background-color:green;
+}
+
+#lot td.used {
+  background-color:#C00;
 }
