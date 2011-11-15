@@ -122,3 +122,11 @@ div[data-role="navbar"] a {
 #lot td {
 	border:1px solid #CCC;
 }
+
+#lot td.free {
+  background-color:green;
+}
+
+#lot td.used {
+  background-color:#C00;
+}
