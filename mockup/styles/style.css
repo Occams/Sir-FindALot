@@ -120,13 +120,13 @@ div[data-role="navbar"] a {
 }
 
 #lot td {
-	border:1px solid #CCC;
+	border:0;
 }
 
 #lot td.free {
-  background-color:green;
+  background-color:#30A630;
 }
 
 #lot td.used {
-  background-color:#C00;
+  background-color:#FFC4C4;
 }
