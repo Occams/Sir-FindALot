@@ -1,1 +1,10 @@
 # Main gitignore file
+*.out
+*.tmp
+*.aux
+*.log
+*.pdf
+*.snm
+*.toc
+*.nav
+*.vrb
