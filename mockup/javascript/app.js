@@ -17,12 +17,12 @@ var Color = {
 
 var Geolocate = {
   init: function() {
-    $("#foo").bind("pageshow", function() {
+    $("#home").bind("pageshow", function() {
       Geolocate.setLoading(true);
       setTimeout(Geolocate.success, 3000);
     }).trigger("pageshow");
     
-    $("#geolocate").bind('click', function() {$("#foo").trigger("pageshow");});
+    $("#geolocate").bind('click', function() {$("#home").trigger("pageshow");});
   },
   setLoading: function(enable) {
     Geolocate.loadingStatus = 1;
