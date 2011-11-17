@@ -1,0 +1,219 @@
+Important Links zu mobile development mit HTML5/CSS/JS:
+ - http://www.html5rocks.com/en/mobile/mobifying.html
+ - http://html5boilerplate.com/mobile
+ - http://www.html5rocks.com/en/mobile/optimization-and-performance.html
+ - http://www.html5rocks.com/en/tutorials/appcache/beginner/
+ - http://code.google.com/speed/articles/mobile.html
+ - http://css3.bradshawenterprises.com/
+ 
+Mobile: JavaScript Transitions
+	Info: Die Pagetransitions wasserfest machen.
+	
+Mobile: JavaScript Fastbuttons
+Links: - http://code.google.com/mobile/articles/fast_buttons.html
+			 - http://html5boilerplate.com/mobile Seite des verwendeten HTML/CSS/JS Gerüsts, Datei helper.js
+	Info: Fastbuttons implementieren und anhand eines Attributs an einem
+		eines HTML Tags aktivieren. Attribut click-fast="true". Die auszuführende
+		Aktion ist dabei aus dem entsprechenden Link zu entnehmen und sofort auszuführen.
+
+Mobile: JavaScript Schnittstelle Daten Ajax
+	Info: Um einen einheitlichen und noch einfacheren Weg zu finden mit dem
+		Server zu kommunizieren, wäre es wünschenswert wenn man eine Klasse (Singleton)
+		hat um die Daten vom Server zu laden. Dabei sollen folgende methoden sinngemäß
+		implementiert werden:
+			- Server.getNearbyPr(location loc, <lot, timestamp> prev, int limit):
+					Finde Parking ramps geranked! nach location und den bisher besuchten/gesuchten
+					ramps kombiniert mit deren benutzten Zeitpunkten. Wenn prev = null
+					dann nur nach loc ranken.
+			- Server.searchPr(location loc, string needle):
+					Suche nach Parking ramps anhand von needle. Geranked nach aktueller position
+					loc. Falls loc = null ranke nach ähnlichkeit mit needle.
+					Suche wird gelogged im local storage (html5 appcache)
+					-> HTML 5 Appcache: http://www.html5rocks.com/en/tutorials/appcache/beginner/
+			- Server.getPr(id):
+					Hole alle informationen zur parking ramp mit id. Dazu gehören Informationen
+					zu alle ebenen und vorschläge für die besten 3 lots auf jeder ebene und die
+					anzufahrende ebene, sowie textueller vorschlag für ebene. Dazu siehe 
+					"Mobile: Page Parkplatz"
+			
+	
+Mobile: CSS der Seiten
+	Info: Wie MIUI wäre wünschenswert
+		- ul class="listview": padding > 0, rounded corners
+		- Loading Spinner mit CSS3 -> http://37signals.com/svn/posts/2577-loading-spinner-animation-using-css-and-webkit
+		- Modal Popups für die Situationen: Offline (Umleitung mit HTML5 Appcache), Serverfehler, Server offline -> http://www.paulrhayes.com/2011-03/css-modal/
+
+Mobile: Page Home - Suchfeld
+	Info: Suchfeld mit Geolocate Text und Spinner
+		Sobald die erste Seite geladen wird soll die Geolocation angestossen werden.
+		Dabei Befindet sich im oberen Drittel ein Suchfeld (evtl direkt unter
+		SirFindALot). In diesem befindet sich leicht angegraut und kursiv der Text
+		"Geolocating". Daneben soll ein Spinner erscheinen, der dem User anzeigt,
+		dass die Geolocation im Gange ist. Sollte der User auf das Suchfeld klicken
+		verschwindet der Text Geolocation (Geolocation wird abgebrochen!) und er kann einen alternativen Suchbegriff
+		eingeben. Neben dem Suchfeld sollte sich ein Button mit einer Lupe befinden,
+		mit dem die manuelle Suche gestartet werden sollte.
+		
+		Unter dem Suchfeld befinden sich 2-3 Parkplätze die zuletzt besucht/gesucht wurden.
+		
+		Sobald die Geolocation fertig ist wird ein Request an den Server geschickt
+		in dem die Daten übertragen werden. Dazu mehr im Paket Protokoll.
+		
+		Feature: Spracheingabe 
+		(Dane: schon probiert, html5 Tag <input type="text" x-webkit-speech /> funktioniert nur im Desktop-Chrome, evtl gibts eine andere Lösung)
+		
+		Wichtig für die erste Seite:
+		- Möglichst kein Scrolling, also alles solte auf eine Seite passen (SirFindAlot, Sprechblase, Suchfeld, 3-5 Parkplätze)
+
+Mobile: Page Home - Fast Suchergebnisse
+	Info: Sobald Ergebnisse auf die Geolocation Suche gefunden wurden, werden die 
+	Top 3 unterhalb dem Suchfeld auf der ersten Seite angezeigt. Dies sollte
+	möglichst in einer Liste geschehen in dem jeder einzelne anklickbar ist. Damit
+	kommt man auf die Seite des Parkhauses.
+	Es sollte visuell (Farbe,Icon,etc.) zwischen History-Einträgen und aktuell gefundenen Geolocation-Ergebnissen unterchieden werden können.
+	
+Mobile: Page Suchergebnisse
+	Info: Falls der User eine manuelle Suche gestartet hat wird auf die 
+		Suchergebnissseite geswitched. Dort wird ein Spinner angezeigt, der dem
+		User den Eindruck gibt dass die Anfrage in Auftrag ist. Sobald der Server
+		die Daten geliefert hat wird eine Liste angezeigt. Diese Liste enthält
+		Neben dem Namen des Parkhauses auch Informationen über die Prozentuale 
+		Stellplatz Belegung. Dies könnte man auch durch Farben unterstüzen 
+		(Grün = viel frei). Auch wünschenswert wäre ein kleines Informationsfeld
+		mit begrenzter Zeichenanzahl die der Dataprovider festlegen kann. Wie zum 
+		Beispiel aktuelle Information (Heute Außerordentlich geschlossen oder Ähnliches).
+		Die Ergebnisliste wird gerankt nach Belegung/Status,etc.
+		
+Mobile: Page Parkplatz
+	Info: Auf der Seite wird die Parkplatzsituation festgelegt. Die genauen Details
+		wie das geschehen soll muss noch überlegt werden und ist Teil dieses Arbeits-
+		pakets. Grobe Struktur:
+			- Die Seite wird automatisch auf der Ebene geladen auf der ein serverseitiger
+				Algorithmus entscheided wo man Parken soll. 
+			- Navigation für Ebenen. Es sollte eine logische Navigationsstruktur für die
+				Ebenen existieren. Dabei ist es wichtig, dass diese mit einem Klick erreichbar ist
+				und es die Navigationsstruktur erlaubt zu sehen welche Ebene angezeigt wird.
+				Interessant für eine solche Struktur wäre eine solche button liste 
+				http://jquerymobile.com/demos/1.0rc4/docs/forms/radiobuttons/methods.html
+			- Um den Parkplatz zu finden ist eine Karte wohl schwierig zu lesen.
+			  Man kann annehmen man hat einen serverseitigen Algorithmus der einen
+			  zur Auffahrt relativen Text ausgibt, wo man parken soll. D.h. man 
+			  fährt in ein Parkhaus und alles was die App sagt ist Fahren sie auf
+			  Ebene X, nach Auffahrt rechts hinten (Evtl auch Sprachausgabe?). Auf Wunsch soll aber die Karte einblendbar
+			  sein.
+			 - Die Karte ist eine Tabelle. Die einzelnen Zellen können verschiedene
+			 Rollen einnehmen (Wand/Pfosten, Parkplatzfrei, Parkplatzbesetzt,Parkplatz gesperrt, Straße,
+			 Einfahrt, Auffahrt,Ausfahrt). Diese werden so dargestellt dass es einfach ist 
+			 freie Parkplätze zu erkennen. Der Algorithmus der auch die textuelle
+			 Beschreibung (siehe voriger Punkt) ausgibt soll auch die 3 besten 
+			 Parkplätze ausgeben (pro Ebene) und diese markieren. Mehr zu diesem Ranking
+			 Algorithmus im Paket "Ranking Algorithmus für Stellplätze"
+			 
+Mobile: Page Info
+	Info: Es sollen Informationen angezeigt werden zum Parkplatz. Gestaltungsfreiraum
+	für die Informationen. Keine Collapsibles. Nur Scrollen falls überlanger Text.
+	Schließen der Info soll immer möglich sein (button immer im sichtfeld)
+	Informationen: Ticketpreise, Öffnungszeiten, Kommentare, Statistik (Belegung über die Zeit/Wochentage), Typ(Überdacht,Tiefgarage,Wiese,Feld,neben Straße,etc.),
+		Besonderheiten: (Frauenparkplätze auf Ebene x, Videoüberwacht,),Anzahl der Stellplätze
+				
+Mobile: Page Help
+	Info: Es sollen einfache kurze hilfe Texte angezeigt werden. Gestaltungsfreiraum
+	für die Informationen. Keine Collapsables (dabe: ich bin für collapsibles bei help da die texte lang werden :D). Nur Scrollen falls überlanger Text.
+	Schließen der Help soll immer möglich sein (button immer im sichtfeld)
+	
+Mobile: Page Settings
+	Info:
+		- Clear History. Löschen des local storage um alte Suchergebnisse und 
+			genutzte informationen zu löschen.
+		- Share on Facebook: Neue Seite mit share öffnen (url mit query string was zu sharen ist)
+		- Share on Twitter: "
+		- Share by Email: Iwie intention zur email mit vorgefertigtem text öffnen.
+		- Auto-geolocation toggle
+		- Kostenpflichtige Parkplätze ignorieren toggle?
+		
+
+Server: DB Modell
+	Info:
+		Einfaches Modell Datenmodell für die Serverseitige Applikation. Dabei sollte darauf
+		geachtet werden dass die Modellierung des Parkplatzes sehr einfach gehalten wird.
+		Also auf keinen fall "parking ramp has many parking lots". Besser wäre eine eigene 
+		codierung der Daten wie ein int array oder ähnliches. Was geht ist parking ramp
+		hat ebenen.
+		Änderungen kann man in rails jeder zeit vornehmen wegen migrations und die abstraktion
+		durch das model.
+		Grobumriss Tabellen (ACHTEN AUF RAILS CONVENTIONS!!!):
+			- users(key, lastvisit, ip, browser
+				key = eindeutiger key der zur identifikation gilt (session_id). Evtl bekommt jeder
+				user eine session die dort eingespeichert wird. Nachdem der user die app
+				aufmacht wird aus seinem local storage ein credential gelesen (evtl nur session_id)
+				und ihm wird seine alte session zugewiesen)
+				lastvisit = date
+			- parkingramps(id, location)
+			- parkingplane(parkingramp_id, encoded_plane)
+				encoded_ramp eigene codierung für parkplatz
+				irgendwie braucht man noch eine sortierung der ramps.
+			- prinfos(parkingramp_id, infos...)
+				Informationen zu einem parkhaus
+			- providers:
+				Datenprovider evtl mit oAuth oder irgend einem verfahren authentifizierbar.
+				hat viele parkhäuser angelegt 
+				Siehe "acts_as_authentic"
+				
+Server: Restful Routes + Controller
+	Info:
+		Schnittstelle zu Mobile festlegen und für Datenprovider. Dazu nutze
+		RESTful routes. Siehe routes.rb bzw Rails documentation. Alle benötigten 
+		routes festlegen und Controller anlegen. nichts ausimplementieren.
+		
+Server: Tests Controller
+	Info: Nach "Restful Routes + Controller"
+		baue Tests für die einzelnen Methoden + passende Fixtures.
+		
+Server: Tests Models
+	Info Nach "Initial Rails + Models"
+		baue Tests nachdem Models erzeugt wurden. Tests für wichtige extra eingeführte
+		methoden festlegen + passende fixtures.
+		
+Server: Initial Rails + Models
+	Info:
+		Setze die Rails app auf. Setze das in "Server: DB Modell" festgelegte Modell
+		um. Dabei scaffolding nutzen um Testklassen und models zu erzeugen. Lege
+		Validations und Relationships in Models fest. Wichtige methoden
+		festlegen aber nicht implementieren.
+
+Server: Mobile View
+	Info:
+		Bei Mobilen Anfragen (html) soll layout "mobile.erb" gewählt werden (muss implementiert werden).
+		Dabei migriere das in "Mobile: *" festgelegte layout mit css und js. 
+		Erstelle die passenden views für einzelne aktionen.
+		Bei Anfragen über xhr werden json gerendert (oder nur partials). Diese werden 
+		dann ausgeliefert.
+		
+Server: Data Provider Login
+	Info:
+		Baue den Data Provider Login. Authentifizierung entweder über Html Seite
+		oder über oAuth?! oAuth wäre wünschenswert für Simulator. Html für anlegen 
+		von Parkplätzen.
+		
+Server: Data Provider Settings
+	Info:
+		Erstelle Data Provider Profil (Name, usw). Biete möglichkeit parkhäuser anlegen/editieren/löschen.
+		Parkplatz infos können dort verändert werden. Parkplatz belegung nicht. Dies wird
+		über json schnittstelle gehandhabt ("Server: Data Provider Interface")
+		
+Server: Data Provider Interface
+	Info: Erstelle Data Provider Interface. JSON Schnittstelle zum updaten von
+	Parkplatzsituation.
+	
+Server: Search Controller
+	Nach "Server: Tests Controller", "Server: Tests Model". Baue 2 Suchalgorithmen:
+		- getNearbyPr(location loc, <lot, timestamp> prev, int limit):
+				Hole Parking ramps geranked nach location und den bisher vom user besuchten
+				ramps kombiniert mit deren benutzten Zeitpunkten. Wenn prev = null
+				dann nur nach loc ranken.
+		- searchPr(location loc, string needle):
+		Suche nach Parking ramps anhand von needle. Geranked nach aktueller postion
+			loc. Falls loc = null ranke nach ähnlichkeit mit needle.
+		
+		Die Implementierung hängt ganz klar von den festgelegten tests ab, welche 
+		methoden diese Testen. Die Ranking logik in Model implementieren. 
