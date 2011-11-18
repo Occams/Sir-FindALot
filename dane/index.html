@@ -1,0 +1,128 @@
+<!doctype html>
+<!-- Conditional comment for mobile ie7 http://blogs.msdn.com/b/iemobile/ -->
+<!--[if IEMobile 7 ]>    <html class="no-js iem7"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+
+  <title></title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no">
+
+  <!-- Home screen icon  Mathias Bynens http://goo.gl/6nVq0 -->
+  <!-- For iPhone 4 with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icon.png">
+  <!-- For first-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/icon.png">
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="img/icon.png">
+  <!-- For nokia devices: -->
+  <link rel="shortcut icon" href="img/icon.png">
+
+  <!--iOS web app, deletable if not needed -->
+  <!--the script prevents links from opening in mobile safari. https://gist.github.com/1042026 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
+  <link rel="apple-touch-startup-image" href="img/l/splash.png">
+
+  <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+  <meta http-equiv="cleartype" content="on">
+
+  <!-- more tags for your 'head' to consider https://gist.github.com/849231 -->
+	
+	<!-- consider using below meta tags if you want to disable format detection by default -->
+  <meta name="format-detection" content="telephone=no"/> 
+  <meta name="format-detection" content="address=no"/>  
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=1">
+</head>
+
+<body>
+
+  <div id="viewport">
+		<div id="slide_container">
+		
+		<div class="page" id="help">
+			<header>
+				<h1>Help</h1>
+			</header> <!-- /header -->
+			
+			<div class="content">
+				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+			</div> <!-- /.content -->
+	
+		</div> <!-- #help -->
+		
+		<div class="page active" id="home">
+			<header>
+				<h1>Sir FindAlot</h1>
+			</header> <!-- /header -->
+			
+			<div class="content">
+				<p class="speech-a">"<b>Sir Findalot</b> is eager to help you find a free lot! I'm currently computing results based on your location."</p>
+				<a href="#home" class="button">Geolocation</a>
+				<img src="img/icon_half.png" alt= "Sir FindALot"/>
+			</div> <!-- /.content -->
+			
+		</div> <!-- #home -->
+		
+		<div class="page" id="search_results">
+			<header>
+				<h1>Search Results</h1>
+			</header> <!-- /header -->
+			
+			<div class="content">
+				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+			</div> <!-- /.content -->
+			
+		</div> <!-- #search_results -->
+		
+		<div class="page" id="options">
+			<header>
+				<h1>Options</h1>
+			</header> <!-- /header -->
+			
+			<div class="content">
+				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+			</div> <!-- /.content -->
+	
+		</div> <!-- #options -->
+		
+		<footer id="footer">
+			<nav>
+				<ul>
+					<li><a id="btn_home" href="#">Home</a></li>
+					<li><a id="btn_help" href="#">Help</a></li>
+					<li><a id="btn_results" href="#">Results</a></li>
+				</ul>
+			</nav> <!-- /nav -->
+		</footer> <!-- /footer -->
+		
+  </div> <!-- end of #slide_container -->
+	</div> <!-- end of #viewport -->
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- scripts concatenated and minified via ant build script -->
+  <script src="js/helper.js"></script>
+  <!-- end concatenated and minified scripts-->
+	
+	<script src="js/xui-2.3.0.js"></script>
+	<script src="js/script.js"></script>
+
+  <script>
+    // iPhone Scale Bug Fix, read this when using http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/
+    MBP.scaleFix();
+  </script>
+	
+
+</body>
+</html>
