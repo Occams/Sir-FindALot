@@ -13,8 +13,8 @@
   <!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+		
   <!-- Home screen icon  Mathias Bynens http://goo.gl/6nVq0 -->
   <!-- For iPhone 4 with high-resolution Retina display: -->
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icon.png">
@@ -42,6 +42,7 @@
   <meta name="format-detection" content="address=no"/>  
 
   <!-- Main Stylesheet -->
+	<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/style.css?v=1">
 </head>
 
@@ -68,8 +69,8 @@
 			
 			<div class="content">
 				<p class="speech-a">"<b>Sir Findalot</b> is eager to help you find a free lot! I'm currently computing results based on your location."</p>
-				<a href="#home" class="button">Geolocation</a>
-				<img src="img/icon_half.png" alt= "Sir FindALot"/>
+				<input id="geolocation_search" type="text" />
+				<img id="img_sir_frontpage" src="img/icon_half.png" alt= "Sir FindALot"/>
 			</div> <!-- /.content -->
 			
 		</div> <!-- #home -->
@@ -101,7 +102,7 @@
 				<ul>
 					<li><a id="btn_home" href="#">Home</a></li>
 					<li><a id="btn_help" href="#">Help</a></li>
-					<li><a id="btn_results" href="#">Results</a></li>
+					<li><a id="btn_options" href="#">Options</a></li>
 				</ul>
 			</nav> <!-- /nav -->
 		</footer> <!-- /footer -->

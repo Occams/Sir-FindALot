@@ -10,7 +10,7 @@ xui.ready(function() {
 	x$("#slide_container").setStyle('left','-'+window.innerWidth+'px');
 	
 	// Needs testing
-	x$('.page').on('orientationchange',function(e) {
+	x$('window').on('orientationchange',function(e) {
 		x$('.page').setStyle('width', window.innerWidth+'px');
 	});
 	
@@ -27,7 +27,7 @@ xui.ready(function() {
 		x$("#slide_container").setStyle('left','0px');
 	})
 	
-	x$("#btn_results").click(function(e) {
+	x$("#btn_options").click(function(e) {
 		x$("#slide_container").setStyle('left','-'+2*window.innerWidth+'px');
 	})
 	
