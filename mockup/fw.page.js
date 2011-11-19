@@ -31,7 +31,7 @@ var Page = {
 	id_pagenum_hash: {}, // Hash from page id to page num
 	window_width: 0, // Holds the current width of the window
 	current_page: null, // Holds the current page id
-	lock: false, //a lock boolean. If there are really two threads, one should wait for the other...
+	lock:false, 
 	
 
 	init: function() {
@@ -56,12 +56,12 @@ var Page = {
 	},
 	
 	show: function(id) {
-		if(this.id_page_hash[id] == null) return;
-		this._lock();
+		if(!this._lock() || !this._isPage(id)) return;
 	
 		if(this.current_page == null) { // If you set the page for the first time...
 			this.current_page = id;
 			this._getPage(id).show();
+			this._updatePageInfos(id);
 			this._unlock();
 		} else if(id != this.current_page) {
 			this.pages.hide(); // Hide all animation pages
@@ -72,12 +72,12 @@ var Page = {
 			to.css3Slide(slideLeft?"slideinfromright":"slideinfromleft");
 			from.css3Slide(slideLeft?"slideouttoleft":"slideouttoright");
 			this.current_page = id; // Update the current page
+			this._updatePageInfos(id);
 			
-			// IMPORTANT: unlock is done after the animation... so no one can start two animations
 			setTimeout(this._finishedAnimation, 200); // Workaround because event on transtionend does not work properly
+		} else {
+			this._unlock();
 		}
-		
-		this._updatePageInfos(id);
 	},
 	
 	_updatePageInfos: function(id) {
@@ -114,17 +114,21 @@ var Page = {
 		Page.pages.each(function(i, el) {
 			if(el.getAttribute("id") != Page.current_page) $(el).hide();
 		});
-		Page._unlock();
 		Page._getPage(Page.current_page).trigger("pageshow");
 		window.location.hash = Page.current_page.hashify();
+		Page._unlock();
 	},
 	
 	_lock: function() {
-		while(this.lock) { };
+		if(Page.lock) return false;
+		console.log("lock granted");
+		Page.lock = true;
+		return true;
 	},
 	
 	_unlock: function() {
-		this.lock = false;
+		console.log("lock undone");
+		Page.lock = false;
 	},
 	
 	_stopHash: function() {
