@@ -1,0 +1,4 @@
+- Dateien die mit bt beginnen, sind komplett von boilertemplate.
+- Dateien die mit fw beginnen sind von mir und bedürfen nach fertigstellung
+ des Frameworks hoffentlich keine änderung mehr.
+- userstyle.css (Dort kann man dann stylen unabhängig vom framework)
