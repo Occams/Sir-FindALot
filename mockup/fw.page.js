@@ -38,9 +38,9 @@ var Page = {
 		this.pages = $("#pages div[data-type=page]");
 		this.footer = $("#pages footer");
 		this.pages.each(function(i, el) {
-			this.id_page_hash[el.getAttribute("id")] = el;
-			this.id_pagenum_hash[el.getAttribute("id")] = i;
-		}.bind(this));
+			Page.id_page_hash[el.getAttribute("id")] = el;
+			Page.id_pagenum_hash[el.getAttribute("id")] = i;
+		});
 		this.gHeader = $("#global-header");
 		this.gFooter = $("#global-footer");
 		
