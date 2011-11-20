@@ -64,7 +64,7 @@ var Page = {
 			this._updatePageInfos(id);
 			this._unlock();
 		} else if(id != this.current_page) {
-			this.pages.hide(); // Hide all animation pages
+			//this.pages.hide(); // Hide all animation pages
 			to = this._getPage(id).show(); // Show the new page so that it can be animated
 			from = this._getPage(this.current_page).show(); // Show the current page so that it can be animated
 		
@@ -74,7 +74,7 @@ var Page = {
 			this.current_page = id; // Update the current page
 			this._updatePageInfos(id);
 			
-			setTimeout(this._finishedAnimation, 1000); // Workaround because event on transtionend does not work properly
+			setTimeout(this._finishedAnimation, 1100); // Workaround because event on transtionend does not work properly
 		} else {
 			this._unlock();
 		}
