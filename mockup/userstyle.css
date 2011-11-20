@@ -2,9 +2,8 @@
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#565a60), color-stop(100%,#1a1a1a));
 	text-align:center;
 	color:white;
-	height:50px;
-	line-height:50px;
 	font-size:130%;
+	padding:20px 0 20px 0;
 }
 
 #global-footer {
@@ -32,8 +31,8 @@ div[data-type=page] {
 /*
  * Page content style...
  */
- #pages div[data-type=page-content] {
-	padding:60px 0px 40px 0px; /* Necessary padding because header and footer */
+#pages div[data-type=page-content] {
+	padding:70px 0px 40px 0px; /* Necessary padding because header and footer */
 }
 
 /*
@@ -74,33 +73,36 @@ ul.link-list {
 	padding:0px;
 	margin:0px;
 	background-color:#EEE;
-	border:1px solid #acaaac;
 	-webkit-border-radius: 6px; 
-}
-
-ul.link-list li {
-	height:55px;
-	line-height:55px;
-	border-bottom:1px inset #DDD;
-}
-
-ul.link-list li:last-child {
-	border-bottom:0px;
 }
 
 ul.link-list li a {
 	display:block;
+	padding:20px 0 20px 0;
 	width:100%;
-	height:100%;
 	text-indent:35px;
 	font-size:115%;
 	color:#323232;
 	text-decoration:none;
 	background:url(arrow.png) no-repeat 95% center;
+	border:1px solid #AAA;
+	border-width:0 1px 1px 1px;
+}
+
+ul.link-list li:first-child a {
+	border-width:1px 1px 1px 1px;
+	-webkit-border-top-left-radius: 6px;
+	-webkit-border-top-right-radius: 6px; 
+}
+
+ul.link-list li:last-child a {
+	border-width:0 1px 1px 1px;
+	-webkit-border-bottom-left-radius: 6px;
+	-webkit-border-bottom-right-radius: 6px;
 }
 
 ul.link-list li a:hover, ul.link-list li a:active {
-	broder:1px solid #ba6600;
+	border-color: #ba6600;
 	color:white;
 	background:url(arrow.png) no-repeat 95% center, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff9e27), color-stop(100%,#ec8200));
 }
