@@ -74,7 +74,7 @@ var Page = {
 			this.current_page = id; // Update the current page
 			this._updatePageInfos(id);
 			
-			setTimeout(this._finishedAnimation, 200); // Workaround because event on transtionend does not work properly
+			setTimeout(this._finishedAnimation, 1000); // Workaround because event on transtionend does not work properly
 		} else {
 			this._unlock();
 		}
@@ -90,8 +90,10 @@ var Page = {
 		this.gFooter.find(".toolbar").css("width", els.length*(els.first().width()+3));
 		
 		// Fastbutton update for toolbar links
-		this.gFooter.find("a").fastbutton(function() {
+		this.gFooter.find("a").fastbutton(function(event) {
 			Page.show(this.element.getAttribute("href").idify());
+			event.preventDefault();
+			return false;
 		});
 		
 		$("a[href*=#]").click(this._stopHash);
