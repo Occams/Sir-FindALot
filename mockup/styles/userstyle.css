@@ -10,14 +10,14 @@ body {
 	text-align:center;
 	color:white;
 	font-size:large;
-	padding:20px 0 20px 0;
+	padding:15px 0 15px 0;
 	-moz-box-shadow: 0px 5px 5px #888;
 	-webkit-box-shadow: 0px 5px 5px #888;
 	box-shadow: 0px 5px 5px #888;
 }
 
 #global-footer {
-	height:60px;
+	height:50px;
 	background-color:black;
 	font-size:large;
 	-moz-box-shadow: 0px -5px 5px #888;
@@ -52,7 +52,7 @@ body {
 }
 
 #viewport div[data-type=page] {
-	padding:0px 10px 0px 10px;
+	padding:0px 10px 30px 10px;
 	background-color:#D5D5D5;
 }
 
@@ -71,7 +71,7 @@ body {
 	margin-bottom:15px;
 	width:75%;
 	padding: 5px 5px;
-	border: 1px solid black;
+	border: 1px solid #AAA;
 	-webkit-border-radius:20px;
 	-moz-border-radius:20px;
 	border-radius:20px;
@@ -83,15 +83,22 @@ body {
 
 /* Images */
 #img_sir_frontpage {
-	display:block;
-	margin:10px auto;
-	width:100px;
+	width:70px;
+}
+
+#img_sir_frontpage_container {
+margin: 10px 0px;
+width:30%;
+float:left;
+text-align:center;
 }
 
 /* Speech bubble */
 .speech-a {
+	float:left;
+	display:block;
 	padding:5px;
-	margin:0 0 20px;
+	width:60%;
 	color:#000;
 	background:#f3961c; /* default background for browsers without gradient support */
 	
@@ -112,7 +119,7 @@ body {
 div.speech-a {
 	position:relative;
 	padding:5px 15px;
-	margin:0 0 20px;
+	margin:10px 0 20px;
 	color:#000;
 	text-align:center;
 	background:#f3961c; /* default background for browsers without gradient support */
@@ -132,13 +139,18 @@ div.speech-a {
 
 /* creates triangle */
 div.speech-a:after {
-	content:"";
+content:"";
 	position:absolute;
-	bottom:-23px; /* value = - border-top-width - border-bottom-width */
-	right:50%; /* controls horizontal position */
-	border-width:25px 15px 0; /* vary these values to change the angle of the vertex */
+	right:80px; /* controls horizontal position */
+	border-width:15px 40px 0 0; /* vary these values to change the angle of the vertex */
 	border-style:solid;
-	border-color:#f3961c transparent;
+	border-color:#f9d835 transparent;
+	top:10px; /* controls vertical position */
+	right:-19px; /* value = - border-left-width - border-right-width */
+	bottom:auto;
+    left:auto;
+	border-width:8px 0 8px 20px;
+	border-color:transparent #f9d835;
     /* reduce the damage in FF3.0 */
     display:block; 
     width:0;
@@ -186,7 +198,7 @@ ul.toolbar {
 	padding:0px;
 	margin:0px;
 	margin:0px auto;
-	line-height:60px; /* Same as footer */
+	line-height:50px; /* Same as footer */
 }
 
 ul.toolbar li {
