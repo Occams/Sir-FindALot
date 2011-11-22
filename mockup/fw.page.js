@@ -1,81 +1,81 @@
 $ = x$;
 
-	// type is one of [slideinfromleft, slideouttoleft, slideinfromright, slideouttoright]
-	$.fn.css3Slide = function(slideType) {
-		this.each(function() {
-			var el = $(this);
-			el.removeClass($.fn.css3Slide.types).addClass($.fn.css3Slide.typesToClass[slideType]);
-		});
-	}
-	
-	$.fn.fastbutton = function(handler) {
-		this.each(function() {
-			new MBP.fastButton(this, handler);
-		});
-	}
-	
-	$.fn.show = function() {
-		this.setStyle("display","block");
-		return this;
-	}
-	
-	$.fn.hide = function() {
-		this.setStyle("display","none");
-		return this;
-	}
-	
-	$.fn.dimensions = function() {
-    element = this[0];
-    var display = this.getStyle('display');
-    
-    if (display && display !== 'none') {
-      return { width: element.offsetWidth, height: element.offsetHeight };
-    }
-    
-    // All *Width and *Height properties give 0 on elements with
-    // `display: none`, so show the element temporarily.
-    /*
-    var style = element.style;
-    var originalStyles = {
-      visibility: style.visibility,
-      position:   style.position,
-      display:    style.display
-    };
-    
-    var newStyles = {
-      visibility: 'hidden',
-      display:    'block'
-    };
+// type is one of [slideinfromleft, slideouttoleft, slideinfromright, slideouttoright]
+$.fn.css3Slide = function(slideType) {
+	this.each(function() {
+		var el = $(this);
+		el.removeClass($.fn.css3Slide.types).addClass($.fn.css3Slide.typesToClass[slideType]);
+	});
+}
 
-    // Switching `fixed` to `absolute` causes issues in Safari.
-    if (originalStyles.position !== 'fixed')
-      newStyles.position = 'absolute';
-    
-    Element.setStyle(element, newStyles);
-    */
-    var dimensions = {
-      width:  element.offsetWidth,
-      height: element.offsetHeight
-    };
-    /*
-    Element.setStyle(element, originalStyles);
-    */
+$.fn.fastbutton = function(handler) {
+	this.each(function() {
+		new MBP.fastButton(this, handler);
+	});
+}
 
-    return dimensions;
-	}
-	
-	$.fn.width = function() {
-		return this.dimensions().width;
-	}
-	
-	$.fn.height = function() {
-		return this.dimensions().height;
-	}
-	
-	$.fn.css3Slide.types = "slide in out reverse";
-	$.fn.css3Slide.typesToClass = {"slideinfromleft":"slide in reverse", "slideouttoleft":"slide out", "slideinfromright":"slide in", "slideouttoright":"slide out reverse"};
+$.fn.show = function() {
+	this.setStyle("display","block");
+	return this;
+}
 
-String.prototype.idify = function() { return (this[0]=="#")?this.slice(1):this; }
+$.fn.hide = function() {
+	this.setStyle("display","none");
+	return this;
+}
+
+$.fn.dimensions = function() {
+  element = this[0];
+  var display = this.getStyle('display');
+  
+  if (display && display !== 'none') {
+    return { width: element.offsetWidth, height: element.offsetHeight };
+  }
+  
+  // All *Width and *Height properties give 0 on elements with
+  // `display: none`, so show the element temporarily.
+  /*
+  var style = element.style;
+  var originalStyles = {
+    visibility: style.visibility,
+    position:   style.position,
+    display:    style.display
+  };
+  
+  var newStyles = {
+    visibility: 'hidden',
+    display:    'block'
+  };
+
+  // Switching `fixed` to `absolute` causes issues in Safari.
+  if (originalStyles.position !== 'fixed')
+    newStyles.position = 'absolute';
+  
+  Element.setStyle(element, newStyles);
+  */
+  var dimensions = {
+    width:  element.offsetWidth,
+    height: element.offsetHeight
+  };
+  /*
+  Element.setStyle(element, originalStyles);
+  */
+
+  return dimensions;
+}
+
+$.fn.width = function() {
+	return this.dimensions().width;
+}
+
+$.fn.height = function() {
+	return this.dimensions().height;
+}
+
+$.fn.css3Slide.types = "slide in out reverse";
+$.fn.css3Slide.typesToClass = {"slideinfromleft":"slide in reverse", "slideouttoleft":"slide out", "slideinfromright":"slide in", "slideouttoright":"slide out reverse"};
+
+String.prototype.idify = function() { return (this.indexOf("#")>-1)?this.substring(this.indexOf("#")+1, this.length):this; }
 String.prototype.hashify = function() { return (this[0]=="#")?this:"#"+this; };
 
 
