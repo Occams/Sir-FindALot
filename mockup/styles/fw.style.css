@@ -15,14 +15,12 @@ footer#global-footer {
 /*
  * Pages container for pages animation.
  */
-#pages {
-}
 
-#pages header, #pages footer {
+#viewport header, #viewport footer {
 	display:none;
 }
 
-#pages div[data-type=page] {
+#viewport div[data-type=page] {
 	display:none;
 	position:absolute;
 	left:0px;

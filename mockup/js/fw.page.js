@@ -80,7 +80,7 @@ String.prototype.hashify = function() { return (this[0]=="#")?this:"#"+this; };
 
 
 var Page = {
-	pages: null, //Holds all pages initialliy present in #pages
+	pages: null, //Holds all pages initialliy present in #viewport
 	footer: null, //Holds the references to all footer elements
 	gFooter: null, //Holds a reference to the global footer
 	gHeader: null, //Holds a reference to the global header
@@ -92,8 +92,8 @@ var Page = {
 	
 
 	init: function() {
-		this.pages = $("#pages div[data-type=page]");
-		this.footer = $("#pages footer");
+		this.pages = $("#viewport div[data-type=page]");
+		this.footer = $("#viewport footer");
 		this.pages.each(function(el, i) {
 			Page.id_page_hash[el.getAttribute("id")] = el;
 			Page.id_pagenum_hash[el.getAttribute("id")] = i;
@@ -133,7 +133,7 @@ var Page = {
 			this.current_page = id; // Update the current page
 			this._updatePageInfos(id);
 			
-			setTimeout(this._finishedAnimation, 1100); // Workaround because event on transtionend does not work properly
+			setTimeout(this._finishedAnimation, 1025); // Workaround because event on transtionend does not work properly
 		} else {
 			this._unlock();
 		}

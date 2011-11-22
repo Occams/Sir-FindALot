@@ -1,46 +1,85 @@
 <!doctype html>
+
+<!-- Conditional comment for mobile ie7 http://blogs.msdn.com/b/iemobile/ -->
+<!--[if IEMobile 7 ]>    <html class="no-js iem7"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
+
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title></title>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Sir FindALot</title>
+	<meta name="description" content="Sir FindALot helps you find your lot">
+  <meta name="author" content="Team Amazonen">
+	
+	<!-- Mobile viewport settings -->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+	
+	<!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+		
+  <!-- Home screen icon  Mathias Bynens http://goo.gl/6nVq0 -->
+  <!-- For iPhone 4 with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icon_half.png">
+  <!-- For first-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/icon_half.png">
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="img/icon_half.png">
+  <!-- For nokia devices: -->
+  <link rel="shortcut icon" href="img/icon_half.png">
 
-  <!-- CSS concatenated and minified via ant build script-->
-  <link rel="stylesheet" href="bt.style.css">
-  <link rel="stylesheet" href="userstyle.css">
-  <link rel="stylesheet" href="fw.style.css"> <!-- this is included after userstyle.css so the important settings are overwritten by the framework -->
-	<link href='http://fonts.googleapis.com/css?family=Terminal+Dosis' rel='stylesheet' type='text/css'>
+  <!--iOS web app, deletable if not needed -->
+  <!--the script prevents links from opening in mobile safari. https://gist.github.com/1042026 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
+  <link rel="apple-touch-startup-image" href="img/icon_half.png">
+
+  <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+  <meta http-equiv="cleartype" content="on">
+	
+	<!-- consider using below meta tags if you want to disable format detection by default -->
+  <meta name="format-detection" content="telephone=no"/> 
+  <meta name="format-detection" content="address=no"/>  
+
+	<!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/bt.style.css">
+  <link rel="stylesheet" href="styles/userstyle.css">
+  <!-- this is included after userstyle.css so the important settings are overwritten by the framework -->
+	<link rel="stylesheet" href="styles/fw.style.css"> 
+	<link href='http://fonts.googleapis.com/css?family=Terminal+Dosis:800,600' rel='stylesheet' type='text/css'>
   <!-- end CSS-->
-  
-  <script src="bt.js"></script>
-  <script src="xui.min.js"></script>
-  <script src="fw.page.js"></script>
+	
 </head>
 
 <body>
-	<header id="global-header">
-	</header>
-
-	<div id="pages">
+	<header id="global-header"></header>
+	
+	<div id="viewport">
 		<div data-type="page" id="page1">
 			<header>
 				Page 1
 			</header>
 			<div data-type="page-content">
+				<div class="speech-a">
+				"<b>Sir Findalot</b> is eager to help you find a free lot!
+				I'm currently computing results based on your location."
+				</div>
+				<img id="img_sir_frontpage" src="img/icon_half.png" alt= "Sir FindALot"/>
+				<input id="geolocation_search" type="text" />
 				<ul class="link-list">
 					<li><a href="#page2">Uni Passau Tiefgarage</a></li>
 					<li><a href="#page2">Uni Regen Tiefgarage</a></li>
 					<li><a href="#page2">Uni Zwiesel Tiefgarage</a></li>
-					<li><a href="#page2">Uni Muc Tiefgarage</a></li>
 				</ul>
 			</div>
 			<footer>
 				<ul class="toolbar">
-					<li><a href="#page1">Page 1</a></li>
-					<li><a href="#page2">Page 2</a></li>
-					<li><a href="#page3">Page 3</a></li>
+					<li><a href="#page1">Home</a></li>
+					<li><a href="#page2">Help</a></li>
+					<li><a href="#page3">Options</a></li>
 				</ul>
 				<div class="clear"></div>
 			</footer>
@@ -50,13 +89,13 @@
 				Page 2
 			</header>
 			<div data-type="page-content">
-				Seite 2 Content
+				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 			</div>
 			<footer>
 				<ul class="toolbar">
-					<li><a href="#page1">Page 1</a></li>
-					<li><a href="#page2">Page 2</a></li>
-					<li><a href="#page3">Page 3</a></li>
+					<li><a href="#page1">Home</a></li>
+					<li><a href="#page2">Help</a></li>
+					<li><a href="#page3">Options</a></li>
 				</ul>
 			</footer>
 		</div>
@@ -65,18 +104,28 @@
 				Page 3
 			</header>
 			<div data-type="page-content">
-				Seite 3 Content
+				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 			</div>
 			<footer>
 				<ul class="toolbar">
-					<li><a href="#page1">Page 1</a></li>
-					<li><a href="#page2">Page 2</a></li>
-					<li><a href="#page3">Page 3</a></li>
+					<li><a href="#page1">Home</a></li>
+					<li><a href="#page2">Help</a></li>
+					<li><a href="#page3">Options</a></li>
 				</ul>
 			</footer>
 		</div>
-	</div>
+	</div> <!-- end of #viewport -->
 	
 	<footer id="global-footer">
-	</footer>
+	</footer> <!-- /footer -->
+	
+	<!-- JS -->
+  <script src="js/bt.js"></script>
+  <script src="js/xui.min.js"></script>
+  <script src="js/fw.page.js"></script>
+	
+	<script>
+  // iPhone Scale Bug Fix, read this when using http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/
+  MBP.scaleFix();
+  </script>
 </html>
