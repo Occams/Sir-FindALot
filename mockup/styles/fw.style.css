@@ -1,7 +1,8 @@
 header#global-header {
 	width:100%;
-	position:fixed;
+	position:absolute;
 	left:0px;
+	right:0px;
 	top:0px;
 }
 
@@ -30,12 +31,12 @@ footer#global-footer {
 }
 
 .slide.in {
-    -webkit-transform: translateX(0);
+		left:100%;
     -webkit-animation-name: slideinfromright;
 }
 
 .slide.out {
-    -webkit-transform: translateX(-100%);
+		left:0px;
     -webkit-animation-name: slideouttoleft;
 }
 
@@ -49,12 +50,11 @@ footer#global-footer {
 }
 
 .slide.in.reverse {
-    -webkit-transform: translateX(0);
     -webkit-animation-name: slideinfromleft;
 }
 
 .slide.out.reverse {
-    -webkit-transform: translateX(100%);
+		left:0px;
     -webkit-animation-name: slideouttoright;
 }
 

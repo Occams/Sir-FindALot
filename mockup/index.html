@@ -2,7 +2,7 @@
 
 <!-- Conditional comment for mobile ie7 http://blogs.msdn.com/b/iemobile/ -->
 <!--[if IEMobile 7 ]>    <html class="no-js iem7"> <![endif]-->
-<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]> <html class="no-js"><![endif]-->
 
 <html>
 <head>
@@ -14,7 +14,7 @@
   <meta name="author" content="Team Amazonen">
 	
 	<!-- Mobile viewport settings -->
-  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	
 	<!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
   <meta name="HandheldFriendly" content="True">
@@ -52,6 +52,10 @@
 	<link href='http://fonts.googleapis.com/css?family=Terminal+Dosis:800,600' rel='stylesheet' type='text/css'>
   <!-- end CSS-->
 	
+	<!-- Weiner debugger inject code. Hardcoded! -->
+	<!--
+	<script src="http://10.0.0.10:8080/target/target-script-min.js#anonymous"></script>
+	-->
 </head>
 
 <body>
@@ -63,7 +67,7 @@
 				Page 1
 			</header>
 			<div data-type="page-content">
-				<div class="speech-a">
+				<div class="speech_bubble">
 				"<b>Sir Findalot</b> is eager to help you find a free lot!
 				I'm currently computing results based on your location."
 				</div>

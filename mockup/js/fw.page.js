@@ -75,16 +75,16 @@ $.fn.height = function() {
 $.fn.css3Slide.types = "slide in out reverse";
 $.fn.css3Slide.typesToClass = {"slideinfromleft":"slide in reverse", "slideouttoleft":"slide out", "slideinfromright":"slide in", "slideouttoright":"slide out reverse"};
 
-String.prototype.idify = function() { return (this.indexOf("#")>-1)?this.substring(this.indexOf("#")+1, this.length):this; }
+String.prototype.idify = function() { return (this.indexOf("#")>-1)?this.substring(this.indexOf("#")+1, this.length):this; };
 String.prototype.hashify = function() { return (this[0]=="#")?this:"#"+this; };
 
 
 var Page = {
-	pages: null, //Holds all pages initialliy present in #viewport
+	pages: null, //Holds all pages initially present in #viewport
 	footer: null, //Holds the references to all footer elements
 	gFooter: null, //Holds a reference to the global footer
 	gHeader: null, //Holds a reference to the global header
-	id_page_hash: {}, //Hash from page.id to page element
+	id_page_hash: {}, //Hash from page id to page element
 	id_pagenum_hash: {}, // Hash from page id to page num
 	window_width: 0, // Holds the current width of the window
 	current_page: null, // Holds the current page id
@@ -102,14 +102,16 @@ var Page = {
 		this.gFooter = $("#global-footer");
 		
 		hash = window.location.hash;
-		this.show(this._isPage(hash)?hash:this.pages[0].getAttribute("id")); // Show the first page initialliy
+		
+		// TODO: Fallback page if pages[0] == null
+		this.show(this._isPage(hash) ? hash : this.pages[0].getAttribute("id")); // Show the first page initially
 		
 		this.window_width = window.innerWidth;
 		this.layout();
 	},
 	
 	layout: function() {
-		this.footer.setStyle("width", this.window_width);
+		//this.footer.setStyle("width", this.window_width);
 	},
 	
 	show: function(id) {
