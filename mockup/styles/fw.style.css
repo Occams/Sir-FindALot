@@ -7,7 +7,7 @@ header#global-header {
 }
 
 footer#global-footer {
-	position:fixed;
+	position:absolute;
 	bottom:0px;
 	left:0px;
 	width:100%;
@@ -16,6 +16,13 @@ footer#global-footer {
 /*
  * Pages container for pages animation.
  */
+#viewport {
+	position:absolute;
+	left:0px;
+	right:0px;
+	top:0px;
+	bottom:0px;
+}
 
 #viewport header, #viewport footer {
 	display:none;
@@ -24,10 +31,14 @@ footer#global-footer {
 #viewport div[data-type=page] {
 	display:none;
 	position:absolute;
-	left:0px;
-	top:0px;
-	right:0px;
-	height:100%;
+	top: 52px;
+	bottom: 50px;
+	left:0;
+	right:0;
+  z-index:1;
+  overflow-x: hidden;
+  overflow-y: hidden; 
+  overflow:auto;
 }
 
 .slide.in {

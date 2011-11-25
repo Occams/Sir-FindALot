@@ -94,9 +94,11 @@ var Page = {
 	init: function() {
 		this.pages = $("#viewport div[data-type=page]");
 		this.footer = $("#viewport footer");
+		document.addEventListener('touchmove', function(e){ e.preventDefault(); });
 		this.pages.each(function(el, i) {
 			Page.id_page_hash[el.getAttribute("id")] = el;
 			Page.id_pagenum_hash[el.getAttribute("id")] = i;
+			new iScroll(el, {bounce:false,momentum:false,desktopCompatibility:true});
 		});
 		this.gHeader = $("#global-header");
 		this.gFooter = $("#global-footer");
