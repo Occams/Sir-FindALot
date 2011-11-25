@@ -8,7 +8,7 @@ header#global-header {
 
 footer#global-footer {
 	position:fixed;
-	bottom:0px;
+	bottom:-1px; /* Hack */
 	left:0px;
 	width:100%;
 }
@@ -16,6 +16,10 @@ footer#global-footer {
 /*
  * Pages container for pages animation.
  */
+ 
+#viewport {
+	overflow-x:hidden;
+}
 
 #viewport header, #viewport footer {
 	display:none;
@@ -24,19 +28,15 @@ footer#global-footer {
 #viewport div[data-type=page] {
 	display:none;
 	position:absolute;
-	left:0px;
-	top:0px;
-	right:0px;
 	height:100%;
+	width:100%;
 }
 
 .slide.in {
-		left:100%;
     -webkit-animation-name: slideinfromright;
 }
 
 .slide.out {
-		left:0px;
     -webkit-animation-name: slideouttoleft;
 }
 
@@ -54,7 +54,6 @@ footer#global-footer {
 }
 
 .slide.out.reverse {
-		left:0px;
     -webkit-animation-name: slideouttoright;
 }
 

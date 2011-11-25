@@ -82,6 +82,7 @@ String.prototype.hashify = function() { return (this[0]=="#")?this:"#"+this; };
 var Page = {
 	pages: null, //Holds all pages initially present in #viewport
 	footer: null, //Holds the references to all footer elements
+	viewport: null, // Holds #viewport
 	gFooter: null, //Holds a reference to the global footer
 	gHeader: null, //Holds a reference to the global header
 	id_page_hash: {}, //Hash from page id to page element
@@ -94,6 +95,7 @@ var Page = {
 	init: function() {
 		this.pages = $("#viewport div[data-type=page]");
 		this.footer = $("#viewport footer");
+		this.viewport = $('#viewport');
 		this.pages.each(function(el, i) {
 			Page.id_page_hash[el.getAttribute("id")] = el;
 			Page.id_pagenum_hash[el.getAttribute("id")] = i;
@@ -107,11 +109,14 @@ var Page = {
 		this.show(this._isPage(hash) ? hash : this.pages[0].getAttribute("id")); // Show the first page initially
 		
 		this.window_width = window.innerWidth;
-		this.layout();
 	},
 	
 	layout: function() {
 		//this.footer.setStyle("width", this.window_width);
+		
+		// set height of #viewport to avoid sliding "glitches"
+		this.viewport.setStyle('height',$('#'+this.current_page).height()+'px');
+		console.log('Set viewport height to: '+$('#'+this.current_page).height());
 	},
 	
 	show: function(id) {
@@ -124,10 +129,11 @@ var Page = {
 			this._getPage(id).show();
 			this._updatePageInfos(id);
 			this._unlock();
+			this.layout(); // set viewport height, etc.
 		} else if(id != this.current_page) {
 			//this.pages.hide(); // Hide all animation pages
 			to = this._getPage(id).show(); // Show the new page so that it can be animated
-			from = this._getPage(this.current_page).show(); // Show the current page so that it can be animated
+			from = this._getPage(this.current_page); // Show the current page so that it can be animated
 		
 			slideLeft = this._getPageNum(id) > this._getPageNum(this.current_page);
 			to.css3Slide(slideLeft?"slideinfromright":"slideinfromleft");
@@ -135,7 +141,16 @@ var Page = {
 			this.current_page = id; // Update the current page
 			this._updatePageInfos(id);
 			
-			setTimeout(this._finishedAnimation, 1025); // Workaround because event on transtionend does not work properly
+			setTimeout(function (e) {
+					Page._getPage(Page.current_page).fire("pageshow");
+					window.location.hash = Page.current_page.hashify();
+					Page._unlock();
+					
+					// Hide old page
+					from.hide();
+				}, 1005); // Workaround because event on transtionend does not work properly
+				
+				this.layout();
 		} else {
 			this._unlock();
 		}
@@ -147,8 +162,8 @@ var Page = {
 		this.gFooter.html(page.find("footer")[0].innerHTML);
 		
 		//Toolbar width
-		els = this.gFooter.find(".toolbar li");
-		this.gFooter.find(".toolbar").setStyle("width", els.length*($(els[0]).width()+3));
+		//els = this.gFooter.find(".toolbar li");
+		//this.gFooter.find(".toolbar").setStyle("width", els.length*($(els[0]).width()+3));
 		
 		// Fastbutton update for toolbar links
 		this.gFooter.find("a").fastbutton(function(event) {
@@ -175,12 +190,9 @@ var Page = {
 	
 	_finishedAnimation: function(event) {
 		// Hide all unused pages so that scrolling works just right...
-		Page.pages.each(function(el, i) {
-			if(el.getAttribute("id") != Page.current_page) $(el).hide();
-		});
-		Page._getPage(Page.current_page).fire("pageshow");
-		window.location.hash = Page.current_page.hashify();
-		Page._unlock();
+		//Page.pages.each(function(el, i) {
+		//	if(el.getAttribute("id") != Page.current_page) $(el).hide();
+		//});
 	},
 	
 	_lock: function() {

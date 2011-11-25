@@ -32,10 +32,6 @@ body {
 	font-weight:800;
 }
 
-.clear {
-	clear:both;
-}
-
 /*
  * Page style...
  */
@@ -43,16 +39,11 @@ body {
 #viewport {
 	margin:0px;
 	padding:0px;
-	z-index:2;
-	display:block;
-	border:1px solid;
-	overflow-x:hidden;
 	background-color:#D5D5D5;
 	font-weight:600;
 }
 
 #viewport div[data-type=page] {
-	padding:0px 10px 30px 10px;
 	background-color:#D5D5D5;
 }
 
@@ -61,7 +52,7 @@ body {
  */
 #viewport div[data-type=page-content] {
 	margin:0px;
-	padding:70px 0px 40px 0px; /* Necessary padding because of header and footer */
+	padding:70px 10px 40px 10px; /* Necessary padding because of header and footer */
 }
 
 /* Input fields, etc */
