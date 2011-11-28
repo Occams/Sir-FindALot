@@ -1,24 +1,61 @@
+body {
+
+	/* Globally disable user-selection */
+	-webkit-user-select:none;
+}
+
+
 header#global-header {
-	width:100%;
 	position:absolute;
+	top:0px;
 	left:0px;
 	right:0px;
-	top:0px;
 }
 
 footer#global-footer {
-	position:fixed;
-	bottom:-1px; /* Hack */
+	position:absolute;
+	bottom:0px;
 	left:0px;
-	width:100%;
+	right:0px;
 }
 
 /*
- * Pages container for pages animation.
+ * Content container using CSS3 flexbox
  */
- 
 #viewport {
-	overflow-x:hidden;
+	position:absolute;
+	
+	/* Flexbox */
+	display:box;
+	display:-webkit-box;
+	display:-moz-box;
+	
+	-moz-box-orient: vertical;
+	-webkit-box-orient: vertical;
+	box-orient: vertical;
+	
+	box-align: stretch;
+	-moz-box-align: stretch;
+	-webkit-box-align: stretch;
+
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	
+	transition: all 0.5s  ease-in-out;
+  -webkit-transition: all 0.5s  ease-in-out;
+	-moz-transition: all 0.5s  ease-in-out;
+
+	left:0px;
+	right:0px;
+	width:100%;
+	margin:0px;
+	padding:0px;
+	overflow:hidden;
+}
+
+.scroller {
+	display:inline;
 }
 
 #viewport header, #viewport footer {
@@ -28,8 +65,8 @@ footer#global-footer {
 #viewport div[data-type=page] {
 	display:none;
 	position:absolute;
-	height:100%;
 	width:100%;
+	height:100%;
 }
 
 .slide.in {

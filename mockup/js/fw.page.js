@@ -89,6 +89,7 @@ var Page = {
 	id_pagenum_hash: {}, // Hash from page id to page num
 	window_width: 0, // Holds the current width of the window
 	current_page: null, // Holds the current page id
+	scrollers: {},
 	lock:false, 
 	
 
@@ -109,14 +110,37 @@ var Page = {
 		this.show(this._isPage(hash) ? hash : this.pages[0].getAttribute("id")); // Show the first page initially
 		
 		this.window_width = window.innerWidth;
+		this.layout();
+		
+		// Attach event handlers to account for androids :active css bug
+		this._registerFakeActive();
+		
+		// iScroll 4 lite
+		$('.scroller').each(function(el,i) {
+			var id = el.getAttribute("id");
+			Page.scrollers[id] = new iScroll(id,{ hScroll: false, vScrollbar: false, hScrollbar:false,});
+			
+			$(el).touchmove(function (e) {
+				e.preventDefault();
+				return false;
+			})
+		});
+		
+		// On DOM manipulation call
+		// setTimeout(function () { scroller1.refresh() }, 0);
+		
+		// Adjust layout based on orientation
+		//window.addEventListener('orientationchange' in window ? 'orientationchange' : 'resize', function (e) {
+		//	Page.layout();
+		//});
 	},
 	
 	layout: function() {
 		//this.footer.setStyle("width", this.window_width);
 		
 		// set height of #viewport to avoid sliding "glitches"
-		this.viewport.setStyle('height',$('#'+this.current_page).height()+'px');
-		console.log('Set viewport height to: '+$('#'+this.current_page).height());
+		//this.viewport.setStyle('height',(window.innerHeight - this.gFooter.height() - this.gHeader.height())+'px');
+		//console.log('Set viewport height to: '+$('#'+this.current_page).height());
 	},
 	
 	show: function(id) {
@@ -129,11 +153,10 @@ var Page = {
 			this._getPage(id).show();
 			this._updatePageInfos(id);
 			this._unlock();
-			this.layout(); // set viewport height, etc.
 		} else if(id != this.current_page) {
 			//this.pages.hide(); // Hide all animation pages
 			to = this._getPage(id).show(); // Show the new page so that it can be animated
-			from = this._getPage(this.current_page); // Show the current page so that it can be animated
+			from = this._getPage(this.current_page).show(); // Show the current page so that it can be animated
 		
 			slideLeft = this._getPageNum(id) > this._getPageNum(this.current_page);
 			to.css3Slide(slideLeft?"slideinfromright":"slideinfromleft");
@@ -148,18 +171,22 @@ var Page = {
 					
 					// Hide old page
 					from.hide();
-				}, 1005); // Workaround because event on transtionend does not work properly
-				
-				this.layout();
+				}, 1025); // Workaround because event on transtionend does not work properly
 		} else {
 			this._unlock();
 		}
+		
+		for (var id in Page.scrollers)
+			setTimeout(function () { Page.scrollers[id].refresh() }, 0);
 	},
 	
 	_updatePageInfos: function(id) {
 		page = this._getPage(id);
 		this.gHeader.html(page.find("header")[0].innerHTML);
 		this.gFooter.html(page.find("footer")[0].innerHTML);
+		
+		// Update: Attach event handlers to account for androids :active css bug
+		this._registerFakeActive();
 		
 		//Toolbar width
 		//els = this.gFooter.find(".toolbar li");
@@ -174,6 +201,20 @@ var Page = {
 		
 		
 		$("a[href*='#']").click(Page._stopHash);
+	},
+	
+	_registerFakeActive: function() {
+	
+		if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
+			$("a[fake-active=yes]").on("touchstart", function () {
+        $(this).addClass("fake-active");
+				}).on("touchend", function() {
+        $(this).removeClass("fake-active");
+				}).on("touchcancel", function() {
+        // sometimes Android fires a touchcancel event rather than a touchend. Handle this too.
+        $(this).removeClass("fake-active");
+				});
+		}
 	},
 	
 	_getPage: function(id) {

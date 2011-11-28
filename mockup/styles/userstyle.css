@@ -1,45 +1,137 @@
+
+/* Global font setting */
 body {
 	font-family: 'Terminal Dosis', sans-serif;
-	
-	/* Globally disable user-selection */
-	-webkit-user-select:none;
 }
 
-#global-header {
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#565a60), color-stop(100%,#1a1a1a));
-	text-align:center;
-	color:white;
-	font-size:large;
-	padding:15px 0 15px 0;
+#global-header {	
 	-moz-box-shadow: 0px 5px 5px #888;
 	-webkit-box-shadow: 0px 5px 5px #888;
 	box-shadow: 0px 5px 5px #888;
+	
+	border-bottom: 1px solid #CCC;
 }
 
 #global-footer {
-	height:50px;
-	background-color:black;
-	font-size:large;
 	-moz-box-shadow: 0px -5px 5px #888;
 	-webkit-box-shadow: 0px -5px 5px #888;
 	box-shadow: 0px -5px 5px #888;
+	
+	border-top: 1px solid #CCC;
 }
 
 #global-header, #global-footer {
-	z-Index:100;
+	display:box;
+	display:-webkit-box;
+	display:-moz-box;
+	
+	-webkit-box-orient: horizontal;
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
+	
+	z-index:100;
+	height:45px;
+	
+	background-color:#000; /* Fallback value */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#565a60), color-stop(100%,#1a1a1a));
+	
+	/* Text styles */
+	color:white;
+	font-size:large;
 	text-shadow: 2px 2px 2px #000;
 	font-weight:800;
 }
 
-/*
- * Page style...
- */
- 
-#viewport {
-	margin:0px;
+/* Footer navbar styles */
+footer nav.navbar {
 	padding:0px;
-	background-color:#D5D5D5;
+	margin:0px;
+	
+	display:box;
+	display:-webkit-box;
+	display:-moz-box;
+
+	left:0px;
+	right:0px;
+	top:0px;
+	bottom:0px;
+	width:100%;
+	
+	box-align: center;
+	-moz-box-align: center;
+	-webkit-box-align: center;
+	
+	box-pack: center;
+	-moz-box-pack: center;
+	-webkit-box-pack: center;
+
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	
+	transition: all 0.5s  ease-in-out;
+  -webkit-transition: all 0.5s  ease-in-out;
+	-moz-transition: all 0.5s  ease-in-out;
+	
+	/* height:45px; */ /* Same as footer */
+}
+
+footer nav.navbar a {
+	display:box;
+	display:-webkit-box;
+	display:-moz-box;
+	
+	-moz-box-orient: horizontal;
+	-webkit-box-orient: horizontal;
+	box-orient: horizontal;
+	
+	box-pack: center;
+	-moz-box-pack: center;
+	-webkit-box-pack: center;
+	
+	box-align: center;
+	-moz-box-align: center;
+	-webkit-box-align: center;
+
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	
+	/* Active background color fade in-out */
+	transition: all 0.25s  ease-in-out;
+  -webkit-transition: all 0.25s  ease-in-out;
+	-moz-transition: all 0.25s  ease-in-out;
+	
+	/* border-right:2px solid #222; */
+	height:45px; /* Same as footer */
+	text-align:center;
+	
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	box-flex: 1;
+	
+	text-decoration:none;
+	color:white;
+}
+
+footer nav.navbar a:last-child {
+	border:none;
+}
+
+/* no :active on android, use :fake-active instead and handle events using js */
+nav.navbar a:active {
+	background-color:#f3961c;
+}
+
+nav.navbar a.fake-active  {
+	background-color:#f3961c!important;
+}
+
+/* Content container styles */
+#viewport {
+	top:45px;
+	bottom:45px;
+	background-color:#D5D5D5; /* Hide sliding glitches */
 	font-weight:600;
 }
 
@@ -47,12 +139,10 @@ body {
 	background-color:#D5D5D5;
 }
 
-/*
- * Page content style...
- */
+/* Page content styles */
 #viewport div[data-type=page-content] {
 	margin:0px;
-	padding:70px 10px 40px 10px; /* Necessary padding because of header and footer */
+	padding:15px 10px;
 }
 
 /* Input fields, etc */
@@ -63,9 +153,11 @@ body {
 	width:75%;
 	padding: 5px 5px;
 	border: 1px solid #AAA;
+	
 	-webkit-border-radius:20px;
 	-moz-border-radius:20px;
 	border-radius:20px;
+	
 	-moz-box-shadow: 5px 5px 5px #888;
 	-webkit-box-shadow: 5px 5px 5px #888;
 	box-shadow: 5px 5px 5px #888;
@@ -75,21 +167,47 @@ body {
 /* Images */
 #img_sir_frontpage {
 	width:70px;
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	box-flex: 1;
+	
 }
 
-#img_sir_frontpage_container {
-margin: 10px 0px;
-width:30%;
-float:left;
-text-align:center;
+#sir_home_container {
+	margin: 0px;
+	padding:0px;
+	display:box;
+	display:-webkit-box;
+	display:-moz-box;
+	
+	-moz-box-orient: horizontal;
+	-webkit-box-orient: horizontal;
+	box-orient: horizontal;
+	
+	box-pack: center;
+	-moz-box-pack: center;
+	-webkit-box-pack: center;
+	
+	box-align: center;
+	-moz-box-align: center;
+	-webkit-box-align: center;
+
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	
+	/* Active background color fade in-out */
+	transition: all 0.25s  ease-in-out;
+  -webkit-transition: all 0.25s  ease-in-out;
+	-moz-transition: all 0.25s  ease-in-out;
 }
 
 /* Speech bubble */
 div.speech_bubble {
-	float:left;
 	position:relative;
+	margin-right: 20px; /* Space for triangle */
 	padding:5px;
-	width:60%;
+	width:100%;
 	max-width:400px; /* Turns ugly if width exceeds a certain value */
 	color:#000;
 	background:#f3961c; /* default background for browsers without gradient support */
@@ -99,12 +217,18 @@ div.speech_bubble {
 	background:-moz-linear-gradient(#f9d835, #f3961c);
 	background:-o-linear-gradient(#f9d835, #f3961c);
 	background:linear-gradient(#f9d835, #f3961c);
+	
 	-webkit-border-radius:10px;
 	-moz-border-radius:10px;
 	border-radius:10px;
+	
 	-moz-box-shadow: 5px 5px 5px #888;
 	-webkit-box-shadow: 5px 5px 5px #888;
 	box-shadow: 5px 5px 5px #888;
+	
+	-webkit-box-flex: 2;
+	-moz-box-flex: 2;
+	box-flex: 2;
 }
 
 /* creates triangle */
@@ -121,35 +245,7 @@ div.speech_bubble:after {
     width:0;
 }
 
-/*
- * Toolbar
- */
-ul.toolbar {
-	list-style:none;
-	padding:0px;
-	margin:0px;
-	margin:0px auto;
-	line-height:50px; /* Same as footer */
-}
 
-ul.toolbar li {
-	display:inline-block;
-	height:100%;
-	width:100px;
-	text-align:center;
-}
-
-ul.toolbar li a {
-	display:block;
-	height:100%;
-	width:100%;
-	color:white;
-	text-decoration:none;
-}
-
-ul.toolbar li a:hover {
-	text-shadow: 0px 0px 8px #ffb157;
-}
 
 /*
  * Link List
@@ -159,6 +255,9 @@ ul.link-list {
 	padding:0px;
 	margin:0px;
 	background-color:#EEE;
+	
+	border-radius: 20px;
+	-moz-border-radius: 20px;
 	-webkit-border-radius: 20px; 
 	
 	-moz-box-shadow: 5px 5px 5px #888;
@@ -184,12 +283,20 @@ ul.link-list li:first-child a {
 	border-width:1px 1px 1px 1px;
 	-webkit-border-top-left-radius: 20px;
 	-webkit-border-top-right-radius: 20px; 
+	-moz-border-top-left-radius: 20px;
+	-moz-border-top-right-radius: 20px; 
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px; 
 }
 
 ul.link-list li:last-child a {
 	border-width:0 1px 1px 1px;
 	-webkit-border-bottom-left-radius: 20px;
 	-webkit-border-bottom-right-radius: 20px;
+	-moz-border-bottom-left-radius: 20px;
+	-moz-border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
 }
 
 ul.link-list li a:hover, ul.link-list li a:active {
