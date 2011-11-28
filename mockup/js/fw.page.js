@@ -106,8 +106,28 @@ var Page = {
 		
 		hash = window.location.hash;
 		
+		// iScroll 4 lite
+		
+		// Show pages temporarily (iScroll needs to know the actual dimensions of the wrapper)
+		$('div[data-type=page]').css({visibility:'hidden', display:'block'});
+		
+		$('.scroller').each(function(el,i) {
+			var id = el.getAttribute("id");
+			
+			Page.scrollers[id] = new iScroll(id,{ hScroll: false, vScrollbar: false, hScrollbar:false,});
+			
+			//$(el).touchmove(function (e) {
+			//	e.preventDefault();
+			//	return false;
+			//});
+		});
+		
+		// Hide them again
+		$('div[data-type=page]').css({visibility:'visible', display:'none'});
+		
 		// TODO: Fallback page if pages[0] == null
-		this.show(this._isPage(hash) ? hash : this.pages[0].getAttribute("id")); // Show the first page initially
+		// Show the first page initially
+		this.show(this._isPage(hash) ? hash : this.pages[0].getAttribute("id"));
 		
 		this.window_width = window.innerWidth;
 		this.layout();
@@ -115,16 +135,6 @@ var Page = {
 		// Attach event handlers to account for androids :active css bug
 		this._registerFakeActive();
 		
-		// iScroll 4 lite
-		$('.scroller').each(function(el,i) {
-			var id = el.getAttribute("id");
-			Page.scrollers[id] = new iScroll(id,{ hScroll: false, vScrollbar: false, hScrollbar:false,});
-			
-			$(el).touchmove(function (e) {
-				e.preventDefault();
-				return false;
-			})
-		});
 		
 		// On DOM manipulation call
 		// setTimeout(function () { scroller1.refresh() }, 0);
@@ -176,6 +186,7 @@ var Page = {
 			this._unlock();
 		}
 		
+		// Refresh iScroll objects because of DOM manipulation
 		for (var id in Page.scrollers)
 			setTimeout(function () { Page.scrollers[id].refresh() }, 0);
 	},
