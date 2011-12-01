@@ -15,7 +15,18 @@ $.fn.fastbutton = function(handler) {
 }
 
 $.fn.show = function() {
+
+	// Show element
 	this.setStyle("display","block");
+	
+	// Update IScroll4 object
+	var scrollID = $(this).find('.scroller')[0].getAttribute('id');
+	
+	// IScroll4 doc recommends using setTimeout
+	setTimeout(function () { Page.scrollers[scrollID].refresh() }, 0);
+	
+	// Scroll to top
+	Page.scrollers[scrollID].scrollTo(0, 0, 0);
 	return this;
 }
 
@@ -107,10 +118,6 @@ var Page = {
 		hash = window.location.hash;
 		
 		// iScroll 4 lite
-		
-		// Show pages temporarily (iScroll needs to know the actual dimensions of the wrapper)
-		$('div[data-type=page]').css({visibility:'hidden', display:'block'});
-		
 		$('.scroller').each(function(el,i) {
 			var id = el.getAttribute("id");
 			
@@ -121,9 +128,6 @@ var Page = {
 			//	return false;
 			//});
 		});
-		
-		// Hide them again
-		$('div[data-type=page]').css({visibility:'visible', display:'none'});
 		
 		// TODO: Fallback page if pages[0] == null
 		// Show the first page initially
@@ -167,10 +171,11 @@ var Page = {
 			//this.pages.hide(); // Hide all animation pages
 			to = this._getPage(id).show(); // Show the new page so that it can be animated
 			from = this._getPage(this.current_page).show(); // Show the current page so that it can be animated
-		
+			
 			slideLeft = this._getPageNum(id) > this._getPageNum(this.current_page);
 			to.css3Slide(slideLeft?"slideinfromright":"slideinfromleft");
 			from.css3Slide(slideLeft?"slideouttoleft":"slideouttoright");
+			
 			this.current_page = id; // Update the current page
 			this._updatePageInfos(id);
 			
@@ -181,14 +186,14 @@ var Page = {
 					
 					// Hide old page
 					from.hide();
-				}, 1025); // Workaround because event on transtionend does not work properly
+				}, 775); // Workaround because event on transtionend does not work properly
 		} else {
 			this._unlock();
 		}
 		
 		// Refresh iScroll objects because of DOM manipulation
-		for (var id in Page.scrollers)
-			setTimeout(function () { Page.scrollers[id].refresh() }, 0);
+		//for (var id in Page.scrollers)
+		//setTimeout(function () { Page.scrollers[id].refresh() }, 0);
 	},
 	
 	_updatePageInfos: function(id) {
