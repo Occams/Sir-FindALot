@@ -15,9 +15,11 @@ $.fn.fastbutton = function(handler) {
 }
 
 $.fn.show = function() {
-
+	
+	console.log('Show: ' + this.attr('id'));
+	
 	// Show element
-	this.setStyle("display","block");
+	this.css({display : 'box', display : '-moz-box', display : '-webkit-box'});
 	
 	// Update IScroll4 object
 	var scrollID = $(this).find('.scroller')[0].getAttribute('id');
@@ -31,6 +33,8 @@ $.fn.show = function() {
 }
 
 $.fn.hide = function() {
+	console.log('Hide: ' + this.attr('id'));
+	
 	this.setStyle("display","none");
 	return this;
 }
@@ -121,40 +125,72 @@ var Page = {
 		$('.scroller').each(function(el,i) {
 			var id = el.getAttribute("id");
 			
-			Page.scrollers[id] = new iScroll(id,{ hScroll: false, vScrollbar: false, hScrollbar:false,});
-			
-			//$(el).touchmove(function (e) {
-			//	e.preventDefault();
-			//	return false;
-			//});
+			Page.scrollers[id] = new iScroll(id,{ hScroll: false, vScrollbar: false, hScrollbar:false, onBeforeScrollStart: this._makeIScrollFriendly});
 		});
 		
-		// TODO: Fallback page if pages[0] == null
 		// Show the first page initially
 		this.show(this._isPage(hash) ? hash : this.pages[0].getAttribute("id"));
 		
 		this.window_width = window.innerWidth;
-		this.layout();
 		
 		// Attach event handlers to account for androids :active css bug
 		this._registerFakeActive();
 		
-		
-		// On DOM manipulation call
-		// setTimeout(function () { scroller1.refresh() }, 0);
-		
 		// Adjust layout based on orientation
-		//window.addEventListener('orientationchange' in window ? 'orientationchange' : 'resize', function (e) {
-		//	Page.layout();
-		//});
+		window.addEventListener('orientationchange' in window ? 'orientationchange' : 'resize', function (e) {
+		
+		});
+		
+		
+		// Modal test
+		$('#show_modal').click(function (e) {
+			Page._showModal(':: Offline', 'Sir FindALot is very sad and lonely. You have been disconnected from the interwebz.');
+		});
+		
+		$('#modal_close').touchstart(function (e) {
+			Page._closeModal();
+		});
+		
+		$('#modal_close').click(function (e) {
+			Page._closeModal();
+		});
+		
+	},
+	
+	_showModal: function (heading, text) {
+		var modal = $('#modal');
+		var fade = $('#fade');
+		
+		$('#modal h1').html(heading);
+		$('#modal p').html(text);
+		
+		fade.setStyle('z-index', '1000');
+		fade.setStyle('opacity', '0.8');
+		modal.css({display : '-webkit-box'});
+	},
+	
+	_closeModal: function () {
+		var modal = $('#modal');
+		var fade = $('#fade');
+		
+		fade.setStyle('z-index', '0');
+		fade.setStyle('opacity', '0');
+		modal.css({display : 'none'});
+	},
+	
+	_makeIScollFriendly: function (e) {
+			// Prevent IScroll on form elements etc.
+			var target = e.target;
+			
+			// bubble up
+			while (target.nodeType != 1) target = target.parentNode;
+
+			if (!target.tagName in ['SELECT','INPUT','TEXTAREA'])
+				e.preventDefault();
 	},
 	
 	layout: function() {
-		//this.footer.setStyle("width", this.window_width);
-		
-		// set height of #viewport to avoid sliding "glitches"
-		//this.viewport.setStyle('height',(window.innerHeight - this.gFooter.height() - this.gHeader.height())+'px');
-		//console.log('Set viewport height to: '+$('#'+this.current_page).height());
+	
 	},
 	
 	show: function(id) {
@@ -164,13 +200,12 @@ var Page = {
 	
 		if(this.current_page == null) { // If you set the page for the first time...
 			this.current_page = id;
-			this._getPage(id).show();
 			this._updatePageInfos(id);
+			this._getPage(id).show();
 			this._unlock();
 		} else if(id != this.current_page) {
-			//this.pages.hide(); // Hide all animation pages
 			to = this._getPage(id).show(); // Show the new page so that it can be animated
-			from = this._getPage(this.current_page).show(); // Show the current page so that it can be animated
+			from = this._getPage(this.current_page); // Show the current page so that it can be animated
 			
 			slideLeft = this._getPageNum(id) > this._getPageNum(this.current_page);
 			to.css3Slide(slideLeft?"slideinfromright":"slideinfromleft");
@@ -203,10 +238,6 @@ var Page = {
 		
 		// Update: Attach event handlers to account for androids :active css bug
 		this._registerFakeActive();
-		
-		//Toolbar width
-		//els = this.gFooter.find(".toolbar li");
-		//this.gFooter.find(".toolbar").setStyle("width", els.length*($(els[0]).width()+3));
 		
 		// Fastbutton update for toolbar links
 		this.gFooter.find("a").fastbutton(function(event) {
@@ -246,21 +277,18 @@ var Page = {
 	},
 	
 	_finishedAnimation: function(event) {
-		// Hide all unused pages so that scrolling works just right...
-		//Page.pages.each(function(el, i) {
-		//	if(el.getAttribute("id") != Page.current_page) $(el).hide();
-		//});
+	
 	},
 	
 	_lock: function() {
 		if(Page.lock) return false;
-		console.log("lock granted");
+		//console.log("lock granted");
 		Page.lock = true;
 		return true;
 	},
 	
 	_unlock: function() {
-		console.log("lock undone");
+		//console.log("lock undone");
 		Page.lock = false;
 	},
 	
@@ -272,7 +300,7 @@ var Page = {
 
 window.onhashchange = function(event) {
 	event.preventDefault();
-	console.log(window.location.hash.idify());
+	//console.log(window.location.hash.idify());
 	Page.show(window.location.hash.idify());
 	return false;
 };

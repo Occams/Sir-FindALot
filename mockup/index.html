@@ -14,7 +14,7 @@
   <meta name="author" content="Team Amazonen">
 	
 	<!-- Mobile viewport settings -->
-  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <meta name="viewport" content="width=device-width,target-densitydpi=medium-dpi, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 	
 	<!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
   <meta name="HandheldFriendly" content="True">
@@ -57,6 +57,25 @@
 	<script src="http://10.0.0.10:8080/target/target-script-min.js#anonymous"></script>
 	-->
 	
+	<!-- Hide address bar -->
+	<!--
+	<script type="text/javascript">
+	function hideAddressBar (){
+		if(!window.location.hash) {
+      if(document.height <= window.outerHeight + 10) {
+				document.body.style.height = window.outerHeight / (window.devicePixelRatio || 1) +'px';
+        setTimeout( function(){ window.scrollTo(0, 1); }, 50 );
+      } else {
+        setTimeout( function(){ window.scrollTo(0, 1); }, 0 );
+			}
+		}
+	}
+	
+	window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddressBar(); } } );
+  window.addEventListener("orientationchange", hideAddressBar );
+	</script>
+	-->
+	
 	
 </head>
 
@@ -75,8 +94,16 @@
 					</div>
 					<img id="img_sir_frontpage" src="img/icon_half.png" alt= "Sir FindALot"/>
 				</div>
-				
-				<input id="geolocation_search" type="text" />
+		
+				<input id="geolocation_search" type="text" disabled="disabled" value="Geolocating...">
+					<div id="loading">
+							<div id="circle1" class="l_circle"></div>
+							<div id="circle2" class="l_circle"></div>
+							<div id="circle3" class="l_circle"></div>
+							<div id="circle4" class="l_circle"></div>
+						</li>
+					</div>
+				</input>
 				
 				<ul class="link-list">
 					<li><a href="#page2">Uni Passau Tiefgarage</a></li>
@@ -89,7 +116,7 @@
 			</div>
 			<footer>
 				<nav class="navbar">
-					<a href="#page1" fake-active="yes">Home</a>
+					<a href="#page1" class="highlighted" fake-active="yes">Home</a>
 					<a href="#page2" fake-active="yes">Help</a>
 					<a href="#page3" fake-active="yes">Options</a>
 				</nav>
@@ -104,6 +131,7 @@
 			<div data-type="page-content">
 				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
 				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+				<a href="#page2" id="show_modal">Show Modal window</a>
 				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et 
 				dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>	
 				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>			
@@ -112,7 +140,7 @@
 			<footer>
 				<nav class="navbar">
 					<a href="#page1" fake-active="yes">Home</a>
-					<a href="#page2" fake-active="yes">Help</a>
+					<a href="#page2" class="highlighted"  fake-active="yes">Help</a>
 					<a href="#page3" fake-active="yes">Options</a>
 				</nav>
 			</footer>
@@ -135,7 +163,7 @@
 				<nav class="navbar">
 					<a href="#page1" fake-active="yes">Home</a>
 					<a href="#page2" fake-active="yes">Help</a>
-					<a href="#page3" fake-active="yes">Options</a>
+					<a href="#page3" class="highlighted"  fake-active="yes">Options</a>
 				</nav>
 			</footer>
 		</div>
@@ -144,10 +172,22 @@
 	<footer id="global-footer">
 	</footer> <!-- /footer -->
 	
+	<div id="modal">
+		<h1>:: Offline</h1>
+		<div id="modal_content">
+			<p>This is an error! You have been disconnected from the interwebz. Sorry!</p>
+			<img id="modal_img" src="img/Sir_FindALot_error_half.png" alt= "Sir FindALot detected an error"/>
+		</div>
+		<a href="#" id="modal_close">Close</a>
+	</div> <!-- end of #modal -->
+	</body> <!-- /body -->
+	
+	<div id="fade"></div>
+	
 	<!-- JS -->
   <script src="js/bt.js"></script>
   <script src="js/xui.min.js"></script>
-	 <script src="js/iscroll.js"></script>
+	 <script src="js/iscroll-lite.min.js"></script>
   <script src="js/fw.page.js"></script>
 	
 	<script>

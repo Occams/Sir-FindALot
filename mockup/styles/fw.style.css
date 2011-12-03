@@ -51,11 +51,10 @@ footer#global-footer {
 .scroller {
 	height:100%;
 	overflow:hidden;
-
 }
 
 #viewport div[data-type=page-content] {
-	display:box;
+	min-height:100%;
 }
 
 #viewport header, #viewport footer {
