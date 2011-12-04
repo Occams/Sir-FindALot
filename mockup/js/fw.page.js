@@ -14,6 +14,12 @@ $.fn.fastbutton = function(handler) {
 	});
 }
 
+$.fn.rAttr = function (attr) {
+	this.each(function(el) {
+		el.removeAttribute(attr);
+	});
+}
+
 $.fn.show = function() {
 	
 	console.log('Show: ' + this.attr('id'));
@@ -125,7 +131,7 @@ var Page = {
 		$('.scroller').each(function(el,i) {
 			var id = el.getAttribute("id");
 			
-			Page.scrollers[id] = new iScroll(id,{ hScroll: false, vScrollbar: false, hScrollbar:false, onBeforeScrollStart: this._makeIScrollFriendly});
+			Page.scrollers[id] = new iScroll(id,{ hScroll: false, onBeforeScrollStart: Page._makeIScrollFriendly});
 		});
 		
 		// Show the first page initially
@@ -155,6 +161,46 @@ var Page = {
 			Page._closeModal();
 		});
 		
+		$(".link-list a").fastbutton(function(event) {
+			Page.show(this.element.getAttribute("href").idify());
+			event.preventDefault();
+			return false;
+		});
+		
+		// Gelocation
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(this._geoPosition,this._geoError);
+		} else {
+			Page._showModal(':: No Geolocation', 'Sorry, your browser does not support geolocation.');
+		}
+		
+	},
+	
+	_geoPosition: function(position) {
+	
+		// Fake response delay
+		setTimeout(function(e) {
+			var geo = $('#geolocation_search');
+			$('#loading').setStyle('display','none');
+			geo.setStyle('-webkit-animation-name', 'pulse_orange');
+			geo.setStyle('-moz-animation-name', 'pulse_orange');
+			geo.setStyle('animation-name', 'pulse_orange');
+			
+			geo.attr('placeholder', 'Touch to enter custom query...');
+			geo.rAttr('disabled');
+			
+			$('#geolocation_container').after('<ul class="link-list" id="geo_results">'+
+					'<li><a href="#page2" fake-active="yes">Uni Passau Tiefgarage</a></li>'+
+					'<li><a href="#page2" fake-active="yes">Uni Regen Tiefgarage</a></li>' +
+					'<li><a href="#page2" fake-active="yes">Uni Zwiesel Tiefgarage</a></li>' +
+				'</ul>');
+			$('#geo_results a').setStyle('opacity','0');
+			setTimeout(function(e) {$('#geo_results a').setStyle('opacity','1');},100);
+		}, 3000);
+	},
+	
+	_geoError: function(position) {
+		Page._showModal(':: Geolocation', 'Sorry, Sir FindAlot encountered an error while trying to geolocate you.');
 	},
 	
 	_showModal: function (heading, text) {
@@ -178,15 +224,16 @@ var Page = {
 		modal.css({display : 'none'});
 	},
 	
-	_makeIScollFriendly: function (e) {
+	_makeIScrollFriendly: function (e) {
 			// Prevent IScroll on form elements etc.
 			var target = e.target;
 			
 			// bubble up
 			while (target.nodeType != 1) target = target.parentNode;
 
-			if (!target.tagName in ['SELECT','INPUT','TEXTAREA'])
+			if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA') {
 				e.preventDefault();
+			}
 	},
 	
 	layout: function() {
@@ -307,10 +354,4 @@ window.onhashchange = function(event) {
 
 $.ready(function() {
 	Page.init();
-	
-	$(".link-list a").fastbutton(function(event) {
-		Page.show(this.element.getAttribute("href").idify());
-		event.preventDefault();
-		return false;
-	});
 });
