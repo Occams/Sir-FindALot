@@ -1,0 +1,116 @@
+body {
+
+	/* Globally disable user-selection */
+	-webkit-user-select:none;
+}
+
+
+header#global-header {
+	position:absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+}
+
+footer#global-footer {
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	right:0px;
+}
+
+/*
+ * Content container using CSS3 flexbox model
+ */
+#viewport {
+	position:absolute;
+	
+	/* Flexbox */
+	display:box;
+	display:-webkit-box;
+	display:-moz-box;
+	
+	-moz-box-orient: horizontal;
+	-webkit-box-orient: horizontal;
+	box-orient: horizontal;
+
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	
+	transition: all 0.5s  ease-in-out;
+  -webkit-transition: all 0.5s  ease-in-out;
+	-moz-transition: all 0.5s  ease-in-out;
+
+	left:0px;
+	right:0px;
+	
+	overflow:hidden;
+}
+
+.scroller {
+	height:100%;
+	overflow:hidden;
+}
+
+#viewport div[data-type=page-content] {
+	min-height:100%;
+}
+
+#viewport header, #viewport footer {
+	display:none;
+}
+
+#viewport div[data-type=page] {
+	display:none;
+	position:absolute;
+	
+	top:0px;
+	bottom:0px;
+	
+	overflow:hidden;
+}
+
+.slide.in {
+    -webkit-animation-name: slideinfromright;
+}
+
+.slide.out {
+    -webkit-animation-name: slideouttoleft;
+}
+
+@-webkit-keyframes slideinfromright {
+    0% { -webkit-transform: translateX(100%); }
+    70% { -webkit-transform: translateX(-5%); }
+		100% { -webkit-transform: translateX(0); }
+}
+@-webkit-keyframes slideouttoleft {
+    0% { -webkit-transform: translateX(0); }
+		70%  { -webkit-transform: translateX(-105%); }
+		100% { -webkit-transform: translateX(-105%); }
+}
+
+.slide.in.reverse {
+    -webkit-animation-name: slideinfromleft;
+}
+
+.slide.out.reverse {
+    -webkit-animation-name: slideouttoright;
+}
+
+@-webkit-keyframes slideinfromleft {
+    0% { -webkit-transform: translateX(-100%); }
+    70% { -webkit-transform: translateX(5%); }
+		100% { -webkit-transform: translateX(0); }
+}
+
+@-webkit-keyframes slideouttoright {
+		0% { -webkit-transform: translateX(0); }
+    70% { -webkit-transform: translateX(105%); }
+		100% { -webkit-transform: translateX(105%); }
+}
+
+.in, .out {
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 750ms;
+}

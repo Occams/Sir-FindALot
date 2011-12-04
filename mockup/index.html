@@ -1,248 +1,194 @@
-<!DOCTYPE html>
+<!doctype html>
+
+<!-- Conditional comment for mobile ie7 http://blogs.msdn.com/b/iemobile/ -->
+<!--[if IEMobile 7 ]>    <html class="no-js iem7"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]> <html class="no-js"><![endif]-->
+
 <html>
 <head>
-	<title>Sir Findalot</title>
-	<meta charset="utf-8"> 
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<!-- Dane: Latest jquery mobile sources, google fonts "Yanone Kaffesatz" -->
-	<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
-	<link href="styles/style.css" rel="stylesheet" type="text/css" />
-	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-	<script src="javascript/settings.jmobile.js"></script>
-	<script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
-	<script src="javascript/app.js"></script>
-	<script src="javascript/lot.js"></script>
+  <title>Sir FindALot</title>
+	<meta name="description" content="Sir FindALot helps you find your lot">
+  <meta name="author" content="Team Amazonen">
+	
+	<!-- Mobile viewport settings -->
+  <meta name="viewport" content="width=device-width,target-densitydpi=medium-dpi, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	
+	<!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+		
+  <!-- Home screen icon  Mathias Bynens http://goo.gl/6nVq0 -->
+  <!-- For iPhone 4 with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icon_half.png">
+  <!-- For first-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/icon_half.png">
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="img/icon_half.png">
+  <!-- For nokia devices: -->
+  <link rel="shortcut icon" href="img/icon_half.png">
+
+  <!--iOS web app, deletable if not needed -->
+  <!--the script prevents links from opening in mobile safari. https://gist.github.com/1042026 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
+  <link rel="apple-touch-startup-image" href="img/icon_half.png">
+
+  <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+  <meta http-equiv="cleartype" content="on">
+	
+	<!-- consider using below meta tags if you want to disable format detection by default -->
+  <meta name="format-detection" content="telephone=no"/> 
+  <meta name="format-detection" content="address=no"/>  
+
+	<!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/bt.style.css">
+  <link rel="stylesheet" href="styles/userstyle.css">
+  <!-- this is included after userstyle.css so the important settings are overwritten by the framework -->
+	<link rel="stylesheet" href="styles/fw.style.css"> 
+	<link href='http://fonts.googleapis.com/css?family=Terminal+Dosis:800,600' rel='stylesheet' type='text/css'>
+  <!-- end CSS-->
+	
+	<!-- Weiner debugger inject code. Hardcoded! -->
+	<!--
+	<script src="http://10.0.0.10:8080/target/target-script-min.js#anonymous"></script>
+	-->
+	
+	<!-- Hide address bar -->
+	<!--
+	<script type="text/javascript">
+	function hideAddressBar (){
+		if(!window.location.hash) {
+      if(document.height <= window.outerHeight + 10) {
+				document.body.style.height = window.outerHeight / (window.devicePixelRatio || 1) +'px';
+        setTimeout( function(){ window.scrollTo(0, 1); }, 50 );
+      } else {
+        setTimeout( function(){ window.scrollTo(0, 1); }, 0 );
+			}
+		}
+	}
+	
+	window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddressBar(); } } );
+  window.addEventListener("orientationchange", hideAddressBar );
+	</script>
+	-->
+	
 	
 </head>
+
 <body>
-
-<!-- Start of first page: #home --> 
-<div data-role="page" id="home" data-content-theme="b"> 
- 
-	<div data-role="header"> 
-		<h1>Sir FindALot</h1> 
-		<!-- <a href="index.html" data-icon="gear" class="ui-btn-right">Options</a> -->
-	</div><!-- /header --> 
-	<div data-role="content">
-		<div class="center">
-			<p class="speech-a">"<b>Sir Findalot</b> is eager to help you find a free lot! I'm currently computing results based on your location."</p>
-		<table class="center">
-			<tr>
-				<td align="center">
-					<a href="#home" data-role="button" data-icon="search" data-iconpos="right" id="geolocate" data-inline="true">Geolocation</a>
-				</td>
-				<td>
-					<img src="logo/Sir_FindALot_final.png" alt= "Sir FindALot" width="80" />
-				</td>
-			</tr>
-		</table>
+	<header id="global-header"></header>
+	
+	<div id="viewport">
+		<div data-type="page" id="page1">
+			<header>Sir FindALot</header>
+			<div class="scroller" id="scroll-page1">
+			<div data-type="page-content">
+				<div id="sir_home_container">
+					<div class="speech_bubble">
+						"<b>Sir Findalot</b> is eager to help you find a free lot!
+						I'm currently computing results based on your location."
+					</div>
+					<img id="img_sir_frontpage" src="img/icon_half.png" alt= "Sir FindALot"/>
+				</div>
+		
+				<div id="geolocation_container">
+					<input id="geolocation_search" type="text" results=5 disabled="disabled" placeholder="Geolocating..."></input>
+					<div id="loading">
+							<div id="bar1" class="l_bar"></div>
+							<div id="bar2" class="l_bar"></div>
+							<div id="bar3" class="l_bar"></div>
+							<div id="bar4" class="l_bar"></div>
+							<div id="bar5" class="l_bar"></div>
+							<div id="bar6" class="l_bar"></div>
+						</li>
+					</div>
+				</div>
+				
+				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+			</div>
+			</div>
+			<footer>
+				<nav class="navbar">
+					<a href="#page1" class="highlighted" fake-active="yes">Home</a>
+					<a href="#page2" fake-active="yes">Help</a>
+					<a href="#page3" fake-active="yes">Options</a>
+				</nav>
+			</footer>
 		</div>
 		
-		<div style="clear:both;padding-bottom:30px;"></div>
-		
-		<ol data-role="listview" id="fastresults"></ol>
-		
-		<div style="clear:both;padding-bottom:30px;"></div>
-		
-		<div data-role="collapsible">
-			<h3>Custom Search</h3>
-			<div class="center">
-				<p>Search for a specific lot if you are unsatisified with the results from above.</p>
+		<div data-type="page" id="page2">
+			<header>
+				Page 2
+			</header>
+			<div class="scroller" id="scroll-page2">
+			<div data-type="page-content">
+				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+				<a href="#page2" id="show_modal">Show Modal window</a>
+				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et 
+				dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>	
+				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>			
 			</div>
-	
-			<div data-role="fieldcontain">
-				<input type="search" name="password" id="search" value="" />
 			</div>
-		</div><!-- /collapsible -->
-	</div><!-- /content -->
-	
-	<!-- Fixed, persistent footer. Use data-id="footer" on every page that needs it -->
-	<div data-role="footer" data-position="fixed"> 
-		<div data-role="navbar" data-iconpos="top">
-			<ul>
-				<li><a href="#home" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
-				<li><a href="#help" data-prefetch data-transition="slidedown" data-icon="info">Help</a></li>
-				<li><a href="#options" data-prefetch data-transition="slidedown" data-rel="dialog" data-icon="gear">Options</a></li>
-			</ul>
-		</div><!-- /navbar -->
-	</div> <!-- /footer -->
-</div><!-- /page one --> 
-
-<!-- Start of page: options --> 
-<!-- data-dom-cache="true": persistent AJAX prefetch --> 
-<div data-role="page" id="options" data-dom-cache="true"> 
- 
-	<div data-role="content">
-		<h3>Options</h3>
-		<a href="#" data-role="button" data-theme="b">Turn on GPS</a>          
-		<a href="#" data-role="button" data-theme="b">Share on Facebook</a>      
-		<a href="#" data-role="button" data-theme="b">Share on Google+</a>
-		<a href="#" data-role="button" data-theme="b">Self Destroy</a>      
-		 		  
-		<a href="#home" data-role="button" data-rel="back" data-theme="a">Back</a>
-		
-		<div class="center">
-			<img src="images/Carl.png" width=100%/>
+			<footer>
+				<nav class="navbar">
+					<a href="#page1" fake-active="yes">Home</a>
+					<a href="#page2" class="highlighted"  fake-active="yes">Help</a>
+					<a href="#page3" fake-active="yes">Options</a>
+				</nav>
+			</footer>
 		</div>
-	</div><!-- /content --> 
-</div><!-- /page options --> 
 
-<!-- Start of page: help --> 
-<!-- data-dom-cache="true": persistent AJAX prefetch --> 
-<div data-role="page" id="help" data-dom-cache="true"> 
- 	<div data-role="header"> 
-		<h1>Help</h1> 
-	</div><!-- /header --> 
-	
-	<div data-role="content">
-		<div class="center">
-			<table class="center">
-			<tr>
-				<td>
-					<p class="speech-b">"I have compiled an immense set of <b>FAQs</b> to walk you along the path of enlightenment."</p>
-				</td>
-				<td><img src="images/Sir_FindALot_lightbulb.png" alt ="Sir FindALot Lightbulb" width="120"/></td>
-			</tr>
-			</table>
+		<div data-type="page" id="page3">
+			<header>
+				Page 3
+			</header>
+			<div class="scroller" id="scroll-page3">
+			<div data-type="page-content">
+				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et 
+				dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>	
+				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>				
+			</div>
+			</div>
+			<footer>
+				<nav class="navbar">
+					<a href="#page1" fake-active="yes">Home</a>
+					<a href="#page2" fake-active="yes">Help</a>
+					<a href="#page3" class="highlighted"  fake-active="yes">Options</a>
+				</nav>
+			</footer>
 		</div>
-		
-		<div data-role="collapsible-set" data-theme="b">
-
-			<div data-role="collapsible" data-collapsed="false">
-				<h3>First Steps</h3>
-				<p>Explain common usage flow here.</p>
-			</div>
+	</div> <!-- end of #viewport -->
 	
-			<div data-role="collapsible">
-				<h3>Quick Guide</h3>
-				<p>For quick users to consider.</p>
-			</div>
-			
-			<div data-role="collapsible">
-				<h3>Error Messages</h3>
-				<ul>
-					<li>GPS not working: Turn it on</li>
-					<li>Lost connection to server: Try again later</li>
-					<li>Lost my brain: Hopeless</li>
-				</ul>
-			</div>
-			
-			<div data-role="collapsible">
-				<h3>Uninstall</h3>
-				<p>Everytime someone tries to get rid of his mobile app, Sir Findalot murders an innocent kitten.</p>
-			</div>
-		</div><!-- /collapsible-set -->
-		
-		<div class="center">
-			<p class="speech">"In the meanwhile, ferocious <b>Sir DragOnLot</b> went out to practice his unmatched beast slaying skills."</p>
+	<footer id="global-footer">
+	</footer> <!-- /footer -->
+	
+	<div id="modal">
+		<h1>:: Offline</h1>
+		<div id="modal_content">
+			<p>This is an error! You have been disconnected from the interwebz. Sorry!</p>
+			<img id="modal_img" src="img/Sir_FindALot_error_half.png" alt= "Sir FindALot detected an error"/>
 		</div>
-		
-		<img src="images/Beast_slayer.png" width="100%"/>
-	</div><!-- /content --> 
+		<a href="#" id="modal_close">Close</a>
+	</div> <!-- end of #modal -->
+	</body> <!-- /body -->
 	
-	<!-- Fixed, persistent footer. Use data-id="footer" on every page that needs it -->
-	<div data-role="footer" data-position="fixed"> 
-		<div data-role="navbar" data-iconpos="top">
-			<ul>
-				<li><a href="#home" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
-				<li><a href="#help" data-prefetch data-transition="slidedown" data-icon="info">Help</a></li>
-				<li><a href="#options" data-prefetch data-transition="slidedown" data-rel="dialog" data-icon="gear">Options</a></li>
-			</ul>
-		</div><!-- /navbar -->
-	</div> <!-- /footer -->
-</div><!-- /page help --> 
- 
- 
-<!-- Start of second page: #two --> 
-<div data-role="page" id="two" data-add-back-btn="true"> 
- 
-	<div data-role="header"> 
-		<h1>Parkplätze</h1> 
-	</div><!-- /header --> 
- 
-	<div data-role="content">
-		<ul data-role="listview"> 
-		</ul>
-	</div><!-- /content --> 
-</div><!-- /page two --> 
-
-
-
-<!-- Start of second page: #three --> 
-<div data-role="page" id="three" data-add-back-btn="true"> 
- 
-	<div data-role="header"> 
-		<h1>Uni Passau Tiefgarage</h1> 
-	</div><!-- /header --> 
-
-	<div data-role="content" id="lotdisplay">
-	</div><!-- /content --> 
+	<div id="fade"></div>
 	
-	<div data-role="footer" data-position="fixed"> 
-		<div data-role="navbar" data-iconpos="top">
-			<ul>
-				<li><a href="#home" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
-				<li><a href="#lot_info" data-prefetch data-transition="slidedown" data-icon="info">Details</a></li>
-			</ul>
-		</div><!-- /navbar -->
-	</div> <!-- /footer -->
-</div><!-- /page three --> 
-
-<!-- Start of second page: #two --> 
-<div data-role="page" id="lot_info" data-add-back-btn="true"> 
- 
-	<div data-role="header"> 
-		<h1>Uni Passau Tiefgarage Details</h1> 
-	</div><!-- /header --> 
- 
-	<div data-role="content">
-		<div data-role="collapsible-set" data-theme="a" data-content-theme="a">
-
-			<div data-role="collapsible" data-collapsed="false">
-				<h3>Opening Hours</h3>
-				<ul>
-					<li>Mo-Fr: 7.00-23.00</li>
-					<li>Sa-So: 10.00-22.00</li>
-				</ul>
-			</div>
-			
-			<div data-role="collapsible">
-				<h3>Type</h3>
-				<p>Underground</p>
-			</div>
-			
-			<div data-role="collapsible">
-				<h3>Number of Spaces</h3>
-				<p>225</p>
-			</div>
-			
-			<div data-role="collapsible">
-				<h3>Address</h3>
-				<p>Gebäude Mensa/Zentralbibliothek, Innstraße 29</p>
-			</div>
-			
-			<div data-role="collapsible">
-				<h3>Pricing</h3>
-				<p>None</p>
-			</div>
-			
-			<div data-role="collapsible">
-				<h3>Comments</h3>
-				<p>Overcrowded!</p>
-			</div>
-		</div><!-- /collapsible-set -->
-	</div><!-- /content -->
+	<!-- JS -->
+  <script src="js/bt.js"></script>
+  <script src="js/xui.min.js"></script>
+	 <script src="js/iscroll-lite.min.js"></script>
+  <script src="js/fw.page.js"></script>
 	
-	<div data-role="footer"> 
-		<div data-role="navbar" data-iconpos="top">
-			<ul>
-				<li><a href="#home" data-prefetch data-transition="fade" data-icon="home">Home</a></li>
-				<li><a href="#three" data-prefetch data-transition="slideup" data-icon="grid">Map</a></li>
-			</ul>
-		</div><!-- /navbar -->
-	</div> <!-- /footer -->	
-</div><!-- /page two --> 
- 
-</body>
+	<script>
+		// iPhone Scale Bug Fix, read this when using http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/
+		MBP.scaleFix();
+  </script>
+</html>
