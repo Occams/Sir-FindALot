@@ -111,12 +111,12 @@ footer nav.navbar a {
 
 /* no :active on android, use :fake-active instead and handle events using js */
 nav.navbar a:active, nav.navbar a.fake-active  {
-	border-bottom:15px solid #f3961c!important;
-	background-color:#f3961c!important;
+	background-color:#1a1a1a!important; /* Fallback value */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#736F6E), color-stop(100%,#1a1a1a));
 }
 
 nav.navbar a.highlighted {
-	border-bottom:15px solid #f3961c!important;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#736F6E), color-stop(100%,#1a1a1a));
 }
 
 /* Content container styles */
@@ -124,10 +124,8 @@ nav.navbar a.highlighted {
 	margin:0px;
 	padding:0px;
 	z-index:10;
-	
 	top:45px;
 	bottom:45px;
-	background-color:#D5D5D5; /* Hide sliding glitches */
 	font-weight:600;
 }
 
@@ -139,7 +137,7 @@ nav.navbar a.highlighted {
 #viewport div[data-type=page-content] {
 	margin:0px;
 	padding:15px 10px;
-	background-color:#D5D5D5;
+	background-color:#FFF;
 	
 	-webkit-box-shadow: 0px 10px 10px #333333, 0px -10px 10px #333333;
 	-moz-box-shadow: 0px 10px 10px #333333, 0px -10px 10px #333333;
@@ -312,9 +310,9 @@ nav.navbar a.highlighted {
 	opacity:0;
 	
 	/* Animation */
-	-webkit-transition: opacity 500ms ease-in;
-	-moz-transition: opacity 500ms ease-in;
-	transition: opacity 500ms ease-in;
+	-webkit-transition: opacity 500ms linear;
+	-moz-transition: opacity 500ms linear;
+	transition: opacity 500ms linear;
 }
 
 /* Geolocation form field and loading animation */
@@ -346,12 +344,13 @@ nav.navbar a.highlighted {
 	-moz-border-radius:8px;
 	border-radius:8px;
 	
-	-webkit-animation-name: pulse_green;
-	-webkit-animation-timing-function: ease-in;
-	-webkit-animation-iteration-count: infinite;
-	-webkit-animation-direction: alternate;
-	-webkit-animation-duration: 500ms;
+	-webkit-animation:pulse_orange 500ms infinite ease-in alternate;
 
+}
+
+#geolocation_search[disabled=disabled] {
+	background:url('../img/glass.png') no-repeat 1% center, #EEE;
+	-webkit-animation:pulse_green 500ms infinite ease-in alternate;
 }
 
 /* Test if needed: removes highlighting on click */
@@ -364,28 +363,28 @@ nav.navbar a.highlighted {
 @-webkit-keyframes pulse_green {
   0% { 
     -moz-box-shadow: 0px 0px 10px #458B00;
-    -webkit-box-shadow: 0 0 10px #458B00;
-    box-shadow: 0 0 10px #458B00;
+    -webkit-box-shadow: 0px 0px 10px #458B00;
+    box-shadow: 0px 0px 10px #458B00;
   }
     
   100% {
 	-moz-box-shadow: 0px 0px 20px #458B00;
-	-webkit-box-shadow: 0 0 20px #458B00;
-	box-shadow: 0 0 20px #458B00;
+	-webkit-box-shadow: 0px 0px 20px #458B00;
+	box-shadow: 0px 0px 20px #458B00;
 	}
 }
 
 @-webkit-keyframes pulse_orange {
   0% { 
     -moz-box-shadow: 0px 0px 10px #f3961c;
-    -webkit-box-shadow: 0 0 10px #f3961c;
-    box-shadow: 0 0 10px #f3961c;
+    -webkit-box-shadow: 0px 0px 10px #f3961c;
+    box-shadow: 0px 0px 10px #f3961c;
   }
     
   100% {
 	-moz-box-shadow: 0px 0px 20px #f3961c;
-	-webkit-box-shadow: 0 0 20px #f3961c;
-	box-shadow: 0 0 20px #f3961c;
+	-webkit-box-shadow: 0px 0px 20px #f3961c;
+	box-shadow: 0px 0px 20px #f3961c;
 	}
 }
 
@@ -443,63 +442,12 @@ nav.navbar a.highlighted {
 #bar5    {-webkit-animation:loading5 1.5s infinite linear; -webkit-box-flex:1.5;}
 #bar6    {-webkit-animation:loading6 1.5s infinite linear; -webkit-box-flex:1;}
 
-@-webkit-keyframes loading1 {
-	0% {opacity:0.5;}
-	10% {opacity:1;}
-	20% {opacity:0.5;}
-	100% {opacity:0.5;}
-}
-
-@-webkit-keyframes loading2 {
-	0% {opacity:0.5;}
-	10% {opacity:0.5;}
-	20% {opacity:1;}
-	30% {opacity:0.5;}
-	40% {opacity:0.5;}
-	90% {opacity:0.5;}
-	100% {opacity:1;}
-}
-
-@-webkit-keyframes loading3 {
-	0% {opacity:0.5;}
-	20% {opacity:0.5;}
-	30% {opacity:1;}
-	40% {opacity:0.5;}
-	80% {opacity:0.5;}
-	90% {opacity:1;}
-	100% {opacity:0.5;}
-}
-
-@-webkit-keyframes loading4 {
-	0% {opacity:0.5;}
-	30% {opacity:0.5;}
-	40% {opacity:1;}
-	50% {opacity:0.5;}
-	70% {opacity:0.5;}
-	80% {opacity:1;}
-	90% {opacity:0.5;}
-	100% {opacity:0.5;}
-}
-
-@-webkit-keyframes loading5 {
-	0% {opacity:0.5;}
-	40% {opacity:0.5;}
-	50% {opacity:1;}
-	60% {opacity:0.5;}
-	70% {opacity:1;}
-	80% {opacity:0.5;}
-	100% {opacity:0.5;}
-}
-
-@-webkit-keyframes loading6 {
-	0% {opacity:0.5;}
-	50% {opacity:0.5;}
-	60% {opacity:1;}
-	70% {opacity:0.5;}
-	100% {opacity:0.5;}
-}
-
-
+@-webkit-keyframes loading1 {0% {opacity:0.5;} 10% {opacity:1;} 20% {opacity:0.5;} 100% {opacity:0.5;}}
+@-webkit-keyframes loading2 {0% {opacity:0.5;} 10% {opacity:0.5;} 20% {opacity:1;} 30% {opacity:0.5;} 40% {opacity:0.5;} 90% {opacity:0.5;} 100% {opacity:1;}}
+@-webkit-keyframes loading3 {0% {opacity:0.5;} 20% {opacity:0.5;} 30% {opacity:1;} 40% {opacity:0.5;} 80% {opacity:0.5;} 90% {opacity:1;} 100% {opacity:0.5;}}
+@-webkit-keyframes loading4 {0% {opacity:0.5;} 30% {opacity:0.5;} 40% {opacity:1;} 50% {opacity:0.5;} 70% {opacity:0.5;} 80% {opacity:1;} 90% {opacity:0.5;} 100% {opacity:0.5;}}
+@-webkit-keyframes loading5 {0% {opacity:0.5;} 40% {opacity:0.5;} 50% {opacity:1;} 60% {opacity:0.5;} 70% {opacity:1;} 80% {opacity:0.5;} 100% {opacity:0.5;}}
+@-webkit-keyframes loading6 {0% {opacity:0.5;} 50% {opacity:0.5;} 60% {opacity:1;} 70% {opacity:0.5;} 100% {opacity:0.5;}}
 
 /* Images */
 #img_sir_frontpage {
@@ -507,7 +455,6 @@ nav.navbar a.highlighted {
 	-webkit-box-flex: 1;
 	-moz-box-flex: 1;
 	box-flex: 1;
-	
 }
 
 #modal_img {
@@ -559,9 +506,9 @@ div.speech_bubble {
 	-moz-border-radius:8px;
 	border-radius:8px;
 	
-	-moz-box-shadow: 0px 0px 10px #000;
-	-webkit-box-shadow: 0px 0px 10px #000;
-	box-shadow: 0px 0px 10px #000;
+	-moz-box-shadow: 5px 5px 10px #333;
+	-webkit-box-shadow: 5px 5px 10px #333;
+	box-shadow: 5px 5px 10px #333;
 	
 	-webkit-box-flex: 2;
 	-moz-box-flex: 2;
@@ -596,9 +543,13 @@ ul.link-list {
 	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px; 
 	
-	-moz-box-shadow: 0px 0px 10px #000;
-	-webkit-box-shadow: 0px 0px 10px #000;
-	box-shadow: 0px 0px 10px #000;
+	-moz-box-shadow: 5px 5px 10px #333;
+	-webkit-box-shadow: 5px 5px 10px #333;
+	box-shadow: 5px 5px 10px #333;
+	
+	transition: opacity 1s  linear;
+  -webkit-transition: opacity 1s  linear;
+	-moz-transition: opacity 1s  linear;
 }
 
 ul.link-list li a {
@@ -610,14 +561,17 @@ ul.link-list li a {
 	color:#000;
 	text-decoration:none;
 	
-	background:url('../img/arrow.png') no-repeat 95% center, #EEE;
+	background:#EEE;
+	background-image: url(../img/parking_sign.png), url(../img/arrow.png);
+	background-position: 5px center, 95% center;
+	background-repeat: no-repeat;
 	border:1px solid #AAA;
 	border-width:0 1px 1px 1px;
 	
 	/* Fade in effect */
-	transition: opacity 0.5s  linear;
-  -webkit-transition: opacity 0.5s  linear;
-	-moz-transition: opacity 0.5s  linear;
+	transition: opacity 1s  linear;
+  -webkit-transition: opacity 1s  linear;
+	-moz-transition: opacity 1s  linear;
 }
 
 ul.link-list li:first-child a {
@@ -643,5 +597,8 @@ ul.link-list li:last-child a {
 }
 
 ul.link-list li a:active, ul.link-list li a.fake-active  {
-	background:url('../img/arrow.png') no-repeat 95% center, #f3961c!important;
+	background:#f3961c!important;
+	background-image: url(../img/parking_sign.png), url(../img/arrow.png)!important;
+	background-position: 5px center, 95% center!important;
+	background-repeat: no-repeat!important;
 }

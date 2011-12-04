@@ -182,9 +182,6 @@ var Page = {
 		setTimeout(function(e) {
 			var geo = $('#geolocation_search');
 			$('#loading').setStyle('display','none');
-			geo.setStyle('-webkit-animation-name', 'pulse_orange');
-			geo.setStyle('-moz-animation-name', 'pulse_orange');
-			geo.setStyle('animation-name', 'pulse_orange');
 			
 			geo.attr('placeholder', 'Touch to enter custom query...');
 			geo.rAttr('disabled');
@@ -194,8 +191,14 @@ var Page = {
 					'<li><a href="#page2" fake-active="yes">Uni Regen Tiefgarage</a></li>' +
 					'<li><a href="#page2" fake-active="yes">Uni Zwiesel Tiefgarage</a></li>' +
 				'</ul>');
+				
 			$('#geo_results a').setStyle('opacity','0');
-			setTimeout(function(e) {$('#geo_results a').setStyle('opacity','1');},100);
+			$('#geo_results').setStyle('opacity','0');
+			setTimeout(function(e) {$('#geo_results a').setStyle('opacity','1'); $('#geo_results').setStyle('opacity','1');},100);
+			
+			// IScroll refresh
+			Page._getPage(Page.current_page).show();
+			
 		}, 3000);
 	},
 	
