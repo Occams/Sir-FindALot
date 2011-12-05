@@ -46,6 +46,8 @@
 		this.each(function (el) {
 			el.removeAttribute(attr);
 		});
+		
+		return this;
 	}
 
 	$.fn.show = function () {
@@ -181,7 +183,7 @@
 			// Show the first page or an explicitly declared home page initially
 			hash = window.location.hash.idify();
 			var startpage = this.pages.has('div[home=yes]')[0];
-			this.home = home ? home : this.pages[0];
+			this.home = startpage ? startpage : this.pages[0];
 			this.show(this._isPage(hash) ? hash : startpage.getAttribute("id"));
 
 			// Attach event handlers to account for androids :active css bug
@@ -197,7 +199,21 @@
 
 			// TODO: Input handler
 			$('#geolocation_search_form').submit(function (e) {
-				Page.show('search');
+				var loading = $('#loading');
+				
+				// Show orange loading animation
+				loading.removeClass('green').addClass('orange');
+				loading.setStyle('display','-'+vendor+'-box');
+				
+				// Disable input
+				$('#geolocation_search').attr('disabled','disabled');
+				
+				// Fake response delay
+				setTimeout(function(e) {
+					$('#loading').hide();
+					$('#geolocation_search').rAttr('disabled');
+					Page.show('search'); },1500);
+				
 				return false;
 			});
 
@@ -206,6 +222,9 @@
 				Page._accordionHandler(this.element);
 			});
 
+			// Switch handlers
+			this._registerSwitchHandler();
+			
 			// Start Geolocation
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(this._geoPosition, this._geoError);
@@ -214,7 +233,14 @@
 			}
 
 		},
-
+		
+		_registerSwitchHandler : function() {
+			$('.switch label').fastbutton(function (e) {
+				var el = $(this.element), slide = $(this.element).attr('rel');
+				$('#'+slide).toggleClass('selected');
+			});
+		},
+		
 		_initModal: function () {
 
 			// Modal test link
@@ -292,8 +318,7 @@
 
 				// Enable input field and change placeholder text
 				geo.attr('placeholder', 'Touch to enter custom query...');
-				geo.rAttr('disabled');
-
+				geo.rAttr('disabled').removeClass('green').addClass('orange');
 				// Fake response result
 				$('#geolocation_container').after('<ul class="link-list" id="geo_results">' + '<li><a href="#lot" fake-active="yes">Uni Passau Tiefgarage</a></li>' + '<li><a href="#lot" fake-active="yes">Uni Regen Tiefgarage</a></li>' + '<li><a href="#lot" fake-active="yes">Uni Zwiesel Tiefgarage</a></li>' + '</ul>');
 				
@@ -325,7 +350,7 @@
 			// bubble up
 			while (target.nodeType != 1) target = target.parentNode;
 
-			if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA' && target.tagName != 'UL') {
+			if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA') {
 				e.preventDefault();
 				return false;
 			}
@@ -384,7 +409,7 @@
 		_registerFakeActive: function () {
 
 			if (isAndroid) {
-				$("a[fake-active=yes], .faq h1[fake-active=yes]").on("touchstart", function () {
+				$("a[fake-active=yes], .faq h1[fake-active=yes], div[fake-active=yes]").on("touchstart", function (e) {
 					$(this).addClass("fake-active");
 				}).on(END_EV, function () {
 					$(this).removeClass("fake-active");

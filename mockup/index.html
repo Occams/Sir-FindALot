@@ -99,12 +99,35 @@
 				
 				<a href="#" id="show_modal">Show Test Modal</a>
 				
-				<div id="sir_bubble_container_vertical">
-				<div class="speech_bubble">
-					"In the meanwhile, ferocious <b>Sir DragOnLot</b> went out to practice his unmatched beast slaying skills"
-				</div>
-				<img id="img_dragonlot" src="img/Beast_slayer_small.png" alt="Sir DragOnLot"/>
-				</div>
+				<ul id="options_list">
+					<li>
+						<span class="options_label">Use GPS</span>
+						<div class="switch" fake-active="yes">
+							<label class="enable" rel="slide1">On</label>
+							<label class="disable selected" rel="slide1">Off</label>
+							<div class="slide selected" id="slide1"></div>
+							<input type="checkbox" id="checkbox1" class="checkbox" name="field1" />
+						</div>
+					</li>
+					<li>
+						<span class="options_label">Give me</span>
+						<div class="switch" fake-active="yes">
+							<label class="enable" rel="slide2">Ape</label>
+							<label class="disable selected" rel="slide2">Shit</label>
+							<div class="slide selected" id="slide2"></div>
+							<input type="checkbox" id="checkbox2" class="checkbox" name="field1" />
+						</div>
+					</li>
+					<li>
+						<span class="options_label">Autopilot</span>
+						<div class="switch" fake-active="yes">
+							<label class="enable" rel="slide3">Auto</label>
+							<label class="disable" rel="slide3">Off</label>
+							<div class="slide" id="slide3"></div>
+							<input type="checkbox" id="checkbox3" class="checkbox" name="field1" />
+						</div>
+					</li>					
+				</ul>
 			</div>
 			</div>
 			<footer>
@@ -146,8 +169,15 @@
 					<h1 id="faq4" fake-active="yes">Whatever</h1>
 					<p rel="faq4">Arcu hac mid, duis aenean, dolor penatibus cras ac integer enim</p>
 				</section>
+				</div> <!-- end of #faq_container -->
+				
+				<div id="sir_bubble_container_vertical">
+				<div class="speech_bubble">
+					"In the meanwhile, ferocious <b>Sir DragOnLot</b> went out to practice his unmatched beast slaying skills"
 				</div>
-			</div> <!-- end of #faq_container -->
+				<img id="img_dragonlot" src="img/Beast_slayer_small.png" alt="Sir DragOnLot"/>
+				</div>
+			</div> 
 			</div>
 			<footer>
 				<nav class="navbar">
@@ -172,9 +202,9 @@
 		
 				<div id="geolocation_container">
 					<form id="geolocation_search_form" action="#search" method="post">
-						<input id="geolocation_search" type="text" disabled="disabled" placeholder="Geolocating..." />
+						<input id="geolocation_search" class="green" type="text" disabled="disabled" placeholder="Geolocating..." />
 					</form>
-					<div id="loading">
+					<div id="loading" class="green">
 							<div id="bar1" class="l_bar"></div>
 							<div id="bar2" class="l_bar"></div>
 							<div id="bar3" class="l_bar"></div>

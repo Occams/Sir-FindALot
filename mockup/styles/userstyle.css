@@ -362,14 +362,18 @@ nav.navbar a.highlighted {
 	-webkit-border-radius:8px;
 	-moz-border-radius:8px;
 	border-radius:8px;
-	
-	-webkit-animation:pulse_orange 500ms infinite ease-in alternate;
 }
 
 #geolocation_search[disabled=disabled] {
 	color:white;
 	background:url('../img/glass.png') no-repeat 1% center, #EEE;
+}
+
+#geolocation_search.green {
 	-webkit-animation:pulse_green 500ms infinite ease-in alternate;
+}
+#geolocation_search.orange {
+	-webkit-animation:pulse_orange 500ms infinite ease-in alternate;
 }
 
 /* Test if this is really needed: removes highlighting on click */
@@ -461,8 +465,14 @@ nav.navbar a.highlighted {
 	border:1px solid #000;
 	
 	opacity:0.5;	
-	
-	background-color:#258B00;
+}
+
+#loading.green .l_bar {
+	background-color:#458B00;
+}
+
+#loading.orange .l_bar {
+	background-color:#f3961c;
 }
 
 #bar1 {-webkit-animation:loading1 1.5s infinite linear; -webkit-box-flex:1;}
@@ -668,6 +678,9 @@ ul.link-list li a:active, ul.link-list li a.fake-active  {
 }
 
 /* Faq accordion styles */
+#faq_container {
+	margin:10px 0px;
+}
 
 #faq_container .faq h1 {
 	display:box;
@@ -745,3 +758,113 @@ ul.link-list li a:active, ul.link-list li a.fake-active  {
 #faq_container .faq p.open {
 	height:150px;
 }
+
+/* Switch buttons */
+
+.switch {
+	display:box;
+	display:-moz-box;
+	display:-webkit-box;
+	display:-o-box;
+	
+	position:relative;
+	
+	box-orient: horizontal;
+	-moz-box-orient: horizontal;
+	-webkit-box-orient: horizontal;
+	
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	
+	box-align: center;
+	-moz-box-align: center;
+	-webkit-box-align: center;
+	
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	
+	background: #EEE;
+	border:1px solid #CCC;
+	
+	width:70%;
+}
+
+.switch input {
+	display:none;
+}
+
+.switch .slide {
+	display:box;
+	display:-moz-box;
+	display:-webkit-box;
+	display:-o-box;
+	
+	position:absolute;
+	
+	top:0px;
+	left:0px;
+	
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	
+	height:100%;
+	width:50%;
+	
+	border:1px solid #000;
+	
+	background:#444;
+	
+	/* Slide effect */
+	transition: all 0.5s  ease-in-out;
+  -webkit-transition: all 0.5s  ease-in-out;
+	-moz-transition: all 0.5s   ease-in-out;
+	
+	-webkit-transform: translateX(0%);
+}
+
+.switch .slide.selected {
+	-webkit-transform: translateX(100%);
+	background:#458B00;
+}	
+
+.switch .enable,.switch .disable {
+	display:box;
+	display:-moz-box;
+	display:-webkit-box;
+	display:-o-box;
+	
+	box-pack: center;
+	-moz-box-pack: center;
+	-webkit-box-pack: center;
+	
+	box-align: center;
+	-moz-box-align: center;
+	-webkit-box-align: center;
+	
+	height:40px;
+	
+	font-size:large;
+	font-weight:800px;
+	
+	
+	box-flex:1;
+	-moz-box-flex:1;
+	-webkit-box-flex:1;
+	-o-box-flex:1;
+}
+
+.switch:active, .switch.fake-active {
+	background:#FFF!important;
+}
+
+#options_list {
+	list-style:none;
+}
+
+#options_list .options_label{
+	font-size:large;
+}
+
