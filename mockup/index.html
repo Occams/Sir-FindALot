@@ -83,20 +83,97 @@
 	<header id="global-header"></header>
 	
 	<div id="viewport">
-		<div data-type="page" id="page1">
-			<header>Sir FindALot</header>
-			<div class="scroller" id="scroll-page1">
+		<div data-type="page" id="options">
+			<header>
+			Options
+			</header>
+			<div class="scroller" id="scroll-options">
 			<div data-type="page-content">
-				<div id="sir_home_container">
-					<div class="speech_bubble">
+				<div id="sir_bubble_container_vertical">
+					<div class="speech_bubble  bottom_triangle">
 						"<b>Sir Findalot</b> is eager to help you find a free lot!
 						I'm currently computing results based on your location."
 					</div>
-					<img id="img_sir_frontpage" src="img/icon_half.png" alt= "Sir FindALot"/>
+					<img id="img_carl" src="img/Carl_small.png" alt="Carl and Sir FindALot"/>
+				</div>
+				
+				<a href="#" id="show_modal">Show Test Modal</a>
+				
+				<div id="sir_bubble_container_vertical">
+				<div class="speech_bubble">
+					"In the meanwhile, ferocious <b>Sir DragOnLot</b> went out to practice his unmatched beast slaying skills"
+				</div>
+				<img id="img_dragonlot" src="img/Beast_slayer_small.png" alt="Sir DragOnLot"/>
+				</div>
+			</div>
+			</div>
+			<footer>
+				<nav class="navbar">
+					<a href="#home" fake-active="yes">Home</a>
+					<a href="#help" fake-active="yes">Help</a>
+					<a href="#options" class="highlighted"  fake-active="yes">Options</a>
+				</nav>
+			</footer>
+		</div>
+	
+		<div data-type="page" id="help">
+			<header>
+				Help
+			</header>
+			<div class="scroller" id="scroll-help">
+			<div data-type="page-content">
+				<div id="sir_bubble_container">
+					<div class="speech_bubble right_triangle">
+						"I have compiled an immense set of FAQs to walk you along the path of enlightenment and help you find your lot."
+					</div>
+					<img id="img_sir_help" src="img/Sir_FindALot_lightbulb_small.png" alt= "Sir FindALot offers help"/>
+				</div>	
+			
+				<div id="faq_container">
+				<section class="faq">
+					<h1 id="faq1" fake-active="yes">Learn the basic</h1>
+					<p rel="faq1">Augue eu eros pid cum in. Placerat lundium mid pulvinar a integer?</p>
+				</section>
+				<section class="faq">
+					<h1 id="faq2" fake-active="yes">Geolocation is not working</h1>
+					<p rel="faq2">Ultrices in cum cras cursus? In?</p>
+				</section>
+				<section class="faq">
+					<h1 id="faq3" fake-active="yes">Misplaced my brain</h1>
+					<p rel="faq3">Augue. A nec, nascetur tincidunt a ac placerat nisi! Montes nisi!</p>
+				</section>
+				<section class="faq">
+					<h1 id="faq4" fake-active="yes">Whatever</h1>
+					<p rel="faq4">Arcu hac mid, duis aenean, dolor penatibus cras ac integer enim</p>
+				</section>
+				</div>
+			</div> <!-- end of #faq_container -->
+			</div>
+			<footer>
+				<nav class="navbar">
+					<a href="#home" fake-active="yes">Home</a>
+					<a href="#help" class="highlighted"  fake-active="yes">Help</a>
+					<a href="#options" fake-active="yes">Options</a>
+				</nav>
+			</footer>
+		</div>
+	
+		<div data-type="page" id="home" home="yes">
+			<header>Sir FindALot</header>
+			<div class="scroller" id="scroll-home">
+			<div data-type="page-content">
+				<div id="sir_bubble_container">
+					<div class="speech_bubble right_triangle">
+						"<b>Sir Findalot</b> is eager to help you find a free lot!
+						I'm currently computing results based on your location."
+					</div>
+					<img id="img_sir_home" src="img/icon_half.png" alt= "Sir FindALot"/>
 				</div>
 		
 				<div id="geolocation_container">
-					<input id="geolocation_search" type="text" results=5 disabled="disabled" placeholder="Geolocating..."></input>
+					<form id="geolocation_search_form" action="#search" method="post">
+						<input id="geolocation_search" type="text" disabled="disabled" placeholder="Geolocating..." />
+					</form>
 					<div id="loading">
 							<div id="bar1" class="l_bar"></div>
 							<div id="bar2" class="l_bar"></div>
@@ -107,63 +184,63 @@
 						</li>
 					</div>
 				</div>
-				
-				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
 			</div>
 			</div>
 			<footer>
 				<nav class="navbar">
-					<a href="#page1" class="highlighted" fake-active="yes">Home</a>
-					<a href="#page2" fake-active="yes">Help</a>
-					<a href="#page3" fake-active="yes">Options</a>
+					<a href="#home" class="highlighted" fake-active="yes">Home</a>
+					<a href="#help" fake-active="yes">Help</a>
+					<a href="#options" fake-active="yes">Options</a>
 				</nav>
 			</footer>
 		</div>
 		
-		<div data-type="page" id="page2">
-			<header>
-				Page 2
-			</header>
-			<div class="scroller" id="scroll-page2">
-			<div data-type="page-content">
-				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-				<a href="#page2" id="show_modal">Show Modal window</a>
-				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et 
-				dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>	
-				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>			
-			</div>
-			</div>
-			<footer>
-				<nav class="navbar">
-					<a href="#page1" fake-active="yes">Home</a>
-					<a href="#page2" class="highlighted"  fake-active="yes">Help</a>
-					<a href="#page3" fake-active="yes">Options</a>
-				</nav>
-			</footer>
-		</div>
-
-		<div data-type="page" id="page3">
-			<header>
-				Page 3
-			</header>
-			<div class="scroller" id="scroll-page3">
-			<div data-type="page-content">
-				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et 
-				dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>	
-				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>				
-			</div>
+	<div data-type="page" id="search">
+			<header>Search Results</header>
+			<div class="scroller" id="scroll-search">
+				<div data-type="page-content">
+					<ul class="link-list" id="search_results">
+						<li><a href="#lot" fake-active="yes">Uni Passau Tiefgarage</a></li>
+						<li><a href="#lot" fake-active="yes">Uni Regen Tiefgarage</a></li>
+						<li><a href="#lot" fake-active="yes">Passau Zentralgarage</a></li>
+						<li><a href="#lot" fake-active="yes">Freyung Kurhaus</a></li>
+						<li><a href="#lot" fake-active="yes">Freyung Krankenhaus</a></li>
+						<li><a href="#lot" fake-active="yes">Passau Krankenhaus</a></li>
+						<li><a href="#lot" fake-active="yes">New York Central</a></li>
+						<li><a href="#lot" fake-active="yes">Bananas Parking</a></li>
+						<li><a href="#lot" fake-active="yes">John's Lots</a></li>
+						<li><a href="#lot" fake-active="yes">Uni Passau Tiefgarage</a></li>
+						<li><a href="#lot" fake-active="yes">Uni Regen Tiefgarage</a></li>
+						<li><a href="#lot" fake-active="yes">Passau Zentralgarage</a></li>
+						<li><a href="#lot" fake-active="yes">Freyung Kurhaus</a></li>
+						<li><a href="#lot" fake-active="yes">Freyung Krankenhaus</a></li>
+					</ul>
+				</div>
 			</div>
 			<footer>
 				<nav class="navbar">
-					<a href="#page1" fake-active="yes">Home</a>
-					<a href="#page2" fake-active="yes">Help</a>
-					<a href="#page3" class="highlighted"  fake-active="yes">Options</a>
+					<a href="#home" fake-active="yes">Home</a>
+					<a href="#help" fake-active="yes">Help</a>
+					<a href="#options" fake-active="yes">Options</a>
 				</nav>
 			</footer>
-		</div>
+	</div>
+	
+	<div data-type="page" id="lot">
+			<header>Lot Display</header>
+			<div class="scroller" id="scroll-lot">
+				<div data-type="page-content">
+					<p>TODO</p>
+				</div>
+			</div>
+			<footer>
+				<nav class="navbar">
+					<a href="#home" fake-active="yes">Home</a>
+					<a href="#lot" fake-active="yes">Map</a>
+					<a href="#lot" fake-active="yes">Details</a>
+				</nav>
+			</footer>
+	</div>
 	</div> <!-- end of #viewport -->
 	
 	<footer id="global-footer">

@@ -29,6 +29,7 @@ footer#global-footer {
 	display:box;
 	display:-webkit-box;
 	display:-moz-box;
+	display:-o-box;
 	
 	-moz-box-orient: horizontal;
 	-webkit-box-orient: horizontal;
@@ -50,6 +51,7 @@ footer#global-footer {
 
 .scroller {
 	height:100%;
+	width:100%;
 	overflow:hidden;
 }
 
@@ -67,6 +69,7 @@ footer#global-footer {
 	
 	top:0px;
 	bottom:0px;
+	width:100%;
 	
 	overflow:hidden;
 }
