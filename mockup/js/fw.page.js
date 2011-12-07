@@ -188,12 +188,7 @@
 
 			// Attach event handlers to account for androids :active css bug
 			this._registerFakeActive();
-
-			// Adjust layout based on orientation
-			window.addEventListener(RESIZE_EV, function (e) {
-				// Seems like IScroll already handles resize events
-			});
-
+			
 			// Initialize modal window
 			this._initModal();
 
@@ -231,6 +226,11 @@
 			} else {
 				Page._showModal('No Geolocation', 'Sorry, your browser does not support geolocation.');
 			}
+			
+			window.addEventListener(RESIZE_EV, function(e) {
+				// Update IScroll (Still does not work as expected on orientaton change)
+				setTimeout(Page._updateIScroll, 50);
+			});
 
 		},
 		
@@ -259,27 +259,32 @@
 
 		_showModal: function (heading, text) {
 			var modal = $('#modal');
-			var fade = $('#fade');
 
+			Page._fadeOverlay();
+			
 			$('#modal h1').html(':: ' + heading);
 			$('#modal p').html(text);
 
-			fade.setStyle('z-index', '1000');
-			fade.setStyle('opacity', '0.8');
 			modal.css({
 				display: '-' + vendor + '-box'
 			});
 		},
-
-		_closeModal: function () {
-			var modal = $('#modal');
+		
+		_fadeOverlay: function() {
 			var fade = $('#fade');
-
+			fade.setStyle('z-index', '1000');
+			fade.setStyle('opacity', '0.8');
+		},
+		
+		_removeFadeOverlay: function() {
+			var fade = $('#fade');
 			fade.setStyle('z-index', '0');
 			fade.setStyle('opacity', '0');
-			modal.css({
-				display: 'none'
-			});
+		},
+
+		_closeModal: function () {
+			$('#modal').hide();
+			Page._removeFadeOverlay();
 		},
 
 		_accordionHandler: function (el) {
@@ -294,7 +299,7 @@
 			if (!toggle) target.addClass('open');
 
 			// Update IScroll, height changed during animation
-			setTimeout(Page._updateIScroll, 550);
+			setTimeout(Page._updateIScroll, 0);
 		},
 
 		_updateIScroll: function () {
@@ -311,20 +316,31 @@
 
 			// Fake response delay
 			setTimeout(function (e) {
-				var geo = $('#geolocation_search');
+				var geo = $('#geolocation_search'), form = $('#geolocation_search_form');
 
 				// Hide loading animation
 				$('#loading').setStyle('display', 'none');
 
 				// Enable input field and change placeholder text
 				geo.attr('placeholder', 'Touch to enter custom query...');
-				geo.rAttr('disabled').removeClass('green').addClass('orange');
+				geo.rAttr('disabled');
+				form.removeClass('green').addClass('orange');
 				// Fake response result
-				$('#geolocation_container').after('<ul class="link-list" id="geo_results">' + '<li><a href="#lot" fake-active="yes">Uni Passau Tiefgarage</a></li>' + '<li><a href="#lot" fake-active="yes">Uni Regen Tiefgarage</a></li>' + '<li><a href="#lot" fake-active="yes">Uni Zwiesel Tiefgarage</a></li>' + '</ul>');
+				form.after('<ul class="link-list" id="geo_results">' + '<li><a href="#lot" fake-active="yes">Uni Passau Tiefgarage</a></li>' + '<li><a href="#lot" fake-active="yes">Uni Regen Tiefgarage</a></li>' + '<li><a href="#lot" fake-active="yes">Uni Zwiesel Tiefgarage</a></li>' + '</ul>');
 				
 				// Update link-list event handlers
-				$('link-list a').fastbutton(function(e) {
-					Page.show(this.element.attr('href').idify());
+				$('.link-list a').fastbutton(function(e) {
+					Page._displayLoadingAnimation();
+					var id = this.element.getAttribute('href').idify();
+					
+					// Fake response delay
+					setTimeout(function(e) {
+						Page._hideLoadingAnimation();
+						Page.show(id);
+					},2000);
+					
+					e.preventDefault();
+					return false;
 				});
 				
 				// Fade in of geolocation results. No animation without timeout? */
@@ -337,6 +353,20 @@
 				Page._updateIScroll();
 
 			}, 2000);
+		},
+		
+		_displayLoadingAnimation: function(e) {
+			// Display loading animation
+					Page._fadeOverlay();
+					$('#loading_overlay').css({
+							display: 'box',
+							display: '-' + vendor + '-box'
+					});
+		},
+		
+		_hideLoadingAnimation: function(e) {
+			$('#loading_overlay').hide();
+			Page._removeFadeOverlay();
 		},
 
 		_geoError: function (position) {
@@ -398,6 +428,9 @@
 			// Update: Attach event handlers to account for androids :active css bug
 			this._registerFakeActive();
 
+			// No callout on navigation links
+			this.gFooter.find("a").addClass('nocallout');
+			
 			// Fastbutton update for toolbar links
 			this.gFooter.find("a").fastbutton(function (event) {
 				Page.show(this.element.getAttribute("href").idify());
