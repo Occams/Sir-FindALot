@@ -1,0 +1,18 @@
+%h1 Listing parkingramps
+
+%ul
+  - @parkingramps.each do |parkingramp|
+    %li
+      =link_to parkingramp.name, [:admin, parkingramp]
+      =link_to t(:edit), edit_admin_parkingramp_path(parkingramp)
+      =link_to t(:destroy), [:admin, parkingramp], :confirm => t(:sure), :method => :delete
+      %ul.parkingramps-planes
+        - parkingramp.parkingplanes.each do |parkingplane|
+          %li
+            =link_to parkingplane.name, edit_admin_parkingramp_parkingplane_path(parkingramp, parkingplane)
+            =link_to t(:destroy), [:admin, parkingramp, parkingplane], :confirm => t(:sure), :method => :delete
+
+
+%br
+
+= link_to 'New Parkingramp', new_admin_parkingramp_path

@@ -1,0 +1,13 @@
+#logo
+%ul
+  %li= link_to 'Home', '/'
+  - if current_operator
+    %li#operator-flyout-trigger
+      =link_to current_operator.name, admin_parkingramps_url
+      #operator-flyout
+        %ul
+          %li= link_to t(Parkingramp.t(:plural)), admin_parkingramps_url
+          %li= link_to t(:page_api), '/api'
+          %li= link_to t(:logout), destroy_operator_session_path, :method => :delete
+  -else
+    %li= link_to 'Operators', new_operator_session_url

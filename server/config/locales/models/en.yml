@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    models:
+      parkingramp: Parkingramp
+      
+    attributes:
+      parkingramp:
+        plural: Parkingramps
+        new: New parkingramp

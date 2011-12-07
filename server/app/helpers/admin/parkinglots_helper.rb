@@ -1,0 +1,2 @@
+module Admin::ParkinglotsHelper
+end

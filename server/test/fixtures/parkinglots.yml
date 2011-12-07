@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  parkingplane_id: 1
+  category: default
+  x: 2
+  y: 2
+  taken: false
+
+two:
+  id: 2
+  parkingplane_id: 1
+  category: default
+  x: 2
+  y: 3
+  taken: true
