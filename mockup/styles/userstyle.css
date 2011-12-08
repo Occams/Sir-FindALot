@@ -944,7 +944,11 @@ ul.link-list li a:active, ul.link-list li a.fake-active  {
 	-moz-border-radius: 8px;
 	border-radius: 8px;
 	
-	height:100%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	
+	height:40px;
 	width:50%;
 	
 	border:1px solid #000;
@@ -952,9 +956,9 @@ ul.link-list li a:active, ul.link-list li a.fake-active  {
 	background:#444;
 	
 	/* Slide effect */
-	transition: all 0.5s  ease-in-out;
-  -webkit-transition: all 0.5s  ease-in-out;
-	-moz-transition: all 0.5s   ease-in-out;
+	transition: all 0.25s  ease-in-out;
+  -webkit-transition: all 0.25s  ease-in-out;
+	-moz-transition: all 0.25s   ease-in-out;
 	
 	-webkit-transform: translate3d(0%,0,0);
 }
@@ -978,6 +982,10 @@ ul.link-list li a:active, ul.link-list li a.fake-active  {
 	-moz-box-align: center;
 	-webkit-box-align: center;
 	
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	
 	height:40px;
 	
 	font-size:large;
@@ -990,8 +998,8 @@ ul.link-list li a:active, ul.link-list li a.fake-active  {
 	-o-box-flex:1;
 }
 
-.switch:active, .switch.fake-active {
-	background:#FFF!important;
+.switch:active {
+	background:#f3961c;
 }
 
 #options_list {

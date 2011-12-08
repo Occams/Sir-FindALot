@@ -39,6 +39,8 @@
 		this.each(function () {
 			new MBP.fastButton(this, handler);
 		});
+		
+		return this;
 	}
 
 	// Convenience remove Attribute helper
@@ -65,7 +67,8 @@
 
 		// IScroll4 doc recommends using setTimeout
 		setTimeout(function () {
-			Page.scrollers[scrollID].refresh()
+			console.log('Refresh of scroll area: '+scrollID);
+			Page.scrollers[scrollID].refresh();
 		}, 0);
 
 		// Scroll to top
@@ -228,7 +231,7 @@
 			}
 			
 			window.addEventListener(RESIZE_EV, function(e) {
-				// Update IScroll (Still does not work as expected on orientaton change)
+				// Update IScroll (Still does not work as expected on orientation change)
 				setTimeout(Page._updateIScroll, 50);
 			});
 
@@ -299,16 +302,17 @@
 			if (!toggle) target.addClass('open');
 
 			// Update IScroll, height changed during animation
-			setTimeout(Page._updateIScroll, 0);
+			setTimeout(Page._updateIScroll, 500);
 		},
 
 		_updateIScroll: function () {
 			// Update IScroll4 object
-			var scrollID = $(Page.currentPage).find('.scroller')[0].getAttribute('id');
-
+			console.log(Page.current_page);
+			var scrollID = $(Page.current_page.hashify()).find('.scroller')[0].getAttribute('id');
 			// IScroll4 doc recommends using setTimeout
 			setTimeout(function () {
-				Page.scrollers[scrollID].refresh()
+				console.log('Refresh of scroll area: '+scrollID);
+				Page.scrollers[scrollID].refresh();
 			}, 0);
 		},
 
@@ -338,9 +342,6 @@
 						Page._hideLoadingAnimation();
 						Page.show(id);
 					},2000);
-					
-					e.preventDefault();
-					return false;
 				});
 				
 				// Fade in of geolocation results. No animation without timeout? */
@@ -371,6 +372,15 @@
 
 		_geoError: function (position) {
 			Page._showModal('Geolocation', 'Sorry, I encountered an error while trying to geolocate you. You may still issue a custom search.');
+			var geo = $('#geolocation_search'), form = $('#geolocation_search_form');
+
+				// Hide loading animation
+				$('#loading').setStyle('display', 'none');
+
+				// Enable input field and change placeholder text
+				geo.attr('placeholder', 'Touch to enter custom query...');
+				geo.rAttr('disabled');
+				form.removeClass('green').addClass('orange');
 		},
 
 		_makeIScrollFriendly: function (e) {
@@ -490,5 +500,8 @@
 		Page.init();
 		// MBP.hideUrlBar(); // Not working?
 	});
+	
+	if (typeof exports !== 'undefined') exports.Page = Page;
+	else window.Page = Page;
 
 })();
