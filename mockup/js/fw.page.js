@@ -316,6 +316,19 @@
 			}, 0);
 		},
 
+		
+		_generate_link_list: function (links,id){
+			var html='';
+			
+			for (var title in links) {
+				html+='<li><a href="'+links[title]+'" fake-active="yes">';
+				html+='<div class="occupancy"><div class="level"></div><div class="mask"></div></div>';
+				html+='<span class="link-list-title">'+title+'</span></a></li>';
+			}
+			
+			return '<ul class="link-list" id="'+id+'">'+html+'</ul>';
+		},
+		
 		_geoPosition: function (position) {
 
 			// Fake response delay
@@ -329,8 +342,18 @@
 				geo.attr('placeholder', 'Touch to enter custom query...');
 				geo.rAttr('disabled');
 				form.removeClass('green').addClass('orange');
+				
 				// Fake response result
-				form.after('<ul class="link-list" id="geo_results">' + '<li><a href="#lot" fake-active="yes">Uni Passau Tiefgarage</a></li>' + '<li><a href="#lot" fake-active="yes">Uni Regen Tiefgarage</a></li>' + '<li><a href="#lot" fake-active="yes">Uni Zwiesel Tiefgarage</a></li>' + '</ul>');
+				var links = {'Uni Passau Tiefgarage' : '#lot' , 'Uni Regen Tiefgarage' : '#lot', 'Zentralgarage' : '#lot', 'John\'s Garage' : '#lot'}
+				form.after(Page._generate_link_list(links, 'geo_results'));
+				
+				// Display occupancy animation
+				var occupancy = [0.3,0.7,0.4,0.6,0.1];
+				
+				setTimeout(function (e) {
+				$('#geo_results .mask').each(function (el,i) {
+					$(el).setStyle('width',(100- occupancy[i]*100)+'%');
+				})},100);
 				
 				// Update link-list event handlers
 				$('.link-list a').fastbutton(function(e) {
