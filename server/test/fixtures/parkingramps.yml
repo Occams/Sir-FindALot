@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  name: Tiefgarage Uni Passau
+  operator_id: 1
+  category: underground
+  info_status: MyString
+  info_pricing: MyText
+  info_openinghours: MyText
+  info_address: MyText
+  latitude: 48.568969
+  longitude: 13.454304
+
+two:
+  id: 2
+  name: Parkhaus Klinikum Passau
+  operator_id: 1
+  category: ramp
+  info_status: MyString
+  info_pricing: MyText
+  info_openinghours: MyText
+  info_address: MyText
+  latitude: 48.563573
+  longitude: 13.444734
+  
+three:
+  id: 3
+  name: Parkhaus Test
+  operator_id: 2
+  category: ramp
+  info_status: MyString
+  info_pricing: MyText
+  info_openinghours: MyText
+  info_address: MyText
+  latitude: 48.563573
+  longitude: 13.444734

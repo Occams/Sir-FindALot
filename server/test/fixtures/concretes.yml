@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  parkingplane_id: 1
+  category: 
+  x: 1
+  y: 1
+
+two:
+  parkingplane_id: 1
+  category: 
+  x: 1
+  y: 2

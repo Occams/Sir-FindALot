@@ -1,4 +1,23 @@
 Server::Application.routes.draw do
+  
+  resources :searches, :only => :create
+  resources :pages, :only => [:index, :show]
+  resources :stats
+
+  namespace :admin do
+    resources :parkingramps do
+      resources :parkingplanes, :except => [:index, :show] do
+        resources :parkinglots
+      end
+    end
+  end
+
+  devise_for :operators
+  
+  # Catch all not intercepted routes till now and give that to the pages controller
+  match "/:id" => "pages#show"
+  root :to => "pages#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

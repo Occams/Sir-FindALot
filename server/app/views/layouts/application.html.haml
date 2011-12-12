@@ -1,0 +1,37 @@
+!!!
+%html
+  %head
+    %title SirFindALot
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Signika+Negative'
+    = stylesheet_link_tag :application
+    = javascript_include_tag :application
+    = csrf_meta_tags
+  %body
+    #content-wrapper
+      #wrapper
+        #header= render :partial => 'shared/header'
+        #content
+          = render :partial => 'shared/operator_panel.html.haml'
+          - flash.each do |name, msg|
+            = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+          = yield
+          .clear
+    #footer-wrapper
+      #footer
+        .linklist
+          %h2 Pages
+          %ul
+            %li= link_to t(:page_about), '/about'
+            %li= link_to t(:page_imprint), '/imprint'
+            %li= link_to t(:page_contact), '/contact'
+        .linklist
+          %h2 Get in touch
+          %ul
+            %li= link_to t(:facebook), 'http://facebook.com'
+            %li= link_to t(:twitter), 'http://twitter.com'
+        .linklist
+          %h2 Muell
+        #about
+          %h2 About
+          %p= t(:about)
+        .clear

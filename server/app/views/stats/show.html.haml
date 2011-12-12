@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Parkingplane:
+  = @stat.parkingplane_id
+%p
+  %b Lots total:
+  = @stat.lots_total
+%p
+  %b Lots taken:
+  = @stat.lots_taken
+
+= link_to 'Edit', edit_stat_path(@stat)
+\|
+= link_to 'Back', stats_path

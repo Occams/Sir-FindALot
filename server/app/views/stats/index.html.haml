@@ -1,0 +1,23 @@
+%h1 Listing stats
+
+%table
+  %tr
+    %th Parkingplane
+    %th Lots total
+    %th Lots taken
+    %th
+    %th
+    %th
+
+  - @stats.each do |stat|
+    %tr
+      %td= stat.parkingplane_id
+      %td= stat.lots_total
+      %td= stat.lots_taken
+      %td= link_to 'Show', stat
+      %td= link_to 'Edit', edit_stat_path(stat)
+      %td= link_to 'Destroy', stat, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Stat', new_stat_path

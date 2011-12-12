@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  name: Erdgeschoss
+  parkingramp_id: 1
+  sorting: 1
+  lots_total: 100
+  lots_taken: 50
+
+two:
+  id: 2
+  name: 1. Untergeschoss
+  parkingramp_id: 1
+  sorting: 2
+  lots_total: 100
+  lots_taken: 10
+  
+three:
+  id: 3
+  name: 1. Untergeschoss
+  parkingramp_id: 2
+  sorting: 2
+  lots_total: 100
+  lots_taken: 10

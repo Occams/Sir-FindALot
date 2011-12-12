@@ -1,0 +1,16 @@
+= form_for [:admin, @parkingramp, @parkingplane] do |f|
+  -if @parkingplane.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@parkingplane.errors.count, "error")} prohibited this parkingplane from being saved:"
+      %ul
+        - @parkingplane.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :sorting
+    = f.number_field :sorting
+  .actions
+    = f.submit 'Save'

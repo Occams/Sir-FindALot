@@ -1,0 +1,34 @@
+= form_for [:admin, @parkingramp] do |f|
+  -if @parkingramp.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@parkingramp.errors.count, "error")} prohibited this parkingramp from being saved:"
+      %ul
+        - @parkingramp.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :category
+    = f.text_field :category
+  .field
+    = f.label :info_status
+    = f.text_field :info_status
+  .field
+    = f.label :info_pricing
+    = f.text_area :info_pricing
+  .field
+    = f.label :info_openinghours
+    = f.text_area :info_openinghours
+  .field
+    = f.label :info_address
+    = f.text_area :info_address
+  .field
+    = f.label :latitude
+    = f.text_field :latitude
+  .field
+    = f.label :longitude
+    = f.text_field :longitude
+  .actions
+    = f.submit 'Save'

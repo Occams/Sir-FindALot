@@ -1,0 +1,2 @@
+= form_for [:admin, @parkingramp, @parkingplane, Parkinglot.new] do |f|
+  = fields_for 'parkinglot[]', Parkinglot.new do |d|

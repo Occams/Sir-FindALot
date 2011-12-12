@@ -2,4 +2,10 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  edit: Edit
+  destroy: Delete
+  sure: Are you sure?
+  about: "This is the about text... Sir Fuckin Find A Lot descriptionSir Fuckin Find A Lot description"
+  page_about: About
+  page_imprint: Imprint
+  page_contact: Contact
