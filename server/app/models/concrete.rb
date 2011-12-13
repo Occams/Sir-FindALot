@@ -5,4 +5,10 @@ class Concrete < ActiveRecord::Base
   belongs_to :parkingplane
   
   attr_protected :parkinplane_id
+  
+  
+  @@categories = %w{ street entry exit }
+  def self.categories
+    @@categories
+  end
 end

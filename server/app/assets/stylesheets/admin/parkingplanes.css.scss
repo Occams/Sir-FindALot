@@ -1,3 +1,30 @@
-// Place all the styles related to the admin::parkingplanes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#parkinglots {
+  width:100%;
+  height:600px;
+  background-color:white;
+  position:relative;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+}
+
+#parkinglots .lot {
+  position:absolute;
+  background-color:black;
+  margin:1px;
+  width:18px;
+  height:18px;
+}
+
+// Some styles
+.brush_concrete_street { background-color:#999 !important;}
+
+#parkinglots-brushes a {
+  display:inline-block;
+  padding:10px;
+}
+
+#parkinglots-brushes a.active-brush {
+  background-color:black;
+  color:white;
+}

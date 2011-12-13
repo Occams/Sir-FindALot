@@ -12,17 +12,6 @@ class Admin::ParkingrampsController < Admin::ApplicationController
     end
   end
 
-  # GET /admin/parkingramps/1
-  # GET /admin/parkingramps/1.json
-  def show
-    @parkingramp = @Parkingramp.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @parkingramp }
-    end
-  end
-
   # GET /admin/parkingramps/new
   # GET /admin/parkingramps/new.json
   def new
@@ -47,7 +36,7 @@ class Admin::ParkingrampsController < Admin::ApplicationController
 
     respond_to do |format|
       if @parkingramp.save
-        format.html { redirect_to [:admin, @parkingramp], notice: 'Parkingramp was successfully created.' }
+        format.html { redirect_to admin_parkingramps_url, notice: 'Parkingramp was successfully created.' }
         format.json { render json: @parkingramp, status: :created, location: @parkingramp }
       else
         format.html { render action: "new" }
@@ -64,7 +53,7 @@ class Admin::ParkingrampsController < Admin::ApplicationController
     respond_to do |format|
       if @parkingramp.operator_id == current_operator.id &&
          @parkingramp.update_attributes(params[:parkingramp])
-        format.html { redirect_to [:admin, @parkingramp], notice: 'Parkingramp was successfully updated.' }
+        format.html { redirect_to admin_parkingramps_url, notice: 'Parkingramp was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

@@ -7,11 +7,27 @@ class Parkingplane < ActiveRecord::Base
   
   # Lots relations
   has_many :lots, :class_name => 'Parkinglot', :dependent => :delete_all
-  has_many :concretes, :dependent => :delete_all
+  has_many :concretes, :class_name => 'Concrete', :dependent => :delete_all
+  has_many :taken_lots, :class_name => 'Parkinglot',
+           :conditions => {:taken => true}
   
   attr_protected :parkingramp_id
   
-  def update_lots_count
-    self.lots_total = self.lots.count
+  # Save a statistic for this plane
+  def stat_down!
+    stat = Stat.new
+    stat.parkingplane_id = self.id
+    stat.lots_total = self.lots_total
+    stat.lots_taken = self.lots_taken
+    stat.save
+  end
+  
+  # overwrite lots_taken and lots_total field, TODO cache this values
+  def lots_taken
+    self.taken_lots.count
+  end
+  
+  def lots_total
+    self.lots.count
   end
 end

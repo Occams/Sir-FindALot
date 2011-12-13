@@ -5,6 +5,12 @@
     = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Signika+Negative'
     = stylesheet_link_tag :application
     = javascript_include_tag :application
+    
+    
+    -if operator_signed_in?
+      = stylesheet_link_tag 'admin/application'
+      = javascript_include_tag 'activity-indicator'
+      
     = csrf_meta_tags
   %body
     #content-wrapper
@@ -13,7 +19,7 @@
         #content
           = render :partial => 'shared/operator_panel.html.haml'
           - flash.each do |name, msg|
-            = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+            = content_tag :div, msg, :id => "flash_#{name}", :class => "flash-message" if msg.is_a?(String)
           = yield
           .clear
     #footer-wrapper

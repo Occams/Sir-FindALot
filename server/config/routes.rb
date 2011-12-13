@@ -5,9 +5,10 @@ Server::Application.routes.draw do
   resources :stats
 
   namespace :admin do
-    resources :parkingramps do
+    resources :parkingramps, :except => [:show] do
       resources :parkingplanes, :except => [:index, :show] do
         resources :parkinglots
+        resources :concretes
       end
     end
   end

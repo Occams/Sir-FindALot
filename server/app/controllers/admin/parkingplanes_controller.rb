@@ -25,7 +25,7 @@ class Admin::ParkingplanesController < Admin::ApplicationController
 
     respond_to do |format|
       if @parkingplane.save
-        format.html { redirect_to [:admin, @parkingramp, @parkingplane], notice: 'Parkingplane was successfully created.' }
+        format.html { redirect_to edit_admin_parkingramp_parkingplane_url(@parkingramp, @parkingplane), notice: 'Parkingplane was successfully created.' }
         format.json { render json: @parkingplane, status: :created, location: @parkingplane }
       else
         format.html { render action: "new" }
@@ -41,7 +41,7 @@ class Admin::ParkingplanesController < Admin::ApplicationController
 
     respond_to do |format|
       if @parkingplane.update_attributes(params[:parkingplane])
-        format.html { redirect_to [:admin, @parkingramp, @parkingplane], notice: 'Parkingplane was successfully updated.' }
+        format.html { redirect_to edit_admin_parkingramp_parkingplane_url(@parkingramp, @parkingplane), notice: 'Parkingplane was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -57,7 +57,7 @@ class Admin::ParkingplanesController < Admin::ApplicationController
     @parkingplane.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_parkingramp_parkingplanes_url(@parkingramp) }
+      format.html { redirect_to admin_parkingramps_url }
       format.json { head :ok }
     end
   end

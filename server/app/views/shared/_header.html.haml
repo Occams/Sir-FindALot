@@ -1,7 +1,7 @@
 #logo
 %ul
   %li= link_to 'Home', '/'
-  - if current_operator
+  - if operator_signed_in?
     %li#operator-flyout-trigger
       =link_to current_operator.name, admin_parkingramps_url
       #operator-flyout

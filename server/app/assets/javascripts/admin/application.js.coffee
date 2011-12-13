@@ -1,3 +1,17 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$( ->
+  $.fn.overlay = (enable) ->
+    for el in this
+      overlay = $(el).find(".overlay")
+      
+      if not enable
+        overlay.remove()
+      else
+        if not overlay? or overlay.length is 0
+          overlay = $("<div class=\"overlay\"></div>").appendTo($(el));
+        
+        $(el).css "position", (if $(el).css("position") is "absolute" then "absolute" else "relative")
+        overlay.show().css("opacity", 0.5)
+        overlay
+        
+    this
+)

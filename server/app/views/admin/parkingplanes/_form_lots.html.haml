@@ -1,2 +1,17 @@
-= form_for [:admin, @parkingramp, @parkingplane, Parkinglot.new] do |f|
-  = fields_for 'parkinglot[]', Parkinglot.new do |d|
+.clear
+
+#parkinglots-brushes
+  = select_tag Parkinglot.name.downcase, options_from_collection_for_select(parkinglot_categories, "category", "translation")
+  = select_tag Concrete.name.downcase, options_from_collection_for_select(concrete_categories, "category", "translation")
+
+#parkinglots
+  
+:javascript
+  $(function() {
+    var plane = new Plane('#parkinglots', #{@parkingplane.lots.to_json}, #{@parkingplane.concretes.to_json});
+    $(".edit_parkingplane input[type=submit]").click(function(event) {
+      event.preventDefault();
+      plane.save(function() {$("form.edit_parkingplane").submit();});
+      return false;
+    });
+  });

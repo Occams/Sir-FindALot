@@ -1,7 +1,3 @@
-// Place all the styles related to the application controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 // Default Definitions
 $default-width: 981px;
 $default-bg: #393E43;
@@ -13,6 +9,8 @@ $color-2: #2D9B27;
 $color-3: #078600;
 $color-4: #42E73A;
 $color-5: #6EE768;
+
+$padding:20px;
 
 
 // Mixins
@@ -207,4 +205,35 @@ label {
 .parkingramp-form textarea {
   width:100%;
   height:60px;
+}
+
+.flash-message {
+  @include border(5px);
+  padding:10px;
+  background-color:#FFCC99;
+  border:1px solid darker(#E65C00);
+  text-align:center;
+  margin:20px;
+}
+
+.activity-indicator {
+  z-index:101;
+}
+
+.overlay {
+  z-index:100;
+  @include border($padding);
+  background-color:black;
+  position:absolute;
+  left:0px;
+  right:0px;
+  bottom:0px;
+  top:0px;
+}
+
+#content>.overlay {
+  left:$padding/2;
+  right:$padding/2;
+  bottom:$padding/2;
+  top:$padding/2;
 }

@@ -3,13 +3,15 @@
 %ul
   - @parkingramps.each do |parkingramp|
     %li
-      =link_to parkingramp.name, [:admin, parkingramp]
+      =parkingramp.name
       =link_to t(:edit), edit_admin_parkingramp_path(parkingramp)
-      =link_to t(:destroy), [:admin, parkingramp], :confirm => t(:sure), :method => :delete
+      =link_to t(:destroy), [:admin, parkingramp], :method => :delete, :confirm => t(:sure)
+      =link_to t(:newplane), new_admin_parkingramp_parkingplane_path(parkingramp)
       %ul.parkingramps-planes
         - parkingramp.parkingplanes.each do |parkingplane|
           %li
-            =link_to parkingplane.name, edit_admin_parkingramp_parkingplane_path(parkingramp, parkingplane)
+            =parkingplane.name
+            =link_to t(:edit), edit_admin_parkingramp_parkingplane_path(parkingramp, parkingplane)
             =link_to t(:destroy), [:admin, parkingramp, parkingplane], :confirm => t(:sure), :method => :delete
 
 
