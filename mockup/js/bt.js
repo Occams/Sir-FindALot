@@ -77,12 +77,12 @@ MBP.fastButton.prototype.handleEvent = function(event) {
 };
 
 MBP.fastButton.prototype.onTouchStart = function(event) {
-    event.stopPropagation();
+    //event.stopPropagation();
     this.element.addEventListener('touchend', this, false);
     document.body.addEventListener('touchmove', this, false);
     this.startX = event.touches[0].clientX;
     this.startY = event.touches[0].clientY;
-    this.element.style.backgroundColor = "rgba(0,0,0,.7)";
+    // this.element.style.backgroundColor = "rgba(0,0,0,.7)"; What the fuck? Freilich, style ma einfach moi
 };
 
 MBP.fastButton.prototype.onTouchMove = function(event) {
@@ -96,16 +96,18 @@ MBP.fastButton.prototype.onClick = function(event) {
     event.stopPropagation();
     this.reset();
     this.handler(event);
+		
     if(event.type == 'touchend') {
         MBP.preventGhostClick(this.startX, this.startY);
     }
-    this.element.style.backgroundColor = "";
+		
+   // this.element.style.backgroundColor = ""; und namoi
 };
 
 MBP.fastButton.prototype.reset = function() {
     this.element.removeEventListener('touchend', this, false);
     document.body.removeEventListener('touchmove', this, false);
-    this.element.style.backgroundColor = "";
+   //this.element.style.backgroundColor = "";
 };
 
 MBP.preventGhostClick = function (x, y) {
@@ -119,6 +121,7 @@ MBP.ghostClickHandler = function (event) {
     for(var i = 0, len = MBP.coords.length; i < len; i += 2) {
         var x = MBP.coords[i];
         var y = MBP.coords[i + 1];
+				
         if(Math.abs(event.clientX - x) < 25 && Math.abs(event.clientY - y) < 25) {
             event.stopPropagation();
             event.preventDefault();

@@ -39,6 +39,8 @@
 		this.each(function () {
 			new MBP.fastButton(this, handler);
 		});
+		
+		return this;
 	}
 
 	// Convenience remove Attribute helper
@@ -65,7 +67,8 @@
 
 		// IScroll4 doc recommends using setTimeout
 		setTimeout(function () {
-			Page.scrollers[scrollID].refresh()
+			console.log('Refresh of scroll area: '+scrollID);
+			Page.scrollers[scrollID].refresh();
 		}, 0);
 
 		// Scroll to top
@@ -228,7 +231,7 @@
 			}
 			
 			window.addEventListener(RESIZE_EV, function(e) {
-				// Update IScroll (Still does not work as expected on orientaton change)
+				// Update IScroll (Still does not work as expected on orientation change)
 				setTimeout(Page._updateIScroll, 50);
 			});
 
@@ -299,19 +302,33 @@
 			if (!toggle) target.addClass('open');
 
 			// Update IScroll, height changed during animation
-			setTimeout(Page._updateIScroll, 0);
+			setTimeout(Page._updateIScroll, 500);
 		},
 
 		_updateIScroll: function () {
 			// Update IScroll4 object
-			var scrollID = $(Page.currentPage).find('.scroller')[0].getAttribute('id');
-
+			console.log(Page.current_page);
+			var scrollID = $(Page.current_page.hashify()).find('.scroller')[0].getAttribute('id');
 			// IScroll4 doc recommends using setTimeout
 			setTimeout(function () {
-				Page.scrollers[scrollID].refresh()
+				console.log('Refresh of scroll area: '+scrollID);
+				Page.scrollers[scrollID].refresh();
 			}, 0);
 		},
 
+		
+		_generate_link_list: function (links,id){
+			var html='';
+			
+			for (var title in links) {
+				html+='<li><a href="'+links[title]+'" fake-active="yes">';
+				html+='<div class="occupancy"><div class="level"></div><div class="mask"></div></div>';
+				html+='<span class="link-list-title">'+title+'</span></a></li>';
+			}
+			
+			return '<ul class="link-list" id="'+id+'">'+html+'</ul>';
+		},
+		
 		_geoPosition: function (position) {
 
 			// Fake response delay
@@ -325,8 +342,18 @@
 				geo.attr('placeholder', 'Touch to enter custom query...');
 				geo.rAttr('disabled');
 				form.removeClass('green').addClass('orange');
+				
 				// Fake response result
-				form.after('<ul class="link-list" id="geo_results">' + '<li><a href="#lot" fake-active="yes">Uni Passau Tiefgarage</a></li>' + '<li><a href="#lot" fake-active="yes">Uni Regen Tiefgarage</a></li>' + '<li><a href="#lot" fake-active="yes">Uni Zwiesel Tiefgarage</a></li>' + '</ul>');
+				var links = {'Uni Passau Tiefgarage' : '#lot' , 'Uni Regen Tiefgarage' : '#lot', 'Zentralgarage' : '#lot', 'John\'s Garage' : '#lot'}
+				form.after(Page._generate_link_list(links, 'geo_results'));
+				
+				// Display occupancy animation
+				var occupancy = [0.3,0.7,0.4,0.6,0.1];
+				
+				setTimeout(function (e) {
+				$('#geo_results .mask').each(function (el,i) {
+					$(el).setStyle('width',(100- occupancy[i]*100)+'%');
+				})},100);
 				
 				// Update link-list event handlers
 				$('.link-list a').fastbutton(function(e) {
@@ -338,9 +365,6 @@
 						Page._hideLoadingAnimation();
 						Page.show(id);
 					},2000);
-					
-					e.preventDefault();
-					return false;
 				});
 				
 				// Fade in of geolocation results. No animation without timeout? */
@@ -371,6 +395,15 @@
 
 		_geoError: function (position) {
 			Page._showModal('Geolocation', 'Sorry, I encountered an error while trying to geolocate you. You may still issue a custom search.');
+			var geo = $('#geolocation_search'), form = $('#geolocation_search_form');
+
+				// Hide loading animation
+				$('#loading').setStyle('display', 'none');
+
+				// Enable input field and change placeholder text
+				geo.attr('placeholder', 'Touch to enter custom query...');
+				geo.rAttr('disabled');
+				form.removeClass('green').addClass('orange');
 		},
 
 		_makeIScrollFriendly: function (e) {
@@ -490,5 +523,8 @@
 		Page.init();
 		// MBP.hideUrlBar(); // Not working?
 	});
+	
+	if (typeof exports !== 'undefined') exports.Page = Page;
+	else window.Page = Page;
 
 })();
