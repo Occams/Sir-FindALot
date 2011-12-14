@@ -1,3 +1,5 @@
-// Place all the styles related to the admin::parkingramps controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+ul#parkingramps, ul#parkingramps ul { padding:0px;margin:0px;list-style:none; }
+ul#parkingramps>li { border-left:2px solid #EEE; }
+ul#parkingramps li { padding:10px;margin:10px; }
+ul#parkingramps li:hover { background-color:rgba(255,255,255,0.5); }
+ul#parkingramps li a { padding:5px; }

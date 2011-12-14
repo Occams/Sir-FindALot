@@ -3,7 +3,7 @@ class ParkingrampsController < ApplicationController
     @parkingramp = Parkingramp.find(params[:id])
     
     respond_to do |format|
-      format.html {}
+      format.html { render :nothing}
       format.json {@parkingramp.to_json(:include => {:parkingplanes => {:include => :lots}})}
     end
   end

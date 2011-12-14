@@ -3,12 +3,8 @@ $default-width: 981px;
 $default-bg: #393E43;
 $default-font: 'Signika Negative', sans-serif;
 $default-color: #444;
+$default-orange: #F3961C;
 
-$color-1: #0ACF00;
-$color-2: #2D9B27;
-$color-3: #078600;
-$color-4: #42E73A;
-$color-5: #6EE768;
 
 $padding:20px;
 
@@ -31,6 +27,7 @@ body {
 
 a {
   text-decoration:none;
+  color:$default-orange;
 }
 
 input {
@@ -38,12 +35,12 @@ input {
 }
 
 #content-wrapper {
-  background-color:black;
   background:url(/assets/bg.jpg);
+  padding-bottom:20px;
 }
 
 #wrapper {
-  padding:20px;
+  padding:10 20px 20px 20px;
 }
 
 #wrapper, #footer {
@@ -57,38 +54,43 @@ input {
   padding:10px;
 }
 
-#header ul {
+#headerlist {
   @extend .ul-no-style;
   position:absolute;
-  right:0px;
+  right:0;
+  top:25px;
 }
 
-#header ul li {
+#headerlist li {
   position:relative;
 }
 
-#header ul li a {
+#headerlist li a {
   @include border(10px);
   padding:8px;
-  color:white;
+  color:$default-orange;
   font-size:130%;
-  font-weight:bold;
-  text-shadow: 1px 1px 0px #000;
+  text-shadow:1px 1px 1px black; font-weight:bold;
 }
 
-#header ul li>a:hover {
-  color:#333;
-  background:url(/assets/transparent.png);
+#headerlist li a:hover {
+  color:lighten($default-orange, 20%);
 }
+
+#logo {position:relative; font-size:60px;width:50%;float:left;text-indent:70px;}
+#logo a { text-shadow:1px 1px 1px black; font-weight:bold; }
+#logo img { position:absolute; }
 
 #content {
   @include border(20px);
   padding:20px;
-  background:url(/assets/transparent.png);
+  background:#EEE;
+  background:rgba(0,0,0,0.15);
 }
 
 #footer-wrapper {
   border-top:2px solid lighten($default-color,50%);
+  background:white;
 }
 
 .clear {
@@ -117,7 +119,7 @@ input {
 
 input, select, textarea {
   @include border(6px);
-  border:1px solid $color-3;
+  border:1px solid #333;
   font-family:$default-font;
 }
 
@@ -163,6 +165,8 @@ input[type=submit] {
   width:$default-width/4;
   padding:10px;
   right:0;
+  background:#EEE;
+  background:rgba(0,0,0,0.10);
 }
 
 #operator-flyout ul {
@@ -178,7 +182,6 @@ input[type=submit] {
   display:inline;
   font-size:100%;
   color:black;
-  text-shadow: 1px 1px 0px #777;
 }
 
 #operator-flyout ul li a:hover {
