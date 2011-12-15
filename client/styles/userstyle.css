@@ -627,18 +627,10 @@ nav.navbar a.highlighted {
 @-webkit-keyframes loading6 {0% {opacity:0.5;} 50% {opacity:0.5;} 60% {opacity:1;} 70% {opacity:0.5;} 100% {opacity:0.5;}}
 
 /* Images */
-#img_sir_home, #img_sir_help {
+#img_sir_home, #img_sir_help, #modal_img {
 	-webkit-box-flex: 1;
 	-moz-box-flex: 1;
 	box-flex: 1;
-}
-
-#img_dragonlot {
-}
-
-#modal_img {
-	width:70px;
-	-webkit-box-flex:1;
 }
 
 #sir_bubble_container {
