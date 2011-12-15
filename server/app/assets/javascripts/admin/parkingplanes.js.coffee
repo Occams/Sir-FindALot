@@ -26,7 +26,7 @@ Brushes =
     @_createBrushLink null, 'eraser'
       
   _createBrushLink: (brush, text) ->
-    $("<a href=\"javascript:return false;\">#{text}</a>")
+    $("<a href=\"javascript:return false;\"><div class=\"brushlink #{brush.toCssClassName() if brush?}\"></div>#{text}</a>")
       .bind 'click', (event) ->
         $("#parkinglots-brushes a").removeClass("active-brush")
         $(this).addClass("active-brush")

@@ -80,10 +80,11 @@ private
   end
   
   def operator_panel_links
+    ls =  super.push [Parkingramp.t(:plural), admin_parkingramps_url]
     if params[:action] == 'index'
-      super.push Parkingramp.t(:index)
+      ls.push Parkingramp.t(:plural)
     else
-      super.push (@parkingramp.new_record? ? Parkingramp.t(:new) : @parkingramp.name)
+      ls.push (@parkingramp.new_record? ? Parkingramp.t(:new) : @parkingramp.name)
     end
   end
 end

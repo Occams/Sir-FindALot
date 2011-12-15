@@ -17,7 +17,13 @@
 }
 
 // Some styles
+.brushlink { height:5px; }
 .brush_concrete_street { background-color:#999 !important;}
+.brush_concrete_entry { background-color:#00FF00 !important;}
+.brush_concrete_exit { background-color:#FF0000 !important;}
+.brush_parkinglot_normal { background-color:#000 !important;}
+.brush_parkinglot_disabled { background-color:#0000FF !important;}
+.brush_parkinglot_women { background-color:orange !important;}
 
 #parkinglots-brushes a {
   display:inline-block;

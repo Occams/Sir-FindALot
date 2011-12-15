@@ -1,4 +1,4 @@
-class Admin::ConcretesController < ApplicationController
+class Admin::ConcretesController < Admin::ApplicationController
   before_filter :authorize
   
   def create

@@ -12,7 +12,7 @@
       #operator-flyout
         %ul
           %li= link_to t(Parkingramp.t(:plural)), admin_parkingramps_url
-          %li= link_to t(:page_api), '/api'
+          %li= link_to t(:page_api), '/admin/api'
           %li= link_to t(:logout), destroy_operator_session_path, :method => :delete
   -else
     %li= link_to 'Operators', new_operator_session_url

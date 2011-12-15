@@ -11,13 +11,15 @@ Server::Application.routes.draw do
         resources :concretes
       end
     end
+    
+    match "/:id" => "pages#show"
   end
 
   devise_for :operators
   
   # Catch all not intercepted routes till now and give that to the pages controller
-  match "/:id" => "pages#show"
   root :to => "pages#index"
+  match "/:id" => "pages#show"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

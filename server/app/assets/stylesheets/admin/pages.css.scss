@@ -1,0 +1,10 @@
+// Mixins
+@mixin border($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+dt, dd { padding:7px; }
+dt { background:#FFF; background:rgba(255,255,255,0.6); @include border(10px); }
+dl dl {padding-left:50px; }

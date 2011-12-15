@@ -1,4 +1,4 @@
-class Admin::ParkinglotsController < ApplicationController
+class Admin::ParkinglotsController < Admin::ApplicationController
   before_filter :authorize
   
   def create
