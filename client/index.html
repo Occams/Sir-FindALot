@@ -1,0 +1,340 @@
+<!doctype html>
+<!-- Conditional comment for mobile ie7 http://blogs.msdn.com/b/iemobile/ -->
+<!--[if IEMobile 7 ]>    
+<html class="no-js iem7">
+	<![endif]-->
+	<!--[if (gt IEMobile 7)|!(IEMobile)]> 
+	<html class="no-js">
+		<![endif]-->
+		<html>
+			<head>
+				<meta charset="utf-8" />
+				<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+				<title>Sir FindALot</title>
+				<meta name="description" content="Sir FindALot helps you find your lot" />
+				<meta name="author" content="Team Amazonen" />
+				<!-- Mobile viewport settings -->
+				<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+				<!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
+				<meta name="HandheldFriendly" content="True" />
+				<meta name="MobileOptimized" content="320" />
+				<!-- Home screen icon  Mathias Bynens http://goo.gl/6nVq0 -->
+				<!-- For iPhone 4 with high-resolution Retina display: -->
+				<link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icon_half.png" />
+				<!-- For first-generation iPad: -->
+				<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/icon_half.png" />
+				<!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+				<link rel="apple-touch-icon-precomposed" href="img/icon_half.png" />
+				<!-- For nokia devices: -->
+				<link rel="shortcut icon" href="img/icon_half.png" />
+				<!--iOS web app, deletable if not needed -->
+				<!--the script prevents links from opening in mobile safari. https://gist.github.com/1042026 -->
+				<meta name="apple-mobile-web-app-capable" content="yes" />
+				<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+				<script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
+				<link rel="apple-touch-startup-image" href="img/icon_half.png" />
+				<!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+				<meta http-equiv="cleartype" content="on" />
+				<!-- consider using below meta tags if you want to disable format detection by default -->
+				<meta name="format-detection" content="telephone=no" />
+				<meta name="format-detection" content="address=no" />
+				<!-- Stylesheets -->
+				<link rel="stylesheet" href="styles/bt.style.css" />
+				<link rel="stylesheet" href="styles/userstyle.css" />
+				<!-- this is included after userstyle.css so the important settings are overwritten by the framework -->
+				<link rel="stylesheet" href="styles/fw.style.css" />
+				<link href="http://fonts.googleapis.com/css?family=Terminal+Dosis:800,600" rel="stylesheet" type="text/css" />
+				<!-- end CSS-->
+				<!-- Weiner debugger inject code. Hardcoded! -->
+				<!--
+					<script src="http://10.0.0.10:8080/target/target-script-min.js#anonymous"></script>
+					-->
+				<!-- Hide address bar -->
+				<!--
+					<script type="text/javascript">
+					function hideAddressBar (){
+						if(!window.location.hash) {
+					     if(document.height <= window.outerHeight + 10) {
+								document.body.style.height = window.outerHeight / (window.devicePixelRatio || 1) +'px';
+					       setTimeout( function(){ window.scrollTo(0, 1); }, 50 );
+					     } else {
+					       setTimeout( function(){ window.scrollTo(0, 1); }, 0 );
+							}
+						}
+					}
+					
+					window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddressBar(); } } );
+					 window.addEventListener("orientationchange", hideAddressBar );
+					</script>
+					-->
+			</head>
+			<body>
+				<header id="global-header"></header>
+				<div id="viewport">
+					<div data-type="page" id="options">
+						<header>
+							Options
+						</header>
+						<div class="scroller" id="scroll-options">
+							<div data-type="page-content">
+								<div id="sir_bubble_container_vertical">
+									<div class="speech_bubble  bottom_triangle">
+										"<b>Sir Findalot</b> is eager to help you find a free lot!
+										I'm currently computing results based on your location."
+									</div>
+									<img id="img_carl" src="img/sir_options.png" alt="Carl and Sir FindALot" />
+								</div>
+								<a href="#" id="show_modal">Show Test Modal</a>
+								<ul id="options_list">
+									<li>
+										<span class="options_label">Use GPS</span>
+										<div class="switch" fake-active="yes">
+											<label class="enable" rel="slide1">On</label>
+											<label class="disable selected" rel="slide1">Off</label>
+											<div class="slide selected" id="slide1"></div>
+											<input type="checkbox" id="checkbox1" class="checkbox" name="field1" />
+										</div>
+									</li>
+									<li>
+										<span class="options_label">Give me</span>
+										<div class="switch" fake-active="yes">
+											<label class="enable" rel="slide2">Ape</label>
+											<label class="disable selected" rel="slide2">Shit</label>
+											<div class="slide selected" id="slide2"></div>
+											<input type="checkbox" id="checkbox2" class="checkbox" name="field1" />
+										</div>
+									</li>
+									<li>
+										<span class="options_label">Autopilot</span>
+										<div class="switch" fake-active="yes">
+											<label class="enable" rel="slide3">Auto</label>
+											<label class="disable" rel="slide3">Off</label>
+											<div class="slide" id="slide3"></div>
+											<input type="checkbox" id="checkbox3" class="checkbox" name="field1" />
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<footer>
+							<nav class="navbar">
+								<a href="#home" fake-active="yes">Home</a>
+								<a href="#help" fake-active="yes">Help</a>
+								<a href="#options" class="highlighted" fake-active="yes">Options</a>
+							</nav>
+						</footer>
+					</div>
+					<div data-type="page" id="help">
+						<header>
+							Help
+						</header>
+						<div class="scroller" id="scroll-help">
+							<div data-type="page-content">
+								<div id="sir_bubble_container">
+									<div class="speech_bubble right_triangle">
+										"I have compiled an immense set of FAQs to walk you along the path of enlightenment and help you find your lot."
+									</div>
+									<img id="img_sir_help" src="img/sir_lightbulb.png" alt="Sir FindALot offers help" />
+								</div>
+								<div id="faq_container">
+									<section class="faq">
+										<h1 id="faq1" fake-active="yes">Learn the basic</h1>
+										<p rel="faq1">Augue eu eros pid cum in. Placerat lundium mid pulvinar a integer?</p>
+									</section>
+									<section class="faq">
+										<h1 id="faq2" fake-active="yes">Geolocation is not working</h1>
+										<p rel="faq2">Ultrices in cum cras cursus? In?</p>
+									</section>
+									<section class="faq">
+										<h1 id="faq3" fake-active="yes">Misplaced my brain</h1>
+										<p rel="faq3">Augue. A nec, nascetur tincidunt a ac placerat nisi! Montes nisi!</p>
+									</section>
+									<section class="faq">
+										<h1 id="faq4" fake-active="yes">Whatever</h1>
+										<p rel="faq4">Arcu hac mid, duis aenean, dolor penatibus cras ac integer enim</p>
+									</section>
+								</div>
+								<!-- end of #faq_container -->
+								<div id="sir_bubble_container_vertical">
+									<div class="speech_bubble">
+										"In the meanwhile, ferocious <b>Sir DragOnLot</b> went out to practice his unmatched beast slaying skills"
+									</div>
+									<img id="img_dragonlot" src="img/dragonlot.png" alt="Sir DragOnLot" />
+								</div>
+							</div>
+						</div>
+						<footer>
+							<nav class="navbar">
+								<a href="#home" fake-active="yes">Home</a>
+								<a href="#help" class="highlighted" fake-active="yes">Help</a>
+								<a href="#options" fake-active="yes">Options</a>
+							</nav>
+						</footer>
+					</div>
+					<div data-type="page" id="home" home="yes">
+						<header>Sir FindALot</header>
+						<div class="scroller" id="scroll-home">
+							<div data-type="page-content">
+								<div id="sir_bubble_container">
+									<div class="speech_bubble right_triangle">
+										"<b>Sir Findalot</b> is eager to help you find a free lot!
+										I'm currently computing results based on your location."
+									</div>
+									<img id="img_sir_home" src="img/sir.png" alt="Sir FindALot" />
+								</div>
+									<form id="geolocation_search_form" class="green" action="">
+										<div id="geolocation_search_glass"></div>
+										<input id="geolocation_search" type="search" disabled="disabled" placeholder="Geolocating..." />
+										<div id="loading" class="green">
+										<div class="l_bar bar1"></div>
+										<div class="l_bar bar2"></div>
+										<div class="l_bar bar3"></div>
+										<div class="l_bar bar4"></div>
+										<div class="l_bar bar5"></div>
+										<div class="l_bar bar6"></div>
+										</div>
+									</form>
+							</div>
+						</div>
+						<footer>
+							<nav class="navbar">
+								<a href="#home" class="highlighted" fake-active="yes">Home</a>
+								<a href="#help" fake-active="yes">Help</a>
+								<a href="#options" fake-active="yes">Options</a>
+							</nav>
+						</footer>
+					</div>
+					<div data-type="page" id="search">
+						<header>Search Results</header>
+						<div class="scroller" id="scroll-search">
+							<div data-type="page-content">
+								<ul class="link-list" id="search_results">
+									<li>
+										<a href="#lot" fake-active="yes">
+											<div class="occupancy"><div class="level"></div><div class="mask"></div></div>
+											<span class="link-list-title">Uni Passau Tiefgarage</span>
+										</a>
+									</li>
+									<li>
+										<a href="#lot" fake-active="yes">
+											<div class="occupancy"><div class="level"></div><div class="mask"></div></div>
+											<span class="link-list-title">John's Lots</span>
+										</a>
+									</li>
+									<li>
+										<a href="#lot" fake-active="yes">
+											<div class="occupancy"><div class="level"></div><div class="mask"></div></div>
+											<span class="link-list-title">Uni Passau Tiefgarage</span>
+										</a>
+									</li>
+									<li>
+										<a href="#lot" fake-active="yes">
+											<div class="occupancy"><div class="level"></div><div class="mask"></div></div>
+											<span class="link-list-title">Bananas Parking</span>
+										</a>
+									</li>
+									<li>
+										<a href="#lot" fake-active="yes">
+											<div class="occupancy"><div class="level"></div><div class="mask"></div></div>
+											<span class="link-list-title">New York Central</span>
+										</a>
+									</li>
+									<li>
+										<a href="#lot" fake-active="yes">
+											<div class="occupancy"><div class="level"></div><div class="mask"></div></div>
+											<span class="link-list-title">Freyung Kurhaus</span>
+										</a>
+									</li>
+									<li>
+										<a href="#lot" fake-active="yes">
+											<div class="occupancy"><div class="level"></div><div class="mask"></div></div>
+											<span class="link-list-title">Freyung Krankenhaus</span>
+										</a>
+									</li>
+									<li>
+										<a href="#lot" fake-active="yes">
+											<div class="occupancy"><div class="level"></div><div class="mask"></div></div>
+											<span class="link-list-title">Uni Regen Tiefgarage</span>
+										</a>
+									</li>									
+									<li>
+										<a href="#lot" fake-active="yes">
+											<div class="occupancy"><div class="level"></div><div class="mask"></div></div>
+											<span class="link-list-title">Bananas Parking</span>
+										</a>
+									</li>
+									<li>
+										<a href="#lot" fake-active="yes">
+											<div class="occupancy"><div class="level"></div><div class="mask"></div></div>
+											<span class="link-list-title">New York Central</span>
+										</a>
+									</li>
+									<li>
+										<a href="#lot" fake-active="yes">
+											<div class="occupancy"><div class="level"></div><div class="mask"></div></div>
+											<span class="link-list-title">Freyung Kurhaus</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<footer>
+							<nav class="navbar">
+								<a href="#home" fake-active="yes">Home</a>
+								<a href="#help" fake-active="yes">Help</a>
+								<a href="#options" fake-active="yes">Options</a>
+							</nav>
+						</footer>
+					</div>
+					<div data-type="page" id="lot">
+						<header>Lot Display</header>
+						<div class="scroller" id="scroll-lot">
+							<div data-type="page-content">
+								<p>TODO</p>
+							</div>
+						</div>
+						<footer>
+							<nav class="navbar">
+								<a href="#home" fake-active="yes">Home</a>
+								<a href="#lot" fake-active="yes">Map</a>
+								<a href="#lot" fake-active="yes">Details</a>
+							</nav>
+						</footer>
+					</div>
+				</div>
+				<!-- end of #viewport -->
+				<footer id="global-footer">
+				</footer>
+				<!-- /footer -->
+				
+				<div id="modal">
+					<h1>:: Offline</h1>
+					<div id="modal_content">
+						<p>This is an error! You have been disconnected from the interwebz. Sorry!</p>
+						<img id="modal_img" src="img/sir_error.png" alt="Sir FindALot detected an error." />
+					</div>
+					<a href="#" id="modal_close">Close</a>
+				</div>
+				<!-- end of #modal -->
+				
+				<div id="loading_overlay" class="green">
+					<div class="l_bar bar1"></div>
+					<div class="l_bar bar2"></div>
+					<div class="l_bar bar3"></div>
+					<div class="l_bar bar4"></div>
+					<div class="l_bar bar5"></div>
+					<div class="l_bar bar6"></div>
+				</div>
+			</body>
+			<!-- /body -->
+			<div id="fade"></div>
+			<!-- JS -->
+			<script src="js/bt.js"></script>
+			<script src="js/xui.min.js"></script>
+			<script src="js/iscroll-lite.min.js"></script>
+			<script src="js/fw.page.js"></script>
+			<script>
+				// iPhone Scale Bug Fix, read this when using http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/
+				MBP.scaleFix();
+			</script>
+		</html>
