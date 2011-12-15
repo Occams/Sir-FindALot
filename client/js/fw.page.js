@@ -1,3 +1,24 @@
+x$.ready(function () {
+		// Feature detection
+		if (!supportsFeatures()) {
+			window.location='upgrade.html';
+		} else {		
+			Page.init();
+		}
+		// MBP.hideUrlBar(); // Not working?
+	});
+	
+// Seems like some browser do not support domready
+window.onload = function() {
+		if (!supportsFeatures()) {
+			window.location='upgrade.html';
+		}
+};
+
+var supportsFeatures = function() {
+	return Modernizr.flexbox
+};
+
 (function () {
 
 	$ = x$; // JQuery-like syntax
@@ -58,6 +79,7 @@
 
 		// Show element
 		this.css({
+			display: 'block',
 			display: 'box',
 			display: '-' + vendor + '-box'
 		});
@@ -519,11 +541,6 @@
 		Page.show(window.location.hash.idify());
 		return false;
 	};
-
-	$.ready(function () {
-		Page.init();
-		// MBP.hideUrlBar(); // Not working?
-	});
 	
 	if (typeof exports !== 'undefined') exports.Page = Page;
 	else window.Page = Page;
