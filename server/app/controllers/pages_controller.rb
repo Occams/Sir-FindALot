@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   end
 
   def show
-    allowed = %w{impressum about help imprint faq contact}
+    allowed = %w{impressum about help imprint faq contact api}
   
     if allowed.include?(params[:id].to_s)
       if self.respond_to?(params[:id])

@@ -3,6 +3,7 @@ Server::Application.routes.draw do
   resources :searches, :only => :create
   resources :pages, :only => [:index, :show]
   resources :stats
+  resources :parkingramps, :only => :show
 
   namespace :admin do
     resources :parkingramps, :except => [:show] do

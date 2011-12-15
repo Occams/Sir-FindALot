@@ -20,7 +20,7 @@ class Admin::ParkingplanesControllerTest < ActionController::TestCase
       post :create, parkingplane: @parkingplane.attributes, :parkingramp_id => @parkingramp.id
     end
 
-    assert_redirected_to admin_parkingramp_parkingplane_path(@parkingramp, assigns(:parkingplane))
+    assert_redirected_to edit_admin_parkingramp_parkingplane_path(@parkingramp, assigns(:parkingplane))
   end
 
   test "should get edit" do
@@ -30,7 +30,7 @@ class Admin::ParkingplanesControllerTest < ActionController::TestCase
 
   test "should update parkingplane" do
     put :update, id: @parkingplane.to_param, parkingplane: @parkingplane.attributes, :parkingramp_id => @parkingramp.id
-    assert_redirected_to admin_parkingramp_parkingplane_path(@parkingramp, assigns(:parkingplane))
+    assert_redirected_to edit_admin_parkingramp_parkingplane_path(@parkingramp, assigns(:parkingplane))
   end
 
   test "should destroy parkingplane" do
@@ -38,7 +38,7 @@ class Admin::ParkingplanesControllerTest < ActionController::TestCase
       delete :destroy, id: @parkingplane.to_param, :parkingramp_id => @parkingramp.id
     end
 
-    assert_redirected_to admin_parkingramp_parkingplanes_path(@parkingramp)
+    assert_redirected_to admin_parkingramps_path()
   end
   
   test "should only edit planes that are associated to one of the current_operator's ramps" do

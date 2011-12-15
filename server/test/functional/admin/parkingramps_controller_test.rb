@@ -25,12 +25,7 @@ class Admin::ParkingrampsControllerTest < ActionController::TestCase
       post :create, parkingramp: @parkingramp.attributes
     end
 
-    assert_redirected_to admin_parkingramp_path(assigns(:parkingramp))
-  end
-
-  test "should show parkingramp" do
-    get :show, id: @parkingramp.to_param
-    assert_response :success
+    assert_redirected_to admin_parkingramps_path()
   end
 
   test "should get edit" do
@@ -40,7 +35,7 @@ class Admin::ParkingrampsControllerTest < ActionController::TestCase
 
   test "should update parkingramp" do
     put :update, id: @parkingramp.to_param, parkingramp: @parkingramp.attributes
-    assert_redirected_to admin_parkingramp_path(assigns(:parkingramp))
+    assert_redirected_to admin_parkingramps_path()
   end
 
   test "should destroy parkingramp" do
@@ -55,12 +50,6 @@ class Admin::ParkingrampsControllerTest < ActionController::TestCase
     get :index
     ramps = Parkingramp.find_all_by_operator_id(@operator.id)
     assert_equal Set.new(ramps), Set.new(assigns(:parkingramps))
-  end
-  
-  test "show should only display the current operator's ramps" do
-    assert_raises(ActiveRecord::RecordNotFound) do
-      get :show, id: parkingramps(:three).id
-    end
   end
   
   test "edit should only display the current operator's ramps" do
