@@ -1,3 +1,24 @@
+x$.ready(function () {
+		// Feature detection
+		if (!supportsFeatures()) {
+			window.location='upgrade.html';
+		} else {		
+			Page.init();
+		}
+		// MBP.hideUrlBar(); // Not working?
+	});
+	
+// Seems like some browser do not support domready
+window.onload = function() {
+		if (!supportsFeatures()) {
+			window.location='upgrade.html';
+		}
+};
+
+var supportsFeatures = function() {
+	return Modernizr.flexbox
+};
+
 (function () {
 
 	$ = x$; // JQuery-like syntax
@@ -58,6 +79,7 @@
 
 		// Show element
 		this.css({
+			display: 'block',
 			display: 'box',
 			display: '-' + vendor + '-box'
 		});
@@ -297,10 +319,10 @@
 			var toggle = target.hasClass('open');
 
 			// Close already open elements
-			$('.faq p.open').removeClass('open');
+			$('.faq .open').removeClass('open');
 
 			// Open the new element
-			if (!toggle) target.addClass('open');
+			if (!toggle) { target.addClass('open'); $(el).addClass('open'); }
 
 			// Update IScroll, height changed during animation
 			setTimeout(Page._updateIScroll, 500);
@@ -349,7 +371,7 @@
 				form.after(Page._generate_link_list(links, 'geo_results'));
 				
 				// Display occupancy animation
-				var occupancy = [0.3,0.7,0.4,0.6,0.1];
+				var occupancy = [0.3,0.7,1,0.6,0.1];
 				
 				setTimeout(function (e) {
 				$('#geo_results .mask').each(function (el,i) {
@@ -519,11 +541,6 @@
 		Page.show(window.location.hash.idify());
 		return false;
 	};
-
-	$.ready(function () {
-		Page.init();
-		// MBP.hideUrlBar(); // Not working?
-	});
 	
 	if (typeof exports !== 'undefined') exports.Page = Page;
 	else window.Page = Page;
