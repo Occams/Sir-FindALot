@@ -1,5 +1,6 @@
 class SearchesController < ApplicationController
   def create
+    setAccessControl
     @parkingramps = Parkingramp.all
     
     respond_to do |format|
