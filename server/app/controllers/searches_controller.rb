@@ -1,11 +1,13 @@
 class SearchesController < ApplicationController
+  protect_from_forgery :except => "create"
+
   def create
     setAccessControl
     @parkingramps = Parkingramp.all
     
     respond_to do |format|
       format.html {}
-      format.json { @parkingramps.to_json }
+      format.json { render :text => @parkingramps.to_json }
     end
   end
 end
