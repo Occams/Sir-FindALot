@@ -15,6 +15,10 @@ Server::Application.routes.draw do
     
     match "/:id" => "pages#show"
   end
+  
+  namespace :api do
+    resources :parkinglots, :only => [:show]
+  end
 
   devise_for :operators
   

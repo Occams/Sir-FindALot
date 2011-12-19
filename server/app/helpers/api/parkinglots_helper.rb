@@ -1,0 +1,2 @@
+module Api::ParkinglotsHelper
+end
