@@ -37,7 +37,7 @@ Brushes =
       
 Cell = 
   new: (brush, x, y, meshsize=20, id=null) ->
-    el: $("<div class=\"lot\" style=\"left: #{x*meshsize}px;top: #{y*meshsize}px;\"></div>")
+    el: $("<div class=\"lot\" style=\"left: #{x*meshsize}px;top: #{y*meshsize}px;\" title=\"#{id}\"></div>")
     brush: brush
     x: x
     y: y
@@ -131,12 +131,12 @@ class Plane
     
     for rname, resource of {parkinglot: @lots, concrete: @concretes}
       for single in resource
-        cell = Cell.new Brushes[rname][single.category], single.x, single.y, @meshsize
+        cell = Cell.new Brushes[rname][single.category], single.x, single.y, @meshsize, single.id
         cell.el.appendTo(@plane).addClass(cell.brush.toCssClassName())
         single.brush = cell.brush
         @db.add single.x, single.y, single
         @grid.add single.x, single.y, cell
-    
+  
   handleClicked: (cell) ->
     if !@currentBrush?
       c = @grid.remove(cell.x, cell.y)
@@ -226,11 +226,8 @@ class Plane
     true
     
   _ajaxFinished: () ->
-    console.log this
-    console.log "down #{@ajaxqueries}"
     @ajaxqueries--
     if @ajaxqueries is 0 and @ajaxreadycb?
-      console.log "ok"
       @ajaxreadycb()
       
   

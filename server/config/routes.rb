@@ -11,6 +11,7 @@ Server::Application.routes.draw do
         resources :parkinglots
         resources :concretes
       end
+      get 'sortplanes/:parkingplanes', :on => :member, :action => :sortplanes
     end
     
     match "/:id" => "pages#show"

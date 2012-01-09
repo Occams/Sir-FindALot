@@ -1,3 +1,5 @@
+//= require jquery-ui
+
 $( ->
   $.fn.overlay = (enable) ->
     for el in this

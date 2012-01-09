@@ -3,7 +3,7 @@ class Parkingramp < ActiveRecord::Base
   validates :latitude, :longitude, :numericality => true
   
   belongs_to :operator
-  has_many :parkingplanes, :dependent => :destroy
+  has_many :parkingplanes, :dependent => :destroy, :order => "sorting ASC"
   
   attr_protected :operator_id
 end
