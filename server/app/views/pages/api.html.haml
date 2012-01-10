@@ -8,10 +8,6 @@
     %dt :id
     %dd The unique id of the parkingramp that should be returned.
     
-    match 'stats/year/:year/:hour' => 'stats#show', :year => /\d{4}/, :hour => /\d{1,2}/
-      match 'stats/week/:year/:week/:hour' => 'stats#show', :year => /\d{4}/, :week => /\d{1,2}/, :hour => /\d{1,2}/
-      match 'stats/day/:year/:month/:day' 
-    
   %dt GET /parkingramps/:id/stats/year/:year/:hour.json
   %dd Returns statistics about the usage of the parkingramp with the given :id at :hour in :year.
   %dl

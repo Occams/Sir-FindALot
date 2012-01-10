@@ -11,7 +11,6 @@
         - parkingramp.parkingplanes.each do |parkingplane|
           %li{:ref => parkingplane.id}
             =parkingplane.name
-            = parkingplane.sorting
             =link_to t(:edit), edit_admin_parkingramp_parkingplane_path(parkingramp, parkingplane)
             =link_to t(:destroy), [:admin, parkingramp, parkingplane], :confirm => t(:sure), :method => :delete
 
