@@ -7,3 +7,47 @@
   %dl
     %dt :id
     %dd The unique id of the parkingramp that should be returned.
+    
+    match 'stats/year/:year/:hour' => 'stats#show', :year => /\d{4}/, :hour => /\d{1,2}/
+      match 'stats/week/:year/:week/:hour' => 'stats#show', :year => /\d{4}/, :week => /\d{1,2}/, :hour => /\d{1,2}/
+      match 'stats/day/:year/:month/:day' 
+    
+  %dt GET /parkingramps/:id/stats/year/:year/:hour.json
+  %dd Returns statistics about the usage of the parkingramp with the given :id at :hour in :year.
+  %dl
+    %dt :id
+    %dd The unique id of the parkingramp.
+    %dt :year
+    %dd The year that should be taken into account by the statistics.
+    %dt :hour
+    %dd The hour that should be taken into account by the statistics.
+    %dt returns
+    %dd A JSON array containing objects with the keys [created_at_month, taken, total] meaning the month of the data, the average taken lots in that month at :hour and the total_lots of this ramp.
+    
+  %dt GET /parkingramps/:id/stats/week/:year/:week/:hour.json
+  %dd Returns statistics about the usage of the parkingramp with the given :id at :hour in :week of :year.
+  %dl
+    %dt :id
+    %dd The unique id of the parkingramp.
+    %dt :year
+    %dd The year that should be taken into account by the statistics.
+    %dt :week
+    %dd The week that should be displayed by the statistics.
+    %dt :hour
+    %dd The hour that should be taken into account in the statistics.
+    %dt returns
+    %dd A JSON array containing objects with the keys [weekday, taken, total] meaning the weekday of the data, the average taken lots in that month at :hour and the total_lots of this ramp.
+    
+  %dt GET /parkingramps/:id/stats/day/:year/:month/:day.json
+  %dd Returns statistics about the hourly usage of the parkingramp with the given :id on :day/:month/:year.
+  %dl
+    %dt :id
+    %dd The unique id of the parkingramp.
+    %dt :year
+    %dd The year that should be taken into account by the statistics.
+    %dt :month
+    %dd The month that should be taken into account by the statistics.
+    %dt :hour
+    %dd The hour that should be taken into account in the statistics.
+    %dt returns
+    %dd A JSON array containing objects with the keys [created_at_hour, taken, total] the average taken lots and total_lots of this ramp at that hour (created_at_hour).

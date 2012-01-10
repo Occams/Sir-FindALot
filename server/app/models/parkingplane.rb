@@ -3,7 +3,7 @@ class Parkingplane < ActiveRecord::Base
   validates :parkingramp_id, :numericality => true
 
   belongs_to :parkingramp
-  has_many :stats, :dependent => :delete_all
+  has_many :stats, :dependent => :delete_all, :extend => [StatFindExtension]
   
   # Lots relations
   has_many :lots, :class_name => 'Parkinglot', :dependent => :delete_all
