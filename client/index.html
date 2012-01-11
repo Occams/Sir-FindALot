@@ -13,8 +13,8 @@
 				<title>Sir FindALot</title>
 				<meta name="description" content="Sir FindALot helps you find your lot" />
 				<meta name="author" content="Team Amazonen" />
-				<!-- Mobile viewport settings -->
-				<meta name="viewport" content="width=device-width, target-densitydpi=high-dpi, dpi=initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+				<!-- Mobile viewport settings  target-densitydpi=high-dpi -->
+				<meta name="viewport" content="width=device-width, initial-scale=1,target-densitydpi=high-dpi, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 				<!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
 				<meta name="HandheldFriendly" content="True" />
 				<meta name="MobileOptimized" content="320" />
@@ -68,11 +68,14 @@
 					</script>
 					-->
 					
+				<!-- Modernizer script to detect browser capabilities -->
 				<script src="js/modernizer.js"></script>
 			</head>
 			<body>
 				<header id="global-header"></header>
 				<div id="viewport">
+				
+					<!-- Options page -->
 					<div data-type="page" id="options">
 						<header>
 							Options
@@ -120,18 +123,16 @@
 						</div>
 						<footer>
 							<nav class="navbar">
-							<nav class="navbar">
 								<a href="#home" fake-active="yes"><img src="img/icons/home_white.png" alt="Home" /><span class="navtext">Home</span></a>
 								<a href="#help" fake-active="yes"><img src="img/icons/help_white.png" alt="Help" /><span class="navtext">Help</span></a>
 								<a href="#options" class="highlighted" fake-active="yes"><img src="img/icons/options_white.png" alt="Options" /><span class="navtext">Options</span></a>
 							</nav>
-							</nav>
 						</footer>
-					</div>
+					</div> <!-- end page options -->
+					
+					<!-- Help page -->
 					<div data-type="page" id="help">
-						<header>
-							Help
-						</header>
+						<header>Help</header>
 						<div class="scroller" id="scroll-help">
 							<div data-type="page-content">
 								<div id="sir_bubble_container">
@@ -157,8 +158,8 @@
 										<h1 id="faq4" fake-active="yes">Whatever</h1>
 										<p rel="faq4">Arcu hac mid, duis aenean, dolor penatibus cras ac integer enim</p>
 									</section>
-								</div>
-								<!-- end of #faq_container -->
+								</div> <!-- end of #faq_container -->
+								
 								<div id="sir_bubble_container_vertical">
 									<div class="speech_bubble">
 										"In the meanwhile, ferocious <b>Sir DragOnLot</b> went out to practice his unmatched beast slaying skills"
@@ -174,7 +175,9 @@
 								<a href="#options" fake-active="yes"><img src="img/icons/options_white.png" alt="Options" /><span class="navtext">Options</span></a>
 							</nav>
 						</footer>
-					</div>
+					</div> <!-- end of page help -->
+					
+					<!-- Home page -->
 					<div data-type="page" id="home" home="yes">
 						<header>Sir FindALot</header>
 						<div class="scroller" id="scroll-home">
@@ -186,6 +189,7 @@
 									</div>
 									<img id="img_sir_home" src="img/sir.png" alt="Sir FindALot" />
 								</div>
+								
 									<form id="geolocation_search_form" class="green" action="">
 										<div id="geolocation_search_glass"></div>
 										<input id="geolocation_search" type="search" disabled="disabled" placeholder="Geolocating..." />
@@ -198,6 +202,7 @@
 										<div class="l_bar bar6"></div>
 										</div>
 									</form>
+									
 							</div>
 						</div>
 						<footer>
@@ -207,7 +212,8 @@
 								<a href="#options" fake-active="yes"><img src="img/icons/options_white.png" alt="Options" /><span class="navtext">Options</span></a>
 							</nav>
 						</footer>
-					</div>
+					</div> <!-- end of page home-->
+					
 					<div data-type="page" id="search">
 						<header>Search Results</header>
 						<div class="scroller" id="scroll-search">
@@ -306,11 +312,10 @@
 							</nav>
 						</footer>
 					</div>
-				</div>
-				<!-- end of #viewport -->
-				<footer id="global-footer">
-				</footer>
-				<!-- /footer -->
+					
+				</div><!-- end of #viewport -->
+				
+				<footer id="global-footer"></footer><!-- /footer -->
 				
 				<div id="modal">
 					<h1>:: Offline</h1>
@@ -319,8 +324,7 @@
 						<img id="modal_img" src="img/sir_error.png" alt="Sir FindALot detected an error." />
 					</div>
 					<a href="#" id="modal_close">Close</a>
-				</div>
-				<!-- end of #modal -->
+				</div><!-- end of #modal -->
 				
 				<div id="loading_overlay" class="green">
 					<div class="l_bar bar1"></div>
@@ -329,15 +333,15 @@
 					<div class="l_bar bar4"></div>
 					<div class="l_bar bar5"></div>
 					<div class="l_bar bar6"></div>
-				</div>
-			</body>
-			<!-- /body -->
-			<div id="fade"></div>
+				</div> <!-- end of loading_oberlay -->
+				<div id="fade"></div>
+			</body> <!-- /body -->
+			
 			<!-- JS -->
 			<script src="js/bt.js"></script>
 			<script src="js/xui.min.js"></script>
 			<script src="js/iscroll-lite.min.js"></script>
-			<script src="js/fw.page.js"></script>
+			<script src="js/script.js"></script>
 			<script>
 				// iPhone Scale Bug Fix, read this when using http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/
 				MBP.scaleFix();
