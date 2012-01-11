@@ -3,8 +3,6 @@
 // JQuery-like syntax
 (function ($) {
 	
-	var SERVER_HOST = 'http://10.0.0.12:3000';
-	
 	$.ready(function () {
 		
 		// Feature detection
@@ -260,7 +258,29 @@
 			this._registerSwitchHandler();
 			
 			// TODO: Search handler
-			$('#geolocation_search_form').submit(this._search);
+			$('#geolocation_search_form').on('submit', function(e) {
+				var loading = $('#loading');
+			
+			  // Show orange loading animation
+			  loading.removeClass('green').addClass('orange');
+			  loading.show();
+			
+			  // Disable input
+			  $('#geolocation_search').attr('disabled', 'disabled');
+			
+			  // The request
+        Search.doSearch($('#geolocation_search').value,
+          null,
+          $('#search div[data-type="page-content"]'),
+          function() {
+            $('#loading').hide();
+    			  $('#geolocation_search').rAttr('disabled'); // Reenable input field
+    			  Page.show('search');
+          }
+        );
+        e.preventDefault();
+        return false;
+			});
 			
 			// Start Geolocation
 			if (navigator.geolocation) {
@@ -321,56 +341,6 @@
 			}
 		},
 		
-		_search : function (e) {
-			var loading = $('#loading');
-			
-			// Show orange loading animation
-			loading.removeClass('green').addClass('orange');
-			loading.show();
-			
-			// Disable input
-			$('#geolocation_search').attr('disabled', 'disabled');
-			
-			// AJAX
-			
-			
-			// Fake response delay
-			setTimeout(function (e) {
-				$('#loading').hide();
-				$('#geolocation_search').rAttr('disabled'); // Reenable input field
-				Page.show('search');
-			}, 1500);
-			
-			// Prevent default behavior
-			e.preventDefault();
-			return false;
-		},
-		
-		_generate_link_list_search_results : function (data, id) {
-			var html = '';
-			
-			for (var i in data) {
-			 var single = data[i];
-				html += '<li><a href="/parkingramps/' + single['id'] + '.json" fake-active="yes">';
-				html += '<div class="occupancy"><div class="level"></div><div class="mask"></div></div>';
-				html += '<span class="link-list-title">' + single['name'] + '</span></a></li>';
-			}
-			
-			return '<ul class="link-list" id="' + id + '">' + html + '</ul>';
-		},
-		
-		_generate_link_list : function (links, id) {
-			var html = '';
-			
-			for (var title in links) {
-				html += '<li><a href="' + links[title] + '" fake-active="yes">';
-				html += '<div class="occupancy"><div class="level"></div><div class="mask"></div></div>';
-				html += '<span class="link-list-title">' + title + '</span></a></li>';
-			}
-			
-			return '<ul class="link-list" id="' + id + '">' + html + '</ul>';
-		},
-		
 		_geoError : function (position) {
 			Page._showModal('Geolocation', 'Sorry, I encountered an error while trying to geolocate you. You may still issue a custom search.');
 			var input = $('#geolocation_search'),
@@ -395,50 +365,21 @@
 				'cords' : position.cords,
 				'timestamp' : position.timestamp
 			};
-			var xhr = $().xhr('/searches.json', {method: 'POST', data: data, callback: Page._searchResults});
-			console.log(xhr);
-		},
-		
-		_searchResults: function() {
-		  eval('var data = ' + this.responseText);
-	    var input = $('#geolocation_search'),
-		  form = $('#geolocation_search_form');
+			
+      Search.doSearch(input.value,
+        data,
+        "#geolocation_search_results",
+        function() {
+          $('#loading').hide();
 	
-			// Hide loading animation
-			$('#loading').setStyle('display', 'none');
-			
-			// Enable input field and change placeholder text
-			input.attr('placeholder', 'Touch to enter custom query...');
-			input.rAttr('disabled');
-			form.removeClass('green').addClass('orange');
-			
-			//Create list and insert it at the startpage below the search form
-			form.after(Page._generate_link_list_search_results(data, 'geo_results'));
-			
-			// Display occupancy animation
-			var occupancy = [0.3, 0.7, 1, 0.6, 0.1];
-			
-			setTimeout(function (e) {
-				$('#geo_results .mask').each(function (el, i) {
-					$(el).setStyle('width', (100 - occupancy[i] * 100) + '%');
-				})
-			}, 100);
-			
-			// Update link-list event handlers
-			$('.link-list a').fastbutton(function (e) {
-				Page._displayLoadingAnimation();
-				$().xhr(this.element.getAttribute('href'), Page._parkingrampLoaded);
-				e.preventDefault();
-				return false;
-			});
-			
-			// Fade in of geolocation results. No animation without timeout? */
-			setTimeout(function (e) {
-				$('#geo_results a').setStyle('opacity', '1');
-				$('#geo_results').setStyle('opacity', '1');
-			}, 25);
-			
-			$("#home").fire('update');
+			    // Enable input field and change placeholder text
+			    input.attr('placeholder', 'Touch to enter custom query...');
+			    input.rAttr('disabled');
+			    form.removeClass('green').addClass('orange');
+			    
+			    $("#home").fire('update');
+        }
+      );
 		},
 		
 		_parkingrampLoaded: function() {

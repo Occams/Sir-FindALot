@@ -14,6 +14,6 @@ private
     MOBILE_BROWSERS.each do |m|
       return "mobile" if agent.match(m)
     end
-    return "application"
+    return "mobile"
   end
 end
