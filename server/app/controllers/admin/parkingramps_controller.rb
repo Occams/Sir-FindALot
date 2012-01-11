@@ -26,6 +26,7 @@ class Admin::ParkingrampsController < Admin::ApplicationController
   # GET /admin/parkingramps/1/edit
   def edit
     @parkingramp = @Parkingramp.find(params[:id])
+    @current_ramp = @parkingramp
   end
 
   # POST /admin/parkingramps
@@ -49,6 +50,7 @@ class Admin::ParkingrampsController < Admin::ApplicationController
   # PUT /admin/parkingramps/1.json
   def update
     @parkingramp = @Parkingramp.find(params[:id])
+    @current_ramp = @parkingramp
 
     respond_to do |format|
       if @parkingramp.operator_id == current_operator.id &&
@@ -72,6 +74,17 @@ class Admin::ParkingrampsController < Admin::ApplicationController
       format.html { redirect_to admin_parkingramps_url }
       format.json { head :ok }
     end
+  end
+  
+  def sortplanes
+    @parkingramp = @Parkingramp.find(params[:id])
+    
+    planes = []
+    params[:parkingplanes].split(",").map(&:to_i).each do |i|
+      planes << @parkingramp.parkingplanes.find(i)
+    end
+    Parkingplane.sort_down(planes)
+    redirect_to admin_parkingramps_url
   end
   
 private

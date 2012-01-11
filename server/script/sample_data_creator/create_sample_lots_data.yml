@@ -1,0 +1,480 @@
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 8
+    y: 6
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 8
+    y: 7
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 8
+    y: 8
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 8
+    y: 9
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 8
+    y: 10
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 8
+    y: 11
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 8
+    y: 13
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 8
+    y: 14
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 8
+    y: 15
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 8
+    y: 16
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 8
+    y: 17
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 8
+    y: 18
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 9
+    y: 6
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 9
+    y: 7
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 9
+    y: 8
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 9
+    y: 9
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 9
+    y: 10
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 9
+    y: 11
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 9
+    y: 13
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 9
+    y: 14
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 9
+    y: 15
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 9
+    y: 16
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 9
+    y: 17
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 9
+    y: 18
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 11
+    y: 6
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 11
+    y: 7
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 11
+    y: 8
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 11
+    y: 9
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 11
+    y: 10
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 11
+    y: 11
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 11
+    y: 13
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 11
+    y: 14
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 11
+    y: 15
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 11
+    y: 16
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 11
+    y: 17
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 11
+    y: 18
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 12
+    y: 6
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 12
+    y: 7
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 12
+    y: 8
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 12
+    y: 9
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 12
+    y: 10
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 12
+    y: 11
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 12
+    y: 13
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 12
+    y: 14
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 12
+    y: 15
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 12
+    y: 16
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 12
+    y: 17
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 12
+    y: 18
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 14
+    y: 6
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 14
+    y: 7
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 14
+    y: 8
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 14
+    y: 9
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 14
+    y: 10
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 14
+    y: 11
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 14
+    y: 13
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 14
+    y: 14
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 14
+    y: 15
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 14
+    y: 16
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 14
+    y: 17
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 14
+    y: 18
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 15
+    y: 6
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 15
+    y: 7
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 15
+    y: 8
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 15
+    y: 9
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 15
+    y: 10
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 15
+    y: 11
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 15
+    y: 13
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 15
+    y: 14
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 15
+    y: 15
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 15
+    y: 16
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 15
+    y: 17
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 15
+    y: 18
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 17
+    y: 6
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 17
+    y: 7
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 17
+    y: 8
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 17
+    y: 9
+- !ruby/object:Parkinglot
+  attributes:
+    category: women
+    x: 17
+    y: 10
+- !ruby/object:Parkinglot
+  attributes:
+    category: women
+    x: 17
+    y: 11
+- !ruby/object:Parkinglot
+  attributes:
+    category: disabled
+    x: 17
+    y: 13
+- !ruby/object:Parkinglot
+  attributes:
+    category: disabled
+    x: 17
+    y: 14
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 17
+    y: 15
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 17
+    y: 16
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 17
+    y: 17
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 17
+    y: 18
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 18
+    y: 6
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 18
+    y: 7
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 18
+    y: 8
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 18
+    y: 9
+- !ruby/object:Parkinglot
+  attributes:
+    category: women
+    x: 18
+    y: 10
+- !ruby/object:Parkinglot
+  attributes:
+    category: women
+    x: 18
+    y: 11
+- !ruby/object:Parkinglot
+  attributes:
+    category: disabled
+    x: 18
+    y: 13
+- !ruby/object:Parkinglot
+  attributes:
+    category: disabled
+    x: 18
+    y: 14
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 18
+    y: 15
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 18
+    y: 16
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 18
+    y: 17
+- !ruby/object:Parkinglot
+  attributes:
+    category: normal
+    x: 18
+    y: 18

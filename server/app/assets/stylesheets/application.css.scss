@@ -1,3 +1,7 @@
+/*
+ *= require pages
+ */
+
 // Default Definitions
 $default-width: 981px;
 $default-bg: #393E43;
@@ -35,7 +39,6 @@ input {
 }
 
 #content-wrapper {
-  background:url(/assets/bg.jpg);
   padding-bottom:20px;
 }
 
@@ -50,7 +53,7 @@ input {
 
 #header {
   position:relative;
-  height:50px;
+  height:75px;
   padding:10px;
 }
 
@@ -61,11 +64,11 @@ input {
   top:25px;
 }
 
-#headerlist li {
+#headerlist>li {
   position:relative;
 }
 
-#headerlist li a {
+#headerlist>li>a {
   @include border(10px);
   padding:8px;
   color:$default-orange;
@@ -73,7 +76,7 @@ input {
   text-shadow:1px 1px 1px black; font-weight:bold;
 }
 
-#headerlist li a:hover {
+#headerlist>li>a:hover {
   color:lighten($default-orange, 20%);
 }
 
@@ -179,8 +182,6 @@ input[type=submit] {
 }
 
 #operator-flyout ul li a {
-  display:inline;
-  font-size:100%;
   color:black;
 }
 

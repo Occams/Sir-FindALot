@@ -1,3 +1,10 @@
+//= require jquery
+//= require jquery_ujs
+//= require jquery-ui
+//= require ./parkingplanes
+//= require ./parkingramps
+//= require activity-indicator
+
 $( ->
   $.fn.overlay = (enable) ->
     for el in this

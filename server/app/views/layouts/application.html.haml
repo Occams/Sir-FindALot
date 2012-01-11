@@ -4,13 +4,12 @@
     %title SirFindALot
     = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Signika+Negative'
     = stylesheet_link_tag :application
-    = stylesheet_link_tag :pages
-    = javascript_include_tag :application
-    
     
     -if operator_signed_in?
       = stylesheet_link_tag 'admin/application'
-      = javascript_include_tag 'activity-indicator'
+      = javascript_include_tag 'admin/application'
+    - else
+      = javascript_include_tag :application
       
     = csrf_meta_tags
   %body

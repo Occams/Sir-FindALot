@@ -41,7 +41,7 @@ class Admin::ParkinglotsController < Admin::ApplicationController
       format.json { head :ok }
     end
   end
-
+  
 private
   def authorize
     @parkingramp = Parkingramp.find(:first, :conditions => {:id => params[:parkingramp_id], :operator_id => current_operator.id})

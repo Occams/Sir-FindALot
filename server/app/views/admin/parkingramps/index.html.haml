@@ -2,14 +2,14 @@
 
 %ul#parkingramps
   - @parkingramps.each do |parkingramp|
-    %li
+    %li{:ref => parkingramp.id}
       =parkingramp.name
       =link_to t(:edit), edit_admin_parkingramp_path(parkingramp)
       =link_to t(:destroy), [:admin, parkingramp], :method => :delete, :confirm => t(:sure)
       =link_to t(:newplane), new_admin_parkingramp_parkingplane_path(parkingramp)
       %ul.parkingramps-planes
         - parkingramp.parkingplanes.each do |parkingplane|
-          %li
+          %li{:ref => parkingplane.id}
             =parkingplane.name
             =link_to t(:edit), edit_admin_parkingramp_parkingplane_path(parkingramp, parkingplane)
             =link_to t(:destroy), [:admin, parkingramp, parkingplane], :confirm => t(:sure), :method => :delete

@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+require 'net/http'
+require 'uri'
+require 'active_support/json'
+
+config = {
+  :auth_key => "SbEZXFGqaUvkpr8wCUVG",
+  :parkingramp => 4,
+  :host => "http://localhost:3000"
+}
+
+
+# Get information about the ramp of the public api
+url = URI.parse("#{config[:host]}")
+res = Net::HTTP.start(url.host, url.port) {|http|
+  http.get("/parkingramps/#{config[:parkingramp]}.json")
+}
+ramp = ActiveSupport::JSON.decode(res.body)
+
+lots = ramp["parkingplanes"].collect{|p| p["lots"] }.flatten
+
+while true do
+  currentlot = lots[rand(lots.count-1)]
+  currentlot["taken"] = !currentlot["taken"]
+
+  puts "Set Lot #{currentlot['id']} to #{currentlot["taken"]}!"
+  res = Net::HTTP.start(url.host, url.port) {|http|
+    http.get("/api/parkinglots/#{currentlot['id']}?taken=#{currentlot['taken']}&auth_key=#{config[:auth_key]}")
+  }
+  
+  nextaction = rand(100)/5
+  puts "Next change on the ramp happens in #{nextaction}s..."
+  sleep(nextaction)
+end

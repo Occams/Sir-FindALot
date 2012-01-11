@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111202184033) do
+ActiveRecord::Schema.define(:version => 20120110124109) do
 
   create_table "concretes", :force => true do |t|
     t.integer  "parkingplane_id"
@@ -95,6 +95,10 @@ ActiveRecord::Schema.define(:version => 20111202184033) do
     t.integer  "lots_taken"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "created_at_year"
+    t.integer  "created_at_month"
+    t.integer  "created_at_day"
+    t.integer  "created_at_hour"
   end
 
 end

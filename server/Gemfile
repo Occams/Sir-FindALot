@@ -22,6 +22,7 @@ gem 'therubyracer', :platforms => :ruby
 gem 'geocoder'
 gem 'haml-rails'
 gem 'hpricot'
+gem 'passenger'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -45,4 +46,9 @@ group :test do
   gem 'minitest'
   gem 'libnotify', :platforms => :ruby
   gem 'rb-inotify', :platforms => :ruby
+end
+
+group :production do
+  gem 'mysql'
+  gem 'mysql2'
 end
