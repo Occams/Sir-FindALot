@@ -1,20 +1,19 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  
+  layout :detect_browser
+
   def not_found
     raise ActionController::RoutingError.new('Not Found')
   end
   
-protected
-  def setAccessControl
-    access_controls = {
-      "Access-Control-Allow-Origin" => "*",
-      "Access-Control-Allow-Headers" => "X-Requested-With",
-      "Access-Control-Max-Age" => "60",
-      "Access-Control-Request-Method" => '*' 
-    }
-    access_controls.each do |k,v|
-      headers[k] = v
+private
+  MOBILE_BROWSERS = ["android", "ipod", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
+
+  def detect_browser
+    agent = request.headers["HTTP_USER_AGENT"].downcase
+    MOBILE_BROWSERS.each do |m|
+      return "mobile" if agent.match(m)
     end
+    return "application"
   end
 end

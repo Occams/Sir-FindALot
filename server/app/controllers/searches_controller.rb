@@ -2,7 +2,6 @@ class SearchesController < ApplicationController
   protect_from_forgery :except => "create"
 
   def create
-    setAccessControl
     @parkingramps = Parkingramp.all
     
     respond_to do |format|
