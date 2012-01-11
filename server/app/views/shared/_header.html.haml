@@ -1,18 +1,12 @@
 #logo
-  =link_to '/' do
+  =link_to (operator_signed_in? ? admin_parkingramps_url : '/') do
     =image_tag 'sir_small.png'
     SirFindALot
   
 %ul#headerlist
-  %li= link_to t(:page_home), '/'
-  %li= link_to t(:page_faq), '/faq'
   - if operator_signed_in?
-    %li#operator-flyout-trigger
-      =link_to current_operator.name, admin_parkingramps_url
-      #operator-flyout
-        %ul
-          %li= link_to t(Parkingramp.t(:plural)), admin_parkingramps_url
-          %li= link_to t(:page_api), '/admin/api'
-          %li= link_to t(:logout), destroy_operator_session_path, :method => :delete
+    %li= link_to t(:administration), admin_parkingramps_url
   -else
-    %li= link_to 'Operators', new_operator_session_url
+    %li= link_to t(:page_home), '/'
+    %li= link_to t(:page_faq), '/faq'
+    %li= link_to Operator.t(:plural), new_operator_session_url

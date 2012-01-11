@@ -91,13 +91,4 @@ private
   def operator_scope
     @Parkingramp = Parkingramp.scoped.where("operator_id" => current_operator.id)
   end
-  
-  def operator_panel_links
-    ls =  super.push [Parkingramp.t(:plural), admin_parkingramps_url]
-    if params[:action] == 'index'
-      ls.push Parkingramp.t(:plural)
-    else
-      ls.push (@parkingramp.new_record? ? Parkingramp.t(:new) : @parkingramp.name)
-    end
-  end
 end

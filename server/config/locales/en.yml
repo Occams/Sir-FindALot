@@ -5,7 +5,14 @@ en:
   edit: Edit
   destroy: Delete
   sure: Are you sure?
-  about: "This is the about text... Sir Fuckin Find A Lot descriptionSir Fuckin Find A Lot description"
+  about: "&raquo;SirFindLot helps you to find you a free lot. The web-application searches the nearest parkinglots based on your geolocation and your searches already submitted.&laquo;"
   page_about: About
   page_imprint: Imprint
   page_contact: Contact
+  myaccount: My Account
+  administration: Administration
+  admin:
+    operators:
+      show:
+        actions: Actions
+        delete_account: Cancel my contribution

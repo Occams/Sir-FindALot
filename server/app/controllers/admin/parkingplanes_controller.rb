@@ -67,10 +67,4 @@ private
     @parkingramp = Parkingramp.find(:first, :conditions => {:id => params[:parkingramp_id], :operator_id => current_operator.id})
     raise ActiveRecord::RecordNotFound if @parkingramp.nil?
   end
-  
-  def operator_panel_links
-    ls = super.push [Parkingramp.t(:plural), admin_parkingramps_url]
-    ls.push [@parkingramp.name, edit_admin_parkingramp_url(@parkingramp)]
-    ls.push (@parkingplane.new_record? ? Parkingplane.t(:new) : @parkingplane.name)
-  end
 end

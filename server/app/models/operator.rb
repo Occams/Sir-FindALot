@@ -11,4 +11,10 @@ class Operator < ActiveRecord::Base
   
   validates :name, :presence => true
   has_many :parkingramps, :dependent => :destroy
+  after_create :after_create_cb
+  
+private
+  def after_create_cb
+    self.reset_authentication_token!
+  end
 end

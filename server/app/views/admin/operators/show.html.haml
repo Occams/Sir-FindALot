@@ -1,0 +1,13 @@
+%h2= t(:myaccount)
+%dl
+  %dt= Operator.t(:email)
+  %dd= @operator.email
+  
+  %dt= Operator.t(:name)
+  %dd= @operator.name
+  
+  %dt= t(".actions")
+  %dd
+    = link_to t(".delete_account"), operator_registration_path, :method => :delete
+    ,
+    = link_to t(:logout), destroy_operator_session_path, :method => :delete

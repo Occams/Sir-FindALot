@@ -11,6 +11,7 @@ Server::Application.routes.draw do
   end
 
   namespace :admin do
+    resources :operators, :only => :show
     resources :parkingramps, :except => [:show] do
       resources :parkingplanes, :except => [:index, :show] do
         resources :parkinglots

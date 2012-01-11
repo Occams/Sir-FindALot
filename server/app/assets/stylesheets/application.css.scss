@@ -8,6 +8,8 @@ $default-bg: #393E43;
 $default-font: 'Signika Negative', sans-serif;
 $default-color: #444;
 $default-orange: #F3961C;
+$content-left:200px;
+$content-padding:20px;
 
 
 $padding:20px;
@@ -34,6 +36,10 @@ a {
   color:$default-orange;
 }
 
+a:hover {
+  color:darken($default-orange, 20%);
+}
+
 input {
   padding:4px;
 }
@@ -42,6 +48,8 @@ input {
   padding-bottom:20px;
 }
 
+
+
 #wrapper {
   padding:10 20px 20px 20px;
 }
@@ -49,6 +57,15 @@ input {
 #wrapper, #footer {
   width:$default-width;
   margin:0 auto;
+}
+
+#footer ul {
+  list-style:none;
+  padding-left:10px;
+}
+
+#footer ul a {
+  font-weight:bold;
 }
 
 #header {
@@ -86,9 +103,20 @@ input {
 
 #content {
   @include border(20px);
-  padding:20px;
+  padding:$content-padding;
   background:#EEE;
   background:rgba(0,0,0,0.15);
+}
+
+#content-left {
+  float:left;
+  width:$content-left;
+}
+
+#content-right {
+  float:left;
+  padding-left:$content-padding;
+  width:$default-width - $content-padding*3 - $content-left;
 }
 
 #footer-wrapper {
@@ -101,13 +129,14 @@ input {
 }
 
 .linklist {
-  width:$default-width/5;
+  width:$default-width/4;
   float:left;
 }
 
 #about {
-  width:2* $default-width/5;
+  width:$default-width/2;
   float:left;
+  font-style:italic;
 }
 
 .ul-no-style {
@@ -127,7 +156,6 @@ input, select, textarea {
 }
 
 input[type=submit] {
-  height: 44px;
   color:#333;
   border:1px solid #999;
   padding:0 40px 0 40px;
@@ -156,49 +184,13 @@ input[type=submit] {
   width:auto;
 }
 
-#operator-flyout-trigger:hover #operator-flyout {
-  display:block;
+#adminpanel {
+  list-style:none;
+  padding-left:0px;
 }
 
-#operator-flyout {
-  @include border(10px 0 10px 10px);
-  position:absolute;
-  display:none;
-  background-color:white;
-  width:$default-width/4;
-  padding:10px;
-  right:0;
-  background:#EEE;
-  background:rgba(0,0,0,0.10);
-}
-
-#operator-flyout ul {
-  position:static;
-}
-
-#operator-flyout ul li {
-  position:static;
-  display:block;
-}
-
-#operator-flyout ul li a {
-  color:black;
-}
-
-#operator-flyout ul li a:hover {
-  background:none;
-}
-
-#operator-panel {
-  @extend .ul-no-style;
-}
-
-#operator-panel li {
-  @include border(5px 25px 25px 5px);
-  background:url(/assets/transparent.png);
-  padding:7px 20px 7px 10px;
-}
-
+#adminpanel li { border-bottom:1px dashed #FFF; }
+#adminpanel a { font-weight:bold;display:block;padding:5px 0 5px 0; }
 
 label {
   vertical-align:top;

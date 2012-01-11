@@ -1,0 +1,12 @@
+%ul#adminpanel
+  %li
+    =link_to t(Parkingramp.t(:plural)), admin_parkingramps_url
+  %ul#adminpanel-parkingramps
+    - current_operator.parkingramps.each do |ramp|
+      %li= link_to ramp.name, edit_admin_parkingramp_url(ramp)
+      %ul
+        - ramp.parkingplanes.each do |plane|
+          %li= link_to plane.name, edit_admin_parkingramp_parkingplane_url(ramp, plane)
+  %li= link_to t(:page_api), '/admin/api'
+  %li= link_to t(:myaccount), admin_operator_path(current_operator)
+  %li= link_to t(:logout), destroy_operator_session_path, :method => :delete

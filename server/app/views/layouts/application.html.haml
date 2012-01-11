@@ -17,10 +17,18 @@
       #wrapper
         #header= render :partial => 'shared/header'
         #content
-          = render :partial => 'shared/operator_panel.html.haml'
-          - flash.each do |name, msg|
-            = content_tag :div, msg, :id => "flash_#{name}", :class => "flash-message" if msg.is_a?(String)
-          = yield
+          - if operator_signed_in?
+            #content-left
+              = render :partial => 'shared/admin_panel'
+            #content-right
+              - flash.each do |name, msg|
+                = content_tag :div, msg, :id => "flash_#{name}", :class => "flash-message" if msg.is_a?(String)
+              = yield
+          - else
+            - flash.each do |name, msg|
+              = content_tag :div, msg, :id => "flash_#{name}", :class => "flash-message" if msg.is_a?(String)
+            = yield      
+          
           .clear
     #footer-wrapper
       #footer
@@ -35,9 +43,7 @@
           %ul
             %li= link_to t(:facebook), 'http://facebook.com'
             %li= link_to t(:twitter), 'http://twitter.com'
-        .linklist
-          %h2 Muell
         #about
           %h2 About
-          %p= t(:about)
+          %p= t(:about).html_safe
         .clear

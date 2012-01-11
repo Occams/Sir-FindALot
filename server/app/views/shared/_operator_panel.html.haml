@@ -1,7 +1,0 @@
--if current_operator && !operator_panel_links.empty?
-  %ul#operator-panel
-    - operator_panel_links.each do |link|
-      - if (link.kind_of?(Array))
-        %li= link_to link.first, link.last
-      - else
-        %li= link

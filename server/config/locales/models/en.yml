@@ -7,3 +7,5 @@ en:
       parkingramp:
         plural: Parkingramps
         new: New parkingramp
+      operator:
+        plural: Contributors
