@@ -248,6 +248,9 @@
 			this.home = startpage ? startpage : this.pages[0];
 			this.show(home.getAttribute("id"));
 			
+			// Update width of Parkingarea object, must be invoked after the first page is shown.
+			Parkingarea.width =  $(startpage).width();
+			
 			// Initialize accordions
 			this._initAccordions();
 			
@@ -290,8 +293,11 @@
 				this._geoError();
 			}
 			
-			// Update IScroll on orientationchange
+			// Update IScroll and parkingarea width/height on orientationchange
 			window.addEventListener(RESIZE_EV, function (e) {
+				Parkingarea.width = Page._getPage(Page.current_page).offsetWidth;
+				Parkingarea.update();
+				
 				setTimeout(function () {
 					Page.pages.fire('update', {
 						onlyIScroll : true
@@ -400,11 +406,15 @@
 		_parkingAreaLoaded : function () {
 			eval('var data = ' + this.responseText);
 			
-			// Set header value
-			$('#lot header').html(data.name);
 			Parkingarea.fill(data);
 			Page._hideLoadingAnimation();
-			Page.show('lot');
+			
+			// Show levels or map page
+			if (data.parkingplanes.length > 1) {
+				Page.show('lot_levels');
+			} else {
+				Page.show('lot_map');
+			}
 		},
 		
 		_registerFakeActive : function () {

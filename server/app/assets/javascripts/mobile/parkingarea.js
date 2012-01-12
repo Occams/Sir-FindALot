@@ -1,40 +1,46 @@
 var Parkingarea = {
-	container : x$('#lot div[data-type="page-content"]'),
-  fill: function(data) {
-    console.log(data);
-    this.fillDetailPage(data);
-    this.fillMapPage(data);
-  },
-  
-  fillDetailPage: function(data) {
-  },
-  
-  fillMapPage: function(data) {
+	width : null,
+	
+	fill : function (data) {
+		console.log(data);
+		this.fillLevelPage(data);
+		this.fillDetailPage(data);
 		
-		// If there's more then one level display links
-		if (data.parkingplanes.length > 1) {
-			this.container.html(this._generate_level_links(data.parkingplanes));
-		} else {
-			this.container.html(this._generate_map(data.parkingplanes[0]))
+		// Initially show first map
+		this.fillMapPage(data.parkingplanes[0]);
+	},
+	
+	fillDetailPage : function (data) {
+		var container = x$('#lot_details div[data-type="page-content"]');
+	},
+	
+	fillLevelPage : function (data) {
+		var container = x$('#lot_levels div[data-type="page-content"]');
+		
+		// generate level links
+		var html = '';
+		for (var i in data.parkingplanes) {
+			var plane = data.parkingplanes[i];
+			html += '<li><a href="'+plane.id+'" fake-active="yes">';
+			html += '<div class="occupancy"><div class="level"></div><div class="mask"></div></div>';
+			html += '<span class="link-list-title">' + plane['name'] + '</span></a></li>';
 		}
-  }
-	,
+		
+		// fill container
+		container.html('<ul class="link-list" id="levels">' + html + '</ul>');
+		
+		x$('#levels').fastbutton(function (e) {
+			Page.show('lot_map');
+			e.preventDefault();
+			return false;
+		});
+	},
 	
-	_generate_level_links : function (planes,id) {
-    var html = '';
-
-    for (var i in planes) {
-     var plane = planes[i];
-	    html += '<li><a href="" fake-active="yes">';
-	    html += '<div class="occupancy"><div class="level"></div><div class="mask"></div></div>';
-	    html += '<span class="link-list-title">' + plane['name'] + '</span></a></li>';
-    }
-
-    return '<ul class="link-list" id="levels">' + html + '</ul>';
-  },
-	
-	_generate_map : function (plane) {
-		var maxX = 0, maxY = 0, html="";
+	fillMapPage : function (plane) {
+		var container = x$('#lot_map div[data-type="page-content"]'),
+		maxX = 0,
+		maxY = 0,
+		html = "";
 		
 		// Determine maximum values
 		for (var i in plane.concretes) {
@@ -43,9 +49,14 @@ var Parkingarea = {
 			maxY = c.y > maxY ? c.y : maxY;
 		}
 		
-		var width = this.container.width();
-		
-		html += "MaxX: "+maxX+" MaxY:"+maxY+" width:"+width;
+		html += "MaxX: " + maxX + " MaxY:" + maxY + " width:" + this.width;
+		// fill container
+		container.html('<ul class="link-list" id="levels">' + html + '</ul>');
+	},
+	
+	update : function () {},
+	
+	_generate_map : function (plane) {
 		
 		return html;
 	}
