@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120110124109) do
+ActiveRecord::Schema.define(:version => 20120112122200) do
 
   create_table "concretes", :force => true do |t|
     t.integer  "parkingplane_id"
@@ -87,6 +87,8 @@ ActiveRecord::Schema.define(:version => 20120110124109) do
     t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lots_taken",        :default => 0
+    t.integer  "lots_total",        :default => 0
   end
 
   create_table "stats", :force => true do |t|
