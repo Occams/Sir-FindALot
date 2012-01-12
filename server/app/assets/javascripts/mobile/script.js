@@ -273,7 +273,7 @@
 				input.attr('disabled', 'disabled');
 				
 				// Send Post request to server
-				Search.doSearch(input.value,
+				Search.doSearch(input[0].value,
 					null,
 					$('#search div[data-type="page-content"]'),
 					function () {

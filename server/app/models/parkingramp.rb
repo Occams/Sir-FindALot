@@ -8,6 +8,9 @@ class Parkingramp < ActiveRecord::Base
   
   attr_protected :operator_id
   
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :reverse_geocode  # auto-fetch address
+  
   def stat_down!
     self.parkingplanes.map(&:stat_down!)
   end
@@ -28,6 +31,16 @@ class Parkingramp < ActiveRecord::Base
   def self.stat_down
     Parkingramp.all.each do |ramp|
       ramp.stat_down!
+    end
+  end
+  
+  def self.rankby(geolocation, needle)
+    if !geolocation.nil?
+      return Parkingramp.near([geolocation[:coords][:latitude], geolocation[:coords][:longitude]])
+    elsif !needle.nil?
+      return Parkingramp.find(:all, :conditions => ["LOWER(name) LIKE ?", "%#{needle.downcase}%"])
+    else
+      return []
     end
   end
 end
