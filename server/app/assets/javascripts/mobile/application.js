@@ -1,6 +1,6 @@
 //= require ./bt
 //= require ./xui.min
 //= require ./iscroll-lite.min
-//= require ./parkingramp
+//= require ./parkingarea
 //= require ./search
 //= require ./script

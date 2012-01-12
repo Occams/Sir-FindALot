@@ -258,28 +258,29 @@
 			this._registerSwitchHandler();
 			
 			// TODO: Search handler
-			$('#geolocation_search_form').on('submit', function(e) {
+			$('#geolocation_search_form').on('submit', function (e) {
 				var loading = $('#loading');
-			
-			  // Show orange loading animation
-			  loading.removeClass('green').addClass('orange');
-			  loading.show();
-			
-			  // Disable input
-			  $('#geolocation_search').attr('disabled', 'disabled');
-			
-			  // The request
-        Search.doSearch($('#geolocation_search').value,
-          null,
-          $('#search div[data-type="page-content"]'),
-          function() {
-            $('#loading').hide();
-    			  $('#geolocation_search').rAttr('disabled'); // Reenable input field
-    			  Page.show('search');
-          }
-        );
-        e.preventDefault();
-        return false;
+				var input = $('#geolocation_search');
+				
+				// Show orange loading animation
+				loading.removeClass('green').addClass('orange');
+				loading.show();
+				
+				// Disable input
+				input.attr('disabled', 'disabled');
+				
+				// Send Post request to server
+				Search.doSearch(input.value,
+					null,
+					$('#search div[data-type="page-content"]'),
+					function () {
+					$('#loading').hide();
+					input.rAttr('disabled'); // Reenable input field
+					Page.show('search');
+				});
+				
+				e.preventDefault();
+				return false;
 			});
 			
 			// Start Geolocation
@@ -341,8 +342,23 @@
 			}
 		},
 		
-		_geoError : function (position) {
-			Page._showModal('Geolocation', 'Sorry, I encountered an error while trying to geolocate you. You may still issue a custom search.');
+		_geoError : function (error) {
+			
+			switch (error.code) {
+			case error.TIMEOUT:
+				Page._showModal('Geolocation - Timeout', 'Sorry, I experienced a timeout while trying to geolocate your device. You may still issue a custom search.');
+				break;
+			case error.POSITION_UNAVAILABLE:
+				Page._showModal('Geolocation - N/A', 'Sorry, your current position is not available. You may still issue a custom search.');
+				break;
+			case error.PERMISSION_DENIED:
+				Page._showModal('Geolocation - Timeout', 'Sorry, it seems like you denied my request to geolocate you. You may still issue a custom search.');
+				break;
+			default:
+				Page._showModal('Geolocation - Unknown Error', 'Sorry, I encountered an error while trying to geolocate you. You may still issue a custom search.');
+				break;
+			}
+			
 			var input = $('#geolocation_search'),
 			form = $('#geolocation_search_form');
 			
@@ -362,30 +378,29 @@
 			
 			// TODO: Send Geo request
 			var data = {
-				'cords' : position.cords,
+				'coords' : position.coords,
 				'timestamp' : position.timestamp
 			};
 			
-      Search.doSearch(input.value,
-        data,
-        "#geolocation_search_results",
-        function() {
-          $('#loading').hide();
-	
-			    // Enable input field and change placeholder text
-			    input.attr('placeholder', 'Touch to enter custom query...');
-			    input.rAttr('disabled');
-			    form.removeClass('green').addClass('orange');
-			    
-			    $("#home").fire('update');
-        }
-      );
+			Search.doSearch(null,
+				data,
+				"#geolocation_search_results",
+				function () {
+				$('#loading').hide();
+				
+				// Enable input field and change placeholder text
+				input.attr('placeholder', 'Touch to enter custom query...');
+				input.rAttr('disabled');
+				form.removeClass('green').addClass('orange');
+				
+				$("#home").fire('update');
+			});
 		},
 		
-		_parkingrampLoaded: function() {
-		  eval('var data = ' + this.responseText);
-		  $('#lot header').html(data.name);
-		  Page._hideLoadingAnimation();
+		_parkingrampLoaded : function () {
+			eval('var data = ' + this.responseText);
+			$('#lot header').html(data.name);
+			Page._hideLoadingAnimation();
 			Page.show('lot');
 			Parkingramp.show(data);
 		},
