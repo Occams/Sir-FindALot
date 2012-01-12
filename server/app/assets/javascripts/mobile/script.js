@@ -2,6 +2,9 @@
 
 // JQuery-like syntax
 (function ($) {
+
+	// Padding of the content container left+right
+	var CONTENT_PADDING = 20;
 	
 	$.ready(function () {
 		
@@ -249,7 +252,7 @@
 			this.show(home.getAttribute("id"));
 			
 			// Update width of Parkingarea object, must be invoked after the first page is shown.
-			Parkingarea.width =  $(startpage).width();
+			Parkingarea.width =  $(startpage).find('div[data-type="page-content"]').width() - CONTENT_PADDING;
 			
 			// Initialize accordions
 			this._initAccordions();
@@ -301,7 +304,7 @@
 						onlyIScroll : true
 					});
 					
-					Parkingarea.width = $(Page._getPage(Page.current_page)).width();
+					Parkingarea.width = $(Page._getPage(Page.current_page)).find('div[data-type="page-content"]').width() - CONTENT_PADDING;
 					Parkingarea.update();
 				}, 500); // requires a certain delay to work
 			});

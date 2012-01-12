@@ -3,25 +3,30 @@ var Parkingarea = {
 	plane : null, // reference to currently displayed plane
 	data : null,
 	cellH : 20,
-	cellW : 20,
 	
 	fill : function (data) {
 		console.log(data);
+		this.data = data;
+		this.plane = data.parkingplanes[0];
 		this.fillLevelPage(data);
 		this.fillDetailPage(data);
 		
 		// Initially show first map
 		this.fillMapPage(data.parkingplanes[0]);
-		this.plane = data.parkingplanes[0];
-		this.data = data;
 	},
 	
 	fillDetailPage : function (data) {
 		var container = x$('#lot_details div[data-type="page-content"]');
+		
+		// Set header
+		x$('#lot_details header').html(data.name + ' - Details');
 	},
 	
 	fillLevelPage : function (data) {
 		var container = x$('#lot_levels div[data-type="page-content"]');
+		
+		// Set header
+		x$('#lot_levels header').html(data.name + ' - Levels');
 		
 		// generate level links
 		var html = '',
@@ -29,9 +34,10 @@ var Parkingarea = {
 		for (var i in data.parkingplanes) {
 			var plane = data.parkingplanes[i];
 			html += '<li><a href="' + plane.id + '" fake-active="yes">';
-			html += '<div class="occupancy"><div class="level"></div><div class="mask"></div>';
-			html += '<span class="occupancy-text">' + plane['lots_taken'] + '/' + plane['lots_total'] + '</span></div>';
-			html += '<span class="link-list-title">' + plane['name'] + '</span></a></li>';
+			html += '<div class="occupancy"><div class="level"></div><div class="mask"></div></div>';
+			html += '<span class="link-list-title">' + plane['name'] + '</span>';
+			html += '<span class="occupancy-text">'+plane['lots_taken']+'/'+plane['lots_total']+'</span></a></li>';
+			
 			occupancy[i] = plane['lots_taken'] / plane['lots_total'];
 		}
 		
@@ -55,9 +61,14 @@ var Parkingarea = {
 	},
 	
 	fillMapPage : function (plane) {
-		var container = x$('#lot_map div[data-type="page-content"]'),
+		var container = x$('#lot_map div[data-type="page-content"]');
+		// Set header
+		x$('#lot_map header').html(this.data.name + ' - Map');
+		
 		maxX = 0,
+		minX = Number.MAX_VALUE,
 		maxY = 0,
+		minY = Number.MAX_VALUE,
 		html = "";
 		
 		// Determine maximum values
@@ -65,25 +76,38 @@ var Parkingarea = {
 			var c = plane.concretes[i];
 			maxX = c.x > maxX ? c.x : maxX;
 			maxY = c.y > maxY ? c.y : maxY;
+			minY = c.y < minY ? c.y : minY;
+			minX = c.x < minX ? c.x : minX;
 		}
 		
 		for (var i in plane.lots) {
 			var l = plane.lots[i];
 			maxX = l.x > maxX ? l.x : maxX;
 			maxY = l.y > maxY ? l.y : maxY;
+			minY = l.y < minY ? l.y : minY;
+			minX = l.x < minX ? l.x : minX;
 		}
 		
+		var padding = 10;
+		var width = Math.floor((this.width - 2 * padding) / (maxX - minX + 1));
+		
 		for (var i in plane.concretes) {
-			html += this._genCell(plane.concretes[i], 'concrete', maxX, maxY);
+			var c = plane.concretes[i];
+			html += this._genCell(c, (c.x - minX) * width + padding, (c.y - minY) * this.cellH + padding,width, ['concrete', c.category]);
 		}
 		
 		for (var i in plane.lots) {
-			html += this._genCell(plane.lots[i], 'lot', maxX, maxY);
+			var l = plane.lots[i];
+			html += this._genCell(l, (l.x - minX) * width + padding, (l.y - minY) * this.cellH + padding,width, ['lot', l.category, l.taken ? 'occupied' : 'free']);
 		}
 		
-		//html += "<p>MaxX: " + maxX + " MaxY:" + maxY + " width:" + this.width + '</p>';
+		console.log("<p>MaxX: " + maxX + " MaxY:" + maxY + " width:" + this.width + "MinX: " + minX + " MinY:" + minY + "</p>");
+		
 		// fill container
 		container.html('<div class="map">' + html + '</div>');
+		
+		// Set container height
+		x$('.map').setStyle('height', this.cellH * (maxY - minY + 1) + 2 * padding +'px');
 		
 		// IScroll update, TODO: test if needed
 		x$('#lot_map').fire('update', {
@@ -96,14 +120,14 @@ var Parkingarea = {
 		this.fillMapPage(this.plane);
 	},
 	
-	_genCell : function (c, classID, maxX, maxY) {
-		console.log(c.y);
-		left = ((c.x) / maxX) * (this.width),
-		width = this.width/maxX,
-		top = c.y * this.cellH,
-		style = 'left:' + left + 'px; top:' + (c.y * this.cellH) + 'px; width:' + width + 'px;';
+	_genCell : function (c, left, top, width,classA) {
+		var classes = "",
+		style = 'left:' + left + 'px; top:' + top + 'px; width:' + width + 'px;';
 		
-		return '<div class="' + classID + '" style="' + style + '">' + c.id + '</div>';
+		for (var i in classA) {
+			classes += classA[i] + " ";
+		}
+		return '<div class="' + classes + '" style="' + style + '"></div>';
 	},
 	
 	_getPlane : function (data, id) {

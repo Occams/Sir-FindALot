@@ -693,7 +693,7 @@ ul.link-list li a:active, ul.link-list li a.fake-active  {
 	background-repeat: no-repeat;
 }
 
-ul.link-list li a:active .link-list-title , ul.link-list li a.fake-active .link-list-title   {
+a:active .link-list-title , a.fake-active .link-list-title ,a:active .occupancy-text , a.fake-active .occupancy-text {
 		color:white;
 }
 
@@ -701,6 +701,15 @@ ul.link-list a .link-list-title {
 	position:absolute;
 	
 	top:7px;
+	font-size:120%;
+	font-weight:800;
+	color:#000;
+}
+
+ul.link-list a .occupancy-text  {
+	position:absolute;
+	top:7px;
+	right:50px;
 	font-size:120%;
 	font-weight:800;
 	color:#000;
@@ -757,6 +766,10 @@ ul.link-list a .occupancy .mask {
 	z-index: 10;
 
 	-webkit-transition: width 1s ease-in; -moz-transition: width 1s ease-in; -o-transition: width 1s ease-in; transition: width 1s ease-in;
+}
+
+ul.link-list a .occupancy .occupancy-text {
+
 }
 
 /* Faq accordion styles */
@@ -879,7 +892,21 @@ ul.link-list a .occupancy .mask {
 /* Parkingarea map display */
 
 .map {
+	display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
 	position:relative;
+	
+	/* Gradients */
+	background-color:#505050; /* Fallback value */
+	background: -moz-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* FF 3.6+ */  
+  background: -ms-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* IE10 */  
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #747474), color-stop(0.49, #676767), color-stop(0.5, #505050), color-stop(1.0, #414141));/* Safari 4+, Chrome 2+ */  
+  background: -webkit-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* Safari 5.1+, Chrome 10+ */  
+  background: -o-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* Opera 11.10 */  
+  background: linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* the standard */  
+	
+	-moz-box-shadow: 0px 0px 5px #666; -webkit-box-shadow: 0px 0px 5px #666; -o-box-shadow: 0px 0px 5px #666; box-shadow: 0px 0px 5px #666;
+	
+	-webkit-border-radius: 8px; -moz-border-radius: 8px; -o-border-radius: 8px; border-radius: 8px;
 }
 
 .lot , .concrete {
@@ -890,15 +917,63 @@ ul.link-list a .occupancy .mask {
 	box-align: center; -moz-box-align: center; -webkit-box-align: center; -o-box-align: center;
 	box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;
 	height:20px;
-	border:1px solid black;
 }
 
 .lot {
-	background:green;
+	background:#04B404;
+	border: 1px solid #1A1A1A;
 }
 
 .concrete {
-	background:#CCC;
+	background:#FFF;
+}
+
+.entry ,.exit{
+}
+
+.entry:after {
+	content:"";
+	
+	display:block;
+	position:relative;
+	
+	top:0px;
+	left:25%;
+	
+	width:0px;
+	height:0px;
+	
+	border-style:solid;
+	border-color: transparent transparent transparent #04B404;
+	border-width: 10px 10px 10px 20px;
+}
+
+.exit:after {
+	content:"";
+	
+	display:block;
+	position:relative;
+	
+	top:0px;
+	left:25%;
+	
+	width:0px;
+	height:0px;
+	
+	border-style:solid;
+	border-color: transparent transparent transparent #DF0101;
+	border-width: 10px 10px 10px 20px;
+}
+.occupied {
+	background:#DF7401;
+}
+
+.disabled {
+	background:#DF0101;
+}
+
+.women {
+	background:#DF01A5;
 }
 
 /* Switch buttons */
