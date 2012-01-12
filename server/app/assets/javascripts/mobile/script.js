@@ -295,13 +295,14 @@
 			
 			// Update IScroll and parkingarea width/height on orientationchange
 			window.addEventListener(RESIZE_EV, function (e) {
-				Parkingarea.width = Page._getPage(Page.current_page).offsetWidth;
-				Parkingarea.update();
 				
 				setTimeout(function () {
 					Page.pages.fire('update', {
 						onlyIScroll : true
-					})
+					});
+					
+					Parkingarea.width = $(Page._getPage(Page.current_page)).width();
+					Parkingarea.update();
 				}, 500); // requires a certain delay to work
 			});
 			

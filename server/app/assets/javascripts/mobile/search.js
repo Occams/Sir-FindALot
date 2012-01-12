@@ -25,18 +25,18 @@ var Search = {
 	    x$(Search.parentContainer).find('.link-list').setStyle('opacity', '1');
     }, 25);
 		
-		 // Display occupancy animation
+		// Display occupancy animation
 		var occupancy = [];
 		 for (var i in data) {
-			var single = data[i];
-			occupancy[i] = single['occupancy']
+			var area = data[i];
+			occupancy[i] = area['lots_taken'] / area['lots_total'];
 		}
 		
 		setTimeout(function (e) {
 	    x$(Search.parentContainer).find('.mask').each(function (el, i) {
 		    x$(el).setStyle('width', (100 - occupancy[i] * 100) + '%');
 	    })
-    }, 100);
+    }, 300);
     
     
     x$('.link-list a').fastbutton(function (e) {
@@ -55,7 +55,7 @@ var Search = {
     for (var i in data) {
      var single = data[i];
 	    html += '<li><a href="/parkingramps/' + single['id'] + '.json" fake-active="yes">';
-	    html += '<div class="occupancy"><div class="level"></div><div class="mask"></div></div>';
+	    html += '<div class="occupancy"><div class="level"></div><div class="mask"></div><span class="occupancy-text">'+single['lots_taken']+'/'+single['lots_total']+'</span></div>';
 	    html += '<span class="link-list-title">' + single['name'] + ' - ' + single['category'] + '</span></a></li>';
     }
 
