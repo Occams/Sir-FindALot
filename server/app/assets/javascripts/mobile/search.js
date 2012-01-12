@@ -11,7 +11,7 @@ var Search = {
     this.parentContainer = parentContainer;
     this.cb = cb;
     
-    x$().xhr("/searches.json", {method:'POST', data: JSON.stringify(data), async: true, callback: Search.callback});
+    x$().xhr("/searches.json", {method:'POST', data: "search="+JSON.stringify(data), async: true, callback: Search.callback});
   },
   
   callback: function() {
