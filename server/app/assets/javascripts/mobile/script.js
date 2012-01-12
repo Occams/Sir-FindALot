@@ -397,12 +397,14 @@
 			});
 		},
 		
-		_parkingrampLoaded : function () {
+		_parkingAreaLoaded : function () {
 			eval('var data = ' + this.responseText);
+			
+			// Set header value
 			$('#lot header').html(data.name);
+			Parkingarea.fill(data);
 			Page._hideLoadingAnimation();
 			Page.show('lot');
-			Parkingramp.show(data);
 		},
 		
 		_registerFakeActive : function () {

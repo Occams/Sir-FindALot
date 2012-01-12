@@ -16,7 +16,6 @@ var Search = {
   
   callback: function() {
     eval('var data = ' + this.responseText);
-		console.log(data);
     x$(Search.parentContainer).html(Search._generate_link_list_search_results(data, 'search_results'));
     
 
@@ -42,7 +41,7 @@ var Search = {
     
     x$('.link-list a').fastbutton(function (e) {
       Page._displayLoadingAnimation();
-      x$().xhr(this.element.getAttribute('href'), Page._parkingrampLoaded);
+      x$().xhr(this.element.getAttribute('href'), Page._parkingAreaLoaded);
       e.preventDefault();
       return false;
     });
