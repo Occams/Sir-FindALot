@@ -4,6 +4,9 @@ require 'concrete'
 
 class CreateSampleData < ActiveRecord::Base
   operator = Operator.create(:email => "foo@bar.de", :name => "Foo Bar", :password => "password")
+  if operator.nil?
+    operator = Operator.find_by_email "foo@bar.de"
+  end
 
   [
     ["Universität Passau",48.566782,13.451343],
@@ -43,5 +46,6 @@ class CreateSampleData < ActiveRecord::Base
 =end    
       
     end
+    ramp.reset_cache_values
   end
 end

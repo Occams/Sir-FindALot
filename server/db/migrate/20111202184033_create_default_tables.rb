@@ -19,8 +19,8 @@ class CreateDefaultTables < ActiveRecord::Migration
       t.string :name
       t.integer :parkingramp_id
       t.integer :sorting
-      t.integer :lots_total
-      t.integer :lots_taken
+      t.integer :lots_total, :default => 0
+      t.integer :lots_taken, :default => 0
 
       t.timestamps
     end
@@ -28,7 +28,7 @@ class CreateDefaultTables < ActiveRecord::Migration
     create_table :parkinglots do |t|
       t.integer :parkingplane_id
       t.string :category
-      t.boolean :taken
+      t.boolean :taken, :default => false
       t.integer :x
       t.integer :y
 

@@ -8,8 +8,12 @@ class Parkingplane < ActiveRecord::Base
   # Lots relations
   has_many :lots, :class_name => 'Parkinglot', :dependent => :delete_all
   has_many :concretes, :class_name => 'Concrete', :dependent => :delete_all
+  has_many :entries, :class_name => 'Concrete', :conditions => {:category => "entry"}
+  has_many :exits, :class_name => 'Concrete', :conditions => {:category => "exit"}
   has_many :taken_lots, :class_name => 'Parkinglot',
            :conditions => {:taken => true}
+  has_many :free_lots, :class_name => 'Parkinglot',
+           :conditions => {:taken => false}
   
   attr_protected :parkingramp_id
   default_scope :order => 'sorting ASC'
@@ -21,6 +25,18 @@ class Parkingplane < ActiveRecord::Base
     stat.lots_total = self.lots_total
     stat.lots_taken = self.lots_taken
     stat.save
+  end
+  
+  def best_lots
+    scores = {}
+    es = self.exits
+    self.free_lots.each do |lot|
+      scores[lot] = 0
+      es.each do |e|
+        scores[lot] += (e.x - lot.x).abs + (e.y - lot.y).abs
+      end
+    end
+    scores.sort{|a,b| a <=> b}[0,5].collect{|a| a.first}
   end
   
   # sorts the given planes according in the given order

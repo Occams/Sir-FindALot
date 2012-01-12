@@ -1,1 +1,1 @@
-=raw @parkingramp.to_json(:include => {:parkingplanes => {:include => [:lots, :concretes]}})
+=raw @parkingramp.to_json(:include => {:parkingplanes => {:include => [:lots, :concretes], :method => :best_lots}})
