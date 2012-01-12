@@ -23,15 +23,6 @@ class Parkingplane < ActiveRecord::Base
     stat.save
   end
   
-  # overwrite lots_taken and lots_total field, TODO cache this values
-  def lots_taken
-    self.taken_lots.count
-  end
-  
-  def lots_total
-    self.lots.count
-  end
-  
   # sorts the given planes according in the given order
   def self.sort_down(planes)
     planes.each_with_index do |plane,i|

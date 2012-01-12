@@ -11,4 +11,13 @@ class Concrete < ActiveRecord::Base
   def self.categories
     @@categories
   end
+  
+  
+  # Callbacks
+  after_initialize :default_values
+
+private
+  def default_values
+    self.category ||= @@categories.first.to_s
+  end
 end
