@@ -697,7 +697,7 @@ ul.link-list a .link-list-title {
 	position:absolute;
 	
 	top:7px;
-	font-size:140%;
+	font-size:120%;
 	font-weight:800;
 	color:#000;
 }
@@ -706,7 +706,7 @@ ul.link-list a .occupancy-text  {
 	position:absolute;
 	bottom:2px;
 	left:10px;
-	font-size:120%;
+	font-size:110%;
 	font-weight:800;
 	color:#000;
 }
@@ -925,44 +925,8 @@ ul.link-list a .occupancy .mask {
 	background:#FFF;
 }
 
-.entry ,.exit{
-}
+.entry , .exit{
 
-.entry:after {
-	content:"";
-	
-	display:block;
-	position:relative;
-	
-	top:0px;
-	left:25%;
-	
-	width:0px;
-	height:0px;
-	
-	border-style:solid;
-	border-color: transparent transparent transparent #04B404;
-	border-width: 10px 10px 10px 20px;
-}
-
-.exit:after {
-	content:"";
-	
-	display:block;
-	position:relative;
-	
-	top:0px;
-	left:25%;
-	
-	width:0px;
-	height:0px;
-	
-	border-style:solid;
-	border-color: transparent transparent transparent #DF0101;
-	border-width: 10px 10px 10px 20px;
-}
-.occupied {
-	background:#DF7401;
 }
 
 .disabled {
@@ -973,6 +937,14 @@ ul.link-list a .occupancy .mask {
 	background:#DF01A5;
 }
 
+.occupied {
+	background:#DF7401!important;
+}
+
+.arrow {
+
+}
+
 /* Switch buttons */
 
 .switch {
@@ -980,7 +952,7 @@ ul.link-list a .occupancy .mask {
 	
 	position:relative;
 	
-	margin:auto;
+	margin: 0 auto;
 	
 	box-orient: horizontal; -moz-box-orient: horizontal; -webkit-box-orient: horizontal; -o-box-orient: horizontal;
 	box-align: center; -moz-box-align: center; -webkit-box-align: center; -o-box-align: center;
@@ -991,7 +963,7 @@ ul.link-list a .occupancy .mask {
 	background: #EEE;
 	border:1px solid #CCC;
 	
-	width:70%;
+	width:80%;
 }
 
 .switch .slide {
@@ -1012,16 +984,14 @@ ul.link-list a .occupancy .mask {
 	height:40px;
 	width:50%;
 	
-	border:1px solid #000;
-	
-	/* Gradients */
-	background-color:#444; /* Fallback value */
-	background: -moz-linear-gradient(#888, #444); /* FF 3.6+ */  
-  background: -ms-linear-gradient(#888, #444); /* IE10 */  
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #888), color-stop(100%, #444)); /* Safari 4+, Chrome 2+ */  
-  background: -webkit-linear-gradient(#888, #444); /* Safari 5.1+, Chrome 10+ */  
-  background: -o-linear-gradient(#888, #444); /* Opera 11.10 */  
-  background: linear-gradient(#888, #444); /* the standard */  
+/* Gradients */
+	background-color:#505050; /* Fallback value */
+	background: -moz-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* FF 3.6+ */  
+  background: -ms-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* IE10 */  
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #747474), color-stop(0.49, #676767), color-stop(0.5, #505050), color-stop(1.0, #414141));/* Safari 4+, Chrome 2+ */  
+  background: -webkit-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* Safari 5.1+, Chrome 10+ */  
+  background: -o-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* Opera 11.10 */  
+  background: linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* the standard */  
 	
 	font-size:large;
 	font-weight: 800;
@@ -1037,17 +1007,18 @@ ul.link-list a .occupancy .mask {
 .switch .slide.selected {
 	-webkit-transform: translate3d(100%,0,0); transform: translate3d(100%,0,0); -moz-transform: translate3d(100%,0,0); -o-transform: translate3d(100%,0,0);
 	
-	background: #6db3f2; /* Old browsers */
-	background: -moz-linear-gradient(top, #6db3f2 0%, #54a3ee 49%, #3690f0 50%, #1e69de 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6db3f2), color-stop(49%,#54a3ee), color-stop(50%,#3690f0), color-stop(100%,#1e69de)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #6db3f2 0%,#54a3ee 49%,#3690f0 50%,#1e69de 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #6db3f2 0%,#54a3ee 49%,#3690f0 50%,#1e69de 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #6db3f2 0%,#54a3ee 49%,#3690f0 50%,#1e69de 100%); /* IE10+ */
-	background: linear-gradient(top, #6db3f2 0%,#54a3ee 49%,#3690f0 50%,#1e69de 100%); /* W3C */
+background: #9dd53a; /* Old browsers */
+background: -moz-linear-gradient(top, #9dd53a 0%, #a1d54f 49%, #80c217 50%, #7cbc0a 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9dd53a), color-stop(49%,#a1d54f), color-stop(50%,#80c217), color-stop(100%,#7cbc0a)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #9dd53a 0%,#a1d54f 49%,#80c217 50%,#7cbc0a 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #9dd53a 0%,#a1d54f 49%,#80c217 50%,#7cbc0a 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #9dd53a 0%,#a1d54f 49%,#80c217 50%,#7cbc0a 100%); /* IE10+ */
+background: linear-gradient(top, #9dd53a 0%,#a1d54f 49%,#80c217 50%,#7cbc0a 100%); /* W3C */
 }	
 
 .switch .enable,.switch .disable {
 	display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
+	position:relative;
 	
 	box-align: center; -moz-box-align: center; -webkit-box-align: center; -o-box-align: center;
 	box-pack: center; -moz-box-pack: center; -webkit-box-pack: center; -o-box-pack: center;
@@ -1067,6 +1038,8 @@ ul.link-list a .occupancy .mask {
 
 #options_list {
 	list-style:none;
+	margin:15px 0px;
+	padding:0px;
 }
 
 .button {
@@ -1076,10 +1049,10 @@ ul.link-list a .occupancy .mask {
 	box-orient: horizontal; -moz-box-orient: horizontal; -webkit-box-orient: horizontal; -o-box-orient: horizontal;
 	box-align: center; -moz-box-align: center; -webkit-box-align: center; -o-box-align: center;
 	
-	width:50%;
-	height:50px;
+	width:80%;
+	height:40px;
 	
-	margin:auto;
+	margin:15px auto;
 	
 	/* Gradients */
 	background-color:#505050; /* Fallback value */

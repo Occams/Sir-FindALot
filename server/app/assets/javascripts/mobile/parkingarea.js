@@ -137,6 +137,8 @@ var Parkingarea = {
 		// fill container
 		container.html('<div class="map">' + html + '</div>');
 		
+		//container.find('.entry').html('<div class="arrow">');
+		
 		// Set container height
 		x$('.map').setStyle('height', this.cellH * (maxY - minY + 1) + 2 * padding +'px');
 		
