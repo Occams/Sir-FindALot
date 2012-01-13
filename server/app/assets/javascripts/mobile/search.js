@@ -5,13 +5,20 @@ var Search = {
   doSearch: function(needle, geolocation, parentContainer, cb) {
     data = {
       'needle': needle,
-      'geolocation': geolocation
+      'geolocation': geolocation,
+      'history': LocalStorage.get("history", [])
     };
     
     this.parentContainer = parentContainer;
     this.cb = cb;
     
     x$().xhr("/searches.json", {method:'POST', data: "search="+JSON.stringify(data), async: true, callback: Search.callback});
+  },
+  
+  log: function(rampid) {
+    hist = LocalStorage.get("history", [])
+    hist.push({date: Date.now(), parkingramp_id: rampid})
+    LocalStorage.put("history", hist)
   },
   
   callback: function() {
