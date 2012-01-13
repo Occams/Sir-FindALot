@@ -48,22 +48,22 @@ private
   end
   
   def inc_total_values
-    self.parkingplane.lots_total += 1
-    self.parkingplane.parkingramp.lots_total +=1
+    self.parkingplane.increment!(:lots_total)
+    self.parkingplane.parkingramp.increment!(:lots_total)
   end
   
   def dec_total_values
-    self.parkingplane.lots_total -= 1
-    self.parkingplane.parkingramp.lots_total -=1
+    self.parkingplane.decrement!(:lots_total)
+    self.parkingplane.parkingramp.decrement!(:lots_total)
   end
   
   def inc_taken_values
-    self.parkingplane.lots_taken -= 1
-    self.parkingplane.parkingramp.lots_taken -= 1
+    self.parkingplane.increment!(:lots_taken)
+    self.parkingplane.parkingramp.increment!(:lots_taken)
   end
   
   def dec_taken_values
-    self.parkingplane.lots_taken -= 1
-    self.parkingplane.parkingramp.lots_taken -= 1
+    self.parkingplane.decrement!(:lots_taken)
+    self.parkingplane.parkingramp.decrement!(:lots_taken)
   end
 end

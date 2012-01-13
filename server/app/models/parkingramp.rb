@@ -34,13 +34,29 @@ class Parkingramp < ActiveRecord::Base
     end
   end
   
-  def self.rankby(geolocation, needle)
+  def self.rankby(geolocation, needle, history)
+    parts = []
+  
     if !geolocation.nil?
-      return Parkingramp.near([geolocation[:coords][:latitude], geolocation[:coords][:longitude]])
-    elsif !needle.nil?
-      return Parkingramp.find(:all, :conditions => ["LOWER(name) LIKE ?", "%#{needle.downcase}%"])
-    else
-      return []
+      parts.push Parkingramp.near([geolocation[:coords][:latitude], geolocation[:coords][:longitude]]).select("parkingramps.*, 5 as score").to_sql
     end
+
+    if !needle.nil?
+      parts.push Parkingramp.where("LOWER(name) LIKE ?", "%#{needle.downcase}%").select("parkingramps.*, 1 as score").to_sql
+    end
+    
+    if !history.nil?
+      # Collect all ramps that were visited at the same weekday near the current
+      # time and map a score value to them
+      #TODO this one
+      #parts.push Parkingramp.where("id in (?)", history.collect{|h| h[
+    end
+    
+    if parts.empty?
+      []
+    else
+      Parkingramp.find_by_sql "SELECT p.* FROM (#{parts.join(" UNION ALL ")}) as p GROUP BY p.id ORDER BY SUM(p.score) DESC"
+    end
+    
   end
 end

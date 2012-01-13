@@ -6,7 +6,7 @@ class SearchesController < ApplicationController
       @parkingramps = []
     else
       params[:search] = JSON(params[:search])
-      @parkingramps = Parkingramp.rankby(params[:search][:geolocation], params[:search][:needle])
+      @parkingramps = Parkingramp.rankby(params[:search][:geolocation], params[:search][:needle], params[:search][:history])
     end
   
     respond_to do |format|
