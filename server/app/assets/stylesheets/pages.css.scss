@@ -1,6 +1,29 @@
+// Mixins
+@mixin border($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin shadow($radius, $color) {
+  -moz-box-shadow: $radius $color;
+  -webkit-box-shadow: $radius $color;
+  box-shadow: $radius $color;
+}
+
+$slides-links-width: 25%;
+
+
 #page-home-slogan { font-size:40px; }
 
 .faq { padding:20px 0 20px 60px; }
 .faq .question { color:#F3961C;font-size:150%; }
 .faq .answer {}
 .faqlist { list-style:none; font-weight:bold; padding-left:60px;}
+
+#slides-links { float:left; width:$slides-links-width;list-style:none;padding:0px;margin:0px; }
+#slides-links a { display:block;padding:10px 0 30px 0;text-indent:10px;border-right:1px solid #EEE;background-color:rgba(255,255,255,0.5); }
+#slides-links a.active { @include border(10px 0 0 10px); background-color:white;border-right:1px solid #FFF;@include shadow(0px 0px 5px, #888);  }
+#slides { float:left;width:100%-$slides-links-width; height:100%;}
+.slide { display:none;padding:10px; }
+.slide.active {display:block;background-color:white;@include shadow(3px 0px 5px, #888);}
