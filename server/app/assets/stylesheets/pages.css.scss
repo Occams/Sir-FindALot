@@ -10,7 +10,7 @@
   -webkit-box-shadow: $radius $color;
   box-shadow: $radius $color;
 }
-
+$default-color: #444;
 $slides-links-width: 25%;
 
 
@@ -29,7 +29,11 @@ $slides-links-width: 25%;
 .slide.active {display:block;background-color:white;@include shadow(3px 0px 5px, #888);}
 
 #start-sir { width:500px;margin: 0 auto; }
+.tour  { margin:10px;border-bottom:2px inset $default-color;}
 .phrase {text-align:center;font-style:italic;font-weight:lighter;font-size:120%; }
+
+.screen { width:205px;position:relative;float:right;margin-left:20px; }
+.screen-image {width:172px;position:absolute;left:17px;top:59px;}
 
 
 /* Speech bubble */

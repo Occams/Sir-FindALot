@@ -12,7 +12,7 @@ protected
     MOBILE_BROWSERS.each do |m|
       return true if agent.match(m)
     end
-    return true # set to false if you want to see website TODO!
+    return false # set to false if you want to see website TODO!
   end
   
 private

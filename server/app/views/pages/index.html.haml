@@ -1,6 +1,6 @@
 %ul#slides-links
   %li
-    %h2 Tour
+    %h2.tour Tour
   %li= link_to "What is SirFindALot", "#slide_start"
   %li= link_to "Find your parking area", "#slide_ramp"
   %li= link_to "Find your lot", "#slide_map"
@@ -17,8 +17,9 @@
     %p
       The web-application searches the nearest parkinglots based on your geolocation and your searches already submitted.
   #slide_ramp.slide
-    = image_tag 'phones/iphone.png'
-  
+    .screen
+      = image_tag 'phones/shot_000002.png', :class => "screen-image"
+      = image_tag 'phones/nexus.png', :class => "device-nexus"
     %h2 Automatic geolocation-based search
     %p
       As you navigate to SirFindLot with your mobile phone, the search for parkingareas
@@ -33,15 +34,24 @@
     %p
       If your device can't geolocate you, you may use the custom search. Just enter some 
       keywords and find your parking area.
+    .clear
   #slide_map.slide
+    .screen
+      = image_tag 'phones/shot_000006.png', :class => "screen-image"
+      = image_tag 'phones/nexus.png', :class => "device-nexus"
     %h2 Select the best lot
     %p
       Sir FindALot suggests you some lots for you. It's your turn to choose the right one.
     %p
       .phrase
         »It's up on you to choose the very best lot.«
+    .clear
   #slide_infos.slide
+    .screen
+      = image_tag 'phones/shot_000007.png', :class => "screen-image"
+      = image_tag 'phones/nexus.png', :class => "device-nexus"
     %h2 In case you need information...
     %p
       Sir FindALot provides additional information about the parkingarea. Find out
-      about pricing and opening hours of the parking area. Let the information be yours."
+      about pricing and opening hours of the parking area. Let the information be yours.
+    .clear
