@@ -14,7 +14,7 @@
 				<meta name="description" content="Sir FindALot helps you find your lot" />
 				<meta name="author" content="Team Amazonen" />
 				<!-- Mobile viewport settings  target-densitydpi=high-dpi -->
-				<meta name="viewport" content="width=device-width, initial-scale=1,target-densitydpi=device-dpi, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+				<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 				<!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
 				<meta name="HandheldFriendly" content="True" />
 				<meta name="MobileOptimized" content="320" />
@@ -66,7 +66,7 @@
 					-->
 					
 				<!-- Modernizer script to detect browser capabilities -->
-				<%= javascript_include_tag 'mobile/modernizer' %>
+				<%= javascript_include_tag 'mobile/modernizr' %>
 			</head>
 			<body>
 				<header id="global-header"></header>
@@ -81,41 +81,22 @@
 							<div data-type="page-content">
 								<div id="sir_bubble_container_vertical">
 									<div class="speech_bubble  bottom_triangle">
-										"<b>Sir Findalot</b> is eager to help you find a free lot!
-										I'm currently computing results based on your location."
+										"To stop automatic geolocation on each page load <b>Sir Findalot</b> recommends to alter the settings below.
+										Additionally you may purge all data <b>Sir Findalot</b> has collected in order to refine your search results."
 									</div>
 									<%= image_tag 'mobile/sir_options.png', :id => 'img_carl', :alt => "Carl and Sir FindALot" %>
 								</div>
-								<a href="#" id="show_modal">Show Test Modal</a>
+								
 								<ul id="options_list">
-									<li>
-										<span class="options_label">Use GPS</span>
+									<li id ="auto_geo_slide">
 										<div class="switch" fake-active="yes">
-											<label class="enable" rel="slide1">On</label>
-											<label class="disable selected" rel="slide1">Off</label>
-											<div class="slide selected" id="slide1"></div>
-											<input type="checkbox" id="checkbox1" class="checkbox" name="field1" />
-										</div>
-									</li>
-									<li>
-										<span class="options_label">Give me</span>
-										<div class="switch" fake-active="yes">
-											<label class="enable" rel="slide2">Ape</label>
-											<label class="disable selected" rel="slide2">Shit</label>
-											<div class="slide selected" id="slide2"></div>
-											<input type="checkbox" id="checkbox2" class="checkbox" name="field1" />
-										</div>
-									</li>
-									<li>
-										<span class="options_label">Autopilot</span>
-										<div class="switch" fake-active="yes">
-											<label class="enable" rel="slide3">Auto</label>
-											<label class="disable" rel="slide3">Off</label>
-											<div class="slide" id="slide3"></div>
-											<input type="checkbox" id="checkbox3" class="checkbox" name="field1" />
+											<label class="disable" rel="slide1">Auto</label>
+											<label class="enable selected" rel="slide1">Off</label>
+											<div class="slide selected" id="slide1">Geolocation</div>
 										</div>
 									</li>
 								</ul>
+								<div class="button" id="purge_data">Purge Data</div>
 							</div>
 						</div>
 						<footer>

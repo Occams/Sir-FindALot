@@ -2,7 +2,7 @@
 
 // JQuery-like syntax
 (function ($) {
-
+	
 	// Padding of the content container left+right
 	var CONTENT_PADDING = 20;
 	
@@ -10,17 +10,16 @@
 		
 		// Feature detection
 		if (!supportsFeatures()) {
-			window.location = 'upgrade.html';
+			window.location = '/upgrade';
 		} else {
 			Page.init();
 		}
-		// MBP.hideUrlBar(); // Not working?
 	});
 	
-	// Seems like some browser do not support domready, redirect to upgrade.html
+	// Seems like some browser do not support domready, redirect to /upgrade
 	window.onload = function () {
 		if (!supportsFeatures()) {
-			window.location = 'upgrade.html';
+			window.location = '/upgrade';
 		} else if (!Page.initialized) {
 			Page.init();
 		}
@@ -28,9 +27,11 @@
 	
 	var supportsFeatures = function () {
 		var m = Modernizr;
+		
 		return m.flexbox & m.borderradius & m.boxshadow &
 		m.cssanimations & m.cssgradients & m.csstransforms &
-		m.csstransitions & m.fontface & m.opacity & m.textshadow & m.applicationcache;
+		m.csstransitions & m.fontface & m.opacity & m.textshadow & m.applicationcache &
+		m.generatedcontent & m.localstorage & m.fontface;
 	};
 	
 	// Detect capabilities
@@ -84,7 +85,7 @@
 	
 	$.fn.show = function () {
 		
-		console.log('Show: ' + this.attr('id'));
+		//console.log('Show: ' + this.attr('id'));
 		
 		// Show element
 		this.css({
@@ -97,7 +98,7 @@
 	}
 	
 	$.fn.hide = function () {
-		console.log('Hide: ' + this.attr('id'));
+		//console.log('Hide: ' + this.attr('id'));
 		
 		this.setStyle("display", "none");
 		return this;
@@ -208,6 +209,13 @@
 					});
 			});
 			
+			// LocalStorage initialization
+			if (localStorage) {
+				if (!localStorage.getItem('auto_geo')) {
+					localStorage.setItem('auto_geo', 'true');
+				}
+			}
+			
 			// Page update event
 			this.pages.on('update', function (e) {
 				var page = $(this);
@@ -237,7 +245,7 @@
 				
 				// IScroll4 doc recommends using setTimeout
 				setTimeout(function () {
-					console.log('Refresh of scroll area: ' + scrollID);
+					//console.log('Refresh of scroll area: ' + scrollID);
 					Page.scrollers[scrollID].refresh();
 				}, 0);
 				
@@ -252,7 +260,7 @@
 			this.show(home.getAttribute("id"));
 			
 			// Update width of Parkingarea object, must be invoked after the first page is shown.
-			Parkingarea.width =  $(startpage).find('div[data-type="page-content"]').width() - CONTENT_PADDING;
+			Parkingarea.width = $(startpage).find('div[data-type="page-content"]').width() - CONTENT_PADDING;
 			
 			// Initialize accordions
 			this._initAccordions();
@@ -260,8 +268,8 @@
 			// Initialize modal window
 			this._initModal();
 			
-			// Switch handlers
-			this._registerSwitchHandler();
+			// Options Page initialization
+			Options.init();
 			
 			// TODO: Search handler
 			$('#geolocation_search_form').on('submit', function (e) {
@@ -289,8 +297,11 @@
 				return false;
 			});
 			
+			// Test if auto geolocation is enabled
+			console.log("Auto-Geolocation: " + localStorage.getItem('auto_geo'));
+			var auto = eval(localStorage.getItem('auto_geo'));
 			// Start Geolocation
-			if (navigator.geolocation) {
+			if (navigator.geolocation && auto) {
 				navigator.geolocation.getCurrentPosition(this._geoPosition, this._geoError);
 			} else {
 				this._geoError();
@@ -354,21 +365,22 @@
 		
 		_geoError : function (error) {
 			
-			switch (error.code) {
-			case error.TIMEOUT:
-				Page._showModal('Geolocation - Timeout', 'Sorry, I experienced a timeout while trying to geolocate your device. You may still issue a custom search.');
-				break;
-			case error.POSITION_UNAVAILABLE:
-				Page._showModal('Geolocation - N/A', 'Sorry, your current position is not available. You may still issue a custom search.');
-				break;
-			case error.PERMISSION_DENIED:
-				Page._showModal('Geolocation - Timeout', 'Sorry, it seems like you denied my request to geolocate you. You may still issue a custom search.');
-				break;
-			default:
-				Page._showModal('Geolocation - Unknown Error', 'Sorry, I encountered an error while trying to geolocate you. You may still issue a custom search.');
-				break;
+			if (error) {
+				switch (error.code) {
+				case error.TIMEOUT:
+					Page._showModal('Geolocation - Timeout', 'Sorry, I experienced a timeout while trying to geolocate your device. You may still issue a custom search.');
+					break;
+				case error.POSITION_UNAVAILABLE:
+					Page._showModal('Geolocation - N/A', 'Sorry, your current position is not available. You may still issue a custom search.');
+					break;
+				case error.PERMISSION_DENIED:
+					Page._showModal('Geolocation - Timeout', 'Sorry, it seems like you denied my request to geolocate you. You may still issue a custom search.');
+					break;
+				default:
+					Page._showModal('Geolocation - Unknown Error', 'Sorry, I encountered an error while trying to geolocate you. You may still issue a custom search.');
+					break;
+				}
 			}
-			
 			var input = $('#geolocation_search'),
 			form = $('#geolocation_search_form');
 			
@@ -525,14 +537,6 @@
 						onlyIScroll : true
 					})
 				}, 500);
-			});
-		},
-		
-		_registerSwitchHandler : function () {
-			$('.switch label').fastbutton(function (e) {
-				var el = $(this.element),
-				slide = el.attr('rel');
-				$('#' + slide).toggleClass('selected');
 			});
 		},
 		
