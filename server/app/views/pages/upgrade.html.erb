@@ -30,7 +30,7 @@
 				<%= javascript_include_tag 'mobile/xui.min' %>
 				
 				<!-- Modernizer script to detect browser capabilities -->
-				<%= javascript_include_tag 'mobile/modernizer' %>
+				<%= javascript_include_tag 'mobile/modernizr' %>
 			</head>
 			<body style="text-align:center;">
 				<h1 style="display:block; background:#1a1a1a; color:white; padding: 2px;">I am so sorry!</h1>
@@ -50,7 +50,9 @@
 						<tr><td id="applicationcache">Application Cache</td></tr>
 						<tr><td id="textshadow">Textshadow</td></tr>
 						<tr><td id="fontface">Fontface</td></tr>
+						<tr><td id="localstorage">LocalStorage</td></tr>
 						<tr><td id="opacity">Opacity</td></tr>
+						<tr><td id="generatedcontent">CSS Generated Content</td></tr>
 					</table>
 				</div>
 				
@@ -69,6 +71,8 @@
 					if (!m.textshadow) $('#textshadow').css(style);
 					if (!m.fontface) $('#fontface').css(style);
 					if (!m.opacity) $('#opacity').css(style);
+					if (!m.localstorage) $('#localstorage').css(style);
+					if (!m.generatedcontent) $('#generatedcontent').css(style);
 				</script>
 			</body>
 		</html>

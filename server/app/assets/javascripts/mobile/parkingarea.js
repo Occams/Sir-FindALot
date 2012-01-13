@@ -5,7 +5,7 @@ var Parkingarea = {
 	cellH : 20,
 	
 	fill : function (data) {
-		console.log(data);
+		//console.log(data);
 		this.data = data;
 		this.plane = data.parkingplanes[0];
 		this.fillLevelPage(data);
@@ -132,7 +132,7 @@ var Parkingarea = {
 			html += this._genCell(l, (l.x - minX) * width + padding, (l.y - minY) * this.cellH + padding,width, ['lot', l.category, l.taken ? 'occupied' : 'free']);
 		}
 		
-		console.log("<p>MaxX: " + maxX + " MaxY:" + maxY + " width:" + this.width + "MinX: " + minX + " MinY:" + minY + "</p>");
+		//console.log("<p>MaxX: " + maxX + " MaxY:" + maxY + " width:" + this.width + "MinX: " + minX + " MinY:" + minY + "</p>");
 		
 		// fill container
 		container.html('<div class="map">' + html + '</div>');
@@ -148,7 +148,7 @@ var Parkingarea = {
 	},
 	
 	update : function () {
-		this.fillMapPage(this.plane);
+		if(this.plane) this.fillMapPage(this.plane);
 	},
 	
 	_genCell : function (c, left, top, width,classA) {
