@@ -20,6 +20,37 @@ var Parkingarea = {
 		
 		// Set header
 		x$('#lot_details header').html(data.name + ' - Details');
+		
+		var html = "";
+		html+=this._genDetailsHeader('Type');
+		html+=this._genDetailsContent('This parking area is a '+data.category+' and features a total of '+
+			data.parkingplanes.length + ' parking levels. Currently there are '+
+			(data.lots_total - data.lots_taken) +' free lots available.');
+		html+=this._genDetailsHeader('Address');
+		html+=this._genDetailsContent(data.info_address);
+		html+=this._genDetailsHeader('Opening Hours');
+		html+=this._genDetailsContent(data.info_openinghours);
+		html+=this._genDetailsHeader('Pricing');
+		html+=this._genDetailsContent(data.info_pricing);
+		html+=this._genDetailsHeader('Current status');
+		html+=this._genDetailsContent(data.info_status);
+		html+=this._genDetailsHeader('Geolocation');
+		html+=this._genDetailsContent('Longitude: '+data.longitude+' - Latitude: '+data.latitude);		
+		html+=this._genDetailsHeader('Time of creation');
+		html+=this._genDetailsContent(data.created_at);
+		html+=this._genDetailsHeader('Last update');
+		html+=this._genDetailsContent(data.updated_at);
+		
+		// fill container
+		container.html(html);
+	},
+	
+	_genDetailsHeader : function(header) {
+		return '<h1 class="details-header">:: '+header+'</h1>';
+	},
+	
+	_genDetailsContent : function(content) {
+		return '<p class="details-content">'+content+'</p>';
 	},
 	
 	fillLevelPage : function (data) {

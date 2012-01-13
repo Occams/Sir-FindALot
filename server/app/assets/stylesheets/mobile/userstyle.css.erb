@@ -643,18 +643,18 @@ ul.link-list li a {
 	
 	position:relative;
 	
-	padding:15px 20px 15px 47px;
+	padding:15px 20px 15px 60px;
 	height:25px;
 	
 	text-decoration:none;
 	
-	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)5px center, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, #ffffff; /* Old browsers */
-	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)5px center, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -moz-linear-gradient(top, #ffffff 0%, #f3f3f3 50%, #dbdbdb 51%, #ffffff 100%); /* FF3.6+ */
-	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)5px center, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(50%,#f3f3f3), color-stop(51%,#dbdbdb), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
-	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)5px center, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -webkit-linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#dbdbdb 51%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
-	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)5px center, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -o-linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#dbdbdb 51%,#ffffff 100%); /* Opera 11.10+ */
-	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)5px center, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -ms-linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#dbdbdb 51%,#ffffff 100%); /* IE10+ */
-	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)5px center, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#dbdbdb 51%,#ffffff 100%); /* W3C */
+	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)10px 2px, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, #ffffff; /* Old browsers */
+	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)10px 2px, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -moz-linear-gradient(top, #ffffff 0%, #f3f3f3 50%, #dbdbdb 51%, #ffffff 100%); /* FF3.6+ */
+	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)10px 2px, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(50%,#f3f3f3), color-stop(51%,#dbdbdb), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)10px 2px, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -webkit-linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#dbdbdb 51%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)10px 2px, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -o-linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#dbdbdb 51%,#ffffff 100%); /* Opera 11.10+ */
+	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)10px 2px, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -ms-linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#dbdbdb 51%,#ffffff 100%); /* IE10+ */
+	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)10px 2px, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#dbdbdb 51%,#ffffff 100%); /* W3C */
 	background-repeat: no-repeat;
 	
 	border:1px solid #666;
@@ -680,40 +680,41 @@ ul.link-list li:last-child a {
 	border-bottom-right-radius:8px; -moz-border-bottom-right-radius:8px; -webkit-bottom-right-radius:8px; -o-bottom-right-radius:8px;
 }
 
-ul.link-list li a:active, ul.link-list li a.fake-active  {
+ul.link-list a:active, ul.link-list a.fake-active  {
 	
 	/* Gradients */
-	background-color:url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 5px center, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,#e67e28; /* Fallback value */
-	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 5px center, url(<%= asset_path('mobile/icons/arrow_white.png') %> )100% center,-moz-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* FF 3.6+ */  
-  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 5px center, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-ms-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* IE10 */  
-  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 5px center, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-webkit-gradient(linear, left top, left bottom, color-stop(0.0, #eea151), color-stop(0.49, #ea8f44), color-stop(0.5, #e67e28), color-stop(1.0, #e06818)); /* Safari 4+, Chrome 2+ */  
-  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 5px center, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-webkit-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* Safari 5.1+, Chrome 10+ */ 
-  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 5px center, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-o-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* Opera 11.10 */  
-  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 5px center, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* the standard */  
+	background-color:url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,#e67e28; /* Fallback value */
+	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %> )100% center,-moz-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* FF 3.6+ */  
+  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-ms-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* IE10 */  
+  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-webkit-gradient(linear, left top, left bottom, color-stop(0.0, #eea151), color-stop(0.49, #ea8f44), color-stop(0.5, #e67e28), color-stop(1.0, #e06818)); /* Safari 4+, Chrome 2+ */  
+  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-webkit-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* Safari 5.1+, Chrome 10+ */ 
+  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-o-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* Opera 11.10 */  
+  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* the standard */  
 	background-repeat: no-repeat;
-}
-
-a:active .link-list-title , a.fake-active .link-list-title ,a:active .occupancy-text , a.fake-active .occupancy-text {
-		color:white;
 }
 
 ul.link-list a .link-list-title {
 	position:absolute;
 	
 	top:7px;
-	font-size:120%;
+	font-size:140%;
 	font-weight:800;
 	color:#000;
 }
 
 ul.link-list a .occupancy-text  {
 	position:absolute;
-	top:7px;
-	right:50px;
+	bottom:2px;
+	left:10px;
 	font-size:120%;
 	font-weight:800;
 	color:#000;
 }
+
+a:active .link-list-title, a:active .occupancy-text {
+	color:#FFF!important;
+}
+
 
 /* Occupancy visualization */
 ul.link-list a .occupancy {
@@ -768,10 +769,6 @@ ul.link-list a .occupancy .mask {
 	-webkit-transition: width 1s ease-in; -moz-transition: width 1s ease-in; -o-transition: width 1s ease-in; transition: width 1s ease-in;
 }
 
-ul.link-list a .occupancy .occupancy-text {
-
-}
-
 /* Faq accordion styles */
 #faq_container {
 	margin:10px 0px;
@@ -783,7 +780,7 @@ ul.link-list a .occupancy .occupancy-text {
 	box-align: center; -moz-box-align: center; -webkit-box-align: center; -o-box-align: center;
 	box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;
 	
-	margin:0px -10px; /* Accoutn for content padding */
+	margin:0px -10px; /* Account for content padding */
 	padding: 0px 52px;
 	height:45px;
 	
@@ -1070,3 +1067,54 @@ ul.link-list a .occupancy .occupancy-text {
 #options_list .options_label{
 	font-size:large;
 }
+
+/* Details styles */
+
+h1.details-header { 
+	display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
+	box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;
+	position:relative;
+	margin: 0px -20px 0px 0px;
+	padding: 8px 15px 8px 15px;
+	width:100%;
+	
+  font-size: 120%;
+  font-weight: 800;
+  color: #fff;
+	text-shadow: 2px 2px 2px #000;
+	
+/* Gradients */
+	background-color:#505050; /* Fallback value */
+	background: -moz-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* FF 3.6+ */  
+  background: -ms-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* IE10 */  
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #747474), color-stop(0.49, #676767), color-stop(0.5, #505050), color-stop(1.0, #414141));/* Safari 4+, Chrome 2+ */  
+  background: -webkit-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* Safari 5.1+, Chrome 10+ */  
+  background: -o-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* Opera 11.10 */  
+  background: linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* the standard */  
+	
+	border-top-left-radius:8px; -moz-border-top-left-radius:8px; -webkit-border-top-left-radius:8px; -o-border-top-left-radius:8px;
+	
+	-webkit-box-shadow: 0px 0px 5px #000; -moz-box-shadow: 0px 0px 5px #000; box-shadow: 0px 0px 5px #000; -o-box-shadow: 0px 0px 5px #000;
+}
+
+h1.details-header:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border-width: 0 15px 15px 0;
+  border-style: solid;
+  border-color: transparent #414141;
+}
+
+.details-content {
+	display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
+	box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;
+	position:relative;
+	left:20px;
+	padding:5px;
+	
+	font-size: 110%;
+}
+
+
