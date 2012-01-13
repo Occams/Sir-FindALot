@@ -37,19 +37,40 @@ class Parkingramp < ActiveRecord::Base
   def self.rankby(geolocation, needle, history)
     parts = []
   
-    if !geolocation.nil?
-      parts.push Parkingramp.near([geolocation[:coords][:latitude], geolocation[:coords][:longitude]]).select("parkingramps.*, 5 as score").to_sql
+    if !geolocation.nil? && geolocation[:coords] && geolocation[:coords][:latitude] && geolocation[:coords][:longitude]
+      parts.push Parkingramp.near([geolocation[:coords][:latitude], geolocation[:coords][:longitude]]).select("parkingramps.*, 10 as score").to_sql
     end
 
     if !needle.nil?
-      parts.push Parkingramp.where("LOWER(name) LIKE ?", "%#{needle.downcase}%").select("parkingramps.*, 1 as score").to_sql
+      parts.push Parkingramp.where("LOWER(name) LIKE ?", "%#{needle.downcase}%").select("parkingramps.*, 5 as score").to_sql
     end
     
-    if !history.nil?
+    if !history.nil? && history.respond_to?(:each)
       # Collect all ramps that were visited at the same weekday near the current
       # time and map a score value to them
-      #TODO this one
-      #parts.push Parkingramp.where("id in (?)", history.collect{|h| h[
+      
+      # Acceptable difference of time in seconds
+      d_m = 35*60
+      # Acceptable difference of weekdays in days
+      d_w = 1
+      
+      history.each do |entry|
+        if entry[:id] && entry[:date]
+          date = Time.at entry[:date]
+          c_date = Time.now
+          
+          t0_secs = date.hour.hours + date.min.minutes + date.sec.seconds
+          t1_secs = c_date.hour.hours + c_date.min.minutes + c_date.sec.seconds
+
+          wday_diff = [(date.wday - Time.current.wday).abs, 7 - (date.wday - Time.current.wday).abs].min / d_w.to_f
+          hour_diff = [(t0_secs - t1_secs).abs, 86400.seconds - (t0_secs - t1_secs).abs].min / d_m.to_f
+          
+          score = 10 - (hour_diff)**4 - (wday_diff)**8
+          score = [0, score].max
+          
+          parts.push Parkingramp.where("id = ?", entry[:id].to_i).select("parkingramps.*, #{score} as score").to_sql
+        end
+      end
     end
     
     if parts.empty?

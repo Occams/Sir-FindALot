@@ -18,7 +18,7 @@ var Search = {
   
   log: function(rampid) {
     hist = LocalStorage.get("history", [])
-    hist.push({date: Date.now(), parkingramp_id: rampid})
+    hist.push({date: Date.now(), id: rampid})
     
     // Only hold the newest 20 searches
     hist.sort(function(a,b) { return b.date - a.date; });
