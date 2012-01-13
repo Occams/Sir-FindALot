@@ -643,18 +643,18 @@ ul.link-list li a {
 	
 	position:relative;
 	
-	padding:15px 20px 15px 47px;
+	padding:15px 20px 15px 60px;
 	height:25px;
 	
 	text-decoration:none;
 	
-	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)5px center, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, #ffffff; /* Old browsers */
-	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)5px center, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -moz-linear-gradient(top, #ffffff 0%, #f3f3f3 50%, #dbdbdb 51%, #ffffff 100%); /* FF3.6+ */
-	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)5px center, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(50%,#f3f3f3), color-stop(51%,#dbdbdb), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
-	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)5px center, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -webkit-linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#dbdbdb 51%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
-	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)5px center, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -o-linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#dbdbdb 51%,#ffffff 100%); /* Opera 11.10+ */
-	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)5px center, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -ms-linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#dbdbdb 51%,#ffffff 100%); /* IE10+ */
-	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)5px center, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#dbdbdb 51%,#ffffff 100%); /* W3C */
+	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)10px 2px, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, #ffffff; /* Old browsers */
+	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)10px 2px, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -moz-linear-gradient(top, #ffffff 0%, #f3f3f3 50%, #dbdbdb 51%, #ffffff 100%); /* FF3.6+ */
+	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)10px 2px, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(50%,#f3f3f3), color-stop(51%,#dbdbdb), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)10px 2px, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -webkit-linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#dbdbdb 51%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)10px 2px, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -o-linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#dbdbdb 51%,#ffffff 100%); /* Opera 11.10+ */
+	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)10px 2px, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, -ms-linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#dbdbdb 51%,#ffffff 100%); /* IE10+ */
+	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>)10px 2px, url(<%= asset_path('mobile/icons/arrow.png') %>)100% center, linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#dbdbdb 51%,#ffffff 100%); /* W3C */
 	background-repeat: no-repeat;
 	
 	border:1px solid #666;
@@ -680,21 +680,17 @@ ul.link-list li:last-child a {
 	border-bottom-right-radius:8px; -moz-border-bottom-right-radius:8px; -webkit-bottom-right-radius:8px; -o-bottom-right-radius:8px;
 }
 
-ul.link-list li a:active, ul.link-list li a.fake-active  {
+ul.link-list a:active, ul.link-list a.fake-active  {
 	
 	/* Gradients */
-	background-color:url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 5px center, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,#e67e28; /* Fallback value */
-	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 5px center, url(<%= asset_path('mobile/icons/arrow_white.png') %> )100% center,-moz-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* FF 3.6+ */  
-  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 5px center, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-ms-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* IE10 */  
-  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 5px center, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-webkit-gradient(linear, left top, left bottom, color-stop(0.0, #eea151), color-stop(0.49, #ea8f44), color-stop(0.5, #e67e28), color-stop(1.0, #e06818)); /* Safari 4+, Chrome 2+ */  
-  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 5px center, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-webkit-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* Safari 5.1+, Chrome 10+ */ 
-  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 5px center, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-o-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* Opera 11.10 */  
-  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 5px center, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* the standard */  
+	background-color:url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,#e67e28; /* Fallback value */
+	background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %> )100% center,-moz-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* FF 3.6+ */  
+  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-ms-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* IE10 */  
+  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-webkit-gradient(linear, left top, left bottom, color-stop(0.0, #eea151), color-stop(0.49, #ea8f44), color-stop(0.5, #e67e28), color-stop(1.0, #e06818)); /* Safari 4+, Chrome 2+ */  
+  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-webkit-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* Safari 5.1+, Chrome 10+ */ 
+  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-o-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* Opera 11.10 */  
+  background: url(<%= asset_path('mobile/icons/parking_sign_blue.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* the standard */  
 	background-repeat: no-repeat;
-}
-
-ul.link-list li a:active .link-list-title , ul.link-list li a.fake-active .link-list-title   {
-		color:white;
 }
 
 ul.link-list a .link-list-title {
@@ -705,6 +701,20 @@ ul.link-list a .link-list-title {
 	font-weight:800;
 	color:#000;
 }
+
+ul.link-list a .occupancy-text  {
+	position:absolute;
+	bottom:2px;
+	left:10px;
+	font-size:110%;
+	font-weight:800;
+	color:#000;
+}
+
+a:active .link-list-title, a:active .occupancy-text {
+	color:#FFF!important;
+}
+
 
 /* Occupancy visualization */
 ul.link-list a .occupancy {
@@ -770,7 +780,7 @@ ul.link-list a .occupancy .mask {
 	box-align: center; -moz-box-align: center; -webkit-box-align: center; -o-box-align: center;
 	box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;
 	
-	margin:0px -10px; /* Accoutn for content padding */
+	margin:0px -10px; /* Account for content padding */
 	padding: 0px 52px;
 	height:45px;
 	
@@ -879,7 +889,21 @@ ul.link-list a .occupancy .mask {
 /* Parkingarea map display */
 
 .map {
+	display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
 	position:relative;
+	
+	/* Gradients */
+	background-color:#505050; /* Fallback value */
+	background: -moz-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* FF 3.6+ */  
+  background: -ms-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* IE10 */  
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #747474), color-stop(0.49, #676767), color-stop(0.5, #505050), color-stop(1.0, #414141));/* Safari 4+, Chrome 2+ */  
+  background: -webkit-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* Safari 5.1+, Chrome 10+ */  
+  background: -o-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* Opera 11.10 */  
+  background: linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* the standard */  
+	
+	-moz-box-shadow: 0px 0px 5px #666; -webkit-box-shadow: 0px 0px 5px #666; -o-box-shadow: 0px 0px 5px #666; box-shadow: 0px 0px 5px #666;
+	
+	-webkit-border-radius: 8px; -moz-border-radius: 8px; -o-border-radius: 8px; border-radius: 8px;
 }
 
 .lot , .concrete {
@@ -890,15 +914,35 @@ ul.link-list a .occupancy .mask {
 	box-align: center; -moz-box-align: center; -webkit-box-align: center; -o-box-align: center;
 	box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;
 	height:20px;
-	border:1px solid black;
 }
 
 .lot {
-	background:green;
+	background:#04B404;
+	border: 1px solid #1A1A1A;
 }
 
 .concrete {
-	background:#CCC;
+	background:#FFF;
+}
+
+.entry , .exit{
+
+}
+
+.disabled {
+	background:#DF0101;
+}
+
+.women {
+	background:#DF01A5;
+}
+
+.occupied {
+	background:#DF7401!important;
+}
+
+.arrow {
+
 }
 
 /* Switch buttons */
@@ -907,6 +951,8 @@ ul.link-list a .occupancy .mask {
 	display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
 	
 	position:relative;
+	
+	margin: 0 auto;
 	
 	box-orient: horizontal; -moz-box-orient: horizontal; -webkit-box-orient: horizontal; -o-box-orient: horizontal;
 	box-align: center; -moz-box-align: center; -webkit-box-align: center; -o-box-align: center;
@@ -917,17 +963,16 @@ ul.link-list a .occupancy .mask {
 	background: #EEE;
 	border:1px solid #CCC;
 	
-	width:70%;
-}
-
-.switch input {
-	display:none;
+	width:80%;
 }
 
 .switch .slide {
 	display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
 
 	box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;
+	box-pack: center; -moz-box-pack: center; -webkit-box-pack: center; -o-box-pack: center;
+	box-orient: horizontal; -moz-box-orient: horizontal; -webkit-box-orient: horizontal; -o-box-orient: horizontal;
+	box-align: center; -moz-box-align: center; -webkit-box-align: center; -o-box-align: center;
 	
 	position:absolute;
 	
@@ -939,16 +984,19 @@ ul.link-list a .occupancy .mask {
 	height:40px;
 	width:50%;
 	
-	border:1px solid #000;
+/* Gradients */
+	background-color:#505050; /* Fallback value */
+	background: -moz-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* FF 3.6+ */  
+  background: -ms-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* IE10 */  
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #747474), color-stop(0.49, #676767), color-stop(0.5, #505050), color-stop(1.0, #414141));/* Safari 4+, Chrome 2+ */  
+  background: -webkit-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* Safari 5.1+, Chrome 10+ */  
+  background: -o-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* Opera 11.10 */  
+  background: linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* the standard */  
 	
-	/* Gradients */
-	background-color:#444; /* Fallback value */
-	background: -moz-linear-gradient(#888, #444); /* FF 3.6+ */  
-  background: -ms-linear-gradient(#888, #444); /* IE10 */  
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #888), color-stop(100%, #444)); /* Safari 4+, Chrome 2+ */  
-  background: -webkit-linear-gradient(#888, #444); /* Safari 5.1+, Chrome 10+ */  
-  background: -o-linear-gradient(#888, #444); /* Opera 11.10 */  
-  background: linear-gradient(#888, #444); /* the standard */  
+	font-size:large;
+	font-weight: 800;
+	text-shadow: 2px 2px 2px #000;
+	color:white;
 	
 	-webkit-transform: translate3d(0%,0,0); transform: translate3d(0%,0,0); -moz-transform: translate3d(0%,0,0); -o-transform: translate3d(0%,0,0);
 	
@@ -959,18 +1007,18 @@ ul.link-list a .occupancy .mask {
 .switch .slide.selected {
 	-webkit-transform: translate3d(100%,0,0); transform: translate3d(100%,0,0); -moz-transform: translate3d(100%,0,0); -o-transform: translate3d(100%,0,0);
 	
-	/* Gradients */
-	background-color:#458B00; /* Fallback value */
-	background: -moz-linear-gradient(#7fff00, #006400); /* FF 3.6+ */  
-  background: -ms-linear-gradient(#7fff00, #006400); /* IE10 */  
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #7fff00), color-stop(100%, #006400)); /* Safari 4+, Chrome 2+ */  
-  background: -webkit-linear-gradient(#7fff00, #006400); /* Safari 5.1+, Chrome 10+ */  
-  background: -o-linear-gradient(#7fff00, #006400); /* Opera 11.10 */  
-  background: linear-gradient(#7fff00, #006400); /* the standard */  
+background: #9dd53a; /* Old browsers */
+background: -moz-linear-gradient(top, #9dd53a 0%, #a1d54f 49%, #80c217 50%, #7cbc0a 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9dd53a), color-stop(49%,#a1d54f), color-stop(50%,#80c217), color-stop(100%,#7cbc0a)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #9dd53a 0%,#a1d54f 49%,#80c217 50%,#7cbc0a 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #9dd53a 0%,#a1d54f 49%,#80c217 50%,#7cbc0a 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #9dd53a 0%,#a1d54f 49%,#80c217 50%,#7cbc0a 100%); /* IE10+ */
+background: linear-gradient(top, #9dd53a 0%,#a1d54f 49%,#80c217 50%,#7cbc0a 100%); /* W3C */
 }	
 
 .switch .enable,.switch .disable {
 	display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
+	position:relative;
 	
 	box-align: center; -moz-box-align: center; -webkit-box-align: center; -o-box-align: center;
 	box-pack: center; -moz-box-pack: center; -webkit-box-pack: center; -o-box-pack: center;
@@ -990,8 +1038,99 @@ ul.link-list a .occupancy .mask {
 
 #options_list {
 	list-style:none;
+	margin:15px 0px;
+	padding:0px;
 }
 
-#options_list .options_label{
+.button {
+	display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
+	box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;
+	box-pack: center; -moz-box-pack: center; -webkit-box-pack: center; -o-box-pack: center;
+	box-orient: horizontal; -moz-box-orient: horizontal; -webkit-box-orient: horizontal; -o-box-orient: horizontal;
+	box-align: center; -moz-box-align: center; -webkit-box-align: center; -o-box-align: center;
+	
+	width:80%;
+	height:40px;
+	
+	margin:15px auto;
+	
+	/* Gradients */
+	background-color:#505050; /* Fallback value */
+	background: -moz-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* FF 3.6+ */  
+  background: -ms-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* IE10 */  
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #747474), color-stop(0.49, #676767), color-stop(0.5, #505050), color-stop(1.0, #414141));/* Safari 4+, Chrome 2+ */  
+  background: -webkit-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* Safari 5.1+, Chrome 10+ */  
+  background: -o-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* Opera 11.10 */  
+  background: linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* the standard */  
+	
+	-webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; -o-border-radius: 8px;
 	font-size:large;
+	font-weight: 800;
+	text-shadow: 2px 2px 2px #000;
+	color:white;
+
 }
+
+.button:active, .button.fake-active {
+
+	/* Gradients */
+	background-color:#e67e28; /* Fallback value */
+	background: -moz-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* FF 3.6+ */  
+  background: -ms-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* IE10 */  
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #eea151), color-stop(0.49, #ea8f44), color-stop(0.5, #e67e28), color-stop(1.0, #e06818)); /* Safari 4+, Chrome 2+ */  
+  background: -webkit-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* Safari 5.1+, Chrome 10+ */  
+  background: -o-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* Opera 11.10 */  
+  background: linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* the standard */  
+}
+
+/* Details styles */
+
+h1.details-header { 
+	display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
+	box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;
+	position:relative;
+	margin: 0px -20px 0px 0px;
+	padding: 8px 15px 8px 15px;
+	
+  font-size: 120%;
+  font-weight: 800;
+  color: #fff;
+	text-shadow: 2px 2px 2px #000;
+	
+ /* Gradients */
+	background-color:#505050; /* Fallback value */
+	background: -moz-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* FF 3.6+ */  
+  background: -ms-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* IE10 */  
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #747474), color-stop(0.49, #676767), color-stop(0.5, #505050), color-stop(1.0, #414141));/* Safari 4+, Chrome 2+ */  
+  background: -webkit-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* Safari 5.1+, Chrome 10+ */  
+  background: -o-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* Opera 11.10 */  
+  background: linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* the standard */  
+	
+	border-top-left-radius:8px; -moz-border-top-left-radius:8px; -webkit-border-top-left-radius:8px; -o-border-top-left-radius:8px;
+	
+	-webkit-box-shadow: 0px 0px 5px #000; -moz-box-shadow: 0px 0px 5px #000; box-shadow: 0px 0px 5px #000; -o-box-shadow: 0px 0px 5px #000;
+	z-index:5;
+}
+
+h1.details-header:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border-width: 0 15px 15px 0;
+  border-style: solid;
+  border-color: transparent #414141;
+	z-index:5;
+}
+
+.details-content {
+	display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
+	box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;
+	position:relative;
+	left:20px;
+	padding:5px;
+	
+	font-size: 110%;
+}
+
+

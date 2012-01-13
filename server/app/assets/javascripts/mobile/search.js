@@ -1,17 +1,28 @@
 var Search = {
+  LOGSIZE:20,
   parentContainer:null,
   cb:null,
 
   doSearch: function(needle, geolocation, parentContainer, cb) {
     data = {
       'needle': needle,
-      'geolocation': geolocation
+      'geolocation': geolocation,
+      'history': LocalStorage.get("history", [])
     };
     
     this.parentContainer = parentContainer;
     this.cb = cb;
     
     x$().xhr("/searches.json", {method:'POST', data: "search="+JSON.stringify(data), async: true, callback: Search.callback});
+  },
+  
+  log: function(rampid) {
+    hist = LocalStorage.get("history", [])
+    hist.push({date: Date.now(), parkingramp_id: rampid})
+    
+    // Only hold the newest 20 searches
+    hist.sort(function(a,b) { return b.date - a.date; });
+    LocalStorage.put("history", hist.slice(0,Search.LOGSIZE))
   },
   
   callback: function() {
@@ -55,8 +66,9 @@ var Search = {
     for (var i in data) {
      var single = data[i];
 	    html += '<li><a href="/parkingramps/' + single['id'] + '.json" fake-active="yes">';
-	    html += '<div class="occupancy"><div class="level"></div><div class="mask"></div><span class="occupancy-text">'+single['lots_taken']+'/'+single['lots_total']+'</span></div>';
-	    html += '<span class="link-list-title">' + single['name'] + ' - ' + single['category'] + '</span></a></li>';
+	    html += '<div class="occupancy"><div class="level"></div><div class="mask"></div></div>';
+	    html += '<span class="link-list-title">' + single['name'] + ' - ' + single['category'] + '</span>';
+			html += '<span class="occupancy-text">'+single['lots_taken']+'/'+single['lots_total']+'</span></a></li>';
     }
 
     return '<ul class="link-list" id="' + id + '">' + html + '</ul>';
