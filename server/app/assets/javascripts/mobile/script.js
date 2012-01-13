@@ -422,6 +422,7 @@
 		_parkingAreaLoaded : function () {
 			eval('var data = ' + this.responseText);
 			
+			Search.log(data.id);
 			Parkingarea.fill(data);
 			Page._hideLoadingAnimation();
 			
