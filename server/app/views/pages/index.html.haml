@@ -1,17 +1,47 @@
 %ul#slides-links
-  %li= link_to "Search your ramp", "#slide_ramp"
-  %li= link_to "Select your plane", "#slide_plane"
-  %li= link_to "Show map", "#slide_map"
+  %li
+    %h2 Tour
+  %li= link_to "What is SirFindALot", "#slide_start"
+  %li= link_to "Find your parking area", "#slide_ramp"
+  %li= link_to "Find your lot", "#slide_map"
   %li= link_to "Show infos", "#slide_infos"
   
 #slides
+  #slide_start.slide
+    #start-sir
+      .speech_bubble.bottom_triangle
+        %b Sir Findalot
+        is eager to help you find a free lot!
+      = image_tag 'mobile/sir_options.png', :id => 'img_carl', :alt => "Carl and Sir FindALot"
+    %h2 SirFindLot helps you to find you a free lot
+    %p
+      The web-application searches the nearest parkinglots based on your geolocation and your searches already submitted.
   #slide_ramp.slide
-    #page-home-slogan
-      SirFindALot is eager to find your lot!
-    Ramp slide
-  #slide_plane.slide
-    Plane slide
+    = image_tag 'phones/iphone.png'
+  
+    %h2 Automatic geolocation-based search
+    %p
+      As you navigate to SirFindLot with your mobile phone, the search for parkingareas
+      near you, is automatically started.
+      The results of that search are ranked
+      by the distance to the parking areas and previoussly submitted searches.
+    %p
+      .phrase
+        »Finding your parking area made as easy as possible.«
+        
+    %h2 Custom search
+    %p
+      If your device can't geolocate you, you may use the custom search. Just enter some 
+      keywords and find your parking area.
   #slide_map.slide
-    Map slide
+    %h2 Select the best lot
+    %p
+      Sir FindALot suggests you some lots for you. It's your turn to choose the right one.
+    %p
+      .phrase
+        »It's up on you to choose the very best lot.«
   #slide_infos.slide
-    Info slide
+    %h2 In case you need information...
+    %p
+      Sir FindALot provides additional information about the parkingarea. Find out
+      about pricing and opening hours of the parking area. Let the information be yours."

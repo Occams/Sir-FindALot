@@ -21,9 +21,72 @@ $slides-links-width: 25%;
 .faq .answer {}
 .faqlist { list-style:none; font-weight:bold; padding-left:60px;}
 
-#slides-links { float:left; width:$slides-links-width;list-style:none;padding:0px;margin:0px; }
-#slides-links a { display:block;padding:10px 0 30px 0;text-indent:10px;border-right:1px solid #EEE;background-color:rgba(255,255,255,0.5); }
-#slides-links a.active { @include border(10px 0 0 10px); background-color:white;border-right:1px solid #FFF;@include shadow(0px 0px 5px, #888);  }
+#slides-links { float:left; width:$slides-links-width;list-style:none;padding:0px;margin:0px;background-color:rgba(255,255,255,0.5);  }
+#slides-links a { display:block;padding:10px 0 30px 0;text-indent:10px;}
+#slides-links a.active { margin-left:-10px;@include border(10px 0 0 10px); background-color:white;@include shadow(0px 0px 5px, #888);  }
 #slides { float:left;width:100%-$slides-links-width; height:100%;}
-.slide { display:none;padding:10px; }
+.slide { display:none;padding:20px; }
 .slide.active {display:block;background-color:white;@include shadow(3px 0px 5px, #888);}
+
+#start-sir { width:500px;margin: 0 auto; }
+.phrase {text-align:center;font-style:italic;font-weight:lighter;font-size:120%; }
+
+
+/* Speech bubble */
+div.speech_bubble {
+	position:relative;
+	padding:5px;
+	
+	color:#000;
+	font-size:150%;
+	
+	/* Gradients */
+	background-color:#f3961c; /* Fallback value */
+	background: -moz-linear-gradient(#f9d835, #f3961c); /* FF 3.6+ */  
+  background: -ms-linear-gradient(#f9d835, #f3961c); /* IE10 */  
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f9d835), color-stop(100%, #f3961c)); /* Safari 4+, Chrome 2+ */  
+  background: -webkit-linear-gradient(#f9d835, #f3961c); /* Safari 5.1+, Chrome 10+ */  
+  background: -o-linear-gradient(#f9d835, #f3961c); /* Opera 11.10 */  
+  background: linear-gradient(#f9d835, #f3961c); /* the standard */  
+	
+	-webkit-border-radius: 8px; -moz-border-radius: 8px; -o-border-radius: 8px; border-radius: 8px;
+	
+	-moz-box-shadow: 2px 2px 5px #666; -webkit-box-shadow: 2px 2px 5px #666; -o-box-shadow: 2px 2px 5px #666; box-shadow: 2px 2px 2px #666;
+	
+}
+
+div.speech_bubble.right_triangle {
+	margin-right: 20px; /* Space for triangle */
+}
+
+div.speech_bubble.bottom_triangle {
+	margin-right: 10px; /* Space for triangle */
+}
+
+/* Creates triangle ont the left of speech bubble*/
+div.speech_bubble.right_triangle:after {
+	content:"";
+	position:absolute;
+	top:10px; /* controls vertical position */
+	right:-20px; /* value = - border-left-width - border-right-width */
+	border-width:0px 20px 15px 0px; /* vary these values to change the angle of the vertex */
+	border-style:solid;
+	border-color:#f9d835 transparent;
+    /* reduce the damage in FF3.0 */
+    display:block; 
+    width:0;
+}
+
+/* Creates triangle on the bottom of speech bubble*/
+div.speech_bubble.bottom_triangle:after {
+	content:"";
+	position:absolute;
+	bottom:-20px; /* controls vertical position */
+	left:40px; /* value = - border-left-width - border-right-width */
+	border-width:20px 0px 0px 20px; /* vary these values to change the angle of the vertex */
+	border-style:solid;
+	border-color:#f3961c transparent;
+    /* reduce the damage in FF3.0 */
+    display:block; 
+    width:0;
+}
