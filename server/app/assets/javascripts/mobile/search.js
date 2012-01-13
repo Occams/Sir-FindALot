@@ -1,17 +1,28 @@
 var Search = {
+  LOGSIZE:20,
   parentContainer:null,
   cb:null,
 
   doSearch: function(needle, geolocation, parentContainer, cb) {
     data = {
       'needle': needle,
-      'geolocation': geolocation
+      'geolocation': geolocation,
+      'history': LocalStorage.get("history", [])
     };
     
     this.parentContainer = parentContainer;
     this.cb = cb;
     
     x$().xhr("/searches.json", {method:'POST', data: "search="+JSON.stringify(data), async: true, callback: Search.callback});
+  },
+  
+  log: function(rampid) {
+    hist = LocalStorage.get("history", [])
+    hist.push({date: Date.now(), parkingramp_id: rampid})
+    
+    // Only hold the newest 20 searches
+    hist.sort(function(a,b) { return b.date - a.date; });
+    LocalStorage.put("history", hist.slice(0,Search.LOGSIZE))
   },
   
   callback: function() {
