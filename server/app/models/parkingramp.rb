@@ -46,11 +46,11 @@ class Parkingramp < ActiveRecord::Base
   
     if !geolocation.nil? && geolocation[:coords] && geolocation[:coords][:latitude] && geolocation[:coords][:longitude]
       geosql = Parkingramp.near([geolocation[:coords][:latitude], geolocation[:coords][:longitude]]).to_sql.gsub(/ORDER .*$/, "")
-      parts.push "SELECT parkingramps.*, 10 as score FROM parkingramps, (#{geosql}) as geo WHERE geo.id = parkingramps.id"
+      parts.push "SELECT parkingramps.*, 1 as score FROM parkingramps, (#{geosql}) as geo WHERE geo.id = parkingramps.id"
     end
 
     if !needle.nil?
-      parts.push Parkingramp.where("LOWER(name) LIKE ?", "%#{needle.downcase}%").select("parkingramps.*, 5 as score").to_sql
+      parts.push Parkingramp.where("LOWER(name) LIKE ?", "%#{needle.downcase}%").select("parkingramps.*, 1 as score").to_sql
     end
     
     if !history.nil? && history.respond_to?(:each)
@@ -89,8 +89,13 @@ private
 =begin
   Alles was hier drin steht zwischen begin und end ist ein kommentar
 =end
-  def self.score_history(diff_sec, diff_wday, is_weekend_workday_jump, acceptable_diff_sec = 45*60, smooth_sec = 2, smooth_wday = 2)
-      
-    return 10
+  def self.score_history(diff_sec, diff_wday, is_weekend_workday_jump, acceptable_diff_sec = 45*60, smooth_first = 2, smooth_second = 3)
+    first = (1 - is_weekend_workday_jump*diff_wday/4.0 - diff_wday/12.0)*smooth_first
+    second = 1 - 2**(diff_sec/smooth_second - acceptable_diff_sec)
+    if second <= 0
+      return 0
+    else
+      return first*second
+    end
   end
 end
