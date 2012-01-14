@@ -28,7 +28,7 @@ class Parkingramp < ActiveRecord::Base
     self.update_attribute(:lots_total, total)
   end
   
-  def best_lot
+  def best_level
     lots = self.parkingplanes.collect{|p| { :id => p.id, :score => 1 - p.lots_taken/p.lots_total } }
     lots.first[:score] = 0
     puts lots
@@ -87,11 +87,10 @@ class Parkingramp < ActiveRecord::Base
 private
 
 =begin
-  TODO Rainer: Add some description of the scoring algorithm
   Alles was hier drin steht zwischen begin und end ist ein kommentar
 =end
-  def self.score_history(diff_sec, diff_wday, is_weekend_workday_jump, acceptable_diff_sec = 45*60, smooth_border = 2)
-    # TODO Rainer: Implement the scoring algorithm
+  def self.score_history(diff_sec, diff_wday, is_weekend_workday_jump, acceptable_diff_sec = 45*60, smooth_sec = 2, smooth_wday = 2)
+      
     return 10
   end
 end
