@@ -545,8 +545,12 @@ nav.navbar a.highlighted {
 @keyframes loading6 {0% {opacity:0.5;} 50% {opacity:0.5;} 60% {opacity:1;} 70% {opacity:0.5;} 100% {opacity:0.5;}}
 
 /* Images */
-#img_sir_home, #img_sir_help, #modal_img {
+#img_sir_home, #img_sir_help, #img_sir_star, #modal_img {
 -webkit-box-flex: 1; -moz-box-flex: 1; box-flex: 1; -o-box-flex:1;
+}
+
+#img_sir_star_icon {
+	height:20px;
 }
 
 #sir_bubble_container, #sir_bubble_container_vertical {
@@ -886,9 +890,27 @@ ul.link-list a .occupancy .mask {
 	height:150px;
 }
 
+/* Levels page */
+#levels_container {
+	margin-bottom:10px;
+}
+
+ul.link-list .star_level a {
+
+	/* Gradients */
+	background-color:url(<%= asset_path('mobile/icons/star_white.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,#e67e28; /* Fallback value */
+	background: url(<%= asset_path('mobile/icons/star_white.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %> )100% center,-moz-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* FF 3.6+ */  
+  background: url(<%= asset_path('mobile/icons/star_white.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-ms-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* IE10 */  
+  background: url(<%= asset_path('mobile/icons/star_white.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-webkit-gradient(linear, left top, left bottom, color-stop(0.0, #eea151), color-stop(0.49, #ea8f44), color-stop(0.5, #e67e28), color-stop(1.0, #e06818)); /* Safari 4+, Chrome 2+ */  
+  background: url(<%= asset_path('mobile/icons/star_white.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-webkit-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* Safari 5.1+, Chrome 10+ */ 
+  background: url(<%= asset_path('mobile/icons/star_white.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,-o-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* Opera 11.10 */  
+  background: url(<%= asset_path('mobile/icons/star_white.png') %>) 10px 2px, url(<%= asset_path('mobile/icons/arrow_white.png') %>) 100% center,linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* the standard */  
+	background-repeat: no-repeat;
+	
+}
+
 
 /* Parkingarea map display */
-
 .map {
 	display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
 	position:relative;
@@ -924,6 +946,10 @@ ul.link-list a .occupancy .mask {
 
 .concrete {
 	background:rgba(255, 255, 255, 1);
+}
+
+.star {
+		background: url(<%= asset_path('mobile/icons/star_white.png') %>)  no-repeat center center, rgba(245, 121, 00, 1); background-size: contain;
 }
 
 .entry {
@@ -1035,6 +1061,11 @@ ul.link-list a .occupancy .mask {
 
 #legend_disabled{
 	background:rgba(52, 101, 164, 1);
+	color:#FFF;
+}
+
+#legend_star{
+	background:rgba(245, 121, 00, 1);
 	color:#FFF;
 }
 
