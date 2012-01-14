@@ -17,7 +17,7 @@
    width="425"
    height="565"
    sodipodi:docname="Sir_FindALot_star.svg"
-   inkscape:export-filename="Z:\Dev\PervasiveComputing\client\img\sir.png"
+   inkscape:export-filename="Z:\Dev\PervasiveComputing\server\app\assets\images\mobile\sir_star.png"
    inkscape:export-xdpi="19.950001"
    inkscape:export-ydpi="19.950001">
   <metadata
@@ -28,7 +28,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -563,7 +563,7 @@
   </g>
   <path
      id="path6515"
-     style="fill:#edd400;stroke:none"
+     style="fill:#ffffff;stroke:none"
      d="m 95.25893,393.54935 -8.88564,21.42996 c -0.6228,1.49478 -2.38978,2.84154 -3.9313,2.99841 l 0,0 -22.159101,2.26437 c -1.544325,0.154 -1.854324,1.16916 -0.696075,2.24658 l 0,0 16.660874,15.50415 c 1.158255,1.08036 1.831812,3.26481 1.499258,4.8543 l 0,0 -4.796483,22.82701 c -0.335347,1.58654 0.484725,2.21403 1.820528,1.39119 l 0,0 19.185939,-11.84862 c 1.3358,-0.82288 3.52268,-0.82288 4.8585,0 l 0,0 19.18592,11.84862 c 1.33864,0.82284 2.15586,0.19524 1.82335,-1.39119 l 0,0 -4.7993,-22.82701 c -0.33539,-1.58949 0.34096,-3.77394 1.50205,-4.8543 l 0,0 16.6609,-15.50415 c 1.15541,-1.07742 0.84542,-2.09268 -0.6989,-2.24658 l 0,0 -22.15627,-2.26437 c -1.54435,-0.15675 -3.31133,-1.50363 -3.9285,-2.99841 l 0,0 -8.89405,-21.42996 c -0.31002,-0.74884 -0.71583,-1.12179 -1.12445,-1.12179 l 0,0 c -0.40864,0 -0.81728,0.37295 -1.12725,1.12179"
      inkscape:connector-curvature="0" />
 </svg>

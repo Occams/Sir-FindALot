@@ -97,7 +97,7 @@ var Parkingarea = {
 		var container = x$('#lot_map #map_container');
 
 		// Set header
-		x$('#lot_map header').html(this.data.name + ' - Map');
+		x$('#lot_map header').html(this.data.name + ' - '+ this.plane.name);
 		
 		maxX = 0,
 		minX = Number.MAX_VALUE,

@@ -1,21 +1,39 @@
 %ul#slides-links
   %li
     %h2.tour Tour
-  %li= link_to "What is SirFindALot", "#slide_start"
-  %li= link_to "Find your parking area", "#slide_ramp"
-  %li= link_to "Find your lot", "#slide_map"
-  %li= link_to "Show infos", "#slide_infos"
+  %li= link_to "What exactly is Sir FindALot?", "#slide_start"
+  %li= link_to "Find the best parking area", "#slide_ramp"
+  %li= link_to "Find a free lot with ease", "#slide_map"
+  %li= link_to "Display details", "#slide_infos"
   
 #slides
   #slide_start.slide
     #start-sir
       .speech_bubble.bottom_triangle
-        %b Sir Findalot
-        is eager to help you find a free lot!
+        I'm eager to help you find a free lot!
       = image_tag 'mobile/sir_options.png', :id => 'img_carl', :alt => "Carl and Sir FindALot"
-    %h2 SirFindLot helps you to find you a free lot
+    %h2 Sir FindALot turns finding a lot into fun
     %p
-      The web-application searches the nearest parkinglots based on your geolocation and your searches already submitted.
+      %b Sir FindALot
+      is a webapplication with the goal to guide you while your are searching for a free lot.
+      It determines all relevant parking areas based on your current position (
+      %b Geolocation
+      ). Of course
+      you may issue a specific custom search for a certain parking area. In addition, 
+      %b Sir FindALot
+      keeps track of your history and usage pattern and tries to provide you with the best results
+      based on this information.
+    
+    .phrase
+      »Don't worry. If you struggle to find a free lot in the same place every monday morning, Sir FindAlot
+      already knows about it and offers his help.«
+    
+    %p
+      Not only does it help you find a parking area near you,
+      %b Sir FindALot
+      is able to guide you to a free lot within a particular parking area. Moreover it determines the
+      most favorable level in multi-level parking spaces. Continue the tour to learn more about those features.
+    
   #slide_ramp.slide
     .screen
       = image_tag 'phones/shot_000002.png', :class => "screen-image"
