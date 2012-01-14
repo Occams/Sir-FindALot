@@ -387,6 +387,13 @@
 					break;
 				}
 			}
+			
+      // Load ranked results by history
+		  Search.doSearch(null,
+			  null,
+			  "#geolocation_search_results"
+		  );
+			
 			var input = $('#geolocation_search'),
 			form = $('#geolocation_search_form');
 			
