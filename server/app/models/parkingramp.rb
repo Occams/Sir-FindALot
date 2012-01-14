@@ -38,7 +38,8 @@ class Parkingramp < ActiveRecord::Base
     parts = []
   
     if !geolocation.nil? && geolocation[:coords] && geolocation[:coords][:latitude] && geolocation[:coords][:longitude]
-      parts.push Parkingramp.near([geolocation[:coords][:latitude], geolocation[:coords][:longitude]]).select("parkingramps.*, 10 as score").to_sql
+      geosql = Parkingramp.near([geolocation[:coords][:latitude], geolocation[:coords][:longitude]]).to_sql.gsub(/ORDER .*$/, "")
+      parts.push "SELECT parkingramps.*, 10 as score FROM parkingramps, (#{geosql}) as geo WHERE geo.id = parkingramps.id"
     end
 
     if !needle.nil?
@@ -65,10 +66,7 @@ class Parkingramp < ActiveRecord::Base
           wday_diff = [(date.wday - Time.current.wday).abs, 7 - (date.wday - Time.current.wday).abs].min / d_w.to_f
           hour_diff = [(t0_secs - t1_secs).abs, 86400.seconds - (t0_secs - t1_secs).abs].min / d_m.to_f
           
-          score = 10 - (hour_diff)**4 - (wday_diff)**8
-          score = [0, score].max
-          
-          parts.push Parkingramp.where("id = ?", entry[:id].to_i).select("parkingramps.*, #{score} as score").to_sql
+          parts.push Parkingramp.where("id = ?", entry[:id].to_i).select("parkingramps.*, 10 as score").to_sql
         end
       end
     end
@@ -76,6 +74,7 @@ class Parkingramp < ActiveRecord::Base
     if parts.empty?
       []
     else
+      puts "SELECT p.* FROM (#{parts.map{|p| "#{p}"}.join(" UNION ALL ")}) as p GROUP BY p.id ORDER BY SUM(p.score) DESC"
       Parkingramp.find_by_sql "SELECT p.* FROM (#{parts.join(" UNION ALL ")}) as p GROUP BY p.id ORDER BY SUM(p.score) DESC"
     end
     
