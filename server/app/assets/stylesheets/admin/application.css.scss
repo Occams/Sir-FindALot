@@ -3,3 +3,19 @@
  *= require ./parkingramps
  *= require ./pages
  */
+ 
+:lang(de)    { quotes:"\201E" "\201C" "\201A" "\2018"; }
+:lang(de-DE) { quotes:"\00BB" "\00AB" "\203A" "\2039"; }
+:lang(de-CH) { quotes:"\00AB" "\00BB" "\2039" "\203A"; }
+:lang(en)    { quotes:"\201C" "\201D" "\2018" "\2019"; }
+:lang(fr)    { quotes:"\00AB\00A0" "\00A0\00BB" "\2039\00A0" "\00A0\203A"; }
+ 
+#adminpanel {
+  list-style:none;
+  padding:0px;
+  margin:0;
+}
+
+#adminpanel>li a:before { content:"\00BB "; }
+#adminpanel li { border-bottom:1px dashed #FFF; }
+#adminpanel a { font-weight:bold;display:block;padding:5px 0 5px 0; }

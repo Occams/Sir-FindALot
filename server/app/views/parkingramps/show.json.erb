@@ -1,0 +1,9 @@
+<%= raw @parkingramp.to_json(:include => {
+  :parkingplanes => {
+    :methods => :best_lots,
+    :include => {
+      :lots => {:except => [:created_at, :updated_at]},
+      :concretes => {:except => [:created_at, :updated_at]}
+    }
+  }
+}) %>

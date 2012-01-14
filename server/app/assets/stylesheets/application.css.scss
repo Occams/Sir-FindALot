@@ -184,14 +184,6 @@ input[type=submit] {
   width:auto;
 }
 
-#adminpanel {
-  list-style:none;
-  padding-left:0px;
-}
-
-#adminpanel li { border-bottom:1px dashed #FFF; }
-#adminpanel a { font-weight:bold;display:block;padding:5px 0 5px 0; }
-
 label {
   vertical-align:top;
   display:inline-block;
@@ -206,10 +198,18 @@ label {
 .flash-message {
   @include border(5px);
   padding:10px;
-  background-color:#FFCC99;
   border:1px solid darker(#E65C00);
   text-align:center;
   margin:20px;
+  color:#FFF;
+	background-color:#e67e28; /* Fallback value */
+	background:-moz-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* FF 3.6+ */  
+  background: -ms-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* IE10 */  
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #eea151), color-stop(0.49, #ea8f44), color-stop(0.5, #e67e28), color-stop(1.0, #e06818)); /* Safari 4+, Chrome 2+ */  
+  background: -webkit-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* Safari 5.1+, Chrome 10+ */ 
+  background: -o-linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* Opera 11.10 */  
+  background: linear-gradient(#eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* the standard */ 
+	-moz-box-shadow: 2px 2px 5px #666; -webkit-box-shadow: 2px 2px 5px #666; -o-box-shadow: 2px 2px 5px #666; box-shadow: 2px 2px 2px #666;
 }
 
 .activity-indicator {
