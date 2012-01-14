@@ -114,7 +114,7 @@ class Plane
       @plane.bind 'mousemove', (event) =>
         x = Math.floor((event.pageX-@planepos.left)/@meshsize)
         y = Math.floor((event.pageY-@planepos.top)/@meshsize)
-        if x isnt @oldx or y isnt @oldy
+        if (x isnt @oldx or y isnt @oldy) and (x < @planedim.x and y < @planedim.y)
           @oldx = x
           @oldy = y
           @handleClicked {x:x, y:y}
@@ -128,6 +128,9 @@ class Plane
       
     @plane.data('plane', this);
     @planepos = @plane.position()
+    @planedim =
+      x: (@plane.width()-@plane.width()%@meshsize)/@meshsize,
+      y: (@plane.height()-@plane.height()%@meshsize)/@meshsize
     
     for rname, resource of {parkinglot: @lots, concrete: @concretes}
       for single in resource

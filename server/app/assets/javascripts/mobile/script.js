@@ -288,10 +288,16 @@
 					null,
 					$('#search div[data-type="page-content"]'),
 					function () {
-					$('#loading').hide();
-					input.rAttr('disabled'); // Reenable input field
-					Page.show('search');
-				});
+					  $('#loading').hide();
+					  input.rAttr('disabled'); // Reenable input field
+					  Page.show('search');
+				  },
+				  function () {
+					  $('#loading').hide();
+					  input.rAttr('disabled'); // Reenable input field
+					  Page._showModal("Error on server", "The server returned with an error. Please try again later...");
+				  }
+				);
 				
 				e.preventDefault();
 				return false;
@@ -381,6 +387,13 @@
 					break;
 				}
 			}
+			
+      // Load ranked results by history
+		  Search.doSearch(null,
+			  null,
+			  "#geolocation_search_results"
+		  );
+			
 			var input = $('#geolocation_search'),
 			form = $('#geolocation_search_form');
 			
@@ -408,15 +421,24 @@
 				data,
 				"#geolocation_search_results",
 				function () {
-				$('#loading').hide();
+				  $('#loading').hide();
 				
-				// Enable input field and change placeholder text
-				input.attr('placeholder', 'Touch to enter custom query...');
-				input.rAttr('disabled');
-				form.removeClass('green').addClass('orange');
+				  // Enable input field and change placeholder text
+				  input.attr('placeholder', 'Touch to enter custom query...');
+				  input.rAttr('disabled');
+				  form.removeClass('green').addClass('orange');
 				
-				$("#home").fire('update');
-			});
+				  $("#home").fire('update');
+			  },
+			  function () {
+				  $('#loading').hide();
+				  // Enable input field and change placeholder text
+				  input.attr('placeholder', 'Touch to enter custom query...');
+				  input.rAttr('disabled');
+				  form.removeClass('green').addClass('orange');
+				  Page._showModal("Error on server", "The server returned with an error. Please try again later...");
+			  }
+			);
 		},
 		
 		_parkingAreaLoaded : function () {
