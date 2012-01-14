@@ -54,7 +54,9 @@ var Parkingarea = {
 	},
 	
 	fillLevelPage : function (data) {
-		var container = x$('#lot_levels div[data-type="page-content"]');
+		var container = x$('#lot_levels #levels_container');
+		
+		console.log(data);
 		
 		// Set header
 		x$('#lot_levels header').html(data.name + ' - Levels');
@@ -63,8 +65,8 @@ var Parkingarea = {
 		var html = '',
 		occupancy = [];
 		for (var i in data.parkingplanes) {
-			var plane = data.parkingplanes[i];
-			html += '<li><a href="' + plane.id + '" fake-active="yes">';
+			var plane = data.parkingplanes[i], star = (plane.id == data.best_level) ? 'star_level' : '';
+			html += '<li class="'+star+'"><a href="' + plane.id + '" fake-active="yes">';
 			html += '<div class="occupancy"><div class="level"></div><div class="mask"></div></div>';
 			html += '<span class="link-list-title">' + plane['name'] + '</span>';
 			html += '<span class="occupancy-text">'+plane['lots_taken']+'/'+plane['lots_total']+'</span></a></li>';
@@ -130,7 +132,9 @@ var Parkingarea = {
 		
 		for (var i in plane.lots) {
 			var l = plane.lots[i];
-			html += this._genCell(l, (l.x - minX) * width + padding, (l.y - minY) * this.cellH + padding,width, ['lot', l.category, l.taken ? 'occupied' : 'free']);
+			var classes = ['lot', l.category, l.taken ? 'occupied' : 'free'];
+			if (this._containsLot(l,plane.best_lots)) classes.push('star');
+			html += this._genCell(l, (l.x - minX) * width + padding, (l.y - minY) * this.cellH + padding,width,classes);
 		}
 		
 		//console.log("<p>MaxX: " + maxX + " MaxY:" + maxY + " width:" + this.width + "MinX: " + minX + " MinY:" + minY + "</p>");
@@ -146,6 +150,14 @@ var Parkingarea = {
 		//	onlyIScroll : true,
 		//	toTop : true
 		//});
+	},
+	
+	_containsLot: function (l,bestlots) {
+		for (var i in bestlots) {
+			if (l.id == bestlots[i].id) return true;
+		}
+		
+		return false;
 	},
 	
 	update : function () {
