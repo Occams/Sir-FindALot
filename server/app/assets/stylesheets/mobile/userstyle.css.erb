@@ -942,7 +942,7 @@ ul.link-list .star_level a {
 }
 
 .lot {
-	background:rgba(115, 210, 22, 1);
+	background:#BAFFBC;
 	border: 1px solid #000;
 }
 
@@ -951,35 +951,44 @@ ul.link-list .star_level a {
 }
 
 .star {
-		background: url(<%= asset_path('mobile/icons/star_white.png') %>)  no-repeat center center, rgba(245, 121, 00, 1); background-size: contain;
+		background: url(<%= asset_path('mobile/icons/star_white.png') %>)  no-repeat center center, #4CE600; background-size: contain;
+		height:30px;
+		margin-top:-5px;
+		z-index:100;
+		border-width:0px;
+		border-radius:4px;
 }
 
 .entry {
 	background: url(<%= asset_path('mobile/icons/map_entry.png') %>)  no-repeat center center, rgba(255, 255, 255, 1); background-size: contain;
+	height:30px;
+	margin-top:-5px;
 }
 
 .exit{
 	background: url(<%= asset_path('mobile/icons/map_exit.png') %>)  no-repeat center center, rgba(255, 255, 255, 1); background-size: contain;
+	height:30px;
+	margin-top:-5px;
 }
 
 .disabled {
-	background: url(<%= asset_path('mobile/icons/map_disabled.png') %>)  no-repeat center center, rgba(52, 101, 164, 1); background-size: contain;
+	background: url(<%= asset_path('mobile/icons/map_disabled.png') %>)  no-repeat center center, #96AAFF; background-size: contain;
 }
 
 .women {
-	background: url(<%= asset_path('mobile/icons/map_women.png') %>)  no-repeat center center, rgba(117, 80, 123, 1); background-size: contain;
+	background: url(<%= asset_path('mobile/icons/map_women.png') %>)  no-repeat center center, #D796FF; background-size: contain;
 }
 
 .disabled.occupied {
-	background: url(<%= asset_path('mobile/icons/map_disabled.png') %>)  no-repeat center center, rgba(204,0,0,1); background-size: contain;
+	background: url(<%= asset_path('mobile/icons/map_disabled.png') %>)  no-repeat center center, #F0C9C9; background-size: contain;
 }
 
 .women.occupied {
-	background: url(<%= asset_path('mobile/icons/map_women.png') %>)  no-repeat center center, rgba(204,0,0,1); background-size: contain;
+	background: url(<%= asset_path('mobile/icons/map_women.png') %>)  no-repeat center center, #F0C9C9; background-size: contain;
 }
 
 .occupied {
-	background: url(<%= asset_path('mobile/icons/map_x.png') %>)  no-repeat center center, rgba(204,0,0,1)!important; background-size: contain;
+	background: url(<%= asset_path('mobile/icons/map_x.png') %>)  no-repeat center center, #F0C9C9!important; background-size: contain;
 }
 
 /* Legend */
@@ -1043,8 +1052,8 @@ ul.link-list .star_level a {
 }
 
 #legend_lot {
-	background:rgba(115, 210, 22, 1);
-	color:#FFF;
+	background:#BAFFBC;
+	color:#BAFFBC;
 }
 
 #legend_street,#legend_entry, #legend_exit {
@@ -1052,22 +1061,22 @@ ul.link-list .star_level a {
 }
 
 #legend_occupied {
-	background:rgba(204,0,0,1);
+	background:#F0C9C9;
 	color:#FFF;
 }
 
 #legend_women {
-	background:rgba(117, 80, 123, 1);
+	background:#D796FF;
 	color:#FFF;
 }
 
 #legend_disabled{
-	background:rgba(52, 101, 164, 1);
+	background:#96AAFF;
 	color:#FFF;
 }
 
 #legend_star{
-	background:rgba(245, 121, 00, 1);
+	background:#4CE600;
 	color:#FFF;
 }
 
