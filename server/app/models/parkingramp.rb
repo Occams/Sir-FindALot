@@ -74,7 +74,6 @@ class Parkingramp < ActiveRecord::Base
     if parts.empty?
       []
     else
-      puts "SELECT p.* FROM (#{parts.map{|p| "#{p}"}.join(" UNION ALL ")}) as p GROUP BY p.id ORDER BY SUM(p.score) DESC"
       Parkingramp.find_by_sql "SELECT p.* FROM (#{parts.join(" UNION ALL ")}) as p GROUP BY p.id ORDER BY SUM(p.score) DESC"
     end
     
