@@ -236,7 +236,20 @@
 						<header>Lot Map</header>
 						<div class="scroller" id="scroll-lot-map">
 							<div data-type="page-content">
-								<p>TODO</p>
+								<div id="map_container"></div>
+								<div id="map_legend">
+									<div id="legend_row">
+										<div class="legend_item" id="legend_disabled"><%= image_tag 'mobile/icons/map_disabled.png' %> Disabled</div>
+										<div class="legend_item" id="legend_women"><%= image_tag 'mobile/icons/map_women.png' %> Women</div>
+										<div class="legend_item" id="legend_entry"><%= image_tag 'mobile/icons/map_entry.png' %> Entry</div>
+										<div class="legend_item" id="legend_exit"><%= image_tag 'mobile/icons/map_exit.png' %> Exit</div>
+									</div>
+									<div id="legend_row">
+										<div class="legend_item" id="legend_street">Street</div>
+										<div class="legend_item" id="legend_lot">Lot</div>
+										<div class="legend_item" id="legend_occupied"><%= image_tag 'mobile/icons/map_x.png' %> Occupied Lot</div>
+									</div>
+								</div>
 							</div>
 						</div>
 						<footer>

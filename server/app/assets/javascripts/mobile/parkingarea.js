@@ -92,7 +92,8 @@ var Parkingarea = {
 	},
 	
 	fillMapPage : function (plane) {
-		var container = x$('#lot_map div[data-type="page-content"]');
+		var container = x$('#lot_map #map_container');
+
 		// Set header
 		x$('#lot_map header').html(this.data.name + ' - Map');
 		
@@ -137,16 +138,14 @@ var Parkingarea = {
 		// fill container
 		container.html('<div class="map">' + html + '</div>');
 		
-		//container.find('.entry').html('<div class="arrow">');
-		
 		// Set container height
 		x$('.map').setStyle('height', this.cellH * (maxY - minY + 1) + 2 * padding +'px');
 		
 		// IScroll update, TODO: test if needed
-		x$('#lot_map').fire('update', {
-			onlyIScroll : true,
-			toTop : true
-		});
+		//x$('#lot_map').fire('update', {
+		//	onlyIScroll : true,
+		//	toTop : true
+		//});
 	},
 	
 	update : function () {
