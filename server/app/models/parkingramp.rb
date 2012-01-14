@@ -28,6 +28,13 @@ class Parkingramp < ActiveRecord::Base
     self.update_attribute(:lots_total, total)
   end
   
+  def best_lot
+    lots = self.parkingplanes.collect{|p| { :id => p.id, :score => 1 - p.lots_taken/p.lots_total } }
+    lots.first[:score] = 0
+    puts lots
+    return lots.sort{|a,b| a[:score] <=> b[:score]}.last[:id]
+  end
+  
   def self.stat_down
     Parkingramp.all.each do |ramp|
       ramp.stat_down!
