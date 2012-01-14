@@ -1,19 +1,23 @@
 var Search = {
   LOGSIZE:20,
-  parentContainer:null,
-  cb:null,
 
-  doSearch: function(needle, geolocation, parentContainer, cb) {
+  doSearch: function(needle, geolocation, target, callback, error) {
     data = {
       'needle': needle,
       'geolocation': geolocation,
       'history': LocalStorage.get("history", [])
     };
     
-    this.parentContainer = parentContainer;
-    this.cb = cb;
+    _this = this;
     
-    x$().xhr("/searches.json", {method:'POST', data: "search="+JSON.stringify(data), async: true, callback: Search.callback});
+    
+    x$().xhr("/searches.json", {
+      method:'POST',
+      data: "search="+JSON.stringify(data),
+      async: true,
+      callback: function() { _this.callback(this.responseText, target);if(callback != null) callback(); },
+      error: function() { if(error != null) error(); }
+    });
   },
   
   log: function(rampid) {
@@ -25,15 +29,15 @@ var Search = {
     LocalStorage.put("history", hist.slice(0,Search.LOGSIZE))
   },
   
-  callback: function() {
-    eval('var data = ' + this.responseText);
-    x$(Search.parentContainer).html(Search._generate_link_list_search_results(data, 'search_results'));
+  callback: function(response, target) {
+    var data = JSON.parse(response);
+    x$(target).html(Search._generate_link_list_search_results(data, 'search_results'));
     
 
     // Fade in of geolocation results. No animation without timeout? */
     setTimeout(function (e) {
-	    x$(Search.parentContainer).find('.link-list a').setStyle('opacity', '1');
-	    x$(Search.parentContainer).find('.link-list').setStyle('opacity', '1');
+	    x$(target).find('.link-list a').setStyle('opacity', '1');
+	    x$(target).find('.link-list').setStyle('opacity', '1');
     }, 25);
 		
 		// Display occupancy animation
@@ -44,7 +48,7 @@ var Search = {
 		}
 		
 		setTimeout(function (e) {
-	    x$(Search.parentContainer).find('.mask').each(function (el, i) {
+	    x$(target).find('.mask').each(function (el, i) {
 		    x$(el).setStyle('width', (100 - occupancy[i] * 100) + '%');
 	    })
     }, 300);
@@ -52,12 +56,13 @@ var Search = {
     
     x$('.link-list a').fastbutton(function (e) {
       Page._displayLoadingAnimation();
-      x$().xhr(this.element.getAttribute('href'), Page._parkingAreaLoaded);
+      x$().xhr(this.element.getAttribute('href'), {
+        callback: Page._parkingAreaLoaded,
+        error: Page._hideLoadingAnimation
+      });
       e.preventDefault();
       return false;
     });
-		
-    if(Search.cb != null) Search.cb();
   },
   
   _generate_link_list_search_results : function (data, id) {
