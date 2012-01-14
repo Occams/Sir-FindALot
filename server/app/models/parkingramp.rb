@@ -50,11 +50,6 @@ class Parkingramp < ActiveRecord::Base
       # Collect all ramps that were visited at the same weekday near the current
       # time and map a score value to them
       
-      # Acceptable difference of time in seconds
-      d_m = 35*60
-      # Acceptable difference of weekdays in days
-      d_w = 1
-      
       history.each do |entry|
         if entry[:id] && entry[:date]
           date = Time.at entry[:date]
@@ -63,10 +58,13 @@ class Parkingramp < ActiveRecord::Base
           t0_secs = date.hour.hours + date.min.minutes + date.sec.seconds
           t1_secs = c_date.hour.hours + c_date.min.minutes + c_date.sec.seconds
 
-          wday_diff = [(date.wday - Time.current.wday).abs, 7 - (date.wday - Time.current.wday).abs].min / d_w.to_f
-          hour_diff = [(t0_secs - t1_secs).abs, 86400.seconds - (t0_secs - t1_secs).abs].min / d_m.to_f
+          wday_diff = [(date.wday - Time.current.wday).abs, 7 - (date.wday - Time.current.wday).abs].min
+          hour_diff = [(t0_secs - t1_secs).abs, 1.day.seconds - (t0_secs - t1_secs).abs].min
+          wday_jump = (([0,6].include?(date.wday) && [0,6].include?(c_date.wday)) || (date.wday.between?(1,5) && c_date.wday.between?(1,5))) ? 0 : 1
           
-          parts.push Parkingramp.where("id = ?", entry[:id].to_i).select("parkingramps.*, 10 as score").to_sql
+          score = self.score_history hour_diff, wday_diff, wday_jump
+          
+          parts.push Parkingramp.where("id = ?", entry[:id].to_i).select("parkingramps.*, #{score} as score").to_sql
         end
       end
     end
@@ -77,5 +75,16 @@ class Parkingramp < ActiveRecord::Base
       Parkingramp.find_by_sql "SELECT p.* FROM (#{parts.join(" UNION ALL ")}) as p GROUP BY p.id ORDER BY SUM(p.score) DESC"
     end
     
+  end
+  
+private
+
+=begin
+  TODO Rainer: Add some description of the scoring algorithm
+  Alles was hier drin steht zwischen begin und end ist ein kommentar
+=end
+  def self.score_history(diff_sec, diff_wday, is_weekend_workday_jump, acceptable_diff_sec = 45*60, smooth_border = 2)
+    # TODO Rainer: Implement the scoring algorithm
+    return 10
   end
 end
