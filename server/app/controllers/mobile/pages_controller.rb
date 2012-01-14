@@ -1,16 +1,16 @@
-class PagesController < ApplicationController
+class Mobile::PagesController < Mobile::ApplicationController
   # home, all others are handles within show
   def index
   end
 
   def show
-    allowed = %w{impressum about help imprint faq contact api}
+    allowed = %w{upgrade}
   
     if allowed.include?(params[:id].to_s)
       if self.respond_to?(params[:id])
         self.send(params[:id])
       else
-        render :template => "pages/#{params[:id]}"
+        render :template => "mobile/pages/#{params[:id]}"
       end
     else
       not_found

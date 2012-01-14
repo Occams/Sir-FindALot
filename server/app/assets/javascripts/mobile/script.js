@@ -3,23 +3,23 @@
 // JQuery-like syntax
 (function ($) {
 	
-	// Padding of the content container left+right
+	// Padding of the content container left+rightf
 	var CONTENT_PADDING = 20;
 	
 	$.ready(function () {
 		
 		// Feature detection
 		if (!supportsFeatures()) {
-			window.location = '/upgrade';
+			window.location = '/mobile/upgrade';
 		} else {
 			Page.init();
 		}
 	});
 	
-	// Seems like some browser do not support domready, redirect to /upgrade
+	// Seems like some browser do not support domready, redirect to /mobile/upgrade
 	window.onload = function () {
 		if (!supportsFeatures()) {
-			window.location = '/upgrade';
+			window.location = '/mobile/upgrade';
 		} else if (!Page.initialized) {
 			Page.init();
 		}

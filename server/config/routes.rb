@@ -9,6 +9,11 @@ Server::Application.routes.draw do
       match 'stats/day/:year/:month/:day' => 'stats#show', :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
     end
   end
+  
+  namespace :mobile do
+    root :to => "pages#index"
+    match "/:id" => "pages#show"
+  end
 
   namespace :admin do
     resources :operators, :only => :show

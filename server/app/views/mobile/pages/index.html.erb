@@ -1,0 +1,301 @@
+<!doctype html>
+<!-- Conditional comment for mobile ie7 http://blogs.msdn.com/b/iemobile/ -->
+<!--[if IEMobile 7 ]>    
+<html class="no-js iem7">
+	<![endif]-->
+	<!--[if (gt IEMobile 7)|!(IEMobile)]> 
+	<html class="no-js">
+		<![endif]-->
+		<html>
+			<head>
+				<meta charset="utf-8" />
+				<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+				<title>Sir FindALot</title>
+				<meta name="description" content="Sir FindALot helps you find your lot" />
+				<meta name="author" content="Team Amazonen" />
+				<!-- Mobile viewport settings  target-densitydpi=high-dpi -->
+				<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+				<!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
+				<meta name="HandheldFriendly" content="True" />
+				<meta name="MobileOptimized" content="320" />
+				<!-- Home screen icon  Mathias Bynens http://goo.gl/6nVq0 -->
+				<!-- For iPhone 4 with high-resolution Retina display: -->
+				<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%= asset_path 'mobile/sir.png' %>" />
+				<!-- For first-generation iPad: -->
+				<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%= asset_path 'mobile/sir.png' %>" />
+				<!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+				<link rel="apple-touch-icon-precomposed" href="<%= asset_path 'mobile/sir.png' %> />
+				<!-- For nokia devices: -->
+				<link rel="shortcut icon" href="<%= asset_path 'mobile/sir.png' %>" />
+				<!--iOS web app, deletable if not needed -->
+				<!--the script prevents links from opening in mobile safari. https://gist.github.com/1042026 -->
+				<meta name="apple-mobile-web-app-capable" content="yes" />
+				<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+				<script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
+				<link rel="apple-touch-startup-image" href="<%= asset_path 'mobile/sir.png' %>" />
+				<!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+				<meta http-equiv="cleartype" content="on" />
+				<!-- consider using below meta tags if you want to disable format detection by default -->
+				<meta name="format-detection" content="telephone=no" />
+				<meta name="format-detection" content="address=no" />
+				<!-- Stylesheets -->
+				<%= stylesheet_link_tag 'mobile/application' %>
+				<link href="http://fonts.googleapis.com/css?family=Terminal+Dosis:800,600" rel="stylesheet" type="text/css" />
+				<!-- end CSS-->
+				<!-- Weiner debugger inject code. Hardcoded! -->
+				<!--
+					<script src="http://10.0.0.10:8080/target/target-script-min.js#anonymous"></script>
+					-->
+				<!-- Hide address bar -->
+				<!--
+					<script type="text/javascript">
+					function hideAddressBar (){
+						if(!window.location.hash) {
+					     if(document.height <= window.outerHeight + 10) {
+								document.body.style.height = window.outerHeight / (window.devicePixelRatio || 1) +'px';
+					       setTimeout( function(){ window.scrollTo(0, 1); }, 50 );
+					     } else {
+					       setTimeout( function(){ window.scrollTo(0, 1); }, 0 );
+							}
+						}
+					}
+					
+					window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddressBar(); } } );
+					 window.addEventListener("orientationchange", hideAddressBar );
+					</script>
+					-->
+					
+				<!-- Modernizer script to detect browser capabilities -->
+				<%= javascript_include_tag 'mobile/modernizr' %>
+			</head>
+			<body>
+				<header id="global-header"></header>
+				<div id="viewport">
+				
+					<!-- Options page -->
+					<div data-type="page" id="options">
+						<header>
+							Options
+						</header>
+						<div class="scroller" id="scroll-options">
+							<div data-type="page-content">
+								<div id="sir_bubble_container_vertical">
+									<div class="speech_bubble  bottom_triangle">
+										"To stop automatic geolocation on each page load <b>Sir Findalot</b> recommends to alter the settings below.
+										Additionally you may purge all data <b>Sir Findalot</b> has collected in order to refine your search results."
+									</div>
+									<%= image_tag 'mobile/sir_options.png', :id => 'img_carl', :alt => "Carl and Sir FindALot" %>
+								</div>
+								
+								<ul id="options_list">
+									<li id ="auto_geo_slide">
+										<div class="switch" fake-active="yes">
+											<label class="disable" rel="slide1">Auto</label>
+											<label class="enable selected" rel="slide1">Off</label>
+											<div class="slide selected" id="slide1">Geolocation</div>
+										</div>
+									</li>
+								</ul>
+								<div class="button" id="purge_data">Purge Data</div>
+							</div>
+						</div>
+						<footer>
+							<nav class="navbar">
+								<a href="#home" fake-active="yes">
+								  <%= image_tag 'mobile/icons/home_white.png', :alt => "Home" %>
+								  <span class="navtext">Home</span>
+								</a>
+								<a href="#help" fake-active="yes">
+								  <%= image_tag 'mobile/icons/help_white.png', :alt => "Help" %>
+								  <span class="navtext">Help</span>
+								</a>
+								<a href="#options" class="highlighted" fake-active="yes">
+								  <%= image_tag 'mobile/icons/options_white.png', :alt => "Options" %>
+								  <span class="navtext">Options</span>
+								</a>
+							</nav>
+						</footer>
+					</div> <!-- end page options -->
+					
+					<!-- Help page -->
+					<div data-type="page" id="help">
+						<header>Help</header>
+						<div class="scroller" id="scroll-help">
+							<div data-type="page-content">
+								<div id="sir_bubble_container">
+									<div class="speech_bubble right_triangle">
+										"I have compiled an immense set of FAQs to walk you along the path of enlightenment and help you find your lot."
+									</div>
+									<%= image_tag 'mobile/sir_lightbulb.png', :id => "img_sir_help", :alt => "Sir FindALot offers help" %>
+								</div>
+								<div id="faq_container">
+									<section class="faq">
+										<h1 id="faq1" fake-active="yes">Learn the basic</h1>
+										<p rel="faq1">Augue eu eros pid cum in. Placerat lundium mid pulvinar a integer?</p>
+									</section>
+									<section class="faq">
+										<h1 id="faq2" fake-active="yes">Geolocation is not working</h1>
+										<p rel="faq2">Ultrices in cum cras cursus? In?</p>
+									</section>
+									<section class="faq">
+										<h1 id="faq3" fake-active="yes">Misplaced my brain</h1>
+										<p rel="faq3">Augue. A nec, nascetur tincidunt a ac placerat nisi! Montes nisi!</p>
+									</section>
+									<section class="faq">
+										<h1 id="faq4" fake-active="yes">Whatever</h1>
+										<p rel="faq4">Arcu hac mid, duis aenean, dolor penatibus cras ac integer enim</p>
+									</section>
+								</div> <!-- end of #faq_container -->
+								
+								<div id="sir_bubble_container_vertical">
+									<div class="speech_bubble">
+										"In the meanwhile, ferocious <b>Sir DragOnLot</b> went out to practice his unmatched beast slaying skills"
+									</div>
+									<%= image_tag 'mobile/dragonlot.png', :id => "img_dragonlot", :alt => "Sir DragOnLot" %>
+								</div>
+							</div>
+						</div>
+						<footer>
+							<nav class="navbar">
+								<a href="#home" fake-active="yes"><%= image_tag 'mobile/icons/home_white.png', :alt => "Home" %><span class="navtext">Home</span></a>
+								<a href="#help" class="highlighted" fake-active="yes"><%= image_tag 'mobile/icons/help_white.png', :alt => "Help" %><span class="navtext">Help</span></a>
+								<a href="#options" fake-active="yes"><%= image_tag 'mobile/icons/options_white.png', :alt => "Options" %><span class="navtext">Options</span></a>
+							</nav>
+						</footer>
+					</div> <!-- end of page help -->
+					
+					<!-- Home page -->
+					<div data-type="page" id="home" home="yes">
+						<header>Sir FindALot</header>
+						<div class="scroller" id="scroll-home">
+							<div data-type="page-content">
+								<div id="sir_bubble_container">
+									<div class="speech_bubble right_triangle">
+										"<b>Sir Findalot</b> is eager to help you find a free lot!
+										I'm currently computing results based on your location."
+									</div>
+									<%= image_tag 'mobile/sir.png', :id=>"img_sir_home", :alt=>"Sir FindALot" %>
+								</div>
+								
+									<form id="geolocation_search_form" class="green" action="">
+										<div id="geolocation_search_glass"></div>
+										<input id="geolocation_search" type="search" disabled="disabled" placeholder="Geolocating..." />
+										<div id="loading" class="green">
+										<div class="l_bar bar1"></div>
+										<div class="l_bar bar2"></div>
+										<div class="l_bar bar3"></div>
+										<div class="l_bar bar4"></div>
+										<div class="l_bar bar5"></div>
+										<div class="l_bar bar6"></div>
+										</div>
+									</form>
+									<div id="geolocation_search_results"></div>
+							</div>
+						</div>
+						<footer>
+							<nav class="navbar">
+								<a href="#home" class="highlighted" fake-active="yes"><%= image_tag "mobile/icons/home_white.png", :alt=>"Home" %><span class="navtext">Home</span></a>
+								<a href="#help" fake-active="yes"><%= image_tag "mobile/icons/help_white.png", :alt=>"Help" %><span class="navtext">Help</span></a>
+								<a href="#options" fake-active="yes"><%= image_tag "mobile/icons/options_white.png", :alt=>"Options" %><span class="navtext">Options</span></a>
+							</nav>
+						</footer>
+					</div> <!-- end of page home-->
+					
+					<div data-type="page" id="search">
+						<header>Search Results</header>
+						<div class="scroller" id="scroll-search">
+							<div data-type="page-content">
+							</div>
+						</div>
+						<footer>
+							<nav class="navbar">
+								<a href="#home" fake-active="yes"><%= image_tag 'mobile/icons/home_white.png', :alt => "Home" %><span class="navtext">Home</span></a>
+								<a href="#help" fake-active="yes"><%= image_tag 'mobile/icons/help_white.png', :alt => "Help" %><span class="navtext">Help</span></a>
+								<a href="#options" fake-active="yes"><%= image_tag 'mobile/icons/options_white.png', :alt => "Options" %><span class="navtext">Options</span></a>
+							</nav>
+						</footer>
+					</div>
+					
+					<div data-type="page" id="lot_levels">
+						<header>Lot Levels</header>
+						<div class="scroller" id="scroll-lot-levels">
+							<div data-type="page-content">
+							</div>
+						</div>
+						<footer>
+							<nav class="navbar">
+								<a href="#home" fake-active="yes"><%= image_tag 'mobile/icons/home_white.png', :alt =>"Home" %><span class="navtext">Home</span></a>
+								<a href="#lot_levels" class="highlighted" fake-active="yes"><%= image_tag 'mobile/icons/levels_white.png', :alt=>"Map" %><span class="navtext">Levels</span></a>
+								<a href="#lot_map" fake-active="yes"><%= image_tag 'mobile/icons/map_white.png', :alt=>"Map" %><span class="navtext">Map</span></a>
+								<a href="#lot_details" fake-active="yes"><%= image_tag 'mobile/icons/details_white.png', :alt=>"Details" %><span class="navtext">Details</span></a>
+							</nav>
+						</footer>
+					</div>
+					
+					<div data-type="page" id="lot_map">
+						<header>Lot Map</header>
+						<div class="scroller" id="scroll-lot-map">
+							<div data-type="page-content">
+								<p>TODO</p>
+							</div>
+						</div>
+						<footer>
+							<nav class="navbar">
+								<a href="#home" fake-active="yes"><%= image_tag 'mobile/icons/home_white.png', :alt => "Home" %><span class="navtext">Home</span></a>
+								<a href="#lot_levels" fake-active="yes"><%= image_tag 'mobile/icons/levels_white.png', :alt=>"Map" %><span class="navtext">Levels</span></a>
+								<a href="#lot_map" class="highlighted" fake-active="yes"><%= image_tag 'mobile/icons/map_white.png', :alt=>"Map" %><span class="navtext">Map</span></a>
+								<a href="#lot_details" fake-active="yes"><%= image_tag 'mobile/icons/details_white.png', :alt=>"Details" %><span class="navtext">Details</span></a>
+							</nav>
+						</footer>
+					</div>
+					
+					<div data-type="page" id="lot_details">
+						<header>Lot Details</header>
+						<div class="scroller" id="scroll-lot-details">
+							<div data-type="page-content">
+								<p>TODO</p>
+							</div>
+						</div>
+						<footer>
+							<nav class="navbar">
+								<a href="#home" fake-active="yes"><%= image_tag 'mobile/icons/home_white.png', :alt => "Home" %><span class="navtext">Home</span></a>
+								<a href="#lot_levels" fake-active="yes"><%= image_tag 'mobile/icons/levels_white.png', :alt=>"Map" %><span class="navtext">Levels</span></a>
+								<a href="#lot_map" fake-active="yes"><%= image_tag 'mobile/icons/map_white.png', :alt=>"Map" %><span class="navtext">Map</span></a>
+								<a href="#lot_details" class="highlighted" fake-active="yes"><%= image_tag 'mobile/icons/details_white.png', :alt=>"Details" %><span class="navtext">Details</span></a>
+							</nav>
+						</footer>
+					</div>
+					
+					
+					
+				</div><!-- end of #viewport -->
+				
+				<footer id="global-footer"></footer><!-- /footer -->
+				
+				<div id="modal">
+					<h1>:: Offline</h1>
+					<div id="modal_content">
+						<p>This is an error! You have been disconnected from the interwebz. Sorry!</p>
+						<%= image_tag "mobile/sir_error.png", :id => 'modal_img', :alt=>"Sir FindALot detected an error." %>
+					</div>
+					<a href="#" id="modal_close">Close</a>
+				</div><!-- end of #modal -->
+				
+				<div id="loading_overlay" class="green">
+					<div class="l_bar bar1"></div>
+					<div class="l_bar bar2"></div>
+					<div class="l_bar bar3"></div>
+					<div class="l_bar bar4"></div>
+					<div class="l_bar bar5"></div>
+					<div class="l_bar bar6"></div>
+				</div> <!-- end of loading_oberlay -->
+				<div id="fade"></div>
+			</body> <!-- /body -->
+			
+			<!-- JS -->
+		  <%= javascript_include_tag 'mobile/application' %>
+			<script>
+				// iPhone Scale Bug Fix, read this when using http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/
+				MBP.scaleFix();
+			</script>
+		</html>
