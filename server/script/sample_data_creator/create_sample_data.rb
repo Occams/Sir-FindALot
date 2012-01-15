@@ -9,11 +9,11 @@ class CreateSampleData < ActiveRecord::Base
   end
 
   [
-    ["Universität Passau",48.566782,13.451343],
-    ["Krankenhaus Passau",48.566792,13.451343],
-    ["Zentraltiefgarage Passau",48.566772,13.451343],
-    ["Flughafen München P1",48.566762,13.451343],
-    ["Flughafen München P2",48.566752,13.451343]
+    ["Universität Passau",48.568188,13.453059],
+    ["Krankenhaus Passau",48.563672,13.444476],
+    ["Zentraltiefgarage Passau",48.573725,13.456213],
+    ["Flughafen München P1",48.358587,11.751852],
+    ["Flughafen München P2",48.345811,11.755543]
   ].each do |current|
     puts "Creating #{current[0]}"
     ramp = Parkingramp.create("name"=>current[0], "operator_id"=> operator.id, "category"=>"Tiefgarage", "info_status"=>"Offen - Kleine Bauarbeiten", "info_pricing"=>"Für Studenten kostenlos", "info_openinghours"=>"07:00 - 24:00 Wochentags\r\nGeschlossen am Wochenenden und Feiertags", "info_address"=>"Universität Passau\r\nInnstraße 14\r\n94032 Passau", "latitude"=>current[1], "longitude"=>current[2])

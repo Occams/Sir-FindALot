@@ -45,8 +45,8 @@ class Parkingramp < ActiveRecord::Base
     parts = []
   
     if !geolocation.nil? && geolocation[:coords] && geolocation[:coords][:latitude] && geolocation[:coords][:longitude]
-      geosql = Parkingramp.near([geolocation[:coords][:latitude], geolocation[:coords][:longitude]]).to_sql.gsub(/ORDER .*$/, "")
-      parts.push "SELECT parkingramps.*, 1 as score FROM parkingramps, (#{geosql}) as geo WHERE geo.id = parkingramps.id"
+      geosql = Parkingramp.near([geolocation[:coords][:latitude], geolocation[:coords][:longitude]], 20).to_sql.gsub(/ORDER .*$/, "")
+      parts.push "SELECT parkingramps.*, 1-geo.distance/40 as score FROM parkingramps, (#{geosql}) as geo WHERE geo.id = parkingramps.id"
     end
 
     if !needle.nil?
@@ -59,7 +59,7 @@ class Parkingramp < ActiveRecord::Base
       
       history.each do |entry|
         if entry[:id] && entry[:date]
-          date = Time.at entry[:date]
+          date = Time.at entry[:date]/1000
           c_date = Time.now
           
           t0_secs = date.hour.hours + date.min.minutes + date.sec.seconds
@@ -92,6 +92,7 @@ private
   def self.score_history(diff_sec, diff_wday, is_weekend_workday_jump, acceptable_diff_sec = 45*60, smooth_first = 2, smooth_second = 3)
     first = (1 - is_weekend_workday_jump*diff_wday/4.0 - diff_wday/12.0)*smooth_first
     second = 1 - 2**(diff_sec/smooth_second - acceptable_diff_sec)
+    
     if second <= 0
       return 0
     else
