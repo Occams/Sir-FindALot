@@ -1308,4 +1308,24 @@ h1.details-header:before {
 	font-size: 110%;
 }
 
+#empty_result{
+  display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
+	box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;
+  margin:10px -10px;
+  padding: 10px 5px 10px 45px;
+  -webkit-border-radius: 8px; -moz-border-radius: 8px; -o-border-radius: 8px; border-radius: 8px;
+  text-align:center;
+  
+  background: image-url('mobile/icons/map_x.png')  no-repeat 10px center, #ff2626; /* Old browsers */
+  background: image-url('mobile/icons/map_x.png')  no-repeat 10px center, -moz-linear-gradient(top, #ff2626 0%, #ff1919 49%, #d20000 50%, #be0000 100%); /* FF3.6+ */
+  background: image-url('mobile/icons/map_x.png')  no-repeat 10px center, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff2626), color-stop(49%,#ff1919), color-stop(50%,#d20000), color-stop(100%,#be0000)); /* Chrome,Safari4+ */
+  background: image-url('mobile/icons/map_x.png')  no-repeat 10px center, -webkit-linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); /* Chrome10+,Safari5.1+ */
+  background: image-url('mobile/icons/map_x.png')  no-repeat 10px center, -o-linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); /* Opera 11.10+ */
+  background: image-url('mobile/icons/map_x.png')  no-repeat 10px center, -ms-linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); /* IE10+ */
+  background: image-url('mobile/icons/map_x.png')  no-repeat 10px center, linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); /* W3C */
+  
+	color:#FFF;
+  font-size:120%;
+  font-weight:800;
+}
 
