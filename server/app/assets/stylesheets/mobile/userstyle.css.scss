@@ -705,7 +705,7 @@ ul.link-list a .occupancy-text  {
 	color:#000;
 }
 
-a:active .link-list-title, a:active .occupancy-text {
+a:active .link-list-title, a:active .occupancy-text, a.fake-active .link-list-title, a.fake-active .occupancy-text {
 	color:#FFF!important;
 }
 
@@ -720,8 +720,8 @@ ul.link-list a .occupancy {
 	position:absolute;
 	bottom:5px;
 	
-	width:75%;
-	height:25%;
+	width:60%;
+	height:15px;
 	
 	padding:0px;
 	background-color: #5a5a5a;

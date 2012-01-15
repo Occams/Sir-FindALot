@@ -298,13 +298,17 @@
 					  Page._showModal("Error on server", "The server returned with an error. Please try again later...");
 				  }
 				);
-				
+        
+        // Reset search field
+				input[0].value = "";
+        
 				e.preventDefault();
 				return false;
 			});
 			
 			// Test if auto geolocation is enabled
-			console.log("Auto-Geolocation: " + localStorage.getItem('auto_geo'));
+			//console.log("Auto-Geolocation: " + localStorage.getItem('auto_geo'));
+      
 			var auto = eval(localStorage.getItem('auto_geo'));
 			// Start Geolocation
 			if (navigator.geolocation && auto) {
