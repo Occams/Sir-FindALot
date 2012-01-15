@@ -22,5 +22,5 @@ production:
   adapter: mysql2
   database: sirfindalot
   username: root
-  password: 
+  password: lobster
   encoding: utf8

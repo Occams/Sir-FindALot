@@ -43,7 +43,7 @@ div.speech_bubble {
 	padding:5px;
 	
 	color:#000;
-	font-size:160%;
+	font-size:140%;
   font-weight:800;
   text-align:center;
   
@@ -98,4 +98,8 @@ div.speech_bubble.bottom_triangle:after {
     /* reduce the damage in FF3.0 */
     display:block; 
     width:0;
+}
+
+#sir_contact {
+  margin: 10px 0 0 50px;
 }
