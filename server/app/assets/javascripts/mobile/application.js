@@ -2,6 +2,7 @@
 //= require ./bt
 //= require ./xui.min
 //= require ./iscroll-lite.min
+//= require ./position
 //= require ./parkingarea
 //= require ./options
 //= require ./search

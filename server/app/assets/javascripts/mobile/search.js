@@ -75,16 +75,24 @@ var Search = {
 	},
 	
 	_generate_link_list_search_results : function (data, id) {
-		
+		console.log(data);
 		if (data.length == 0) {
 			return '<p id="empty_result">Sorry, i was not able to find what you are looking for.</p>';
 		} else {
 			var html = '';
 			for (var i in data) {
 				var single = data[i];
+        var distance = Position.distance(single.longitude,single.latitude);
+        console.log(distance);
+        var d = Math.round(distance)+'km';
+        
+        if (distance < 1) {
+          d = Math.round(distance*1000)+'m';
+        }
+        var title = (distance ? ('(~ '+d+' )') : '(N/A)')+' - ' + single['name'];
 				html += '<li><a href="/parkingramps/' + single['id'] + '.json" fake-active="yes">';
 				html += '<div class="occupancy"><div class="level"></div><div class="mask"></div></div>';
-				html += '<span class="link-list-title">' + single['name'] + ' - ' + single['category'] + '</span>';
+				html += '<span class="link-list-title">' + title + '</span>';
 				html += '<span class="occupancy-text">' + single['lots_taken'] + '/' + single['lots_total'] + '</span></a></li>';
 			}
 			

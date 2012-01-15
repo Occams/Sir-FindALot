@@ -214,8 +214,15 @@
 				if (!localStorage.getItem('auto_geo')) {
 					localStorage.setItem('auto_geo', 'true');
 				}
+				
 			}
 			
+			// Position object initializiation with last known position
+			if (localStorage.getItem('position')) {
+				var p = JSON.parse(localStorage.getItem('position'));	
+				Position.longitude = p.longitude;
+				Position.latitude = p.latitude;
+			}
 			// Page update event
 			this.pages.on('update', function (e) {
 				var page = $(this);
@@ -288,27 +295,26 @@
 					null,
 					$('#search div[data-type="page-content"]'),
 					function () {
-					  $('#loading').hide();
-					  input.rAttr('disabled'); // Reenable input field
-					  Page.show('search');
-				  },
-				  function () {
-					  $('#loading').hide();
-					  input.rAttr('disabled'); // Reenable input field
-					  Page._showModal("Error on server", "The server returned with an error. Please try again later...");
-				  }
-				);
-        
-        // Reset search field
+					$('#loading').hide();
+					input.rAttr('disabled'); // Reenable input field
+					Page.show('search');
+				},
+					function () {
+					$('#loading').hide();
+					input.rAttr('disabled'); // Reenable input field
+					Page._showModal("Error on server", "The server returned with an error. Please try again later...");
+				});
+				
+				// Reset search field
 				input[0].value = "";
-        
+				
 				e.preventDefault();
 				return false;
 			});
 			
 			// Test if auto geolocation is enabled
 			//console.log("Auto-Geolocation: " + localStorage.getItem('auto_geo'));
-      
+			
 			var auto = eval(localStorage.getItem('auto_geo'));
 			// Start Geolocation
 			if (navigator.geolocation && auto) {
@@ -392,11 +398,10 @@
 				}
 			}
 			
-      // Load ranked results by history
-		  Search.doSearch(null,
-			  null,
-			  "#geolocation_search_results"
-		  );
+			// Load ranked results by history
+			Search.doSearch(null,
+				null,
+				"#geolocation_search_results");
 			
 			var input = $('#geolocation_search'),
 			form = $('#geolocation_search_form');
@@ -412,6 +417,14 @@
 		
 		_geoPosition : function (position) {
 			
+			// Initialize Position object, update last known position
+			Position.longitude = position.coords.longitude;
+			Position.latitude = position.coords.latitude;
+			
+			localStorage.setItem('position', '{"latitude" : ' + Position.latitude + ', "longitude" : ' + Position.longitude + '}');
+			
+			console.log("New position: " + Position.longitude + " - " + Position.latitude);
+			
 			var input = $('#geolocation_search'),
 			form = $('#geolocation_search_form');
 			
@@ -425,24 +438,23 @@
 				data,
 				"#geolocation_search_results",
 				function () {
-				  $('#loading').hide();
+				$('#loading').hide();
 				
-				  // Enable input field and change placeholder text
-				  input.attr('placeholder', 'Touch to enter custom query...');
-				  input.rAttr('disabled');
-				  form.removeClass('green').addClass('orange');
+				// Enable input field and change placeholder text
+				input.attr('placeholder', 'Touch to enter custom query...');
+				input.rAttr('disabled');
+				form.removeClass('green').addClass('orange');
 				
-				  $("#home").fire('update');
-			  },
-			  function () {
-				  $('#loading').hide();
-				  // Enable input field and change placeholder text
-				  input.attr('placeholder', 'Touch to enter custom query...');
-				  input.rAttr('disabled');
-				  form.removeClass('green').addClass('orange');
-				  Page._showModal("Error on server", "The server returned with an error. Please try again later...");
-			  }
-			);
+				$("#home").fire('update');
+			},
+				function () {
+				$('#loading').hide();
+				// Enable input field and change placeholder text
+				input.attr('placeholder', 'Touch to enter custom query...');
+				input.rAttr('disabled');
+				form.removeClass('green').addClass('orange');
+				Page._showModal("Error on server", "The server returned with an error. Please try again later...");
+			});
 		},
 		
 		_parkingAreaLoaded : function () {
