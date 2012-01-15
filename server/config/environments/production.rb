@@ -19,6 +19,12 @@ Server::Application.configure do
 
   # Generate digests for assets URLs
   config.assets.digest = true
+  
+  # Compress assets
+  config.assets.precompile += ['modernizr.js']
+  config.assets.css_compressor = :yui
+  config.assets.js_compressor = :yui
+  config.assets.compress = true
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
