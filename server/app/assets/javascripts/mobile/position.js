@@ -1,12 +1,20 @@
+if (typeof(Number.prototype.toRad) === "undefined") {
+	Number.prototype.toRad = function () {
+		return this * Math.PI / 180;
+	}
+}
+
 var Position = {
 	longitude : null,
 	latitude : null,
 	RADIUS : 6371, // km
 	
-	distance : function (lon2, lat2) {
+	distance : function (lon, lat) {
 		if (this.longitude != null && this.latitude != null) {
-			var lat1 = this._toRad(this.latitude), lon1 = this._toRad(this.longitude);
-			var lat2 =  this._toRad(lat2), lon2 =  this._toRad(lon2);
+			var lat1 = this.latitude.toRad(),
+			lon1 = this.longitude.toRad();
+			var lat2 = lat.toRad(),
+			lon2 = lon.toRad();
 			var dLat = lat2 - lat1;
 			var dLon = lon2 - lon1;
 			
@@ -18,10 +26,6 @@ var Position = {
 		} else {
 			return null;
 		}
-	},
-	
-	_toRad : function (deg) {
-		return deg * Math.PI / 180;
 	}
 	
 };
