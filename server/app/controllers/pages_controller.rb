@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
   # home, all others are handles within show
   def index
+    if operator_signed_in?
+      redirect_to admin_parkingramps_url
+    end
   end
 
   def show
