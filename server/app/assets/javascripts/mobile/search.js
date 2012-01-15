@@ -84,12 +84,12 @@ var Search = {
 				var single = data[i];
         var distance = Position.distance(single.longitude,single.latitude);
         console.log(distance);
-        var d = Math.round(distance)+'km';
+        var d = Math.round(distance)+' km';
         
         if (distance < 1) {
-          d = Math.round(distance*1000)+'m';
+          d = Math.round(distance*1000)+' m';
         }
-        var title = (distance ? ('(~ '+d+' )') : '(N/A)')+' - ' + single['name'];
+        var title = (distance ? ('<span style="color:green">('+d+')</span>') : '(N/A)')+' - ' + single['name'];
 				html += '<li><a href="/parkingramps/' + single['id'] + '.json" fake-active="yes">';
 				html += '<div class="occupancy"><div class="level"></div><div class="mask"></div></div>';
 				html += '<span class="link-list-title">' + title + '</span>';
