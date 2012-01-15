@@ -1,12 +1,11 @@
 #logo
   =link_to (operator_signed_in? ? admin_parkingramps_url : '/') do
     =image_tag 'sir_small.png'
-    SirFindALot
+    Sir FindALot
   
 %ul#headerlist
   - if operator_signed_in?
     %li= link_to t(:administration), admin_parkingramps_url
   -else
     %li= link_to t(:page_home), '/'
-    %li= link_to t(:page_faq), '/faq'
     %li= link_to Operator.t(:plural), new_operator_session_url
