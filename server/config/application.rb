@@ -44,6 +44,12 @@ module Server
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    # Compress assets
+    config.assets.digest = true
+    config.assets.css_compressor = :yui
+    config.assets.js_compressor = :yui
+    config.assets.compress = true
   end
 end
 
