@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     render :nothing, :layout => :mobile
   end
   
+  def after_sign_in_path_for(resource)
+    admin_parkingramps_url
+  end
+  
 protected
   def ismobile
     agent = request.headers["HTTP_USER_AGENT"].downcase

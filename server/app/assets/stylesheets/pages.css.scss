@@ -11,7 +11,7 @@
   box-shadow: $radius $color;
 }
 $default-color: #444;
-$slides-links-width: 25%;
+$slides-links-width: 27%;
 
 
 #page-home-slogan { font-size:40px; }
@@ -25,7 +25,7 @@ $slides-links-width: 25%;
 #slides-links a { display:block;padding:10px 0 30px 0;text-indent:10px;}
 #slides-links a.active { margin-left:-10px;@include border(10px 0 0 10px); background-color:white;@include shadow(0px 0px 5px, #888);  }
 #slides { float:left;width:100%-$slides-links-width; height:100%;}
-.slide { display:none;padding:20px; }
+.slide { display:none;padding:20px;min-height:600px; }
 .slide.active {display:block;background-color:white;@include shadow(3px 0px 5px, #888);}
 
 #start-sir { width:500px;margin: 0 auto; }

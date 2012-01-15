@@ -1,11 +1,26 @@
 %ul#slides-links
   %li
     %h2.tour Tour
-  %li= link_to "What or who is Sir FindALot?", "#slide_start"
-  %li= link_to "Find the best parking area", "#slide_ramp"
-  %li= link_to "Find a free lot with ease", "#slide_map"
-  %li= link_to "Display even more details", "#slide_infos"
-  %li= link_to "How to get", "#slide_get"
+  %li
+    =link_to "#slide_start" do
+      =image_tag "sir_lightbulb.png"
+      What or who is Sir FindALot?
+  %li
+    =link_to "#slide_ramp" do
+      =image_tag "star.png"
+      Find the best parking area
+  %li
+    =link_to "#slide_map" do
+      =image_tag "mobile/icons/parking_sign_green.png"
+      Find a free lot with ease
+  %li
+    =link_to "#slide_infos" do
+      =image_tag "info.png"
+      Display even more details
+  %li
+    =link_to "#slide_get" do
+      =image_tag "download.png"
+      How to get
   
 #slides
   #slide_start.slide
