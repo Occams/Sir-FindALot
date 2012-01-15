@@ -35,6 +35,7 @@ $slides-links-width: 25%;
 .screen { width:205px;position:relative;float:right;margin-left:20px; }
 .screen-image {width:172px;position:absolute;left:17px;top:59px;}
 
+#img_dragon { width:205px;position:relative;float:right;margin-left:20px; }
 
 /* Speech bubble */
 div.speech_bubble {
@@ -42,7 +43,11 @@ div.speech_bubble {
 	padding:5px;
 	
 	color:#000;
-	font-size:150%;
+	font-size:160%;
+  font-weight:800;
+  text-align:center;
+  
+  max-width:400px;
 	
 	/* Gradients */
 	background-color:#f3961c; /* Fallback value */

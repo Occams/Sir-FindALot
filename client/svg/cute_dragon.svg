@@ -15,7 +15,10 @@
    inkscape:version="0.48.2 r9819"
    width="198.79243"
    height="332.37479"
-   sodipodi:docname="cute_dragon.svg">
+   sodipodi:docname="cute_dragon.svg"
+   inkscape:export-filename="Z:\Dev\PervasiveComputing\server\app\assets\images\cute_dragon.png"
+   inkscape:export-xdpi="113.18548"
+   inkscape:export-ydpi="113.18548">
   <metadata
      id="metadata3881">
     <rdf:RDF>
@@ -24,7 +27,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -62,8 +65,8 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1600"
-     inkscape:window-height="838"
+     inkscape:window-width="1366"
+     inkscape:window-height="706"
      id="namedview3877"
      showgrid="false"
      inkscape:zoom="0.91943361"

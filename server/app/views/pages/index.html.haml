@@ -1,16 +1,17 @@
 %ul#slides-links
   %li
     %h2.tour Tour
-  %li= link_to "What or who exactly is Sir FindALot?", "#slide_start"
+  %li= link_to "What or who is Sir FindALot?", "#slide_start"
   %li= link_to "Find the best parking area", "#slide_ramp"
   %li= link_to "Find a free lot with ease", "#slide_map"
   %li= link_to "Display even more details", "#slide_infos"
+  %li= link_to "How to get", "#slide_get"
   
 #slides
   #slide_start.slide
     #start-sir
       .speech_bubble.bottom_triangle
-        I'm eager to help you find a free lot!
+        Well, hello there! I'm eager to help you find a free lot!
       = image_tag 'mobile/sir_options.png', :id => 'img_carl', :alt => "Carl and Sir FindALot"
     %h2 Sir FindALot turns finding a lot into fun
     %p
@@ -72,7 +73,7 @@
       %b Sir FindALot
       marks the most favorable level und lots to make your life as easy as possible.
     .phrase
-      It's a breeze!
+      »It's a breeze!«
     .clear
   #slide_infos.slide
     .screen
@@ -86,6 +87,24 @@
       Find out about pricing and opening hours or the current status.
       
     .phrase
-      If for some reason your desired parking area is closed Sir FindAlot will know about it!
+      »If for some reason your desired parking area is closed down, Sir FindAlot will know about it!«
+      
+    .clear
+    
+  #slide_get.slide
+    .screen
+      = image_tag 'cute_dragon.png', :id => "img_dragon"
+    %h2 Enough talk, I want to try it!
+    %p
+      It's as easy as it gets to use 
+      %b Sir FindALot
+      on your mobile device.
+      Just navigate to
+      %a(href="/mobile") www.sirfindalot.com
+      using your mobile browser. We recommend to use the stock browser that comes with your phone or tablet to
+      enjoy the best experience.
+      
+    .phrase
+      »Sir FindALot comes without a price tag!«
       
     .clear
