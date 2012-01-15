@@ -2,7 +2,7 @@
   %dt API Token
   %dd= current_operator.authentication_token
   
-  %dt GET /admin/api/parkinglots/:id/:taken?auth_key=:api_token
+  %dt GET /admin/api/parkinglots/:id?taken=:taken&auth_key=:api_token
   %dd To set the taken flag of a lot, request the above url with following parameters
   %dl
     %dt :id
