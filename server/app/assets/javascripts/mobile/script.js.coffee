@@ -146,6 +146,8 @@ script.js.coffee
         Page.id_page_hash[el.getAttribute("id")] = el
         Page.id_pagenum_hash[el.getAttribute("id")] = i
 
+      MBP.hideUrlBar()
+       
       # IScroll Initialization
       $(".scroller").each (el) ->
         id = el.getAttribute("id")
