@@ -4,7 +4,7 @@ require 'uri'
 require 'active_support/json'
 
 config = {
-  :auth_key => "X47VqKfsAeQPBMsLZRhq",
+  :auth_key => "LZf2PgcDqM8SEHm4TBa5",
   :parkingramp => 1,
   :host => "http://localhost:3000"
 }

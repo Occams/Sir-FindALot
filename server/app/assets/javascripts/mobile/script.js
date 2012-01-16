@@ -423,7 +423,7 @@
 			
 			localStorage.setItem('position', '{"latitude" : ' + Position.latitude + ', "longitude" : ' + Position.longitude + '}');
 			
-			console.log("New position: " + Position.longitude + " - " + Position.latitude);
+			//console.log("New position: " + Position.longitude + " - " + Position.latitude);
 			
 			var input = $('#geolocation_search'),
 			form = $('#geolocation_search_form');
