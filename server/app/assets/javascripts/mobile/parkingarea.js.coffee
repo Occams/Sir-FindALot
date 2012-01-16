@@ -6,30 +6,30 @@ Parkingarea =
   fill: (data) ->
     @data = data
     @plane = data.parkingplanes[0]
-    @fillLevelPage data
-    @fillDetailPage data
-    @fillMapPage data.parkingplanes[0]
+    @fillLevelPage()
+    @fillDetailPage()
+    @fillMapPage(@plane)
 
-  fillDetailPage: (data) ->
+  fillDetailPage: ->
     container = x$("#lot_details div[data-type=\"page-content\"]")
-    x$("#lot_details header").html data.name + " - Details"
+    x$("#lot_details header").html @data.name + " - Details"
     html = ""
     html += @_genDetailsHeader("Type")
-    html += @_genDetailsContent("This parking area is a " + data.category + " and features a total of " + data.parkingplanes.length + " parking levels. Currently there are " + (data.lots_total - data.lots_taken) + " free lots available.")
+    html += @_genDetailsContent("This parking area is a " + @data.category + " and features a total of " + @data.parkingplanes.length + " parking levels. Currently there are " + (@data.lots_total - @data.lots_taken) + " free lots available.")
     html += @_genDetailsHeader("Address")
-    html += @_genDetailsContent(data.info_address)
+    html += @_genDetailsContent(@data.info_address)
     html += @_genDetailsHeader("Opening Hours")
-    html += @_genDetailsContent(data.info_openinghours)
+    html += @_genDetailsContent(@data.info_openinghours)
     html += @_genDetailsHeader("Pricing")
-    html += @_genDetailsContent(data.info_pricing)
+    html += @_genDetailsContent(@data.info_pricing)
     html += @_genDetailsHeader("Current status")
-    html += @_genDetailsContent(data.info_status)
+    html += @_genDetailsContent(@data.info_status)
     html += @_genDetailsHeader("Geolocation")
-    html += @_genDetailsContent("Longitude: " + data.longitude + " - Latitude: " + data.latitude)
+    html += @_genDetailsContent("Longitude: " + @data.longitude + " - Latitude: " + @data.latitude)
     html += @_genDetailsHeader("Time of creation")
-    html += @_genDetailsContent(data.created_at)
+    html += @_genDetailsContent(@data.created_at)
     html += @_genDetailsHeader("Last update")
-    html += @_genDetailsContent(data.updated_at)
+    html += @_genDetailsContent(@data.updated_at)
     container.html html
 
   _genDetailsHeader: (header) ->
@@ -38,14 +38,14 @@ Parkingarea =
   _genDetailsContent: (content) ->
     "<p class=\"details-content\">" + content + "</p>"
 
-  fillLevelPage: (data) ->
+  fillLevelPage: ->
     container = x$("#lot_levels #levels_container")
-    x$("#lot_levels header").html data.name + " - Levels"
+    x$("#lot_levels header").html @data.name + " - Levels"
     html = ""
     occupancy = []
-    for i of data.parkingplanes
-      plane = data.parkingplanes[i]
-      star = (if (plane.id is data.best_level) then "star_level" else "")
+    for i of @data.parkingplanes
+      plane = @data.parkingplanes[i]
+      star = (if (plane.id is @data.best_level) then "star_level" else "")
       html += "<li class=\"" + star + "\"><a href=\"" + plane.id + "\" fake-active=\"yes\">"
       html += "<div class=\"occupancy\"><div class=\"level\"></div><div class=\"mask\"></div></div>"
       html += "<span class=\"link-list-title\">" + plane["name"] + "</span>"
@@ -61,14 +61,16 @@ Parkingarea =
     
     x$("#levels a").fastbutton (e) ->
       id = @element.getAttribute("href")
-      Parkingarea.fillMapPage Parkingarea._getPlane(Parkingarea.data, parseInt(id))
+      Parkingarea.plane = Parkingarea._getPlane(Parkingarea.data, parseInt(id));
+      Parkingarea.fillMapPage(Parkingarea.plane)
       Page.show "lot_map"
       e.preventDefault()
       false
 
   fillMapPage: (plane) ->
+    console.log(plane)
     container = x$("#lot_map #map_container")
-    x$("#lot_map header").html @data.name + " - " + @plane.name
+    x$("#lot_map header").html(Parkingarea.data.name + " - " + plane.name)
     maxX = 0
     minX = Number.MAX_VALUE
     maxY = 0
@@ -88,7 +90,7 @@ Parkingarea =
       minY = (if l.y < minY then l.y else minY)
       minX = (if l.x < minX then l.x else minX)
     padding = 10
-    width = Math.floor((@width - 2 * padding) / (maxX - minX + 1))
+    width = Math.floor((Parkingarea.width - 2 * padding) / (maxX - minX + 1))
     for i of plane.concretes
       c = plane.concretes[i]
       html += @_genCell(c, (c.x - minX) * width + padding, (c.y - minY) * @cellH + padding, width, [ "concrete", c.category ])
@@ -106,7 +108,7 @@ Parkingarea =
     false
 
   update: ->
-    @fillMapPage @plane  if @plane
+    Parkingarea.fillMapPage(Parkingarea.plane) if Parkingarea.plane
 
   _genCell: (c, left, top, width, classA) ->
     classes = ""
@@ -115,9 +117,9 @@ Parkingarea =
       classes += classA[i] + " "
     "<div class=\"" + classes + "\" style=\"" + style + "\"></div>"
 
-  _getPlane: (data, id) ->
-    for i of data.parkingplanes
-      return data.parkingplanes[i]  if data.parkingplanes[i].id is id
+  _getPlane: (id) ->
+    for i of @data.parkingplanes
+      return @data.parkingplanes[i]  if @data.parkingplanes[i].id is id
     null
     
 if typeof exports isnt "undefined"
