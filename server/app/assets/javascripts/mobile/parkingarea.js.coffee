@@ -1,4 +1,4 @@
-Parkingarea =
+class ParkingareaClass
   width: null
   plane: null
   data: null
@@ -54,15 +54,15 @@ Parkingarea =
       
     container.html "<ul class=\"link-list\" id=\"levels\">" + html + "</ul>"
     
-    setTimeout ((e) ->
+    setTimeout (() ->
       x$("#levels").find(".mask").each (el, i) ->
         x$(el).setStyle "width", (100 - occupancy[i] * 100) + "%"
     ), 300
     
-    x$("#levels a").fastbutton (e) ->
-      id = @element.getAttribute("href")
-      Parkingarea.plane = Parkingarea._getPlane(Parkingarea.data, parseInt(id));
-      Parkingarea.fillMapPage(Parkingarea.plane)
+    x$("#levels a").fastbutton (e) =>
+      id = `this.element.getAttribute("href")`
+      plane = @_getPlane(parseInt(id));
+      @fillMapPage(plane)
       Page.show "lot_map"
       e.preventDefault()
       false
@@ -70,7 +70,7 @@ Parkingarea =
   fillMapPage: (plane) ->
     console.log(plane)
     container = x$("#lot_map #map_container")
-    x$("#lot_map header").html(Parkingarea.data.name + " - " + plane.name)
+    x$("#lot_map header").html(@data.name + " - " + plane.name)
     maxX = 0
     minX = Number.MAX_VALUE
     maxY = 0
@@ -90,7 +90,7 @@ Parkingarea =
       minY = (if l.y < minY then l.y else minY)
       minX = (if l.x < minX then l.x else minX)
     padding = 10
-    width = Math.floor((Parkingarea.width - 2 * padding) / (maxX - minX + 1))
+    width = Math.floor((@width - 2 * padding) / (maxX - minX + 1))
     for i of plane.concretes
       c = plane.concretes[i]
       html += @_genCell(c, (c.x - minX) * width + padding, (c.y - minY) * @cellH + padding, width, [ "concrete", c.category ])
@@ -108,7 +108,7 @@ Parkingarea =
     false
 
   update: ->
-    Parkingarea.fillMapPage(Parkingarea.plane) if Parkingarea.plane
+    @fillMapPage(@plane) if @plane
 
   _genCell: (c, left, top, width, classA) ->
     classes = ""
@@ -118,11 +118,8 @@ Parkingarea =
     "<div class=\"" + classes + "\" style=\"" + style + "\"></div>"
 
   _getPlane: (id) ->
-    for i of @data.parkingplanes
-      return @data.parkingplanes[i]  if @data.parkingplanes[i].id is id
+    for i in @data.parkingplanes
+      return i if i.id is id
     null
     
-if typeof exports isnt "undefined"
-  exports.Parkingarea = Parkingarea
-else
-  window.Parkingarea = Parkingarea
+  window.Parkingarea = new ParkingareaClass
