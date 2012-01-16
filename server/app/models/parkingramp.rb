@@ -30,7 +30,9 @@ class Parkingramp < ActiveRecord::Base
   
   def best_level
     lots = self.parkingplanes.collect{|p| { :id => p.id, :score => 1 - p.lots_taken/p.lots_total.to_f } }
-    return lots.sort{|a,b| a[:score] <=> b[:score]}.last[:id]
+    lots = lots.sort{|a,b| a[:score] <=> b[:score]}.delete_if{|e| e[:score] == 0 }
+    
+    if lots.empty? then nil else lots.last[:id] end
   end
   
   def self.stat_down
