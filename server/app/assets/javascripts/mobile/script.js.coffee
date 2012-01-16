@@ -30,10 +30,10 @@ script.js.coffee
   vendor = (if (/webkit/i).test(navigator.appVersion) then "webkit" else (if (/firefox/i).test(navigator.userAgent) then "Moz" else (if "opera" of window then "O" else "")))
   
   # Browser capabilities
-  isAndroid = (/android/g).test(navigator.appVersion)
-  isIDevice = (/iphone|ipad/g).test(navigator.appVersion)
-  isPlaybook = (/playbook/g).test(navigator.appVersion)
-  isTouchPad = (/hp-tablet/g).test(navigator.appVersion)
+  isAndroid = (/android/gi).test(navigator.appVersion)
+  isIDevice = (/iphone|ipad/gi).test(navigator.appVersion)
+  isPlaybook = (/playbook/gi).test(navigator.appVersion)
+  isTouchPad = (/hp-tablet/gi).test(navigator.appVersion)
   hasTouch = "ontouchstart" of window and not isTouchPad
   
   # Events

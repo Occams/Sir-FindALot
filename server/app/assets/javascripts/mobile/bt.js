@@ -29,8 +29,8 @@ MBP.hideUrlBar = function () {
   var win = window;
 	var doc = win.document;
 
-	// If there's a hash, or addEventListener is undefined, stop here
-	if( !location.hash && win.addEventListener ){
+	// If there's a hash (dane:removed), or addEventListener is undefined, stop here
+	if(win.addEventListener ){
     
     // dane: increase body height to overflow screen
     var height = document.body.style.getPropertyCSSValue('height');
@@ -149,41 +149,6 @@ if (document.addEventListener) {
 }
                             
 MBP.coords = [];
-
-
-// iOS Startup Image
-// https://github.com/shichuan/mobile-html5-boilerplate/issues#issue/2
-
-MBP.splash = function () {
-    var filename = navigator.platform === 'iPad' ? 'h/' : 'l/';
-    document.write('<link rel="apple-touch-startup-image" href="/assets/mobile/' + filename + 'splash.png" />' );
-};
-
-
-// Autogrow
-// http://googlecode.blogspot.com/2009/07/gmail-for-mobile-html5-series.html
-
-MBP.autogrow = function (element, lh) {
-
-    function handler(e){
-        var newHeight = this.scrollHeight,
-            currentHeight = this.clientHeight;
-        if (newHeight > currentHeight) {
-            this.style.height = newHeight + 3 * textLineHeight + "px";
-        }
-    }
-
-    var setLineHeight = (lh) ? lh : 12,
-        textLineHeight = element.currentStyle ? element.currentStyle.lineHeight : 
-                         getComputedStyle(element, null).lineHeight;
-
-    textLineHeight = (textLineHeight.indexOf("px") == -1) ? setLineHeight :
-                     parseInt(textLineHeight, 10);
-
-    element.style.overflow = "hidden";
-    element.addEventListener ? element.addEventListener('keyup', handler, false) :
-                               element.attachEvent('onkeyup', handler);
-};
 
 })(document);
 
