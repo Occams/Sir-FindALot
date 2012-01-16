@@ -68,7 +68,6 @@ class ParkingareaClass
       false
 
   fillMapPage: (plane) ->
-    console.log(plane)
     container = x$("#lot_map #map_container")
     x$("#lot_map header").html(@data.name + " - " + plane.name)
     maxX = 0
