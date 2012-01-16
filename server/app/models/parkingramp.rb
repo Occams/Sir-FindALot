@@ -29,9 +29,7 @@ class Parkingramp < ActiveRecord::Base
   end
   
   def best_level
-    lots = self.parkingplanes.collect{|p| { :id => p.id, :score => 1 - p.lots_taken/p.lots_total } }
-    lots.first[:score] = 0
-    puts lots
+    lots = self.parkingplanes.collect{|p| { :id => p.id, :score => 1 - p.lots_taken/p.lots_total.to_f } }
     return lots.sort{|a,b| a[:score] <=> b[:score]}.last[:id]
   end
   
