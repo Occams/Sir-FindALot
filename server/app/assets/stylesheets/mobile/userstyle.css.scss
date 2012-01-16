@@ -627,9 +627,6 @@ ul.link-list {
 	margin:0px -10px; /* Account for padding of content container */
 	
 	-moz-box-shadow: 0px 0px 5px #666; -webkit-box-shadow: 0px 0px 5px #666; -o-box-shadow: 0px 0px 5px #666; box-shadow: 0px 0px 5px #666;
-
-	transition: opacity 1s  linear; -webkit-transition: opacity 1s  linear; -moz-transition: opacity 1s  linear; -o-transition: opacity 1s  linear;
-	
 	-webkit-border-radius: 8px; -moz-border-radius: 8px; -o-border-radius: 8px; border-radius: 8px;
 }
 
@@ -655,9 +652,6 @@ ul.link-list li a {
 	
 	border:1px solid #666;
 	border-width: 0px 1px 1px 1px;
-	
-	/* Fade in effect */
-	transition: opacity 1s  linear; -webkit-transition: opacity 1s  linear; -moz-transition: opacity 1s  linear; -o-transition: opacity 1s  linear;
 }
 
 ul.link-list li:first-child a {
@@ -897,7 +891,6 @@ ul.link-list .star_level a {
 	background-repeat: no-repeat;
   
   color:#FFF!important;
-	
 }
 
 
@@ -986,15 +979,33 @@ ul.link-list .star_level a {
 }
 
 .disabled.occupied {
-	background: image-url('mobile/icons/map_disabled.png')  no-repeat center center, rgba(204,0,0,1); background-size: contain;
+	background: image-url('mobile/icons/map_disabled.png')  no-repeat center center, #ff2626; background-size: contain;
+  background: image-url('mobile/icons/map_disabled.png')  no-repeat center center, -moz-linear-gradient(top, #ff2626 0%, #ff1919 49%, #d20000 50%, #be0000 100%); background-size: contain;
+  background: image-url('mobile/icons/map_disabled.png')  no-repeat center center, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff2626), color-stop(49%,#ff1919), color-stop(50%,#d20000), color-stop(100%,#be0000)); background-size: contain;
+  background: image-url('mobile/icons/map_disabled.png')  no-repeat center center, -webkit-linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); background-size: contain;
+  background: image-url('mobile/icons/map_disabled.png')  no-repeat center center, -o-linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); background-size: contain;
+  background: image-url('mobile/icons/map_disabled.png')  no-repeat center center, -ms-linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); background-size: contain;
+  background: image-url('mobile/icons/map_disabled.png')  no-repeat center center, linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); background-size: contain;
 }
 
 .women.occupied {
-	background: image-url('mobile/icons/map_women.png')  no-repeat center center, rgba(204,0,0,1); background-size: contain;
+  background: image-url('mobile/icons/map_women.png')  no-repeat center center, #ff2626; background-size: contain;
+  background: image-url('mobile/icons/map_women.png')  no-repeat center center, -moz-linear-gradient(top, #ff2626 0%, #ff1919 49%, #d20000 50%, #be0000 100%); background-size: contain;
+  background: image-url('mobile/icons/map_women.png')  no-repeat center center, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff2626), color-stop(49%,#ff1919), color-stop(50%,#d20000), color-stop(100%,#be0000)); background-size: contain;
+  background: image-url('mobile/icons/map_women.png')  no-repeat center center, -webkit-linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); background-size: contain;
+  background: image-url('mobile/icons/map_women.png')  no-repeat center center, -o-linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); background-size: contain;
+  background: image-url('mobile/icons/map_women.png')  no-repeat center center, -ms-linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); background-size: contain;
+  background: image-url('mobile/icons/map_women.png')  no-repeat center center, linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); background-size: contain;
 }
 
 .occupied {
-	background: image-url('mobile/icons/map_x.png')  no-repeat center center, rgba(204,0,0,1)!important; background-size: contain;
+	background: image-url('mobile/icons/map_x.png')  no-repeat center center, #ff2626; background-size: contain;
+  background: image-url('mobile/icons/map_x.png')  no-repeat center center, -moz-linear-gradient(top, #ff2626 0%, #ff1919 49%, #d20000 50%, #be0000 100%); background-size: contain;
+  background: image-url('mobile/icons/map_x.png')  no-repeat center center, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff2626), color-stop(49%,#ff1919), color-stop(50%,#d20000), color-stop(100%,#be0000)); background-size: contain;
+  background: image-url('mobile/icons/map_x.png')  no-repeat center center, -webkit-linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); background-size: contain;
+  background: image-url('mobile/icons/map_x.png')  no-repeat center center, -o-linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); background-size: contain;
+  background: image-url('mobile/icons/map_x.png')  no-repeat center center, -ms-linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); background-size: contain;
+  background: image-url('mobile/icons/map_x.png')  no-repeat center center, linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); background-size: contain;
 }
 
 
@@ -1076,13 +1087,13 @@ ul.link-list .star_level a {
 }
 
 #legend_occupied {
-background: #ff2626; /* Old browsers */
-background: -moz-linear-gradient(top, #ff2626 0%, #ff1919 49%, #d20000 50%, #be0000 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff2626), color-stop(49%,#ff1919), color-stop(50%,#d20000), color-stop(100%,#be0000)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); /* IE10+ */
-background: linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); /* W3C */
+  background: #ff2626; /* Old browsers */
+  background: -moz-linear-gradient(top, #ff2626 0%, #ff1919 49%, #d20000 50%, #be0000 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff2626), color-stop(49%,#ff1919), color-stop(50%,#d20000), color-stop(100%,#be0000)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); /* IE10+ */
+  background: linear-gradient(top, #ff2626 0%,#ff1919 49%,#d20000 50%,#be0000 100%); /* W3C */
 	color:#FFF;
 }
 
