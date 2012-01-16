@@ -61,8 +61,7 @@ Parkingarea =
     
     x$("#levels a").fastbutton (e) ->
       id = @element.getAttribute("href")
-      console.log(Parkingarea.data)
-      Parkingarea.fillMapPage Parkingarea._getPlane(Parkingarea.data, id)
+      Parkingarea.fillMapPage Parkingarea._getPlane(Parkingarea.data, parseInt(id))
       Page.show "lot_map"
       e.preventDefault()
       false
