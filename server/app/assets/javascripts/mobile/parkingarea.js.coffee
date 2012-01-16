@@ -51,11 +51,14 @@ Parkingarea =
       html += "<span class=\"link-list-title\">" + plane["name"] + "</span>"
       html += "<span class=\"occupancy-text\">" + plane["lots_taken"] + "/" + plane["lots_total"] + "</span></a></li>"
       occupancy[i] = plane["lots_taken"] / plane["lots_total"]
+      
     container.html "<ul class=\"link-list\" id=\"levels\">" + html + "</ul>"
+    
     setTimeout ((e) ->
       x$("#levels").find(".mask").each (el, i) ->
         x$(el).setStyle "width", (100 - occupancy[i] * 100) + "%"
     ), 300
+    
     x$("#levels a").fastbutton (e) ->
       id = @element.getAttribute("href")
       Parkingarea.fillMapPage Parkingarea._getPlane(Parkingarea.data, parseInt(id))
