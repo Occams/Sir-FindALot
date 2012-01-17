@@ -1382,6 +1382,8 @@ background: linear-gradient(top, #9dd53a 0%,#a1d54f 49%,#80c217 50%,#7cbc0a 100%
   color:#000;
   font-weight:800;
   font-size:90%;
+  margin:0px;
+  padding:0px;
   -webkit-transform: rotate(90deg);	-moz-transform: rotate(90deg); -ms-transform: rotate(90deg); -o-transform: rotate(90deg); transform: rotate(90deg);
 }
 
@@ -1417,7 +1419,7 @@ background: linear-gradient(top, #9dd53a 0%,#a1d54f 49%,#80c217 50%,#7cbc0a 100%
 }
 
 #hourly .bar_text {
-  ont-size:80%;
+  font-size:80%;
 } 
 
 #hourly .bar_value {
