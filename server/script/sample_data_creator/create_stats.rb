@@ -12,8 +12,8 @@ class CreateSampleData < ActiveRecord::Base
       0.upto(24).each do |h|
         t = c.beginning_of_day + h.hours + 30.minutes
         #some variation
-        taken = takenlotscount*(1-((13-h).abs ) / 15)*(1.15 - rand(30)/100)
-        taken = [takenlotscount, taken].min
+        taken = totalcount*(1-((13-h).abs ) / 15.to_f)*(1 - rand(30)/100.to_f)
+        taken = [totalcount.floor, taken].min
         Stat.create(:lots_taken => taken, :lots_total => totalcount, :parkingplane_id => plane.id, :created_at => DateTime.new(t.year, t.month, t.day , t.hour, 30))
       end
     end
