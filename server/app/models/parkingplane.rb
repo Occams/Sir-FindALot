@@ -36,7 +36,7 @@ class Parkingplane < ActiveRecord::Base
         scores[lot] += (e.x - lot.x).abs + (e.y - lot.y).abs
       end
     end
-    scores.sort{|a,b| a <=> b}[0,5].collect{|a| a.first}
+    scores.sort{|a,b| a[1] <=> b[1]}[0,5].collect{|a| a.first}
   end
   
   # sorts the given planes according in the given order
