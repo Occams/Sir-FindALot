@@ -32,8 +32,9 @@ class Statistics
   
   constructor: (container, areaID) ->
     @areaID = areaID
-    @hourlyContainer = container.find(".hourly").html("Loading hourly statistics...")
-    @weeklyContainer = container.find(".weekly").html("Loading weekly statistics...")
+    container.html '<div class="statistic" id="weekly"></div><div class="statistic" id="hourly"></div>'
+    @hourlyContainer = container.find("#hourly").html("Loading hourly statistics...")
+    @weeklyContainer = container.find("#weekly").html("Loading weekly statistics...")
     
     # Fetch weekly statistic of previous week
     date = new Date()
@@ -48,8 +49,7 @@ class Statistics
       @hourlyContainer.html(@_genStatistic(data,"Hourly Statistic",@hours))
       
   _genStatistic: (data,header,legend) ->
-    html= '<div class="statistic">'
-    html+="<div class=\"statistic_header\">#{header}</div>"
+    html="<div class=\"statistic_header\">#{header}</div>"
     html+='<div class="bars">'
     
     for i of data
@@ -60,7 +60,7 @@ class Statistics
       html+="<div class=\"bar_text\">#{legend[i]}</div>"
       html+='</div>'
       
-    html+='</div></div>'
+    html+='</div>'
     html
 
 window.Statistics = Statistics

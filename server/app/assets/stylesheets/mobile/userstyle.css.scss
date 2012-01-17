@@ -911,6 +911,8 @@ ul.link-list .star_level a {
 	-moz-box-shadow: 0px 0px 5px #666; -webkit-box-shadow: 0px 0px 5px #666; -o-box-shadow: 0px 0px 5px #666; box-shadow: 0px 0px 5px #666;
 	
 	-webkit-border-radius: 8px; -moz-border-radius: 8px; -o-border-radius: 8px; border-radius: 8px;
+  
+  border:1px solid black;
 }
 
 .lot , .concrete {
@@ -1032,6 +1034,8 @@ ul.link-list .star_level a {
 	-moz-box-shadow: 0px 0px 5px #666; -webkit-box-shadow: 0px 0px 5px #666; -o-box-shadow: 0px 0px 5px #666; box-shadow: 0px 0px 5px #666;
 
 	-webkit-border-radius: 8px; -moz-border-radius: 8px; -o-border-radius: 8px; border-radius: 8px;
+  
+  border:1px solid black;
 }
 
 #legend_row {
@@ -1400,7 +1404,7 @@ background: linear-gradient(top, #9dd53a 0%,#a1d54f 49%,#80c217 50%,#7cbc0a 100%
   margin:0px;
 }
 
-#statistics_container .statistic:nth-child(odd) .bar {
+#statistics_container .statistic:nth-child(even) .bar {
 
   /* Gradients */
 	background-color:#e67e28; /* Fallback value */
@@ -1411,6 +1415,15 @@ background: linear-gradient(top, #9dd53a 0%,#a1d54f 49%,#80c217 50%,#7cbc0a 100%
   background: -o-linear-gradient(left, #eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* Opera 11.10 */  
   background: linear-gradient(left, #eea151 0%, #ea8f44 49%, #e67e28 50%, #e06818 100%); /* the standard */  
 }
+
+#hourly .bar_text {
+  ont-size:80%;
+} 
+
+#hourly .bar_value {
+  font-size:70%;
+}
+
 
 h1.details-header { 
 	display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
