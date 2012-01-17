@@ -1,7 +1,7 @@
 module StatFindExtension
   def stats_by_weekday_and_hour(year, week, hour)
-    wkBegin = Date.commercial year, week, 1
-    wkEnd = Date.commercial year, week, 7
+    wkBegin = (Date.commercial year, week, 1).beginning_of_day
+    wkEnd = (Date.commercial year, week, 7).end_of_day
     stats = self.stat_by(
       wkBegin,
       wkEnd,
@@ -10,7 +10,7 @@ module StatFindExtension
       {:created_at_hour => hour}
     )
     stats.each do |stat|
-      stat.weekday = stat.created_at.wday
+      stat.weekday = (stat.created_at.wday+6)%7
     end
   end
   
