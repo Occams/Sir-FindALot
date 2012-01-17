@@ -942,16 +942,6 @@ ul.link-list .star_level a {
 	background:rgba(255, 255, 255, 1);
 }
 
-.star {
-  background: image-url('mobile/icons/star_white.png')  no-repeat center center,#ffb76b; background-size: contain;
-  background: image-url('mobile/icons/star_white.png')  no-repeat center center,-moz-linear-gradient(top, #ffb76b 0%, #ffa73d 49%, #ff7c00 50%, #ff7f04 100%);; background-size: contain;
-  background: image-url('mobile/icons/star_white.png')  no-repeat center center,-webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffb76b), color-stop(49%,#ffa73d), color-stop(50%,#ff7c00), color-stop(100%,#ff7f04)); background-size: contain;
-  background: image-url('mobile/icons/star_white.png')  no-repeat center center,-webkit-linear-gradient(top, #ffb76b 0%,#ffa73d 49%,#ff7c00 50%,#ff7f04 100%); background-size: contain;
-  background: image-url('mobile/icons/star_white.png')  no-repeat center center,-o-linear-gradient(top, #ffb76b 0%,#ffa73d 49%,#ff7c00 50%,#ff7f04 100%); background-size: contain;
-  background: image-url('mobile/icons/star_white.png')  no-repeat center center,-ms-linear-gradient(top, #ffb76b 0%,#ffa73d 49%,#ff7c00 50%,#ff7f04 100%); background-size: contain;
-  background: image-url('mobile/icons/star_white.png')  no-repeat center center,linear-gradient(top, #ffb76b 0%,#ffa73d 49%,#ff7c00 50%,#ff7f04 100%); background-size: contain;
-}
-
 .entry {
 	background: image-url('mobile/icons/map_entry.png')  no-repeat center center, rgba(255, 255, 255, 1); background-size: contain;
 }
@@ -978,6 +968,16 @@ ul.link-list .star_level a {
   background: image-url('mobile/icons/map_women.png')  no-repeat center center, -o-linear-gradient(top, #cb60b3 0%,#c146a1 49%,#a80077 50%,#db36a4 100%); background-size: contain;
   background: image-url('mobile/icons/map_women.png')  no-repeat center center, -ms-linear-gradient(top, #cb60b3 0%,#c146a1 49%,#a80077 50%,#db36a4 100%); background-size: contain;
   background: image-url('mobile/icons/map_women.png')  no-repeat center center, linear-gradient(top, #cb60b3 0%,#c146a1 49%,#a80077 50%,#db36a4 100%); background-size: contain;
+}
+
+.star, .women.star, .occupied.star {
+  background: image-url('mobile/icons/star_white.png')  no-repeat center center,#ffb76b; background-size: contain;
+  background: image-url('mobile/icons/star_white.png')  no-repeat center center,-moz-linear-gradient(top, #ffb76b 0%, #ffa73d 49%, #ff7c00 50%, #ff7f04 100%);; background-size: contain;
+  background: image-url('mobile/icons/star_white.png')  no-repeat center center,-webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffb76b), color-stop(49%,#ffa73d), color-stop(50%,#ff7c00), color-stop(100%,#ff7f04)); background-size: contain;
+  background: image-url('mobile/icons/star_white.png')  no-repeat center center,-webkit-linear-gradient(top, #ffb76b 0%,#ffa73d 49%,#ff7c00 50%,#ff7f04 100%); background-size: contain;
+  background: image-url('mobile/icons/star_white.png')  no-repeat center center,-o-linear-gradient(top, #ffb76b 0%,#ffa73d 49%,#ff7c00 50%,#ff7f04 100%); background-size: contain;
+  background: image-url('mobile/icons/star_white.png')  no-repeat center center,-ms-linear-gradient(top, #ffb76b 0%,#ffa73d 49%,#ff7c00 50%,#ff7f04 100%); background-size: contain;
+  background: image-url('mobile/icons/star_white.png')  no-repeat center center,linear-gradient(top, #ffb76b 0%,#ffa73d 49%,#ff7c00 50%,#ff7f04 100%); background-size: contain;
 }
 
 .disabled.occupied {
