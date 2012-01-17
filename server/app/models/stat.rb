@@ -4,10 +4,11 @@ class Stat < ActiveRecord::Base
   before_create :set_dates
   
   def set_dates
-    self.created_at_year = Date.current.year
-    self.created_at_month = Date.current.month
-    self.created_at_day = Date.current.day
-    self.created_at_hour = DateTime.current.hour
+    d = self.created_at || DateTime.current
+    self.created_at_year = d.year
+    self.created_at_month = d.month
+    self.created_at_day = d.day
+    self.created_at_hour = d.hour
   end
   
   # TODO: Pack old stats
