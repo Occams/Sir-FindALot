@@ -29,10 +29,13 @@ class Parkingramp < ActiveRecord::Base
   end
   
   def best_level
-    lots = self.parkingplanes.collect{|p| { :id => p.id, :score => 1 - p.lots_taken/p.lots_total.to_f } }
-    lots = lots.sort{|a,b| a[:score] <=> b[:score]}.delete_if{|e| e[:score] == 0 }
+    level = self.parkingplanes.collect do |p|
+      { :id => p.id, :score => (p.lots_taken.nil? || p.lots_total.nil? || p.lots_total == 0) ? 0 : 1 - p.lots_taken / p.lots_total.to_f }
+    end
     
-    if lots.empty? then nil else lots.last[:id] end
+    level = level.sort{|a,b| a[:score] <=> b[:score]}.delete_if{|e| e[:score] == 0 }
+    
+    if level.empty? then nil else level.last[:id] end
   end
   
   def self.stat_down
@@ -79,7 +82,7 @@ class Parkingramp < ActiveRecord::Base
     if parts.empty?
       []
     else
-      Parkingramp.find_by_sql "SELECT p.* FROM (#{parts.join(" UNION ALL ")}) as p GROUP BY p.id ORDER BY SUM(p.score) DESC"
+      Parkingramp.find_by_sql "SELECT p.* FROM (#{parts.join(" UNION ALL ")}) as p WHERE p.lots_total > 0 GROUP BY p.id ORDER BY SUM(p.score) DESC"
     end
     
   end
