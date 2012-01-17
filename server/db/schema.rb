@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20120112122200) do
   create_table "parkinglots", :force => true do |t|
     t.integer  "parkingplane_id"
     t.string   "category"
-    t.boolean  "taken"
+    t.boolean  "taken",           :default => false
     t.integer  "x"
     t.integer  "y"
     t.datetime "created_at"
@@ -69,8 +69,8 @@ ActiveRecord::Schema.define(:version => 20120112122200) do
     t.string   "name"
     t.integer  "parkingramp_id"
     t.integer  "sorting"
-    t.integer  "lots_total"
-    t.integer  "lots_taken"
+    t.integer  "lots_total",     :default => 0
+    t.integer  "lots_taken",     :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
