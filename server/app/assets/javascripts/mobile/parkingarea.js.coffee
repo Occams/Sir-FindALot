@@ -9,10 +9,11 @@ class ParkingareaClass
     @fillLevelPage()
     @fillDetailPage()
     @fillMapPage(@plane)
+    
 
   fillDetailPage: ->
     # Fill statistics container
-    Statistics.fill(x$("#statistics_container"),@data.id)
+    new Statistics(x$("#statistics_container"), @data.id)
     
     details_container = x$("#details_container")
     x$("#lot_details header").html @data.name + " - Details"
