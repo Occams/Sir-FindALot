@@ -21,7 +21,7 @@ Server::Application.configure do
   config.assets.digest = true
   
   # Compress assets
-  config.assets.precompile += ['mobile/modernizr.js', 'mobile/bt.style']
+  config.assets.precompile += ['mobile/modernizr.js', 'mobile/bt.style.css', 'mobile/xui.min.js']
   config.assets.css_compressor = :yui
   config.assets.js_compressor = :yui
 
