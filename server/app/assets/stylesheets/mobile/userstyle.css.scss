@@ -1271,6 +1271,133 @@ background: linear-gradient(top, #9dd53a 0%,#a1d54f 49%,#80c217 50%,#7cbc0a 100%
 
 /* Details styles */
 
+/* Statistics */
+#statistics_container {
+  display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
+	box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;
+  box-orient: vertical; -moz-box-orient: vertical; -webkit-box-orient: vertical; -o-box-orient: vertical;
+	box-align: center; -moz-box-align: center; -webkit-box-align: center; -o-box-align: center;
+	box-pack: center; -moz-box-pack: center; -webkit-box-pack: center; -o-box-pack: center;
+  
+  width:100%;
+}
+
+.statistic {
+  display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
+  box-orient: vertical; -moz-box-orient: vertical; -webkit-box-orient: vertical; -o-box-orient: vertical;
+	box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;
+	box-align: center; -moz-box-align: center; -webkit-box-align: center; -o-box-align: center;
+	box-pack: center; -moz-box-pack: center; -webkit-box-pack: center; -o-box-pack: center;
+  -webkit-box-flex: 1; -moz-box-flex: 1; box-flex: 1; -o-box-flex:1;
+  margin-bottom:10px;
+  
+	/* Gradients */
+	background-color:#505050; /* Fallback value */
+	background: -moz-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* FF 3.6+ */  
+  background: -ms-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* IE10 */  
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #747474), color-stop(0.49, #676767), color-stop(0.5, #505050), color-stop(1.0, #414141));/* Safari 4+, Chrome 2+ */  
+  background: -webkit-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* Safari 5.1+, Chrome 10+ */  
+  background: -o-linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* Opera 11.10 */  
+  background: linear-gradient(#747474 0%, #676767 49%, #505050 50%, #414141 100%); /* the standard */  
+	
+	-moz-box-shadow: 0px 0px 5px #666; -webkit-box-shadow: 0px 0px 5px #666; -o-box-shadow: 0px 0px 5px #666; box-shadow: 0px 0px 5px #666;
+	
+	-webkit-border-radius: 8px; -moz-border-radius: 8px; -o-border-radius: 8px; border-radius: 8px;
+  
+  
+  height:210px;
+  width:100%;
+  padding:5px 15px;
+  border:1px solid black;
+}
+
+.statistic_header{
+  display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
+	box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;
+	box-align: center; -moz-box-align: center; -webkit-box-align: center; -o-box-align: center;
+	box-pack: center; -moz-box-pack: center; -webkit-box-pack: center; -o-box-pack: center;
+  
+  height:30px;
+  width:100%;
+  font-size:120%;
+  font-weight:800;
+  color:white;
+  text-shadow: 2px 2px 2px #000;
+}
+
+.bars {
+  display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
+  box-orient: horizontal; -moz-box-orient: horizontal; -webkit-box-orient: horizontal; -o-box-orient: horizontal;
+	box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;
+	box-align: center; -moz-box-align: center; -webkit-box-align: center; -o-box-align: center;
+	box-pack: center; -moz-box-pack: center; -webkit-box-pack: center; -o-box-pack: center;
+  height:170px;
+  width:100%;
+}
+
+.bar_c {
+  position:relative;
+  display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
+  box-orient: vertical; -moz-box-orient: vertical; -webkit-box-orient: vertical; -o-box-orient: vertical;
+	box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;
+	box-align: center; -moz-box-align: center; -webkit-box-align: center; -o-box-align: center;
+	box-pack: center; -moz-box-pack: center; -webkit-box-pack: center; -o-box-pack: center;
+  -webkit-box-flex: 1; -moz-box-flex: 1; box-flex: 1; -o-box-flex:1;
+  
+  margin: 0px 5px;
+  height:170px;
+  width:100%;
+}
+
+.bar {
+  position:absolute;
+  bottom:20px;
+  display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
+	box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;
+	box-align: center; -moz-box-align: center; -webkit-box-align: center; -o-box-align: center;
+	box-pack: center; -moz-box-pack: center; -webkit-box-pack: center; -o-box-pack: center;
+  
+  -moz-box-shadow: 0px 0px 5px #666; -webkit-box-shadow: 0px 0px 5px #666; -o-box-shadow: 0px 0px 5px #666; box-shadow: 0px 0px 5px #666;	
+	border-top-left-radius:8px; -moz-border-top-left-radius:8px; -webkit-border-top-left-radius:8px; -o-border-top-left-radius:8px;
+	border-top-right-radius:8px; -moz-border-top-right-radius:8px; -webkit-top-right-radius:8px; -o-top-right-radius:8px;
+  
+  height:150px;
+  width:100%;
+  
+  background: #6db3f2; /* Old browsers */
+	background: -moz-linear-gradient(left, #6db3f2 0%, #54a3ee 49%, #3690f0 50%, #1e69de 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#6db3f2), color-stop(49%,#54a3ee), color-stop(50%,#3690f0), color-stop(100%,#1e69de)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, #6db3f2 0%,#54a3ee 49%,#3690f0 50%,#1e69de 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, #6db3f2 0%,#54a3ee 49%,#3690f0 50%,#1e69de 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, #6db3f2 0%,#54a3ee 49%,#3690f0 50%,#1e69de 100%); /* IE10+ */
+	background: linear-gradient(left, #6db3f2 0%,#54a3ee 49%,#3690f0 50%,#1e69de 100%); /* W3C */
+
+}
+
+.bar_value {
+  color:#000;
+  font-weight:800;
+  -webkit-transform: rotate(90deg);	-moz-transform: rotate(90deg); -ms-transform: rotate(90deg); -o-transform: rotate(90deg); transform: rotate(90deg);
+}
+
+.bar_text {
+  position:absolute;
+  bottom:0px;
+  display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
+	box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;
+	box-align: center; -moz-box-align: center; -webkit-box-align: center; -o-box-align: center;
+	box-pack: center; -moz-box-pack: center; -webkit-box-pack: center; -o-box-pack: center;
+  color:white;
+  width:100%;
+  height:20px;
+  font-weight:800;
+  text-shadow: 2px 2px 2px #000;
+}
+
+#statistics_container:last-child {
+  margin:0px;
+}
+
 h1.details-header { 
 	display:block; display:box; display:-webkit-box; display:-moz-box; display:-o-box;
 	box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;

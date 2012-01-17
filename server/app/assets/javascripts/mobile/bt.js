@@ -62,7 +62,7 @@ MBP.hideUrlBar = function () {
           // dane: reset body height
           setTimeout(function(){
           document.body.style.setProperty('height',height);
-          }, 500);
+          }, 1000);
 				}
 			}, 0);
 		} );

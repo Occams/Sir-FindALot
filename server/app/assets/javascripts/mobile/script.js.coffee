@@ -190,7 +190,7 @@ script.js.coffee
         scrollID = page.find(".scroller")[0].getAttribute("id")
         setTimeout (->
           Page.scrollers[scrollID].refresh()
-        ), 0
+        ), 50
         
         # Scroll to top
         Page.scrollers[scrollID].scrollTo 0, 0, 0  if e.data.toTop

@@ -11,7 +11,10 @@ class ParkingareaClass
     @fillMapPage(@plane)
 
   fillDetailPage: ->
-    container = x$("#lot_details div[data-type=\"page-content\"]")
+    # Fill statistics container
+    Statistics.fill(x$("#statistics_container"))
+    
+    details_container = x$("#details_container")
     x$("#lot_details header").html @data.name + " - Details"
     html = ""
     html += @_genDetailsHeader("Type")
@@ -30,7 +33,7 @@ class ParkingareaClass
     html += @_genDetailsContent(@data.created_at)
     html += @_genDetailsHeader("Last update")
     html += @_genDetailsContent(@data.updated_at)
-    container.html html
+    details_container.html html
 
   _genDetailsHeader: (header) ->
     "<h1 class=\"details-header\">:: " + header + "</h1>"
