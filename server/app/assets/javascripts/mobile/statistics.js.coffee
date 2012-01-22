@@ -44,13 +44,16 @@ class Statistics
       data = `JSON.parse(this.responseText)`
       @weeklyContainer.html(@_genStatistic(data,"Weekly Statistic",@weekdays))
       
-    x$().xhr "/parkingramps/#{areaID}/stats/day/#{date.getFullYear()}/#{date.getMonth()+1}/#{date.getDay()}.json", () =>
+    x$().xhr "/parkingramps/#{areaID}/stats/day/#{date.getFullYear()}/#{date.getMonth()+1}/#{date.getDate()}.json", () =>
       data = `JSON.parse(this.responseText)`
       @hourlyContainer.html(@_genStatistic(data,"Hourly Statistic",@hours))
       
   _genStatistic: (data,header,legend) ->
     html="<div class=\"statistic_header\">#{header}</div>"
     html+='<div class="bars">'
+    
+    if data.length is 0
+      html += "Sorry, there is no data available..."
     
     for i of data
       d = data[i]

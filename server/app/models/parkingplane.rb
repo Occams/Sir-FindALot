@@ -30,6 +30,8 @@ class Parkingplane < ActiveRecord::Base
   def best_lots
     scores = {}
     es = self.exits
+    
+    # Manhattan distance as ranking algorithm
     self.free_lots.each do |lot|
       scores[lot] = 0
       es.each do |e|

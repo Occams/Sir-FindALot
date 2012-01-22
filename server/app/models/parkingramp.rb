@@ -15,6 +15,7 @@ class Parkingramp < ActiveRecord::Base
     self.parkingplanes.map(&:stat_down!)
   end
   
+  # Reset the cache values of this record and its attached parkingplanes.
   def reset_cache_values
     total = 0
     taken = 0
@@ -28,7 +29,9 @@ class Parkingramp < ActiveRecord::Base
     self.update_attribute(:lots_total, total)
   end
   
+  # Calculates the best parkinplane and returns it's id.
   def best_level
+    # Best level means that it has relatively the most free lots.
     level = self.parkingplanes.collect do |p|
       { :id => p.id, :score => (p.lots_taken.nil? || p.lots_total.nil? || p.lots_total == 0) ? 0 : 1 - p.lots_taken / p.lots_total.to_f }
     end
@@ -43,19 +46,29 @@ class Parkingramp < ActiveRecord::Base
       ramp.stat_down!
     end
   end
-  
+
+  # Rank parkingramps by the given geolocation, a search string and the 
+  # previous vistited parkingramps. The geolocation needs to be structured
+  # like geolocation[:coords] = { :latitude => ... , :longitude => ... }
+  # The needle is just a simple string
+  # The history is expected to be an array containing hashes with {:id => rampid, :date => unixtimestamp }
   def self.rankby(geolocation, needle, history)
+  
+    # We store the different sql queries in the parts array. Later we join them via UNION and sum up the scores.
     parts = []
   
+    # Geolocation part
     if !geolocation.nil? && geolocation[:coords] && geolocation[:coords][:latitude] && geolocation[:coords][:longitude]
       geosql = Parkingramp.near([geolocation[:coords][:latitude], geolocation[:coords][:longitude]], 20).to_sql.gsub(/ORDER .*$/, "")
       parts.push "SELECT parkingramps.*, 1-geo.distance/40 as score FROM parkingramps, (#{geosql}) as geo WHERE geo.id = parkingramps.id"
     end
 
-    if !needle.nil?
-      parts.push Parkingramp.where("LOWER(name) LIKE ?", "%#{needle.downcase}%").select("parkingramps.*, 1 as score").to_sql
+    # Text search
+    if !needle.nil? && !needle.strip.empty?
+      parts.push Parkingramp.where("LOWER(name) LIKE ?", "%#{needle.strip.downcase}%").select("parkingramps.*, 1 as score").to_sql
     end
     
+    # History
     if !history.nil? && history.respond_to?(:each)
       # Collect all ramps that were visited at the same weekday near the current
       # time and map a score value to them
@@ -88,10 +101,7 @@ class Parkingramp < ActiveRecord::Base
   end
   
 private
-
-=begin
-  Alles was hier drin steht zwischen begin und end ist ein kommentar
-=end
+  # We propse an simple continous algorithm for ranking parkingramps. 
   def self.score_history(diff_sec, diff_wday, is_weekend_workday_jump, acceptable_diff_sec = 45*60, smooth_first = 2, smooth_second = 3)
     first = (1 - is_weekend_workday_jump*diff_wday/4.0 - diff_wday/12.0)*smooth_first
     second = 1 - 2**(diff_sec/smooth_second - acceptable_diff_sec)

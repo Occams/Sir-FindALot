@@ -7,6 +7,7 @@ class Concrete < ActiveRecord::Base
   attr_protected :parkinplane_id
   
   
+  # We have only these categories...
   @@categories = %w{ street entry exit }
   def self.categories
     @@categories
